@@ -44,12 +44,6 @@
     }
     
     .sidebar-slide {
-      position: absolute;
-      left: 0;
-      top: 0;
-      height: 100%;
-      width: 20rem; /* w-80 (320px) */
-      z-index: 30;
       transform: translateX(-40px);
       opacity: 0.85;
       transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1);
@@ -99,7 +93,7 @@
 <div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent z-10"></div>
 </div>
 <!-- Side Panel Menu -->
-<aside class="sidebar-slide flex flex-col shrink-0">
+<aside class="sidebar-slide absolute left-0 top-0 h-full w-80 z-30 flex flex-col shrink-0">
   <!-- Gradient Frosted Glass Backdrop -->
   <div class="absolute inset-0 z-0 pointer-events-none" style="background: rgba(0, 0, 0, 0.15); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); -webkit-mask-image: linear-gradient(to right, black 50%, transparent 100%); mask-image: linear-gradient(to right, black 50%, transparent 100%);"></div>
   
