@@ -248,6 +248,31 @@
             <span class="nav-line inactive-nav-line h-px transition-custom group-hover:w-10"></span>
             <span class="text-marble-white text-base tracking-wide font-light transition-custom">Coconut Cloud Chocolate</span>
           </button>
+          <button class="drink-nav-item group flex items-center gap-4 text-left transition-custom opacity-50 hover:opacity-100" onclick="showDrink('hazelnut-chocolate', this)">
+            <span class="nav-line inactive-nav-line h-px transition-custom group-hover:w-10"></span>
+            <span class="text-marble-white text-base tracking-wide font-light transition-custom">Hazelnut Chocolate</span>
+          </button>
+        </div>
+      </div>
+      <!-- Specialty Category -->
+      <div class="category-group" id="cat-special" onmouseenter="hoverCategory('cat-special')">
+        <button class="w-full flex items-center justify-between text-marble-white/50 hover:text-marble-white transition-custom py-2 uppercase tracking-[0.2em] text-xs font-bold" onclick="toggleCategory('cat-special')">
+          <span class="pointer-events-none">Specialty</span>
+          <span class="material-symbols-outlined text-sm transition-custom category-chevron pointer-events-none">expand_more</span>
+        </button>
+        <div class="category-content flex flex-col gap-4 pl-2 border-l border-white/5">
+          <button class="drink-nav-item group flex items-center gap-4 text-left transition-custom opacity-50 hover:opacity-100" onclick="showDrink('rose-latte', this)">
+            <span class="nav-line inactive-nav-line h-px transition-custom group-hover:w-10"></span>
+            <span class="text-marble-white text-base tracking-wide font-light transition-custom">Rose Latte</span>
+          </button>
+          <button class="drink-nav-item group flex items-center gap-4 text-left transition-custom opacity-50 hover:opacity-100" onclick="showDrink('blue-spirulina-latte', this)">
+            <span class="nav-line inactive-nav-line h-px transition-custom group-hover:w-10"></span>
+            <span class="text-marble-white text-base tracking-wide font-light transition-custom">Blue Spirulina Latte</span>
+          </button>
+          <button class="drink-nav-item group flex items-center gap-4 text-left transition-custom opacity-50 hover:opacity-100" onclick="showDrink('taro-latte', this)">
+            <span class="nav-line inactive-nav-line h-px transition-custom group-hover:w-10"></span>
+            <span class="text-marble-white text-base tracking-wide font-light transition-custom">Taro Latte</span>
+          </button>
         </div>
       </div>
     </nav>
@@ -270,6 +295,10 @@
     </button>
     <span class="text-marble-white/40 text-[10px] uppercase tracking-[0.3em] font-semibold block mb-4">Signature Selection</span>
     <h1 class="font-serif text-4xl md:text-5xl font-semibold mb-6 text-marble-white tracking-tight leading-tight" id="drink-title">Strawberries &amp; Cream Matcha</h1>
+    <div id="drink-temp-switch" class="hidden items-center gap-1 p-1 bg-black/40 border border-white/10 rounded-full w-fit mb-6 transition-all duration-300">
+      <button onclick="setDrinkTemp('hot')" id="btn-temp-hot" class="px-5 py-1.5 rounded-full text-xs uppercase tracking-widest font-semibold transition-all duration-300">Hot</button>
+      <button onclick="setDrinkTemp('iced')" id="btn-temp-iced" class="px-5 py-1.5 rounded-full text-xs uppercase tracking-widest font-semibold transition-all duration-300">Iced</button>
+    </div>
     <div class="w-12 h-px bg-white/10 mb-6"></div>
     <p class="text-marble-white/70 text-base md:text-lg leading-relaxed font-light mb-8" id="drink-text">Housemade strawberry puree &amp; strawberry cream.</p>
     <div class="flex items-center gap-8">
@@ -377,8 +406,79 @@
         img: '../../assets/coconut-iced-latte.jpg',
         price: '$9.50',
         ambient: '#2D211A'
+      },
+      'hazelnut-chocolate': {
+        hasTempToggle: true,
+        hot: {
+          title: 'Hazelnut Hot Chocolate',
+          text: 'Our signature rich chocolate infused with sweet roasted hazelnut syrup. Warm, velvety, and deeply comforting.',
+          img: '../../assets/coconut-iced-latte.jpg',
+          price: '$6.00',
+          ambient: '#301F18'
+        },
+        iced: {
+          title: 'Iced Hazelnut Chocolate',
+          text: 'Creamy premium chocolate infused with sweet roasted hazelnut syrup, served over ice and topped with a scoop of vanilla ice cream.',
+          img: '../../assets/coconut-iced-latte.jpg',
+          price: '$8.50',
+          ambient: '#261812'
+        }
+      },
+      'rose-latte': {
+        hasTempToggle: true,
+        hot: {
+          title: 'Hot Rose Latte',
+          text: 'Fragrant rose latte topped with delicate rose petals. A soothing, caffeine-free signature blend with no coffee or matcha added.',
+          img: '../../assets/matcha-strawberry.jpg',
+          price: '$6.00',
+          ambient: '#3A1E27'
+        },
+        iced: {
+          title: 'Iced Rose Latte',
+          text: 'Chilled rose latte served over ice and topped with rose petals and a premium scoop of vanilla ice cream. 100% caffeine-free.',
+          img: '../../assets/matcha-strawberry.jpg',
+          price: '$8.50',
+          ambient: '#2E1A2C'
+        }
+      },
+      'blue-spirulina-latte': {
+        hasTempToggle: true,
+        hot: {
+          title: 'Hot Blue Spirulina Latte',
+          text: 'A stunning, nutrient-dense caffeine-free latte made with premium organic blue spirulina, steamed milk, and a delicate touch of vanilla sweetness.',
+          img: '../../assets/coconut-iced-latte.jpg',
+          price: '$6.00',
+          ambient: '#1A2C38'
+        },
+        iced: {
+          title: 'Iced Blue Spirulina Latte',
+          text: 'Nutrient-rich blue spirulina and chilled milk over ice, crowned with a premium scoop of vanilla ice cream. Pure, refreshing, caffeine-free wellness.',
+          img: '../../assets/coconut-iced-latte.jpg',
+          price: '$8.50',
+          ambient: '#1B3240'
+        }
+      },
+      'taro-latte': {
+        hasTempToggle: true,
+        hot: {
+          title: 'Hot Taro Latte',
+          text: 'A velvety, smooth purple latte with a delicious, sweet and nutty taro root flavor. Comforting, cozy, and caffeine-free.',
+          img: '../../assets/layered-smoothie.jpg',
+          price: '$6.00',
+          ambient: '#291B33'
+        },
+        iced: {
+          title: 'Iced Taro Latte',
+          text: 'Creamy and nutty taro latte poured over ice, finished with a premium scoop of vanilla ice cream. The perfect sweet, caffeine-free escape.',
+          img: '../../assets/layered-smoothie.jpg',
+          price: '$8.50',
+          ambient: '#22162B'
+        }
       }
     };
+
+    let currentDrinkKey = 'strawberries-cream-matcha';
+    let currentDrinkTemp = 'hot';
 
     function hoverCategory(id) {
       const el = document.getElementById(id);
@@ -403,13 +503,71 @@
       }
     }
 
+    function updateTempSwitchUI(temp) {
+      const btnHot = document.getElementById('btn-temp-hot');
+      const btnIced = document.getElementById('btn-temp-iced');
+      
+      if (temp === 'hot') {
+        btnHot.className = "px-5 py-1.5 rounded-full text-xs uppercase tracking-widest font-semibold transition-all duration-300 bg-white text-black shadow-md shadow-black/10";
+        btnIced.className = "px-5 py-1.5 rounded-full text-xs uppercase tracking-widest font-semibold transition-all duration-300 text-marble-white/60 hover:text-marble-white";
+      } else {
+        btnHot.className = "px-5 py-1.5 rounded-full text-xs uppercase tracking-widest font-semibold transition-all duration-300 text-marble-white/60 hover:text-marble-white";
+        btnIced.className = "px-5 py-1.5 rounded-full text-xs uppercase tracking-widest font-semibold transition-all duration-300 bg-white text-black shadow-md shadow-black/10";
+      }
+    }
+
+    function setDrinkTemp(temp) {
+      if (currentDrinkTemp === temp) return;
+      currentDrinkTemp = temp;
+      
+      const drink = drinks[currentDrinkKey];
+      if (!drink || !drink.hasTempToggle) return;
+      
+      const config = drink[currentDrinkTemp];
+      const img = document.getElementById('drink-image');
+      const video = document.getElementById('drink-video');
+      const desc = document.getElementById('drink-description');
+      const ambient = document.getElementById('ambient-grad');
+      
+      // Update UI Switch buttons immediately (feels highly responsive!)
+      updateTempSwitchUI(temp);
+      
+      // Coordinated slide/fade transitions for details
+      desc.style.opacity = '0';
+      desc.style.transform = 'translateY(15px)'; // smaller slide offset for quick transition
+      img.style.opacity = '0.5'; // partial fade for seamless image change
+      
+      setTimeout(() => {
+        // Update text & price
+        document.getElementById('drink-title').innerText = config.title;
+        document.getElementById('drink-text').innerText = config.text;
+        document.getElementById('drink-price').innerText = config.price;
+        
+        // Update ambient colors
+        const body = document.getElementById('body-bg') || document.querySelector('.signature-drinks-showcase') || document.documentElement;
+        if (body) {
+          body.style.backgroundColor = config.ambient;
+        }
+        ambient.style.background = `linear-gradient(to right, ${config.ambient} 0%, transparent 100%)`;
+        
+        // Update image
+        img.src = config.img;
+        img.style.opacity = '1';
+        
+        // Fade in details
+        desc.style.opacity = '1';
+        desc.style.transform = 'translateY(0)';
+      }, 250);
+    }
+
     function showDrink(key, element) {
+      currentDrinkKey = key;
       const drink = drinks[key];
       const img = document.getElementById('drink-image');
       const video = document.getElementById('drink-video');
       const desc = document.getElementById('drink-description');
-      const body = document.getElementById('body-bg') || document.querySelector('.signature-drinks-showcase');
       const ambient = document.getElementById('ambient-grad');
+      const tempSwitch = document.getElementById('drink-temp-switch');
       
       // Update Sidebar Visuals
       document.querySelectorAll('.drink-nav-item').forEach(btn => {
@@ -431,19 +589,33 @@
       video.style.transform = 'scale(1.1)';
       
       setTimeout(() => {
+        // Resolve target drink config based on temp toggle
+        let config = drink;
+        if (drink.hasTempToggle) {
+          currentDrinkTemp = 'hot'; // default to hot when selecting a new drink
+          config = drink[currentDrinkTemp];
+          
+          tempSwitch.classList.remove('hidden');
+          tempSwitch.classList.add('flex');
+          updateTempSwitchUI(currentDrinkTemp);
+        } else {
+          tempSwitch.classList.remove('flex');
+          tempSwitch.classList.add('hidden');
+        }
+
         // Update Content
-        document.getElementById('drink-title').innerText = drink.title;
-        document.getElementById('drink-text').innerText = drink.text;
-        document.getElementById('drink-price').innerText = drink.price;
+        document.getElementById('drink-title').innerText = config.title;
+        document.getElementById('drink-text').innerText = config.text;
+        document.getElementById('drink-price').innerText = config.price;
         
         // Update Ambient Colors
         const body = document.getElementById('body-bg') || document.querySelector('.signature-drinks-showcase') || document.documentElement;
         if (body) {
-          body.style.backgroundColor = drink.ambient;
+          body.style.backgroundColor = config.ambient;
         }
-        ambient.style.background = `linear-gradient(to right, ${drink.ambient} 0%, transparent 100%)`;
+        ambient.style.background = `linear-gradient(to right, ${config.ambient} 0%, transparent 100%)`;
         
-        if (drink.video) {
+        if (config.video) {
           // Hide Image, Show Video
           img.classList.add('hidden');
           video.classList.remove('hidden');
@@ -457,7 +629,7 @@
           video.classList.add('hidden');
           video.pause();
           img.classList.remove('hidden');
-          img.src = drink.img;
+          img.src = config.img;
           
           // Animate Image In
           img.style.opacity = '1';
