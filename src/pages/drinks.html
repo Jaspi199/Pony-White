@@ -17,7 +17,7 @@
 <div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent z-10"></div>
 </div>
 <!-- Side Panel Menu -->
-<aside class="relative w-80 h-full z-30 flex flex-col shrink-0">
+<aside class="sidebar-slide flex flex-col shrink-0">
   <!-- Gradient Frosted Glass Backdrop -->
   <div class="absolute inset-0 z-0 pointer-events-none" style="background: rgba(0, 0, 0, 0.15); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); -webkit-mask-image: linear-gradient(to right, black 50%, transparent 100%); mask-image: linear-gradient(to right, black 50%, transparent 100%);"></div>
   
@@ -350,9 +350,17 @@
       const el = document.getElementById(id);
       if (!el.classList.contains('category-open')) {
         document.querySelectorAll('.category-group').forEach(group => {
+          const content = group.querySelector('.category-content');
+          if (content) {
+            content.style.maxHeight = '0px';
+          }
           group.classList.remove('category-open');
         });
         el.classList.add('category-open');
+        const content = el.querySelector('.category-content');
+        if (content) {
+          content.style.maxHeight = content.scrollHeight + 'px';
+        }
       }
     }
 
@@ -361,11 +369,19 @@
       const isOpening = !el.classList.contains('category-open');
       
       document.querySelectorAll('.category-group').forEach(group => {
+        const content = group.querySelector('.category-content');
+        if (content) {
+          content.style.maxHeight = '0px';
+        }
         group.classList.remove('category-open');
       });
 
       if (isOpening) {
         el.classList.add('category-open');
+        const content = el.querySelector('.category-content');
+        if (content) {
+          content.style.maxHeight = content.scrollHeight + 'px';
+        }
       }
     }
 
@@ -523,106 +539,8 @@
       }
     }
 
-    // High-precision Ping-Pong (yo-yo) Video Loop Controller
-    function initPingPongVideo(video) {
-      let direction = 1; // 1 = forward, -1 = reverse
-      let lastTime = performance.now();
-      let animationFrameId = null;
-
-      // Remove the standard looping behavior so we can manage it programmatically
-      video.removeAttribute('loop');
-
-      function tick(now) {
-        if (video.classList.contains('hidden')) {
-          cancelAnimationFrame(animationFrameId);
-          animationFrameId = null;
-          return;
-        }
-
-        const dt = (now - lastTime) / 1000; // time delta in seconds
-        lastTime = now;
-
-        if (!video.duration || isNaN(video.duration)) {
-          animationFrameId = requestAnimationFrame(tick);
-          return;
-        }
-
-        const duration = video.duration;
-        const t = video.currentTime;
-        // Dynamic boundary window (25% of duration, max 1.2s)
-        const easingWindow = Math.min(1.2, duration * 0.25);
-
-        // Smooth quadratic easing factor for luxury acceleration/deceleration
-        let speedMultiplier = 1.0;
-        if (t < easingWindow) {
-          const factor = t / easingWindow;
-          speedMultiplier = 0.12 + 0.88 * (factor * factor); // decelerate smoothly towards 0
-        } else if (t > duration - easingWindow) {
-          const factor = (duration - t) / easingWindow;
-          speedMultiplier = 0.12 + 0.88 * (factor * factor); // decelerate smoothly towards the end
-        }
-
-        // Keep inside high-performance limits to avoid browser render starvation
-        speedMultiplier = Math.max(0.1, Math.min(1.0, speedMultiplier));
-
-        if (direction === 1) {
-          // Play Forward
-          if (video.paused) {
-            video.play().catch(() => {});
-          }
-          video.playbackRate = speedMultiplier;
-
-          // Transition to reverse just before the hard absolute end
-          if (t >= duration - 0.08) {
-            direction = -1;
-            video.pause();
-          }
-        } else {
-          // Play Reverse (by seeking frame-by-frame)
-          if (!video.paused) {
-            video.pause();
-          }
-          const nextTime = t - dt * speedMultiplier;
-
-          // Transition back to forward just before reaching the hard absolute start
-          if (nextTime <= 0.08) {
-            video.currentTime = 0.08;
-            direction = 1;
-            video.play().catch(() => {});
-          } else {
-            video.currentTime = nextTime;
-          }
-        }
-
-        animationFrameId = requestAnimationFrame(tick);
-      }
-
-      // Re-arm loop ticks when state changes or resumes
-      video.addEventListener('play', () => {
-        lastTime = performance.now();
-        if (!animationFrameId) {
-          animationFrameId = requestAnimationFrame(tick);
-        }
-      });
-
-      video.addEventListener('pause', () => {
-        if (direction === 1) {
-          cancelAnimationFrame(animationFrameId);
-          animationFrameId = null;
-        }
-      });
-
-      // Kick off the loop initially
-      lastTime = performance.now();
-      animationFrameId = requestAnimationFrame(tick);
-    }
-
     // Initialize
     window.onload = () => {
       toggleCategory('cat-matcha');
-      const video = document.getElementById('drink-video');
-      if (video) {
-        initPingPongVideo(video);
-      }
     }
   </script>
