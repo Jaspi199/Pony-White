@@ -239,6 +239,22 @@
             <span class="nav-line active-nav-line h-px transition-all duration-500"></span>
             <span class="text-marble-white text-base tracking-wide font-semibold">Strawberries &amp; Cream Matcha</span>
           </button>
+          <button class="drink-nav-item group flex items-center gap-4 text-left transition-custom opacity-50 hover:opacity-100" onclick="showDrink('banoffee-matcha', this)">
+            <span class="nav-line inactive-nav-line h-px transition-all duration-500 group-hover:w-10"></span>
+            <span class="text-marble-white text-base tracking-wide font-light transition-colors">Banoffee Matcha</span>
+          </button>
+          <button class="drink-nav-item group flex items-center gap-4 text-left transition-custom opacity-50 hover:opacity-100" onclick="showDrink('wild-berry-matcha', this)">
+            <span class="nav-line inactive-nav-line h-px transition-all duration-500 group-hover:w-10"></span>
+            <span class="text-marble-white text-base tracking-wide font-light transition-colors">Wild Berry Matcha</span>
+          </button>
+          <button class="drink-nav-item group flex items-center gap-4 text-left transition-custom opacity-50 hover:opacity-100" onclick="showDrink('iced-rose-matcha', this)">
+            <span class="nav-line inactive-nav-line h-px transition-all duration-500 group-hover:w-10"></span>
+            <span class="text-marble-white text-base tracking-wide font-light transition-colors">Iced Rose Matcha</span>
+          </button>
+          <button class="drink-nav-item group flex items-center gap-4 text-left transition-custom opacity-50 hover:opacity-100" onclick="showDrink('coconut-cloud-matcha', this)">
+            <span class="nav-line inactive-nav-line h-px transition-all duration-500 group-hover:w-10"></span>
+            <span class="text-marble-white text-base tracking-wide font-light transition-colors">Coconut Cloud Matcha</span>
+          </button>
         </div>
       </div>
       <!-- Espresso Category -->
@@ -250,24 +266,53 @@
         <div class="category-content flex flex-col gap-4 pl-2 border-l border-white/5">
           <button class="drink-nav-item group flex items-center gap-4 text-left transition-custom opacity-50 hover:opacity-100" onclick="showDrink('pistachio-creme-brulee', this)">
             <span class="nav-line inactive-nav-line h-px transition-all duration-500 group-hover:w-10"></span>
-            <span class="text-marble-white text-base tracking-wide font-light transition-colors">Iced Specialty Coconut Latte</span>
+            <span class="text-marble-white text-base tracking-wide font-light transition-colors">Pistachio Creme Brulee</span>
           </button>
-          <button class="drink-nav-item group flex items-center gap-4 text-left transition-custom opacity-50 hover:opacity-100" onclick="showDrink('salted-caramel-tiramisu-affogato', this)">
+          <button class="drink-nav-item group flex items-center gap-4 text-left transition-custom opacity-50 hover:opacity-100" onclick="showDrink('banoffee-coffee', this)">
             <span class="nav-line inactive-nav-line h-px transition-all duration-500 group-hover:w-10"></span>
-            <span class="text-marble-white text-base tracking-wide font-light transition-colors">Salted Caramel Tiramisu Affogato</span>
+            <span class="text-marble-white text-base tracking-wide font-light transition-colors">Banoffee Coffee</span>
+          </button>
+          <button class="drink-nav-item group flex items-center gap-4 text-left transition-custom opacity-50 hover:opacity-100" onclick="showDrink('wild-berry-coffee', this)">
+            <span class="nav-line inactive-nav-line h-px transition-all duration-500 group-hover:w-10"></span>
+            <span class="text-marble-white text-base tracking-wide font-light transition-colors">Wild Berry Coffee</span>
+          </button>
+          <button class="drink-nav-item group flex items-center gap-4 text-left transition-custom opacity-50 hover:opacity-100" onclick="showDrink('iced-rose-coffee', this)">
+            <span class="nav-line inactive-nav-line h-px transition-all duration-500 group-hover:w-10"></span>
+            <span class="text-marble-white text-base tracking-wide font-light transition-colors">Iced Rose Coffee</span>
+          </button>
+          <button class="drink-nav-item group flex items-center gap-4 text-left transition-custom opacity-50 hover:opacity-100" onclick="showDrink('coconut-cloud-coffee', this)">
+            <span class="nav-line inactive-nav-line h-px transition-all duration-500 group-hover:w-10"></span>
+            <span class="text-marble-white text-base tracking-wide font-light transition-colors">Coconut Cloud Coffee</span>
+          </button>
+          <button class="drink-nav-item group flex items-center gap-4 text-left transition-custom opacity-50 hover:opacity-100" onclick="showDrink('tiramisu-affogato', this)">
+            <span class="nav-line inactive-nav-line h-px transition-all duration-500 group-hover:w-10"></span>
+            <span class="text-marble-white text-base tracking-wide font-light transition-colors">Tiramisu Affogato</span>
           </button>
         </div>
       </div>
-      <!-- Smoothies Category -->
+      <!-- Cold Brew Category -->
       <div class="category-group" id="cat-coldbrew">
         <button class="w-full flex items-center justify-between text-marble-white/50 hover:text-marble-white transition-colors py-2 uppercase tracking-[0.2em] text-xs font-bold" onclick="toggleCategory('cat-coldbrew')">
-          <span class="">Smoothies</span>
+          <span class="">Cold Brew</span>
           <span class="material-symbols-outlined text-sm transition-transform category-chevron">expand_more</span>
         </button>
         <div class="category-content flex flex-col gap-4 pl-2 border-l border-white/5">
           <button class="drink-nav-item group flex items-center gap-4 text-left transition-custom opacity-50 hover:opacity-100" onclick="showDrink('peach-cold-brew', this)">
             <span class="nav-line inactive-nav-line h-px transition-all duration-500 group-hover:w-10"></span>
-            <span class="text-marble-white text-base tracking-wide font-light transition-colors">Layered Superfood Smoothie</span>
+            <span class="text-marble-white text-base tracking-wide font-light transition-colors">Peach Cold Brew</span>
+          </button>
+        </div>
+      </div>
+      <!-- Chocolate Category -->
+      <div class="category-group" id="cat-chocolate">
+        <button class="w-full flex items-center justify-between text-marble-white/50 hover:text-marble-white transition-colors py-2 uppercase tracking-[0.2em] text-xs font-bold" onclick="toggleCategory('cat-chocolate')">
+          <span class="">Chocolate</span>
+          <span class="material-symbols-outlined text-sm transition-transform category-chevron">expand_more</span>
+        </button>
+        <div class="category-content flex flex-col gap-4 pl-2 border-l border-white/5">
+          <button class="drink-nav-item group flex items-center gap-4 text-left transition-custom opacity-50 hover:opacity-100" onclick="showDrink('coconut-cloud-chocolate', this)">
+            <span class="nav-line inactive-nav-line h-px transition-all duration-500 group-hover:w-10"></span>
+            <span class="text-marble-white text-base tracking-wide font-light transition-colors">Coconut Cloud Chocolate</span>
           </button>
         </div>
       </div>
@@ -292,7 +337,7 @@
     <span class="text-marble-white/40 text-[10px] uppercase tracking-[0.3em] font-semibold block mb-4">Signature Selection</span>
     <h1 class="font-serif text-4xl md:text-5xl font-semibold mb-6 text-marble-white tracking-tight leading-tight" id="drink-title">Strawberries &amp; Cream Matcha</h1>
     <div class="w-12 h-px bg-white/10 mb-6"></div>
-    <p class="text-marble-white/70 text-base md:text-lg leading-relaxed font-light mb-8" id="drink-text">A stunning tri-layer of fresh strawberry reduction, premium matcha, and velvety milk. Perfectly balanced sweetness and depth.</p>
+    <p class="text-marble-white/70 text-base md:text-lg leading-relaxed font-light mb-8" id="drink-text">Housemade strawberry puree &amp; strawberry cream.</p>
     <div class="flex items-center gap-8">
       <button class="bg-marble-white text-primary px-8 py-4 rounded-full font-bold text-xs tracking-widest uppercase shadow-lg shadow-black/10 hover:bg-[#eae0d5] hover:scale-105 active:scale-95 transition-all duration-300">Order Now</button>
       <span class="text-marble-white/90 text-xl font-semibold" id="drink-price">$9.50</span>
@@ -309,32 +354,95 @@
     const drinks = {
       'strawberries-cream-matcha': {
         title: 'Strawberries & Cream Matcha',
-        text: 'A stunning tri-layer of fresh strawberry reduction, premium matcha, and velvety milk. Perfectly balanced sweetness and depth.',
+        text: 'Housemade strawberry puree & strawberry cream.',
         img: '../../assets/matcha-strawberry.jpg',
         price: '$9.50',
-        ambient: '#2D1B22'
+        ambient: '#1C2E1F'
+      },
+      'banoffee-matcha': {
+        title: 'Banoffee Matcha',
+        text: 'Housemade caramel banana syrup & banana cream with premium ceremonial matcha.',
+        img: '../../assets/layered-smoothie.jpg',
+        price: '$10.00',
+        ambient: '#2C2B1B'
+      },
+      'wild-berry-matcha': {
+        title: 'Wild Berry Matcha',
+        text: 'Mixed berry jam with wild forest berry ice cream and premium ceremonial matcha.',
+        img: '../../assets/layered-smoothie.jpg',
+        price: '$9.50',
+        ambient: '#2A1F26'
+      },
+      'iced-rose-matcha': {
+        title: 'Iced Rose Matcha',
+        text: 'Fragrant rose latte topped with rose petals and premium ceremonial matcha.',
+        img: '../../assets/matcha-strawberry.jpg',
+        price: '$9.50',
+        ambient: '#2E1A2C'
+      },
+      'coconut-cloud-matcha': {
+        title: 'Coconut Cloud Matcha',
+        text: 'Coconut water, coconut cold foam & toasted coconut with premium ceremonial matcha.',
+        img: '../../assets/coconut-iced-latte.jpg',
+        price: '$9.50',
+        ambient: '#1A2A2E'
       },
       'pistachio-creme-brulee': {
-        title: 'Iced Specialty Coconut Latte',
-        text: 'Double shot espresso meets velvety sweet coconut milk, cold-brewed to perfection and served over ice.',
+        title: 'Pistachio Creme Brulee',
+        text: 'Iced latte with our house made pistachio cream, bruleed with crushed pistachios.',
         img: '../../assets/coconut-iced-latte.jpg',
-        price: '$8.50',
-        ambient: '#242b1a'
+        price: '$10.50',
+        ambient: '#242D1C'
       },
-      'salted-caramel-tiramisu-affogato': {
-        title: 'Salted Caramel Tiramisu Affogato',
-        text: 'A luxurious fusion of double-espresso, rich mascarpone cream, salted caramel drizzle, and a ladyfinger crust over house vanilla bean gelato.',
+      'banoffee-coffee': {
+        title: 'Banoffee Coffee',
+        text: 'Housemade caramel banana syrup & banana cream with a rich double shot of espresso.',
+        img: '../../assets/layered-smoothie.jpg',
+        price: '$10.00',
+        ambient: '#3A2E1D'
+      },
+      'wild-berry-coffee': {
+        title: 'Wild Berry Coffee',
+        text: 'Mixed berry jam with wild forest berry ice cream and a rich double shot of espresso.',
+        img: '../../assets/layered-smoothie.jpg',
+        price: '$9.50',
+        ambient: '#331C22'
+      },
+      'iced-rose-coffee': {
+        title: 'Iced Rose Coffee',
+        text: 'Fragrant rose latte topped with rose petals and a rich double shot of espresso.',
+        img: '../../assets/matcha-strawberry.jpg',
+        price: '$9.50',
+        ambient: '#351F2A'
+      },
+      'coconut-cloud-coffee': {
+        title: 'Coconut Cloud Coffee',
+        text: 'Coconut water, coconut cold foam & toasted coconut with a rich double shot of espresso.',
+        img: '../../assets/coconut-iced-latte.jpg',
+        price: '$9.50',
+        ambient: '#212D3A'
+      },
+      'tiramisu-affogato': {
+        title: 'Tiramisu Affogato',
+        text: 'Sea salt caramel ice cream, lady finger biscuits, salted caramel sauce, chocolate & double espresso.',
         img: '',
         video: true,
         price: '$10.00',
-        ambient: '#3A231A'
+        ambient: '#2D1D17'
       },
       'peach-cold-brew': {
-        title: 'Layered Superfood Smoothie',
-        text: 'A vibrant layered blend of organic berries, banana, greek yogurt, and fresh superfood greens.',
+        title: 'Peach Cold Brew',
+        text: 'Cold brew, sweet peach cream topped with dried peach.',
         img: '../../assets/layered-smoothie.jpg',
-        price: '$10.00',
-        ambient: '#3a2118'
+        price: '$9.50',
+        ambient: '#352119'
+      },
+      'coconut-cloud-chocolate': {
+        title: 'Coconut Cloud Chocolate',
+        text: 'Coconut water, coconut cold foam & toasted coconut with premium rich chocolate.',
+        img: '../../assets/coconut-iced-latte.jpg',
+        price: '$9.50',
+        ambient: '#2D211A'
       }
     };
 
