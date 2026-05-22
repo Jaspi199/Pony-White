@@ -31,13 +31,12 @@ const LOCAL_ASSETS_PATH = 'assets/';
  * Supports formats like: ../../assets/img.png, /assets/img.png, assets/img.png
  */
 function processAssetPaths(html, useCDN) {
-  const assetRegex = /(?:url\(["']?|src=["']|href=["'])(?:\.\.\/|\.\/|\/)*assets\/([^"'\)\s]+)(?:["']?\)|\s*["'])/gi;
+  const assetRegex = /(?:url\(["']?|src=["']|href=["']|["'])(?:\.\.\/|\.\/|\/)*assets\/([^"'\)]+)(?:["']?\)|\s*["'])/gi;
   
   return html.replace(assetRegex, (match) => {
-    // Determine delimiter (src=", href=", url(', url()
+    // Determine delimiter (src=", href=", url(', url(), or standard quote)
     let prefix = '';
     let suffix = '';
-    let cleanMatch = match;
     
     if (match.toLowerCase().startsWith('src=')) {
       const quote = match.includes('"') ? '"' : "'";
@@ -48,10 +47,13 @@ function processAssetPaths(html, useCDN) {
       prefix = `href=${quote}`;
       suffix = quote;
     } else if (match.toLowerCase().startsWith('url(')) {
-      const hasQuote = match.includes('"') || match.includes("'");
       const quote = match.includes('"') ? '"' : (match.includes("'") ? "'" : "");
       prefix = `url(${quote}`;
       suffix = `${quote})`;
+    } else if (match.startsWith('"') || match.startsWith("'")) {
+      const quote = match[0];
+      prefix = quote;
+      suffix = quote;
     }
 
     // Extract the actual filename
@@ -69,19 +71,35 @@ function processAssetPaths(html, useCDN) {
 
 /**
  * Simple, robust HTML minifier that strips comments, newlines, and excess whitespace.
- * Safe for standard HTML templates and inline styles.
+ * Safe for standard HTML templates, inline styles, and embedded scripts.
+ * Specifically avoids stripping newlines from <script> blocks to preserve single-line comments.
  */
 function minifyHtml(html) {
-  return html
-    // 1. Remove HTML comments, except IE conditional comments (not relevant here but good practice)
-    .replace(/<!--(?!\[if)([^]*?)-->/g, '')
-    // 2. Collapse all vertical whitespace (newlines, carriage returns) into single spaces
+  // 1. Temporarily extract all script blocks so their formatting is preserved
+  const scripts = [];
+  let minified = html.replace(/<script[^>]*>([\s\S]*?)<\/script>/gi, (match) => {
+    scripts.push(match);
+    return `<!--SCRIPT_PLACEHOLDER_${scripts.length - 1}-->`;
+  });
+
+  // 2. Minify the HTML markup around the placeholders
+  minified = minified
+    // Remove HTML comments, preserving IE conditional comments and our script placeholders
+    .replace(/<!--(?!\[if|SCRIPT_PLACEHOLDER_)([^]*?)-->/g, '')
+    // Collapse all vertical whitespace (newlines, carriage returns) into single spaces
     .replace(/[\r\n\t]+/g, ' ')
-    // 3. Collapse multiple spaces into a single space
+    // Collapse multiple spaces into a single space
     .replace(/\s{2,}/g, ' ')
-    // 4. Remove whitespace between tags where safe
+    // Remove whitespace between tags where safe
     .replace(/>\s+</g, '><')
     .trim();
+
+  // 3. Re-insert the original script blocks with formatting intact
+  minified = minified.replace(/<!--SCRIPT_PLACEHOLDER_(\d+)-->/g, (match, index) => {
+    return scripts[parseInt(index, 10)];
+  });
+
+  return minified;
 }
 
 /**

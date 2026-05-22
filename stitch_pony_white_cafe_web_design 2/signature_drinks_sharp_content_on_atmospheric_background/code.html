@@ -146,15 +146,185 @@
     .drink-reveal-trigger {
       cursor: pointer;
     }
+
+    /* Premium Cinematic Mobile View overrides */
+    @media (max-width: 1023px) {
+      /* Mobile Menu Drawer Toggle Button */
+      #mobile-menu-toggle {
+        display: flex !important;
+      }
+      
+      /* Mobile Sidebar Drawer Close Button */
+      #mobile-menu-close {
+        display: flex !important;
+      }
+
+      /* Lock screen scrolling */
+      body {
+        overflow: hidden !important;
+      }
+      
+      .signature-drinks-showcase {
+        height: 100vh !important;
+        height: 100dvh !important;
+        overflow: hidden !important;
+      }
+      
+      /* Make Sidebar a Slide-out Drawer */
+      aside.sidebar-slide {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: min(320px, 85vw) !important;
+        height: 100% !important;
+        z-index: 50 !important;
+        transform: translateX(-100%) !important;
+        opacity: 1 !important;
+        transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        box-shadow: 20px 0 50px rgba(0, 0, 0, 0.8) !important;
+      }
+      
+      /* Active Drawer state */
+      .sidebar-open aside.sidebar-slide {
+        transform: translateX(0) !important;
+      }
+      
+      /* Solid dark glass backdrop for maximum sidebar legibility on small screens */
+      aside.sidebar-slide > div.pointer-events-none {
+        background: rgba(10, 15, 12, 0.94) !important;
+        backdrop-filter: blur(40px) !important;
+        -webkit-backdrop-filter: blur(40px) !important;
+        mask-image: none !important;
+        -webkit-mask-image: none !important;
+      }
+      
+      aside.sidebar-slide .relative.z-10 {
+        padding: 2rem 1.25rem !important;
+      }
+      
+      aside.sidebar-slide .mb-16 {
+        margin-bottom: 1.5rem !important;
+      }
+
+      /* Compact drawer items to fit beautifully without text truncation or heavy wrapping */
+      aside.sidebar-slide .drink-nav-item span {
+        font-size: 0.9rem !important;
+      }
+      aside.sidebar-slide .category-content {
+        gap: 0.75rem !important;
+      }
+      aside.sidebar-slide .drink-nav-item {
+        gap: 0.5rem !important;
+      }
+      
+      /* Darker bottom gradient overlay for pristine mobile readability of background media */
+      .signature-drinks-showcase .absolute.inset-0.bg-gradient-to-t {
+        background-image: linear-gradient(to top, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.3) 50%, transparent 100%) !important;
+      }
+      
+      /* Reposition Main area elements on mobile */
+      main {
+        align-items: flex-end !important;
+        justify-content: center !important;
+      }
+      
+      /* Floating Mobile Description Card centered as a bottom sheet, perfectly proportioned to avoid squishing */
+      #drink-description {
+        position: fixed !important;
+        bottom: 1.5rem !important;
+        left: 50% !important;
+        right: auto !important;
+        margin-right: 0 !important;
+        width: calc(100% - 2rem) !important;
+        max-width: 440px !important;
+        padding: 1.25rem 1.25rem !important;
+        border-radius: 1.5rem !important;
+        transform: translateX(-50%) translateY(0) scale(1) !important;
+        z-index: 30 !important;
+        background: rgba(10, 15, 12, 0.72) !important;
+        backdrop-filter: blur(28px) !important;
+        -webkit-backdrop-filter: blur(28px) !important;
+        border: 1px solid rgba(255, 255, 255, 0.08) !important;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6) !important;
+        transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease !important;
+      }
+      
+      /* Slide-out bottom animation when hidden */
+      #drink-description.panel-hidden {
+        opacity: 0 !important;
+        transform: translateX(-50%) translateY(50px) scale(0.95) !important;
+        pointer-events: none !important;
+      }
+      
+      /* Perfectly proportioned mobile typography sizes */
+      #drink-title {
+        font-size: 1.35rem !important;
+        line-height: 1.75rem !important;
+        margin-bottom: 0.35rem !important;
+      }
+      
+      #drink-text {
+        font-size: 0.85rem !important;
+        line-height: 1.3rem !important;
+        margin-bottom: 0.75rem !important;
+      }
+      
+      #drink-temp-switch {
+        margin-bottom: 0.5rem !important;
+      }
+
+      #drink-description .w-12 {
+        margin-bottom: 0.5rem !important;
+      }
+      
+      #drink-description #panel-close-btn {
+        top: 0.75rem !important;
+        right: 0.75rem !important;
+        padding: 0.25rem !important;
+      }
+
+      #drink-description #panel-close-btn span {
+        font-size: 1.25rem !important;
+      }
+
+      #drink-description button.bg-marble-white {
+        padding: 0.65rem 1.25rem !important;
+        font-size: 0.65rem !important;
+      }
+
+      #drink-price {
+        font-size: 1.125rem !important;
+      }
+
+      #drink-description .flex.items-center.gap-8 {
+        gap: 1rem !important;
+      }
+      
+      /* Reposition the Logo mark to top-right to avoid overlap with description sheet */
+      .fixed.bottom-8.right-8 {
+        top: 1.5rem !important;
+        right: 1.5rem !important;
+        bottom: auto !important;
+        left: auto !important;
+      }
+      
+      .fixed.bottom-8.right-8 img {
+        width: 2.5rem !important;
+        height: 2.5rem !important;
+      }
+    }
   </style></head>
 <body class="font-body-md text-marble-white overflow-hidden transition-colors duration-1000" id="body-bg" style="background-color: #2D1B22;">
 <div class="signature-drinks-showcase relative w-full h-screen flex">
+<!-- Mobile Collections Drawer Toggle Button -->
+<button id="mobile-menu-toggle" onclick="toggleMobileMenu(event)" class="hidden fixed top-6 left-6 z-40 items-center gap-2 px-4 py-2.5 rounded-full bg-black/40 backdrop-blur-md border border-white/10 hover:bg-black/60 active:scale-95 transition-all duration-300">
+  <span class="material-symbols-outlined text-white text-lg">menu</span>
+  <span class="text-white text-xs uppercase tracking-widest font-bold">Collections</span>
+</button>
 <!-- Full Screen Drink Background -->
 <div class="absolute inset-0 overflow-hidden flex justify-center items-center z-0">
 <img alt="Signature Drink" class="w-full h-full object-cover scale-105" id="drink-image" src="../../assets/matcha-strawberry.jpg"/>
-<video id="drink-video" class="hidden absolute inset-0 w-full h-full object-cover scale-105 z-0" autoplay loop muted playsinline>
-  <source src="../../assets/b_d_e_b_a_a_a_f_e_video_mp_.mp4" type="video/mp4">
-</video>
+<video id="drink-video" class="hidden absolute inset-0 w-full h-full object-cover scale-105 z-0" autoplay loop muted playsinline></video>
 <!-- Ambient Overlays -->
 <div class="absolute inset-0 ambient-overlay bg-gradient-to-r from-forest-velvet via-transparent to-transparent opacity-90 z-10" id="ambient-grad" style="background: linear-gradient(to right, #2D1B22 0%, transparent 100%);"></div>
 <div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent z-10"></div>
@@ -166,9 +336,13 @@
   
   <!-- Sidebar Content -->
   <div class="relative z-10 flex flex-col h-full p-12">
-    <div class="mb-16">
+    <div class="mb-16 relative">
       <h2 class="text-marble-white/40 uppercase tracking-[0.3em] text-[10px] font-bold mb-2">Signature Collections</h2>
       <div class="h-px w-12 bg-white/10"></div>
+      <!-- Mobile Sidebar Close Button -->
+      <button onclick="toggleMobileMenu(event)" class="hidden absolute top-0 right-0 text-marble-white/60 hover:text-marble-white transition-colors p-1" id="mobile-menu-close">
+        <span class="material-symbols-outlined text-xl">close</span>
+      </button>
     </div>
     <nav class="flex flex-col gap-6 overflow-y-auto pr-4 scrollbar-hide">
       <!-- Matcha Category -->
@@ -303,10 +477,9 @@
     </div>
   </div>
 </aside>
-<!-- Immersive Main Showcase Area -->
-<main class="relative flex-1 flex items-center justify-end overflow-hidden drink-reveal-trigger z-20" onclick="revealPanel()">
-<!-- Description Panel -->
-<div class="relative mr-20 w-[480px] p-16 rounded-[2.5rem] z-20 transition-all duration-700 flex flex-col" id="drink-description" onclick="event.stopPropagation()">
+<main class="relative flex-1 flex items-center justify-end overflow-hidden drink-reveal-trigger z-20" onclick="handleBackgroundClick(event)">
+  <!-- Description Panel -->
+  <div class="relative mr-20 w-[480px] p-16 rounded-[2.5rem] z-20 transition-all duration-700 flex flex-col" id="drink-description" onclick="event.stopPropagation()">
   <div class="relative z-10 flex flex-col h-full w-full">
     <button class="absolute top-8 right-8 text-marble-white/60 hover:text-marble-white transition-colors p-2" id="panel-close-btn" onclick="hidePanel()">
       <span class="material-symbols-outlined text-2xl">close</span>
@@ -326,8 +499,8 @@
   </div>
 </div>
 <!-- Brand Mark (No shape container) -->
-<div class="fixed bottom-8 right-8 z-50 pointer-events-none opacity-90 transition-all duration-300">
-  <img alt="Pony White Cafe Brand Mark" class="w-20 h-20 rounded-full object-cover" src="../../assets/logo.png"/>
+<div class="fixed bottom-8 right-8 z-50 pointer-events-none opacity-85 transition-all duration-300">
+  <img alt="Pony White Cafe Brand Mark" class="w-20 h-20 rounded-full object-cover" src="../../assets/White Color Overlay Design.png"/>
 </div>
 </main>
 </div>
@@ -337,6 +510,7 @@
         title: 'Strawberries & Cream Matcha',
         text: 'Housemade strawberry puree & strawberry cream.',
         img: '../../assets/matcha-strawberry.jpg',
+        video: '../../assets/strawberrys and cream.mp4',
         price: '$9.50',
         ambient: '#1C2E1F'
       },
@@ -358,6 +532,7 @@
         title: 'Iced Rose Matcha',
         text: 'Fragrant rose latte topped with rose petals and premium ceremonial matcha.',
         img: '../../assets/matcha-strawberry.jpg',
+        video: '../../assets/rose matcha.mp4',
         price: '$9.50',
         ambient: '#2E1A2C'
       },
@@ -365,6 +540,7 @@
         title: 'Coconut Cloud Matcha',
         text: 'Coconut water, coconut cold foam & toasted coconut with premium ceremonial matcha.',
         img: '../../assets/coconut-iced-latte.jpg',
+        video: '../../assets/coconut cloud matcha.mp4',
         price: '$9.50',
         ambient: '#1A2A2E'
       },
@@ -372,6 +548,7 @@
         title: 'Pistachio Creme Brulee',
         text: 'Iced latte with our house made pistachio cream, bruleed with crushed pistachios.',
         img: '../../assets/coconut-iced-latte.jpg',
+        video: '../../assets/pistacio.mp4',
         price: '$10.50',
         ambient: '#242D1C'
       },
@@ -393,6 +570,7 @@
         title: 'Iced Rose Coffee',
         text: 'Fragrant rose latte topped with rose petals and a rich double shot of espresso.',
         img: '../../assets/matcha-strawberry.jpg',
+        video: '../../assets/rose coffee.mp4',
         price: '$9.50',
         ambient: '#351F2A'
       },
@@ -400,14 +578,15 @@
         title: 'Coconut Cloud Coffee',
         text: 'Coconut water, coconut cold foam & toasted coconut with a rich double shot of espresso.',
         img: '../../assets/coconut-iced-latte.jpg',
+        video: '../../assets/coconut cloud coffee.mp4',
         price: '$9.50',
         ambient: '#212D3A'
       },
       'tiramisu-affogato': {
         title: 'Tiramisu Affogato',
         text: 'Sea salt caramel ice cream, lady finger biscuits, salted caramel sauce, chocolate & double espresso.',
-        img: '',
-        video: true,
+        img: '../../assets/layered-smoothie.jpg',
+        video: '../../assets/afagato.mp4',
         price: '$10.00',
         ambient: '#2D1D17'
       },
@@ -465,6 +644,7 @@
           title: 'Hot Blue Spirulina Latte',
           text: 'A stunning, nutrient-dense caffeine-free latte made with premium organic blue spirulina, steamed milk, and a delicate touch of vanilla sweetness.',
           img: '../../assets/coconut-iced-latte.jpg',
+          video: '../../assets/blue spirulina.mp4',
           price: '$6.00',
           ambient: '#1A2C38'
         },
@@ -539,6 +719,37 @@
       }
     }
 
+    // Unified media display helper to cleanly switch between video & image backgrounds
+    function updateMedia(config, img, video) {
+      if (config.video) {
+        // Hide Image, Show Video
+        img.classList.add('hidden');
+        video.classList.remove('hidden');
+        
+        // Resolve absolute URL to check if the source has actually changed, preventing reloads
+        const newSrc = new URL(config.video, window.location.href).href;
+        if (video.src !== newSrc) {
+          video.src = config.video;
+          video.load();
+        }
+        
+        // Animate Video In
+        video.style.opacity = '1';
+        video.style.transform = 'scale(1.05)';
+        video.play().catch(e => console.log('Autoplay blocked or video not ready:', e));
+      } else {
+        // Hide Video, Show Image
+        video.classList.add('hidden');
+        video.pause();
+        img.classList.remove('hidden');
+        img.src = config.img;
+        
+        // Animate Image In
+        img.style.opacity = '1';
+        img.style.transform = 'scale(1.05)';
+      }
+    }
+
     function setDrinkTemp(temp) {
       if (currentDrinkTemp === temp) return;
       currentDrinkTemp = temp;
@@ -559,6 +770,7 @@
       desc.style.opacity = '0';
       desc.style.transform = 'translateY(15px)'; // smaller slide offset for quick transition
       img.style.opacity = '0.5'; // partial fade for seamless image change
+      video.style.opacity = '0.5';
       
       setTimeout(() => {
         // Update text & price
@@ -573,9 +785,8 @@
         }
         ambient.style.background = `linear-gradient(to right, ${config.ambient} 0%, transparent 100%)`;
         
-        // Update image
-        img.src = config.img;
-        img.style.opacity = '1';
+        // Update media background
+        updateMedia(config, img, video);
         
         // Fade in details
         desc.style.opacity = '1';
@@ -600,9 +811,11 @@
         btn.querySelector('.nav-line').classList.add('inactive-nav-line');
       });
       
-      element.classList.remove('opacity-50');
-      element.querySelector('.nav-line').classList.remove('inactive-nav-line');
-      element.querySelector('.nav-line').classList.add('active-nav-line');
+      if (element) {
+        element.classList.remove('opacity-50');
+        element.querySelector('.nav-line').classList.remove('inactive-nav-line');
+        element.querySelector('.nav-line').classList.add('active-nav-line');
+      }
 
       // Animate Transition Out
       desc.style.opacity = '0';
@@ -639,37 +852,26 @@
         }
         ambient.style.background = `linear-gradient(to right, ${config.ambient} 0%, transparent 100%)`;
         
-        if (config.video) {
-          // Hide Image, Show Video
-          img.classList.add('hidden');
-          video.classList.remove('hidden');
-          
-          // Animate Video In
-          video.style.opacity = '1';
-          video.style.transform = 'scale(1.05)';
-          video.play().catch(e => console.log('Autoplay blocked or video not ready:', e));
-        } else {
-          // Hide Video, Show Image
-          video.classList.add('hidden');
-          video.pause();
-          img.classList.remove('hidden');
-          img.src = config.img;
-          
-          // Animate Image In
-          img.style.opacity = '1';
-          img.style.transform = 'scale(1.05)';
-        }
+        // Update media background
+        updateMedia(config, img, video);
         
         // Reveal panel when selecting new drink
         desc.classList.remove('panel-hidden');
         desc.style.opacity = '1';
         desc.style.transform = 'translateY(0)';
       }, 400);
+      
+      // Close sidebar drawer automatically on mobile when a drink is selected
+      if (window.innerWidth < 1024) {
+        document.body.classList.remove('sidebar-open');
+      }
     }
 
     function hidePanel() {
       const panel = document.getElementById('drink-description');
       panel.classList.add('panel-hidden');
+      panel.style.opacity = '';
+      panel.style.transform = '';
       panelManuallyClosed = true; // Lock in the closed state until selection changes
     }
 
@@ -683,9 +885,32 @@
       }
     }
 
+    // Toggles the mobile collection menu drawer
+    function toggleMobileMenu(event) {
+      if (event) event.stopPropagation();
+      document.body.classList.toggle('sidebar-open');
+    }
+
+    // Handles clicks on the immersive background
+    function handleBackgroundClick(event) {
+      // Close sidebar if clicking outside on mobile
+      if (document.body.classList.contains('sidebar-open')) {
+        document.body.classList.remove('sidebar-open');
+        return;
+      }
+      
+      revealPanel();
+    }
+
     // Initialize
     window.onload = () => {
       toggleCategory('cat-matcha');
+      
+      // Initialize the default drink show state and play video smoothly on load
+      const firstItem = document.querySelector('.drink-nav-item');
+      if (firstItem) {
+        showDrink('strawberries-cream-matcha', firstItem);
+      }
     }
   </script>
 </body></html>
