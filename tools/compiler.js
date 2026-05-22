@@ -5,8 +5,8 @@ const juice = require('juice');
 // Configuration
 // You can customize your GitHub Username and Repository name here
 const CONFIG = {
-  githubUsername: 'ignaciotoro', // Default fallback, can be updated by user
-  githubRepo: 'Ponywhite',
+  githubUsername: 'Jaspi199', // Default fallback, can be updated by user
+  githubRepo: 'Pony-White',
   githubBranch: 'main',
   useCDN: true // Set to false during local development to use local paths
 };
