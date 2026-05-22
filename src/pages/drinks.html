@@ -430,6 +430,7 @@
 
     let currentDrinkKey = 'strawberries-cream-matcha';
     let currentDrinkTemp = 'hot';
+    let panelManuallyClosed = false;
 
     function hoverCategory(id) {
       const el = document.getElementById(id);
@@ -517,6 +518,7 @@
 
     function showDrink(key, element) {
       currentDrinkKey = key;
+      panelManuallyClosed = false; // Reset close state since the selection has changed!
       const drink = drinks[key];
       const img = document.getElementById('drink-image');
       const video = document.getElementById('drink-video');
@@ -601,9 +603,11 @@
     function hidePanel() {
       const panel = document.getElementById('drink-description');
       panel.classList.add('panel-hidden');
+      panelManuallyClosed = true; // Lock in the closed state until selection changes
     }
 
     function revealPanel() {
+      if (panelManuallyClosed) return; // Stay hidden if the close button was explicitly clicked
       const panel = document.getElementById('drink-description');
       if (panel.classList.contains('panel-hidden')) {
         panel.classList.remove('panel-hidden');
