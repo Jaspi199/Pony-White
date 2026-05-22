@@ -87,7 +87,7 @@
       background-color: rgba(255, 255, 255, 0.2);
     }
     .transition-custom {
-      transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
     }
     .glass-panel {
       background: rgba(10, 15, 12, 0.6); /* Premium dark obsidian forest tint */
@@ -101,73 +101,7 @@
     .category-content {
       max-height: 0;
       overflow: hidden;
-      transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), margin 0.5s ease;
-    }
-    .category-open .category-content {
-      max-height: 600px;
-      margin-top: 1rem;
-    }
-    .category-open .category-chevron {
-      transform: rotate(180deg);
-    }
-    
-    #drink-description.panel-hidden {
-      opacity: 0;
-      transform: translateX(120%) scale(0.95);
-      pointer-events: none;
-    }
-
-    .ambient-overlay {
-      transition: background 1.5s ease;
-    }
-    
-    .scrollbar-hide::-webkit-scrollbar {
-      display: none;
-    }
-    .scrollbar-hide {
-      -ms-overflow-style: none;
-      scrollbar-width: none;
-    }
-
-    #drink-image {
-      transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.8s ease;
-      object-position: center;
-    }
-    
-    .drink-reveal-trigger {
-      cursor: pointer;
-    }
-  </style>
-<style>
-    .gold-gradient-text {
-      background: linear-gradient(135deg, #C5A059 20%, #D4AF37 50%, #C5A059 80%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .active-nav-line {
-      width: 40px;
-      background-color: #ffffff;
-    }
-    .inactive-nav-line {
-      width: 20px;
-      background-color: rgba(255, 255, 255, 0.2);
-    }
-    .transition-custom {
-      transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .glass-panel {
-      background: rgba(10, 15, 12, 0.6); /* Premium dark obsidian forest tint */
-      backdrop-filter: blur(32px);
-      -webkit-backdrop-filter: blur(32px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-      transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-      overflow: visible !important;
-    }
-    .category-content {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), margin 0.5s ease;
+      transition: max-height 0.4s cubic-bezier(0.25, 1, 0.5, 1), margin 0.4s ease;
     }
     .category-open .category-content {
       max-height: 600px;
@@ -229,90 +163,90 @@
     </div>
     <nav class="flex flex-col gap-6 overflow-y-auto pr-4 scrollbar-hide">
       <!-- Matcha Category -->
-      <div class="category-group" id="cat-matcha">
-        <button class="w-full flex items-center justify-between text-marble-white/50 hover:text-marble-white transition-colors py-2 uppercase tracking-[0.2em] text-xs font-bold" onclick="toggleCategory('cat-matcha')">
-          <span class="">Matcha</span>
-          <span class="material-symbols-outlined text-sm transition-transform category-chevron">expand_more</span>
+      <div class="category-group" id="cat-matcha" onmouseenter="hoverCategory('cat-matcha')">
+        <button class="w-full flex items-center justify-between text-marble-white/50 hover:text-marble-white transition-custom py-2 uppercase tracking-[0.2em] text-xs font-bold" onclick="toggleCategory('cat-matcha')">
+          <span class="pointer-events-none">Matcha</span>
+          <span class="material-symbols-outlined text-sm transition-custom category-chevron pointer-events-none">expand_more</span>
         </button>
         <div class="category-content flex flex-col gap-4 pl-2 border-l border-white/5">
           <button class="drink-nav-item group flex items-center gap-4 text-left transition-custom" onclick="showDrink('strawberries-cream-matcha', this)">
-            <span class="nav-line active-nav-line h-px transition-all duration-500"></span>
-            <span class="text-marble-white text-base tracking-wide font-semibold">Strawberries &amp; Cream Matcha</span>
+            <span class="nav-line active-nav-line h-px transition-custom"></span>
+            <span class="text-marble-white text-base tracking-wide font-light transition-custom">Strawberries &amp; Cream Matcha</span>
           </button>
           <button class="drink-nav-item group flex items-center gap-4 text-left transition-custom opacity-50 hover:opacity-100" onclick="showDrink('banoffee-matcha', this)">
-            <span class="nav-line inactive-nav-line h-px transition-all duration-500 group-hover:w-10"></span>
-            <span class="text-marble-white text-base tracking-wide font-light transition-colors">Banoffee Matcha</span>
+            <span class="nav-line inactive-nav-line h-px transition-custom group-hover:w-10"></span>
+            <span class="text-marble-white text-base tracking-wide font-light transition-custom">Banoffee Matcha</span>
           </button>
           <button class="drink-nav-item group flex items-center gap-4 text-left transition-custom opacity-50 hover:opacity-100" onclick="showDrink('wild-berry-matcha', this)">
-            <span class="nav-line inactive-nav-line h-px transition-all duration-500 group-hover:w-10"></span>
-            <span class="text-marble-white text-base tracking-wide font-light transition-colors">Wild Berry Matcha</span>
+            <span class="nav-line inactive-nav-line h-px transition-custom group-hover:w-10"></span>
+            <span class="text-marble-white text-base tracking-wide font-light transition-custom">Wild Berry Matcha</span>
           </button>
           <button class="drink-nav-item group flex items-center gap-4 text-left transition-custom opacity-50 hover:opacity-100" onclick="showDrink('iced-rose-matcha', this)">
-            <span class="nav-line inactive-nav-line h-px transition-all duration-500 group-hover:w-10"></span>
-            <span class="text-marble-white text-base tracking-wide font-light transition-colors">Iced Rose Matcha</span>
+            <span class="nav-line inactive-nav-line h-px transition-custom group-hover:w-10"></span>
+            <span class="text-marble-white text-base tracking-wide font-light transition-custom">Iced Rose Matcha</span>
           </button>
           <button class="drink-nav-item group flex items-center gap-4 text-left transition-custom opacity-50 hover:opacity-100" onclick="showDrink('coconut-cloud-matcha', this)">
-            <span class="nav-line inactive-nav-line h-px transition-all duration-500 group-hover:w-10"></span>
-            <span class="text-marble-white text-base tracking-wide font-light transition-colors">Coconut Cloud Matcha</span>
+            <span class="nav-line inactive-nav-line h-px transition-custom group-hover:w-10"></span>
+            <span class="text-marble-white text-base tracking-wide font-light transition-custom">Coconut Cloud Matcha</span>
           </button>
         </div>
       </div>
       <!-- Espresso Category -->
-      <div class="category-group" id="cat-espresso">
-        <button class="w-full flex items-center justify-between text-marble-white/50 hover:text-marble-white transition-colors py-2 uppercase tracking-[0.2em] text-xs font-bold" onclick="toggleCategory('cat-espresso')">
-          <span class="">Espresso</span>
-          <span class="material-symbols-outlined text-sm transition-transform category-chevron">expand_more</span>
+      <div class="category-group" id="cat-espresso" onmouseenter="hoverCategory('cat-espresso')">
+        <button class="w-full flex items-center justify-between text-marble-white/50 hover:text-marble-white transition-custom py-2 uppercase tracking-[0.2em] text-xs font-bold" onclick="toggleCategory('cat-espresso')">
+          <span class="pointer-events-none">Espresso</span>
+          <span class="material-symbols-outlined text-sm transition-custom category-chevron pointer-events-none">expand_more</span>
         </button>
         <div class="category-content flex flex-col gap-4 pl-2 border-l border-white/5">
           <button class="drink-nav-item group flex items-center gap-4 text-left transition-custom opacity-50 hover:opacity-100" onclick="showDrink('pistachio-creme-brulee', this)">
-            <span class="nav-line inactive-nav-line h-px transition-all duration-500 group-hover:w-10"></span>
-            <span class="text-marble-white text-base tracking-wide font-light transition-colors">Pistachio Creme Brulee</span>
+            <span class="nav-line inactive-nav-line h-px transition-custom group-hover:w-10"></span>
+            <span class="text-marble-white text-base tracking-wide font-light transition-custom">Pistachio Creme Brulee</span>
           </button>
           <button class="drink-nav-item group flex items-center gap-4 text-left transition-custom opacity-50 hover:opacity-100" onclick="showDrink('banoffee-coffee', this)">
-            <span class="nav-line inactive-nav-line h-px transition-all duration-500 group-hover:w-10"></span>
-            <span class="text-marble-white text-base tracking-wide font-light transition-colors">Banoffee Coffee</span>
+            <span class="nav-line inactive-nav-line h-px transition-custom group-hover:w-10"></span>
+            <span class="text-marble-white text-base tracking-wide font-light transition-custom">Banoffee Coffee</span>
           </button>
           <button class="drink-nav-item group flex items-center gap-4 text-left transition-custom opacity-50 hover:opacity-100" onclick="showDrink('wild-berry-coffee', this)">
-            <span class="nav-line inactive-nav-line h-px transition-all duration-500 group-hover:w-10"></span>
-            <span class="text-marble-white text-base tracking-wide font-light transition-colors">Wild Berry Coffee</span>
+            <span class="nav-line inactive-nav-line h-px transition-custom group-hover:w-10"></span>
+            <span class="text-marble-white text-base tracking-wide font-light transition-custom">Wild Berry Coffee</span>
           </button>
           <button class="drink-nav-item group flex items-center gap-4 text-left transition-custom opacity-50 hover:opacity-100" onclick="showDrink('iced-rose-coffee', this)">
-            <span class="nav-line inactive-nav-line h-px transition-all duration-500 group-hover:w-10"></span>
-            <span class="text-marble-white text-base tracking-wide font-light transition-colors">Iced Rose Coffee</span>
+            <span class="nav-line inactive-nav-line h-px transition-custom group-hover:w-10"></span>
+            <span class="text-marble-white text-base tracking-wide font-light transition-custom">Iced Rose Coffee</span>
           </button>
           <button class="drink-nav-item group flex items-center gap-4 text-left transition-custom opacity-50 hover:opacity-100" onclick="showDrink('coconut-cloud-coffee', this)">
-            <span class="nav-line inactive-nav-line h-px transition-all duration-500 group-hover:w-10"></span>
-            <span class="text-marble-white text-base tracking-wide font-light transition-colors">Coconut Cloud Coffee</span>
+            <span class="nav-line inactive-nav-line h-px transition-custom group-hover:w-10"></span>
+            <span class="text-marble-white text-base tracking-wide font-light transition-custom">Coconut Cloud Coffee</span>
           </button>
           <button class="drink-nav-item group flex items-center gap-4 text-left transition-custom opacity-50 hover:opacity-100" onclick="showDrink('tiramisu-affogato', this)">
-            <span class="nav-line inactive-nav-line h-px transition-all duration-500 group-hover:w-10"></span>
-            <span class="text-marble-white text-base tracking-wide font-light transition-colors">Tiramisu Affogato</span>
+            <span class="nav-line inactive-nav-line h-px transition-custom group-hover:w-10"></span>
+            <span class="text-marble-white text-base tracking-wide font-light transition-custom">Tiramisu Affogato</span>
           </button>
         </div>
       </div>
       <!-- Cold Brew Category -->
-      <div class="category-group" id="cat-coldbrew">
-        <button class="w-full flex items-center justify-between text-marble-white/50 hover:text-marble-white transition-colors py-2 uppercase tracking-[0.2em] text-xs font-bold" onclick="toggleCategory('cat-coldbrew')">
-          <span class="">Cold Brew</span>
-          <span class="material-symbols-outlined text-sm transition-transform category-chevron">expand_more</span>
+      <div class="category-group" id="cat-coldbrew" onmouseenter="hoverCategory('cat-coldbrew')">
+        <button class="w-full flex items-center justify-between text-marble-white/50 hover:text-marble-white transition-custom py-2 uppercase tracking-[0.2em] text-xs font-bold" onclick="toggleCategory('cat-coldbrew')">
+          <span class="pointer-events-none">Cold Brew</span>
+          <span class="material-symbols-outlined text-sm transition-custom category-chevron pointer-events-none">expand_more</span>
         </button>
         <div class="category-content flex flex-col gap-4 pl-2 border-l border-white/5">
           <button class="drink-nav-item group flex items-center gap-4 text-left transition-custom opacity-50 hover:opacity-100" onclick="showDrink('peach-cold-brew', this)">
-            <span class="nav-line inactive-nav-line h-px transition-all duration-500 group-hover:w-10"></span>
-            <span class="text-marble-white text-base tracking-wide font-light transition-colors">Peach Cold Brew</span>
+            <span class="nav-line inactive-nav-line h-px transition-custom group-hover:w-10"></span>
+            <span class="text-marble-white text-base tracking-wide font-light transition-custom">Peach Cold Brew</span>
           </button>
         </div>
       </div>
       <!-- Chocolate Category -->
-      <div class="category-group" id="cat-chocolate">
-        <button class="w-full flex items-center justify-between text-marble-white/50 hover:text-marble-white transition-colors py-2 uppercase tracking-[0.2em] text-xs font-bold" onclick="toggleCategory('cat-chocolate')">
-          <span class="">Chocolate</span>
-          <span class="material-symbols-outlined text-sm transition-transform category-chevron">expand_more</span>
+      <div class="category-group" id="cat-chocolate" onmouseenter="hoverCategory('cat-chocolate')">
+        <button class="w-full flex items-center justify-between text-marble-white/50 hover:text-marble-white transition-custom py-2 uppercase tracking-[0.2em] text-xs font-bold" onclick="toggleCategory('cat-chocolate')">
+          <span class="pointer-events-none">Chocolate</span>
+          <span class="material-symbols-outlined text-sm transition-custom category-chevron pointer-events-none">expand_more</span>
         </button>
         <div class="category-content flex flex-col gap-4 pl-2 border-l border-white/5">
           <button class="drink-nav-item group flex items-center gap-4 text-left transition-custom opacity-50 hover:opacity-100" onclick="showDrink('coconut-cloud-chocolate', this)">
-            <span class="nav-line inactive-nav-line h-px transition-all duration-500 group-hover:w-10"></span>
-            <span class="text-marble-white text-base tracking-wide font-light transition-colors">Coconut Cloud Chocolate</span>
+            <span class="nav-line inactive-nav-line h-px transition-custom group-hover:w-10"></span>
+            <span class="text-marble-white text-base tracking-wide font-light transition-custom">Coconut Cloud Chocolate</span>
           </button>
         </div>
       </div>
@@ -446,6 +380,16 @@
       }
     };
 
+    function hoverCategory(id) {
+      const el = document.getElementById(id);
+      if (!el.classList.contains('category-open')) {
+        document.querySelectorAll('.category-group').forEach(group => {
+          group.classList.remove('category-open');
+        });
+        el.classList.add('category-open');
+      }
+    }
+
     function toggleCategory(id) {
       const el = document.getElementById(id);
       const isOpening = !el.classList.contains('category-open');
@@ -472,17 +416,11 @@
         btn.classList.add('opacity-50');
         btn.querySelector('.nav-line').classList.remove('active-nav-line');
         btn.querySelector('.nav-line').classList.add('inactive-nav-line');
-        const textSpan = btn.querySelector('span:last-child');
-        textSpan.classList.remove('font-semibold');
-        textSpan.classList.add('font-light');
       });
       
       element.classList.remove('opacity-50');
       element.querySelector('.nav-line').classList.remove('inactive-nav-line');
       element.querySelector('.nav-line').classList.add('active-nav-line');
-      const activeTextSpan = element.querySelector('span:last-child');
-      activeTextSpan.classList.remove('font-light');
-      activeTextSpan.classList.add('font-semibold');
 
       // Animate Transition Out
       desc.style.opacity = '0';
