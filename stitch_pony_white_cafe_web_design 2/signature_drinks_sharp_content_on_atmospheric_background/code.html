@@ -498,13 +498,6 @@
     function hoverCategory(id) {
       const el = document.getElementById(id);
       if (!el.classList.contains('category-open')) {
-        document.querySelectorAll('.category-group').forEach(group => {
-          const content = group.querySelector('.category-content');
-          if (content) {
-            content.style.maxHeight = '0px';
-          }
-          group.classList.remove('category-open');
-        });
         el.classList.add('category-open');
         const content = el.querySelector('.category-content');
         if (content) {
@@ -515,19 +508,14 @@
 
     function toggleCategory(id) {
       const el = document.getElementById(id);
-      const isOpening = !el.classList.contains('category-open');
-      
-      document.querySelectorAll('.category-group').forEach(group => {
-        const content = group.querySelector('.category-content');
+      const content = el.querySelector('.category-content');
+      if (el.classList.contains('category-open')) {
+        el.classList.remove('category-open');
         if (content) {
           content.style.maxHeight = '0px';
         }
-        group.classList.remove('category-open');
-      });
-
-      if (isOpening) {
+      } else {
         el.classList.add('category-open');
-        const content = el.querySelector('.category-content');
         if (content) {
           content.style.maxHeight = content.scrollHeight + 'px';
         }
