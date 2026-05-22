@@ -85,6 +85,7 @@
       /* Mobile Menu Drawer Toggle Button */
       #mobile-menu-toggle {
         display: flex !important;
+        position: absolute !important;
       }
       
       /* Mobile Sidebar Drawer Close Button */
@@ -92,20 +93,29 @@
         display: flex !important;
       }
 
-      /* Lock screen scrolling */
+      /* Allow natural scrolling when embedded */
       body {
-        overflow: hidden !important;
+        overflow: auto !important;
       }
       
       .signature-drinks-showcase {
-        height: 100vh !important;
-        height: 100dvh !important;
+        height: 580px !important;
         overflow: hidden !important;
+      }
+      @media (min-width: 640px) {
+        .signature-drinks-showcase {
+          height: 650px !important;
+        }
+      }
+      @media (min-width: 768px) {
+        .signature-drinks-showcase {
+          height: 700px !important;
+        }
       }
       
       /* Make Sidebar a Slide-out Drawer */
       aside.sidebar-slide {
-        position: fixed !important;
+        position: absolute !important;
         top: 0 !important;
         left: 0 !important;
         width: min(320px, 85vw) !important;
@@ -163,7 +173,7 @@
       
       /* Floating Mobile Description Card centered as a bottom sheet, perfectly proportioned to avoid squishing */
       #drink-description {
-        position: fixed !important;
+        position: absolute !important;
         bottom: 1.5rem !important;
         left: 50% !important;
         right: auto !important;
@@ -234,21 +244,22 @@
       }
       
       /* Reposition the Logo mark to top-right to avoid overlap with description sheet */
-      .fixed.bottom-8.right-8 {
+      .absolute.bottom-8.right-8 {
         top: 1.5rem !important;
         right: 1.5rem !important;
         bottom: auto !important;
         left: auto !important;
+        position: absolute !important;
       }
       
-      .fixed.bottom-8.right-8 img {
+      .absolute.bottom-8.right-8 img {
         width: 2.5rem !important;
         height: 2.5rem !important;
       }
     }
   </style>
 
-<div class="signature-drinks-showcase relative w-full h-screen flex">
+<div class="signature-drinks-showcase relative w-full h-[580px] sm:h-[650px] md:h-[700px] lg:h-[750px] xl:h-[820px] flex overflow-hidden">
 <!-- Mobile Collections Drawer Toggle Button -->
 <button id="mobile-menu-toggle" onclick="toggleMobileMenu(event)" class="hidden fixed top-6 left-6 z-40 items-center gap-2 px-4 py-2.5 rounded-full bg-black/40 backdrop-blur-md border border-white/10 hover:bg-black/60 active:scale-95 transition-all duration-300">
   <span class="material-symbols-outlined text-white text-lg">menu</span>
@@ -432,7 +443,7 @@
   </div>
 </div>
 <!-- Brand Mark (No shape container) -->
-<div class="fixed bottom-8 right-8 z-50 pointer-events-none opacity-85 transition-all duration-300">
+<div class="absolute bottom-8 right-8 z-50 pointer-events-none opacity-85 transition-all duration-300">
   <img alt="Pony White Cafe Brand Mark" class="w-20 h-20 rounded-full object-cover" src="../../assets/White Color Overlay Design.png"/>
 </div>
 </main>
