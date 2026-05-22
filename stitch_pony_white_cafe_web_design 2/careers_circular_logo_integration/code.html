@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Join the Sunday Collective | Pony White</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-primary": "#ffffff",
+                      "inverse-on-surface": "#f1f1ef",
+                      "surface": "#faf9f7",
+                      "surface-container-low": "#f4f4f1",
+                      "vein-gray": "#E0E0E0",
+                      "surface-container-high": "#e8e8e6",
+                      "on-tertiary-container": "#909291",
+                      "surface-dim": "#dadad8",
+                      "on-primary-fixed-variant": "#2b4d43",
+                      "outline": "#717975",
+                      "secondary": "#775a19",
+                      "on-background": "#1a1c1b",
+                      "background": "#faf9f7",
+                      "on-surface": "#1a1c1b",
+                      "inverse-primary": "#a9cfc1",
+                      "surface-container": "#eeeeec",
+                      "premium-gold": "#B38B45",
+                      "premium-gold-light": "#D4AF37",
+                      "premium-gold-dark": "#8C6D31",
+                      "surface-container-lowest": "#ffffff",
+                      "on-secondary-fixed-variant": "#5d4201",
+                      "primary-fixed": "#c4ebdd",
+                      "marble-white": "#FFFFFF",
+                      "error-container": "#ffdad6",
+                      "latte-peach": "#FFCBAA",
+                      "surface-bright": "#faf9f7",
+                      "inverse-surface": "#2f3130",
+                      "on-secondary": "#ffffff",
+                      "on-tertiary": "#ffffff",
+                      "primary-container": "#0b3027",
+                      "surface-variant": "#e2e2e0",
+                      "on-tertiary-fixed-variant": "#454747",
+                      "secondary-fixed": "#ffdea5",
+                      "primary-fixed-dim": "#a9cfc1",
+                      "primary": "#001a13",
+                      "tertiary-fixed": "#e1e3e2",
+                      "secondary-container": "#fed488",
+                      "error": "#ba1a1a",
+                      "tertiary": "#141716",
+                      "forest-velvet": "#0B3027",
+                      "surface-tint": "#42655a",
+                      "on-primary-container": "#75998d",
+                      "on-primary-fixed": "#002019",
+                      "outline-variant": "#c1c8c4",
+                      "secondary-fixed-dim": "#e9c176",
+                      "on-surface-variant": "#414845",
+                      "on-tertiary-fixed": "#191c1c",
+                      "on-error-container": "#93000a",
+                      "on-error": "#ffffff",
+                      "on-secondary-fixed": "#261900",
+                      "tertiary-fixed-dim": "#c5c7c6",
+                      "tertiary-container": "#282b2b",
+                      "surface-container-highest": "#e2e2e0",
+                      "on-secondary-container": "#785a1a"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "gutter": "24px",
+                      "stack-sm": "8px",
+                      "stack-lg": "32px",
+                      "margin-desktop": "64px",
+                      "stack-md": "16px",
+                      "section-padding": "80px",
+                      "margin-mobile": "20px"
+              },
+              "fontFamily": {
+                      "label-caps": ["Hanken Grotesk"],
+                      "headline-md": ["Hanken Grotesk"],
+                      "display-lg": ["Hanken Grotesk"],
+                      "body-lg": ["Hanken Grotesk"],
+                      "display-lg-mobile": ["Hanken Grotesk"],
+                      "body-md": ["Hanken Grotesk"]
+              },
+              "fontSize": {
+                      "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.15em", "fontWeight": "600"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "display-lg-mobile": ["36px", {"lineHeight": "42px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(224, 224, 224, 0.5);
+        }
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #8C6D31 0%, #B38B45 50%, #8C6D31 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .gold-gradient-bg {
+            background: linear-gradient(135deg, #8C6D31 0%, #B38B45 50%, #8C6D31 100%);
+        }
+        .gold-border {
+            border-image: linear-gradient(135deg, #8C6D31 0%, #B38B45 50%, #8C6D31 100%) 1;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md selection:bg-premium-gold selection:text-white">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-transparent">
+<div class="flex justify-between items-center w-full px-margin-desktop py-gutter max-w-screen-2xl mx-auto">
+<div class="font-display-lg text-display-lg text-forest-velvet dark:text-marble-white tracking-tighter">Pony White</div>
+<div class="hidden md:flex items-center space-x-gutter">
+<a class="font-label-caps text-label-caps text-forest-velvet dark:text-marble-white opacity-90 hover:text-premium-gold transition-colors duration-300" href="#">Order</a>
+<a class="font-label-caps text-label-caps text-forest-velvet dark:text-marble-white opacity-90 hover:text-premium-gold transition-colors duration-300" href="#">Coffee</a>
+<a class="font-label-caps text-label-caps text-forest-velvet dark:text-marble-white opacity-90 hover:text-premium-gold transition-colors duration-300" href="#">Drinks</a>
+<a class="font-label-caps text-label-caps text-forest-velvet dark:text-marble-white opacity-90 hover:text-premium-gold transition-colors duration-300" href="#">Book</a>
+<a class="font-label-caps text-label-caps text-forest-velvet dark:text-marble-white opacity-90 hover:text-premium-gold transition-colors duration-300" href="#">Gifts</a>
+<a class="font-label-caps text-label-caps gold-gradient-text border-b gold-border pb-1 transition-colors duration-300" href="#">Careers</a>
+</div>
+<div class="flex gap-stack-md">
+<button class="font-label-caps text-label-caps text-forest-velvet hover:text-premium-gold transition-colors duration-300">Login</button>
+<button class="bg-forest-velvet text-on-primary font-label-caps text-label-caps px-stack-lg py-stack-md rounded-lg hover:opacity-90 transition-all duration-300">Loyalty</button>
+</div>
+</div>
+</nav>
+<!-- Hero Section -->
+<header class="relative h-[80vh] flex items-center overflow-hidden">
+<div class="absolute inset-0 z-0">
+<img alt="A moody black and white cinematic shot of an artisanal cafe interior in Fitzroy. Soft natural light streams through high windows, highlighting the steam rising from a polished silver espresso machine and a focused barista in a dark linen apron. The aesthetic is refined minimalism with deep shadows and brilliant highlights on marble surfaces." class="w-full h-full object-cover grayscale brightness-75" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-CF0btl_-KOR3K6SlNEIn9R3vohH_rDWg9BTRS92YGBzH-Y3FIcrk9MT-IBq05lbGBPy4nA4u55-KMkDP_7qW2AbVgDkZbRsVnCeeU6EI_holURKxBa87gIbqPYw5mgC0eEXOBMTulpy1Al9fZ-iLcMoUKk_8T2Zve5woNhzLkTpO-EdUP5shHzgG-QuQ3fWwrlClb9KhgQ5AX9S5TloCWOK32042eXnHQnHPLCJYlutt8UnyAwe9Jk7VgZD3ZxlVWsNBCgmBa_E"/>
+</div>
+<div class="relative z-10 px-margin-desktop w-full max-w-screen-2xl mx-auto">
+<div class="max-w-2xl">
+<span class="font-label-caps text-label-caps gold-gradient-text mb-stack-md block">CAREERS AT PONY WHITE</span>
+<h1 class="font-display-lg text-display-lg md:text-[80px] leading-tight text-marble-white mb-stack-lg">Join Our <br/>Team</h1>
+<p class="font-body-lg text-body-lg text-marble-white/80 max-w-lg mb-stack-lg">
+                    We are more than a cafe. We are a community of artisans, hosts, and creators redefining the Melbourne hospitality experience.
+                </p>
+<a class="inline-flex items-center gap-stack-sm gold-gradient-bg text-white font-label-caps text-label-caps px-8 py-4 rounded transition-transform hover:scale-105" href="#openings">
+                    View Openings
+                    <span class="material-symbols-outlined text-[18px]">arrow_downward</span>
+</a>
+</div>
+</div>
+</header>
+<!-- Culture Section -->
+<section class="py-section-padding px-margin-desktop max-w-screen-2xl mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-section-padding items-center">
+<div>
+<h2 class="font-display-lg text-display-lg text-forest-velvet mb-stack-lg">Artisanal craft meets <br/>Fitzroy hospitality.</h2>
+<div class="space-y-stack-md text-on-surface-variant font-body-lg">
+<p class="">At Pony White, we believe that every pour, every plate, and every interaction is an opportunity for excellence. Our philosophy is rooted in the quiet luxury of the everyday—elevating the ritual of coffee and dining into an art form.</p>
+<p class="">We seek individuals who possess a "service heart" and an obsessive attention to detail. Whether you are behind the machine or on the floor, you are an ambassador of the Sunday Collective lifestyle.</p>
+</div>
+<div class="mt-stack-lg flex gap-stack-lg">
+<div class="border-l-4 gold-border pl-stack-md">
+<span class="block font-headline-md text-headline-md text-forest-velvet">01.</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant">Focus on Craft</span>
+</div>
+<div class="border-l-4 gold-border pl-stack-md">
+<span class="block font-headline-md text-headline-md text-forest-velvet">02.</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant">Quiet Luxury</span>
+</div>
+</div>
+</div>
+<div class="relative group">
+<div class="aspect-[4/5] rounded-xl overflow-hidden bg-surface-container">
+<img alt="A sophisticated black and white close-up of a barista's hands carefully pouring micro-foam into a ceramic cup to create latte art. The focus is sharp on the liquid movement and the texture of the cloth apron. The lighting is dramatic and directional, capturing the professional artisanal nature of the workspace in Fitzroy." class="w-full h-full object-cover grayscale transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDAxSBCa8fKhA0O2mQb1A7p-X4l2WntlP3kAwBiRR41MBD6IuupCc71GNVpXyH00XXo2yT1bFHa5y1ldqJjBEbA-mFWfBIM76y00RmgTlm57PdPCe3DAyZXdtt93pplBZ94hEpXyloNa31t0bgM6cFVKxoTH7dlt0BPQuFiCsQ15sls98pcAGWgp0PfQQcSMsralESIwmMeeddJCNBE1TnLLyJWIIoQj00Zvo7NX_nDTX2YTQ_SwB1SgstA6vJ_Q95nv4TvjErbInI"/>
+</div>
+<div class="absolute -bottom-8 -left-8 glass-card p-stack-lg max-w-[240px] rounded shadow-sm hidden md:block">
+<p class="font-label-caps text-label-caps gold-gradient-text mb-2">OUR STUDIO</p>
+<p class="font-body-md text-body-md text-on-surface-variant italic">"A place where the morning rush feels like a choreographed ballet."</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Current Openings -->
+<section class="py-section-padding bg-surface-container-low" id="openings">
+<div class="px-margin-desktop max-w-screen-2xl mx-auto">
+<div class="flex justify-between items-end mb-section-padding">
+<div>
+<span class="font-label-caps text-label-caps gold-gradient-text mb-stack-sm block uppercase tracking-[0.2em]">Now Hiring</span>
+<h2 class="font-display-lg text-display-lg text-forest-velvet">Current Openings</h2>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xs text-right hidden md:block">
+                    Explore our available roles across Front of House, Back of House, and Management.
+                </p>
+</div>
+<div class="space-y-stack-md">
+<!-- Barista -->
+<div class="group bg-marble-white p-gutter rounded-lg border border-vein-gray flex flex-col md:flex-row justify-between items-center transition-all hover:shadow-xl hover:-translate-y-1">
+<div class="flex items-center gap-stack-lg mb-stack-md md:mb-0">
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center text-forest-velvet">
+<span class="material-symbols-outlined">local_cafe</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-forest-velvet">Senior Barista</h3>
+<p class="font-label-caps text-label-caps text-on-surface-variant">Full Time • Fitzroy</p>
+</div>
+</div>
+<div class="flex items-center gap-stack-lg">
+<span class="hidden lg:block font-body-md text-body-md text-on-surface-variant max-w-[300px]">Expertise in specialty coffee, alternative milks, and high-volume workflow.</span>
+<button class="border-2 gold-border gold-gradient-text px-stack-lg py-2 rounded-lg font-label-caps text-label-caps hover:gold-gradient-bg hover:text-marble-white transition-all">Apply Now</button>
+</div>
+</div>
+<!-- Floor Staff -->
+<div class="group bg-marble-white p-gutter rounded-lg border border-vein-gray flex flex-col md:flex-row justify-between items-center transition-all hover:shadow-xl hover:-translate-y-1">
+<div class="flex items-center gap-stack-lg mb-stack-md md:mb-0">
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center text-forest-velvet">
+<span class="material-symbols-outlined">person_outline</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-forest-velvet">Floor Staff</h3>
+<p class="font-label-caps text-label-caps text-on-surface-variant">Part Time / Casual • Fitzroy</p>
+</div>
+</div>
+<div class="flex items-center gap-stack-lg">
+<span class="hidden lg:block font-body-md text-body-md text-on-surface-variant max-w-[300px]">Proactive hospitality experts with a passion for premium service delivery.</span>
+<button class="border-2 gold-border gold-gradient-text px-stack-lg py-2 rounded-lg font-label-caps text-label-caps hover:gold-gradient-bg hover:text-marble-white transition-all">Apply Now</button>
+</div>
+</div>
+<!-- Chef -->
+<div class="group bg-marble-white p-gutter rounded-lg border border-vein-gray flex flex-col md:flex-row justify-between items-center transition-all hover:shadow-xl hover:-translate-y-1">
+<div class="flex items-center gap-stack-lg mb-stack-md md:mb-0">
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center text-forest-velvet">
+<span class="material-symbols-outlined">flatware</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-forest-velvet">Chef de Partie</h3>
+<p class="font-label-caps text-label-caps text-on-surface-variant">Full Time • Fitzroy</p>
+</div>
+</div>
+<div class="flex items-center gap-stack-lg">
+<span class="hidden lg:block font-body-md text-body-md text-on-surface-variant max-w-[300px]">Creative culinary mind focused on seasonal Melbourne produce and plating.</span>
+<button class="border-2 gold-border gold-gradient-text px-stack-lg py-2 rounded-lg font-label-caps text-label-caps hover:gold-gradient-bg hover:text-marble-white transition-all">Apply Now</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Application Form -->
+<section class="py-section-padding px-margin-desktop max-w-screen-2xl mx-auto">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-section-padding">
+<div class="lg:col-span-4">
+<h2 class="font-display-lg text-display-lg text-forest-velvet mb-stack-md">Submit Your Application</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-stack-lg">
+                    We're always looking for exceptional talent. If you don't see a role that fits but believe you belong at Pony White, please reach out.
+                </p>
+<div class="space-y-stack-md">
+<div class="flex items-center gap-stack-md">
+<span class="material-symbols-outlined gold-gradient-text">mail</span>
+<span class="font-body-md text-on-background">careers@ponywhite.com.au</span>
+</div>
+<div class="flex items-center gap-stack-md">
+<span class="material-symbols-outlined gold-gradient-text">location_on</span>
+<span class="font-body-md text-on-background">75 Gertrude St, Fitzroy VIC</span>
+</div>
+</div>
+</div>
+<div class="lg:col-span-8 bg-marble-white border border-vein-gray p-section-padding/2 rounded-xl shadow-sm">
+<form class="space-y-stack-lg" id="applyForm">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<div>
+<label class="block font-label-caps text-label-caps text-on-surface-variant mb-2">Full Name</label>
+<input class="w-full bg-surface border-0 border-b border-vein-gray focus:ring-0 focus:border-forest-velvet py-3 px-0 font-body-md" placeholder="E.g. James Mercer" type="text"/>
+</div>
+<div>
+<label class="block font-label-caps text-label-caps text-on-surface-variant mb-2">Email Address</label>
+<input class="w-full bg-surface border-0 border-b border-vein-gray focus:ring-0 focus:border-forest-velvet py-3 px-0 font-body-md" placeholder="E.g. hello@example.com" type="email"/>
+</div>
+</div>
+<div>
+<label class="block font-label-caps text-label-caps text-on-surface-variant mb-2">Position Applied For</label>
+<select class="w-full bg-surface border-0 border-b border-vein-gray focus:ring-0 focus:border-forest-velvet py-3 px-0 font-body-md appearance-none">
+<option>Barista</option>
+<option>Floor Staff</option>
+<option>Chef</option>
+<option>General Expression of Interest</option>
+</select>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<div class="relative group">
+<label class="block font-label-caps text-label-caps text-on-surface-variant mb-2">Resume / CV</label>
+<div class="border-2 border-dashed border-vein-gray rounded p-stack-lg text-center cursor-pointer hover:gold-border transition-colors">
+<span class="material-symbols-outlined text-on-tertiary-container mb-2">upload_file</span>
+<p class="font-label-caps text-label-caps text-on-tertiary-container">Upload PDF (Max 5MB)</p>
+<input class="absolute inset-0 opacity-0 cursor-pointer" type="file"/>
+</div>
+</div>
+<div class="relative group">
+<label class="block font-label-caps text-label-caps text-on-surface-variant mb-2">Cover Letter</label>
+<div class="border-2 border-dashed border-vein-gray rounded p-stack-lg text-center cursor-pointer hover:gold-border transition-colors">
+<span class="material-symbols-outlined text-on-tertiary-container mb-2">description</span>
+<p class="font-label-caps text-label-caps text-on-tertiary-container">Upload PDF (Max 5MB)</p>
+<input class="absolute inset-0 opacity-0 cursor-pointer" type="file"/>
+</div>
+</div>
+</div>
+<button class="w-full bg-forest-velvet text-marble-white py-stack-lg font-label-caps text-label-caps uppercase tracking-[0.2em] rounded hover:opacity-90 transition-all flex items-center justify-center gap-stack-md" type="submit">
+                        Submit Application
+                        <span class="material-symbols-outlined text-[18px]">send</span>
+</button>
+</form>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-surface border-t border-vein-gray">
+<div class="flex flex-col md:flex-row justify-between items-center px-margin-desktop py-section-padding gap-gutter max-w-screen-2xl mx-auto">
+<div class="flex items-center mb-stack-md md:mb-0">
+<img alt="Pony White Brand Mark" class="w-12 h-12 rounded-full" src="../../assets/logo.png"/>
+</div>
+<div class="font-label-caps text-label-caps text-forest-velvet">Pony White</div>
+<p class="font-body-md text-body-md text-on-surface-variant text-center md:text-left">
+                © 2024 Pony White Cafe. 75 Gertrude St, Fitzroy VIC 3065
+            </p>
+<div class="flex gap-stack-lg">
+<a class="font-body-md text-on-surface-variant hover:gold-gradient-text transition-all duration-200" href="#">Instagram</a>
+<a class="font-body-md text-on-surface-variant hover:gold-gradient-text transition-all duration-200" href="#">Facebook</a>
+<a class="font-body-md text-on-surface-variant hover:gold-gradient-text transition-all duration-200" href="#">Privacy Policy</a>
+</div>
+</div>
+</footer>
+<script>
+        // Simple micro-interactions
+        document.addEventListener('DOMContentLoaded', () => {
+            const nav = document.querySelector('nav');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    nav.classList.add('bg-marble-white/95', 'backdrop-blur-md', 'shadow-sm');
+                    nav.classList.remove('bg-transparent');
+                } else {
+                    nav.classList.remove('bg-marble-white/95', 'backdrop-blur-md', 'shadow-sm');
+                    nav.classList.add('bg-transparent');
+                }
+            });
+
+            // Form submission simulation
+            const form = document.getElementById('applyForm');
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const btn = form.querySelector('button');
+                const originalText = btn.innerHTML;
+                btn.innerHTML = '<span class="material-symbols-outlined animate-spin">sync</span> Submitting...';
+                btn.disabled = true;
+                
+                setTimeout(() => {
+                    btn.innerHTML = 'Application Received';
+                    btn.classList.add('bg-green-800');
+                    form.reset();
+                    setTimeout(() => {
+                        btn.innerHTML = originalText;
+                        btn.classList.remove('bg-green-800');
+                        btn.disabled = false;
+                    }, 3000);
+                }, 1500);
+            });
+        });
+    </script>
+</body></html>

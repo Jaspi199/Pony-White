@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Artisanal Retail | Pony White</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .gold-reflection {
+            /* Adjusted gradient: deeper gold highlights, spread out further for legibility and accessibility */
+            background: linear-gradient(135deg, #B38B42 0%, #D4B475 50%, #B38B42 100%);
+            background-size: 200% 200%;
+            transition: background-position 0.6s ease;
+        }
+        .gold-reflection:hover {
+            background-position: 100% 100%;
+        }
+        .marble-shadow {
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.03);
+        }
+        .text-shadow-subtle {
+            text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-primary": "#ffffff",
+                      "inverse-on-surface": "#f1f1ef",
+                      "surface": "#faf9f7",
+                      "surface-container-low": "#f4f4f1",
+                      "vein-gray": "#E0E0E0",
+                      "surface-container-high": "#e8e8e6",
+                      "on-tertiary-container": "#909291",
+                      "surface-dim": "#dadad8",
+                      "on-primary-fixed-variant": "#2b4d43",
+                      "outline": "#717975",
+                      "secondary": "#775a19",
+                      "on-background": "#1a1c1b",
+                      "background": "#faf9f7",
+                      "on-surface": "#1a1c1b",
+                      "inverse-primary": "#a9cfc1",
+                      "surface-container": "#eeeeec",
+                      "premium-gold": "#B38B42", /* Slightly deeper gold for baseline accessibility */
+                      "surface-container-lowest": "#ffffff",
+                      "on-secondary-fixed-variant": "#5d4201",
+                      "primary-fixed": "#c4ebdd",
+                      "marble-white": "#FFFFFF",
+                      "error-container": "#ffdad6",
+                      "latte-peach": "#FFCBAA",
+                      "surface-bright": "#faf9f7",
+                      "inverse-surface": "#2f3130",
+                      "on-secondary": "#ffffff",
+                      "on-tertiary": "#ffffff",
+                      "primary-container": "#0b3027",
+                      "surface-variant": "#e2e2e0",
+                      "on-tertiary-fixed-variant": "#454747",
+                      "secondary-fixed": "#ffdea5",
+                      "primary-fixed-dim": "#a9cfc1",
+                      "primary": "#001a13",
+                      "tertiary-fixed": "#e1e3e2",
+                      "secondary-container": "#fed488",
+                      "error": "#ba1a1a",
+                      "tertiary": "#141716",
+                      "forest-velvet": "#0B3027",
+                      "surface-tint": "#42655a",
+                      "on-primary-container": "#75998d",
+                      "on-primary-fixed": "#002019",
+                      "outline-variant": "#c1c8c4",
+                      "secondary-fixed-dim": "#e9c176",
+                      "on-surface-variant": "#414845",
+                      "on-tertiary-fixed": "#191c1c",
+                      "on-error-container": "#93000a",
+                      "on-error": "#ffffff",
+                      "on-secondary-fixed": "#261900",
+                      "tertiary-fixed-dim": "#c5c7c6",
+                      "tertiary-container": "#282b2b",
+                      "surface-container-highest": "#e2e2e0",
+                      "on-secondary-container": "#785a1a"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "gutter": "24px",
+                      "stack-sm": "8px",
+                      "stack-lg": "32px",
+                      "margin-desktop": "64px",
+                      "stack-md": "16px",
+                      "section-padding": "80px",
+                      "margin-mobile": "20px"
+              },
+              "fontFamily": {
+                      "label-caps": ["Hanken Grotesk"],
+                      "headline-md": ["Hanken Grotesk"],
+                      "display-lg": ["Hanken Grotesk"],
+                      "body-lg": ["Hanken Grotesk"],
+                      "display-lg-mobile": ["Hanken Grotesk"],
+                      "body-md": ["Hanken Grotesk"]
+              },
+              "fontSize": {
+                      "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.15em", "fontWeight": "600"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "display-lg-mobile": ["36px", {"lineHeight": "42px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface font-body-md overflow-x-hidden">
+<!-- TopNavBar Shell -->
+<nav class="fixed top-0 w-full z-50 bg-transparent">
+<div class="flex justify-between items-center w-full px-margin-desktop py-gutter max-w-screen-2xl mx-auto">
+<span class="font-display-lg text-display-lg text-forest-velvet tracking-tighter cursor-pointer">Pony White</span>
+<div class="hidden md:flex items-center gap-stack-lg">
+<a class="font-label-caps text-label-caps text-premium-gold border-b-2 border-premium-gold pb-1 transition-colors duration-300" href="#">Order</a>
+<a class="font-label-caps text-label-caps text-forest-velvet opacity-90 hover:text-premium-gold transition-colors duration-300" href="#">Coffee</a>
+<a class="font-label-caps text-label-caps text-forest-velvet opacity-90 hover:text-premium-gold transition-colors duration-300" href="#">Drinks</a>
+<a class="font-label-caps text-label-caps text-forest-velvet opacity-90 hover:text-premium-gold transition-colors duration-300" href="#">Book</a>
+<a class="font-label-caps text-label-caps text-forest-velvet opacity-90 hover:text-premium-gold transition-colors duration-300" href="#">Gifts</a>
+<a class="font-label-caps text-label-caps text-forest-velvet opacity-90 hover:text-premium-gold transition-colors duration-300" href="#">More</a>
+</div>
+<div class="flex items-center gap-stack-md">
+<button class="font-label-caps text-label-caps text-forest-velvet cursor-pointer hover:text-premium-gold transition-colors">Loyalty</button>
+<button class="font-label-caps text-label-caps text-forest-velvet cursor-pointer hover:text-premium-gold transition-colors">Login</button>
+<div class="relative cursor-pointer ml-4">
+<span class="material-symbols-outlined text-forest-velvet">shopping_bag</span>
+<span class="absolute -top-2 -right-2 bg-premium-gold text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">2</span>
+</div>
+</div>
+</div>
+</nav>
+<main class="pt-32">
+<!-- Hero Section -->
+<header class="px-margin-desktop max-w-screen-2xl mx-auto mb-stack-lg">
+<div class="flex flex-col gap-stack-sm">
+<span class="font-label-caps text-label-caps text-premium-gold">THE BOUTIQUE</span>
+<h1 class="font-display-lg text-display-lg text-forest-velvet">Artisanal Retail</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+                    Curated essentials for the home barista. From our signature San Pedro beans to specialty blends and artisanal powders, elevate your morning ritual with the Pony White experience.
+                </p>
+</div>
+</header>
+<!-- Filters Section -->
+<section class="px-margin-desktop max-w-screen-2xl mx-auto mb-stack-lg sticky top-24 z-40 bg-surface/80 backdrop-blur-md py-4">
+<div class="flex flex-wrap gap-stack-md items-center border-b border-vein-gray pb-6">
+<button class="px-6 py-2 bg-forest-velvet text-on-primary font-label-caps text-label-caps rounded-lg">All Products</button>
+<button class="px-6 py-2 bg-surface-container-low text-forest-velvet hover:bg-surface-container-high transition-colors font-label-caps text-label-caps rounded-lg">Beans</button>
+<button class="px-6 py-2 bg-surface-container-low text-forest-velvet hover:bg-surface-container-high transition-colors font-label-caps text-label-caps rounded-lg">Powder</button>
+<button class="px-6 py-2 bg-surface-container-low text-forest-velvet hover:bg-surface-container-high transition-colors font-label-caps text-label-caps rounded-lg">Apparel</button>
+<div class="ml-auto flex items-center gap-stack-sm text-on-surface-variant">
+<span class="font-label-caps text-label-caps">Sort by:</span>
+<select class="bg-transparent border-none font-label-caps text-label-caps focus:ring-0 cursor-pointer">
+<option>Newest</option>
+<option>Price: Low to High</option>
+<option>Price: High to Low</option>
+</select>
+</div>
+</div>
+</section>
+<!-- Product Grid -->
+<section class="px-margin-desktop max-w-screen-2xl mx-auto mb-section-padding">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- Product Card 1: San Pedro 250g -->
+<div class="group bg-marble-white border border-vein-gray rounded-lg overflow-hidden marble-shadow transition-all duration-500 hover:-translate-y-2">
+<div class="aspect-[4/5] bg-surface-container-low relative overflow-hidden flex items-center justify-center p-stack-lg">
+<img class="w-full h-full object-cover grayscale-[0.2] group-hover:scale-105 transition-transform duration-700" data-alt="A premium bag of coffee beans placed elegantly on a white marble plinth." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAy5CVYNvgrlF1SM5ViyIoDGGNhIKL3_C9Kkb2Lu8c-K0m-QhWQcZPt7BC_5h0dxAGhON9DVgWR2c3bDbaqBwmUqVVBqK6qwnd_dt01SXrrjL2ruD6XB6ghzo2xdMfHgCpJA7YJC9j3PR_hYepuzZ74rplEbD7fl4uyI1PlAzBqZJ7rN115VGtwpYJAGTaMlhLZ23NyoUdHP0_C_AFoO7lS94WaL_2QDO18fhI7BVwWENNd8IxOG48OA5oqe7vIGIu8T7sw0SOVhTs"/>
+<div class="absolute top-4 left-4 gold-reflection text-white font-label-caps text-[10px] px-2 py-1 rounded-sm shadow-sm">BESTSELLER</div>
+</div>
+<div class="p-6 flex flex-col gap-2">
+<span class="font-label-caps text-[10px] text-on-surface-variant">BEANS • Fitzroy Blend</span>
+<h3 class="font-headline-md text-headline-md text-forest-velvet">San Pedro Coffee Beans (250g)</h3>
+<p class="text-on-surface-variant text-sm line-clamp-2">Notes of dark chocolate, toasted almond, and a velvet caramel finish.</p>
+<div class="mt-4 flex items-center justify-between">
+<span class="font-headline-md text-premium-gold">$22.00</span>
+<button class="gold-reflection text-white font-label-caps text-label-caps px-6 py-3 rounded-[4px] shadow-md active:scale-95 transition-all text-shadow-subtle">ADD TO CART</button>
+</div>
+</div>
+</div>
+<!-- Product Card 2: San Pedro 1kg -->
+<div class="group bg-marble-white border border-vein-gray rounded-lg overflow-hidden marble-shadow transition-all duration-500 hover:-translate-y-2">
+<div class="aspect-[4/5] bg-surface-container-low relative overflow-hidden flex items-center justify-center p-stack-lg">
+<img class="w-full h-full object-cover grayscale-[0.2] group-hover:scale-105 transition-transform duration-700" data-alt="A large 1kg bag of specialty coffee beans displayed on a minimal architectural stand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAP6JGf2L40_-E3RpvGxlWwcLosuFDh6OftdDmyyp0FEm2GDEHLFA1vsgLmGRVdZHiAT3IF-xJ-vgStLQv_r3y_lGP9xSI7OZ8aCQQMXt0AAqvr641KNbfGBSCg0ljcl_bdbaP6236Rh6XiwPYfaSkDdkPeUk7Rsiyt5y4IdUfkzWR_TBOQkrdUdn27WuV2ofatkL2CdJYp2zZOF8FKlFUCdIoIvTaF9Q8ACPUb5Lv5kEoSu-iGSGU-p4qnwEcJUZvfcTu33kdy22k"/>
+</div>
+<div class="p-6 flex flex-col gap-2">
+<span class="font-label-caps text-[10px] text-on-surface-variant">BEANS • Wholesale Selection</span>
+<h3 class="font-headline-md text-headline-md text-forest-velvet">San Pedro Coffee Beans (1kg)</h3>
+<p class="text-on-surface-variant text-sm line-clamp-2">Our signature roast in a volume size. Perfect for daily home brewing.</p>
+<div class="mt-4 flex items-center justify-between">
+<span class="font-headline-md text-premium-gold">$68.00</span>
+<button class="gold-reflection text-white font-label-caps text-label-caps px-6 py-3 rounded-[4px] shadow-md active:scale-95 transition-all text-shadow-subtle">ADD TO CART</button>
+</div>
+</div>
+</div>
+<!-- Product Card 3: Specialty Chocolate -->
+<div class="group bg-marble-white border border-vein-gray rounded-lg overflow-hidden marble-shadow transition-all duration-500 hover:-translate-y-2">
+<div class="aspect-[4/5] bg-surface-container-low relative overflow-hidden flex items-center justify-center p-stack-lg">
+<img class="w-full h-full object-cover grayscale-[0.2] group-hover:scale-105 transition-transform duration-700" data-alt="An artisanal tin of chocolate powder placed on a polished marble surface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCq5RDFznBOM4qGjUJGydZJYNB7jDHzGE8nQLseuaPRahg5HkXL3BYF5RH5BevWoSR3idgMJUXeEvAWQtRgviK5TFpaS9eAKGQH8irnlp59JpnQEJOdEvWD5Xh0SuLRIRxC8JzPdw3rjgUIJ_l9NggZc7TtjEK49Xjw_FeFQA1uTc4vn8xLdrw-VnoB7F8VCi_0FG5iHEA-ysn6Uili-E1YUS7yvYZQ7ypfdVw1sVraeJ5dkCe616Numg5QocXsVZjcYuED7F3S488"/>
+<div class="absolute top-4 left-4 bg-forest-velvet text-white font-label-caps text-[10px] px-2 py-1 rounded-sm shadow-sm">NEW ARRIVAL</div>
+</div>
+<div class="p-6 flex flex-col gap-2">
+<span class="font-label-caps text-[10px] text-on-surface-variant">POWDER • Specialty Series</span>
+<h3 class="font-headline-md text-headline-md text-forest-velvet">Signature Chocolate Powder</h3>
+<p class="text-on-surface-variant text-sm line-clamp-2">70% Tanzanian single-origin cocoa. Rich, smooth, and naturally sweetened.</p>
+<div class="mt-4 flex items-center justify-between">
+<span class="font-headline-md text-premium-gold">$28.00</span>
+<button class="gold-reflection text-white font-label-caps text-label-caps px-6 py-3 rounded-[4px] shadow-md active:scale-95 transition-all text-shadow-subtle">ADD TO CART</button>
+</div>
+</div>
+</div>
+<!-- Product Card 4: Filter Coffee -->
+<div class="group bg-marble-white border border-vein-gray rounded-lg overflow-hidden marble-shadow transition-all duration-500 hover:-translate-y-2">
+<div class="aspect-[4/5] bg-surface-container-low relative overflow-hidden flex items-center justify-center p-stack-lg">
+<img class="w-full h-full object-cover grayscale-[0.2] group-hover:scale-105 transition-transform duration-700" data-alt="A pack of specialty filter coffee beans displayed against a white marble background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDv4cSkROT3O7BO7ZNnp6yScXa5JBCWJCOapWWQQNvr_0bT5f6S2w4kn1MLMKKNJK7YSftGz2PkRErHVYfSWCIQsl_mPfq_NnnrCRkKbT9diIHMZw9DaHLt1hpR5JdGFKYuJ5PVnn1_FVpiTXEMlQE6AjKmd0XiIVWPL10afweGLcTBLVYON5z7AmPhntIuD1L1zNvrs0Vog3Y78rP33sM7IrOO2VppAbrLxUtvy0F1ngMuOZvaWWfT04lKwM_KbZ87LydO7VsBHSs"/>
+</div>
+<div class="p-6 flex flex-col gap-2">
+<span class="font-label-caps text-[10px] text-on-surface-variant">FILTER • Single Origin</span>
+<h3 class="font-headline-md text-headline-md text-forest-velvet">Ethiopian Filter Roast</h3>
+<p class="text-on-surface-variant text-sm line-clamp-2">Light and floral with bright notes of bergamot and jasmine.</p>
+<div class="mt-4 flex items-center justify-between">
+<span class="font-headline-md text-premium-gold">$26.00</span>
+<button class="gold-reflection text-white font-label-caps text-label-caps px-6 py-3 rounded-[4px] shadow-md active:scale-95 transition-all text-shadow-subtle">ADD TO CART</button>
+</div>
+</div>
+</div>
+<!-- Product Card 5: Decaf -->
+<div class="group bg-marble-white border border-vein-gray rounded-lg overflow-hidden marble-shadow transition-all duration-500 hover:-translate-y-2">
+<div class="aspect-[4/5] bg-surface-container-low relative overflow-hidden flex items-center justify-center p-stack-lg">
+<img class="w-full h-full object-cover grayscale-[0.2] group-hover:scale-105 transition-transform duration-700" data-alt="A premium bag of Swiss Water Process decaf coffee beans." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKXVDBZFy5sTywkHZMhwjewqb_u0iAxPoN0g18xhgdSiAdtphrCT4GiPJplDGLK9oetWArw_aFdZAafK8xAN5AiVTVLwvROdYBg3-5_1LB_5OplVgsgt3ljg9lf1VCYvsLa3xSivWwAzpY61TN1BzUB9amTuLETaVz4oKFgBAxTGAHmKSa2w6FqxfbIuUPOSDT8o6LkGFQ5dBmBDIQbpDcqwVeZ2bHMmv4dMz8z8P6RVpVbLj9j7nyEP8Ug07sO9C-p5nV6wpLfK8"/>
+</div>
+<div class="p-6 flex flex-col gap-2">
+<span class="font-label-caps text-[10px] text-on-surface-variant">BEANS • Caffeine Free</span>
+<h3 class="font-headline-md text-headline-md text-forest-velvet">Swiss Water Decaf</h3>
+<p class="text-on-surface-variant text-sm line-clamp-2">Chemical-free processing with a surprisingly deep, nutty profile.</p>
+<div class="mt-4 flex items-center justify-between">
+<span class="font-headline-md text-premium-gold">$24.00</span>
+<button class="gold-reflection text-white font-label-caps text-label-caps px-6 py-3 rounded-[4px] shadow-md active:scale-95 transition-all text-shadow-subtle">ADD TO CART</button>
+</div>
+</div>
+</div>
+<!-- Product Card 6: Apparel/Tote -->
+<div class="group bg-marble-white border border-vein-gray rounded-lg overflow-hidden marble-shadow transition-all duration-500 hover:-translate-y-2">
+<div class="aspect-[4/5] bg-surface-container-low relative overflow-hidden flex items-center justify-center p-stack-lg">
+<img class="w-full h-full object-cover grayscale-[0.2] group-hover:scale-105 transition-transform duration-700" data-alt="A heavy-duty canvas tote bag with a minimalist Pony White logo." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-luR5Y7zAvEPbwqOUOU4ltIjQ9NyGYdkGGTqNC4pxsFF4t_ee2XPudW3279KyrKg1WWzsG2FPFVINQfRh7wn0QgJuDshr7XC5qnyS4-TLHPGzlqwY8YWhsDaCpRGGaitiEaZmZzU1w3CfJk08PvCl3JOfbMK7zYuv0xF9ZGSxmf0ddiwWRcS2p8TCLWWT_dp_UBX73fpamL2GMiOHsnuY6Gtyvh5_4tIRgXP-JSg17sRkP_NU3ffNVnqNo5FjiaDJKYWux2rhFWE"/>
+</div>
+<div class="p-6 flex flex-col gap-2">
+<span class="font-label-caps text-[10px] text-on-surface-variant">APPAREL • Everyday Carry</span>
+<h3 class="font-headline-md text-headline-md text-forest-velvet">Pony White Canvas Tote</h3>
+<p class="text-on-surface-variant text-sm line-clamp-2">Durable 12oz organic cotton with reinforced gold-stitch detailing.</p>
+<div class="mt-4 flex items-center justify-between">
+<span class="font-headline-md text-premium-gold">$35.00</span>
+<button class="gold-reflection text-white font-label-caps text-label-caps px-6 py-3 rounded-[4px] shadow-md active:scale-95 transition-all text-shadow-subtle">ADD TO CART</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Newsletter / Editorial Break -->
+<section class="bg-forest-velvet text-on-primary py-section-padding px-margin-desktop overflow-hidden relative">
+<div class="max-w-screen-2xl mx-auto flex flex-col md:flex-row items-center justify-between gap-stack-lg relative z-10">
+<div class="max-w-xl">
+<h2 class="font-display-lg text-display-lg-mobile md:text-display-lg mb-4">Brew like a Pro.</h2>
+<p class="font-body-lg text-body-lg opacity-80">Join our brewing community and get monthly tips on grinding, extraction, and milk texturing from our head baristas.</p>
+</div>
+<div class="w-full md:w-auto flex flex-col sm:flex-row gap-stack-sm">
+<input class="bg-white/10 border border-white/20 text-white placeholder:text-white/50 px-6 py-4 rounded-lg focus:ring-1 focus:ring-premium-gold focus:border-premium-gold outline-none min-w-[300px]" placeholder="Your Email Address" type="email"/>
+<button class="gold-reflection text-white font-label-caps text-label-caps px-8 py-4 rounded-lg shadow-lg text-shadow-subtle">SUBSCRIBE</button>
+</div>
+</div>
+<!-- Decorative marble-like background effect -->
+<div class="absolute inset-0 opacity-10 pointer-events-none">
+<div class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_30%_30%,rgba(179,139,66,0.3),transparent_50%)]"></div>
+</div>
+</section>
+</main>
+<!-- Footer Shell -->
+<footer class="w-full bg-surface border-t border-vein-gray">
+<div class="max-w-screen-2xl mx-auto flex flex-col md:flex-row justify-between items-center px-margin-desktop py-section-padding gap-gutter">
+<div class="flex flex-col gap-2 items-center md:items-start">
+<span class="font-label-caps text-label-caps text-forest-velvet">Pony White Cafe</span>
+<p class="font-body-md text-body-md text-on-surface-variant text-center md:text-left">© 2024 Pony White Cafe. 75 Gertrude St, Fitzroy VIC 3065</p>
+</div>
+<div class="flex gap-stack-lg">
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-premium-gold transition-opacity duration-200" href="#">Instagram</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-premium-gold transition-opacity duration-200" href="#">Facebook</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-premium-gold transition-opacity duration-200" href="#">Privacy Policy</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-premium-gold transition-opacity duration-200" href="#">Terms of Service</a>
+</div>
+</div>
+</footer>
+<script>
+    // Micro-interaction for scroll transparency in header
+    window.addEventListener('scroll', () => {
+        const nav = document.querySelector('nav');
+        if (window.scrollY > 50) {
+            nav.classList.remove('bg-transparent');
+            nav.classList.add('bg-surface/95', 'backdrop-blur-lg', 'marble-shadow');
+        } else {
+            nav.classList.add('bg-transparent');
+            nav.classList.remove('bg-surface/95', 'backdrop-blur-lg', 'marble-shadow');
+        }
+    });
+
+    // Simulating "Add to Cart" interaction
+    document.querySelectorAll('.gold-reflection').forEach(button => {
+        button.addEventListener('click', function() {
+            if (this.dataset.loading === "true") return;
+            
+            const originalText = this.innerText;
+            this.innerText = 'ADDED ✓';
+            this.classList.replace('text-white', 'text-forest-velvet');
+            this.dataset.loading = "true";
+            
+            setTimeout(() => {
+                this.innerText = originalText;
+                this.classList.replace('text-forest-velvet', 'text-white');
+                delete this.dataset.loading;
+            }, 2000);
+        });
+    });
+</script>
+</body></html>

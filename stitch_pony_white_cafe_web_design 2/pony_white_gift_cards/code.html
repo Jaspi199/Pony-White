@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Pony White | The Gift of Craft</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .gold-reflection {
+            /* Refined gold gradient: spread further, deeper highlights (less white) */
+            background: linear-gradient(135deg, #B8860B 0%, #D4AF37 30%, #F1D38E 50%, #D4AF37 70%, #B8860B 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .gold-reflection::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            /* Deeper gold highlight instead of white for better legibility against light backgrounds */
+            background: linear-gradient(45deg, transparent 45%, rgba(212, 175, 55, 0.3) 50%, transparent 55%);
+            animation: shine 6s infinite linear;
+        }
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%); }
+            100% { transform: translateX(100%) translateY(100%); }
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #0B3027;
+        }
+        .gold-button {
+            background: linear-gradient(to bottom, #D4AF37, #B8860B);
+            color: #001a13;
+            text-shadow: 0 0.5px 0 rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+        }
+        .gold-button:hover {
+            background: linear-gradient(to bottom, #E5C158, #D4AF37);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(184, 134, 11, 0.2);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary": "#ffffff",
+                        "inverse-on-surface": "#f1f1ef",
+                        "surface": "#faf9f7",
+                        "surface-container-low": "#f4f4f1",
+                        "vein-gray": "#E0E0E0",
+                        "surface-container-high": "#e8e8e6",
+                        "on-tertiary-container": "#909291",
+                        "surface-dim": "#dadad8",
+                        "on-primary-fixed-variant": "#2b4d43",
+                        "outline": "#717975",
+                        "secondary": "#775a19",
+                        "on-background": "#1a1c1b",
+                        "background": "#faf9f7",
+                        "on-surface": "#1a1c1b",
+                        "inverse-primary": "#a9cfc1",
+                        "surface-container": "#eeeeec",
+                        "premium-gold": "#B8860B", /* Darker gold for better clarity */
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed-variant": "#5d4201",
+                        "primary-fixed": "#c4ebdd",
+                        "marble-white": "#FFFFFF",
+                        "error-container": "#ffdad6",
+                        "latte-peach": "#FFCBAA",
+                        "surface-bright": "#faf9f7",
+                        "inverse-surface": "#2f3130",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "primary-container": "#0b3027",
+                        "surface-variant": "#e2e2e0",
+                        "on-tertiary-fixed-variant": "#454747",
+                        "secondary-fixed": "#ffdea5",
+                        "primary-fixed-dim": "#a9cfc1",
+                        "primary": "#001a13",
+                        "tertiary-fixed": "#e1e3e2",
+                        "secondary-container": "#fed488",
+                        "error": "#ba1a1a",
+                        "tertiary": "#141716",
+                        "forest-velvet": "#0B3027",
+                        "surface-tint": "#42655a",
+                        "on-primary-container": "#75998d",
+                        "on-primary-fixed": "#002019",
+                        "outline-variant": "#c1c8c4",
+                        "secondary-fixed-dim": "#e9c176",
+                        "on-surface-variant": "#414845",
+                        "on-tertiary-fixed": "#191c1c",
+                        "on-error-container": "#93000a",
+                        "on-error": "#ffffff",
+                        "on-secondary-fixed": "#261900",
+                        "tertiary-fixed-dim": "#c5c7c6",
+                        "tertiary-container": "#282b2b",
+                        "surface-container-highest": "#e2e2e0",
+                        "on-secondary-container": "#785a1a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "stack-sm": "8px",
+                        "stack-lg": "32px",
+                        "margin-desktop": "64px",
+                        "stack-md": "16px",
+                        "section-padding": "80px",
+                        "margin-mobile": "20px"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["Hanken Grotesk"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "display-lg-mobile": ["Hanken Grotesk"],
+                        "body-md": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.15em", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "display-lg-mobile": ["36px", {"lineHeight": "42px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-body-md selection:bg-premium-gold selection:text-white overflow-x-hidden">
+<!-- Top Navigation Bar -->
+<nav class="fixed top-0 w-full z-50 bg-transparent text-forest-velvet dark:text-marble-white transition-all duration-500" id="top-nav">
+<div class="flex justify-between items-center w-full px-margin-desktop py-gutter max-w-screen-2xl mx-auto">
+<div class="font-display-lg text-display-lg text-forest-velvet dark:text-marble-white tracking-tighter">Pony White</div>
+<div class="hidden md:flex gap-stack-lg items-center">
+<a class="font-label-caps text-label-caps text-forest-velvet dark:text-marble-white opacity-90 hover:text-premium-gold transition-colors duration-300" href="#">Order</a>
+<a class="font-label-caps text-label-caps text-forest-velvet dark:text-marble-white opacity-90 hover:text-premium-gold transition-colors duration-300" href="#">Coffee</a>
+<a class="font-label-caps text-label-caps text-forest-velvet dark:text-marble-white opacity-90 hover:text-premium-gold transition-colors duration-300" href="#">Drinks</a>
+<a class="font-label-caps text-label-caps text-forest-velvet dark:text-marble-white opacity-90 hover:text-premium-gold transition-colors duration-300" href="#">Book</a>
+<a class="font-label-caps text-label-caps text-premium-gold border-b-2 border-premium-gold pb-1 transition-colors duration-300" href="#">Gifts</a>
+<a class="font-label-caps text-label-caps text-forest-velvet dark:text-marble-white opacity-90 hover:text-premium-gold transition-colors duration-300" href="#">More</a>
+</div>
+<div class="flex items-center gap-stack-md">
+<button class="font-label-caps text-label-caps text-forest-velvet dark:text-marble-white hover:text-premium-gold transition-colors duration-300 cursor-pointer active:opacity-70">Loyalty</button>
+<button class="font-label-caps text-label-caps px-stack-md py-stack-sm border border-forest-velvet text-forest-velvet hover:bg-forest-velvet hover:text-white transition-all duration-300 rounded-lg">Login</button>
+</div>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="pt-32 pb-section-padding px-margin-mobile md:px-margin-desktop max-w-screen-2xl mx-auto">
+<!-- Header Section -->
+<header class="mb-section-padding text-center">
+<h1 class="font-display-lg text-display-lg-mobile md:text-display-lg text-forest-velvet mb-stack-sm">The Gift of Craft</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto opacity-80">Share the artisanal experience of Pony White. Whether digital or physical, give the gift of handcrafted coffee and signature Fitzroy hospitality.</p>
+</header>
+<!-- Bento Grid Layout for Gift Cards -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start">
+<!-- Left Column: Card Customization (8/12) -->
+<div class="lg:col-span-7 space-y-gutter">
+<!-- Card Type Selection -->
+<div class="bg-white border border-vein-gray p-stack-lg rounded-xl">
+<h2 class="font-label-caps text-label-caps text-forest-velvet mb-stack-md">Choose Card Type</h2>
+<div class="grid grid-cols-2 gap-stack-md">
+<button class="flex flex-col items-center justify-center p-stack-lg border-2 border-premium-gold gold-button rounded-lg transition-all duration-300" id="btn-physical" onclick="setCardType('physical')">
+<span class="material-symbols-outlined mb-2">style</span>
+<span class="font-label-caps text-label-caps">Physical Card</span>
+</button>
+<button class="flex flex-col items-center justify-center p-stack-lg border-2 border-transparent bg-surface hover:border-vein-gray rounded-lg transition-all duration-300" id="btn-digital" onclick="setCardType('digital')">
+<span class="material-symbols-outlined text-on-surface-variant mb-2">qr_code_2</span>
+<span class="font-label-caps text-label-caps">Digital E-Gift</span>
+</button>
+</div>
+</div>
+<!-- Amount Selection -->
+<div class="bg-white border border-vein-gray p-stack-lg rounded-xl">
+<h2 class="font-label-caps text-label-caps text-forest-velvet mb-stack-md">Select Amount</h2>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-stack-md">
+<button class="amount-btn py-stack-md border border-vein-gray rounded-lg font-headline-md text-headline-md hover:border-premium-gold transition-all duration-200" onclick="setAmount(25, this)">$25</button>
+<button class="amount-btn py-stack-md border-2 border-premium-gold gold-button rounded-lg font-headline-md text-headline-md transition-all duration-200" onclick="setAmount(50, this)">$50</button>
+<button class="amount-btn py-stack-md border border-vein-gray rounded-lg font-headline-md text-headline-md hover:border-premium-gold transition-all duration-200" onclick="setAmount(100, this)">$100</button>
+<div class="relative">
+<input class="w-full h-full py-stack-md px-stack-md border border-vein-gray rounded-lg font-label-caps text-center focus:ring-1 focus:ring-premium-gold focus:border-premium-gold transition-all duration-200 appearance-none" placeholder="Custom" type="number"/>
+</div>
+</div>
+</div>
+<!-- Gifting Details -->
+<div class="bg-white border border-vein-gray p-stack-lg rounded-xl">
+<div class="flex items-center justify-between mb-stack-md">
+<h2 class="font-label-caps text-label-caps text-forest-velvet">Gifting Information</h2>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" id="gift-toggle" onchange="toggleGiftDetails()" type="checkbox"/>
+<div class="w-11 h-6 bg-vein-gray peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-forest-velvet"></div>
+<span class="ms-3 font-label-caps text-label-caps text-on-surface-variant">Send as Gift</span>
+</label>
+</div>
+<div class="space-y-stack-md overflow-hidden transition-all duration-500 max-h-0 opacity-0" id="gift-fields">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-stack-md">
+<div>
+<label class="font-label-caps text-[10px] uppercase text-on-surface-variant mb-1 block">Recipient Name</label>
+<input class="w-full p-stack-md border-b border-vein-gray focus:border-forest-velvet outline-none bg-transparent transition-all" placeholder="Who is this for?" type="text"/>
+</div>
+<div>
+<label class="font-label-caps text-[10px] uppercase text-on-surface-variant mb-1 block">Recipient Email / Address</label>
+<input class="w-full p-stack-md border-b border-vein-gray focus:border-forest-velvet outline-none bg-transparent transition-all" placeholder="Where should we send it?" type="text"/>
+</div>
+</div>
+<div>
+<label class="font-label-caps text-[10px] uppercase text-on-surface-variant mb-1 block">Personal Note</label>
+<textarea class="w-full p-stack-md border-b border-vein-gray focus:border-forest-velvet outline-none bg-transparent transition-all resize-none" placeholder="Add a thoughtful message..." rows="3"></textarea>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Visual Preview & Checkout (5/12) -->
+<div class="lg:col-span-5 sticky top-32">
+<div class="bg-forest-velvet text-white p-stack-lg rounded-xl shadow-xl space-y-stack-lg relative overflow-hidden">
+<!-- Background texture/pattern for the container -->
+<div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 40px 40px;"></div>
+<h2 class="font-label-caps text-label-caps text-premium-gold relative z-10">Preview Your Gift</h2>
+<!-- The Gift Card Visual -->
+<div class="aspect-[1.586/1] w-full rounded-xl gold-reflection shadow-2xl p-stack-lg flex flex-col justify-between relative z-10 group cursor-default">
+<div class="flex justify-between items-start">
+<div class="font-display-lg text-headline-md tracking-tighter text-forest-velvet opacity-90">Pony White</div>
+<span class="material-symbols-outlined text-forest-velvet opacity-70">contactless</span>
+</div>
+<div class="space-y-1">
+<div class="font-display-lg text-display-lg text-forest-velvet" id="preview-amount">$50</div>
+<div class="font-label-caps text-[10px] text-forest-velvet opacity-70 tracking-widest uppercase">Artisanal Coffee &amp; Kitchen</div>
+</div>
+<div class="absolute bottom-stack-lg right-stack-lg">
+<div class="w-10 h-10 border border-forest-velvet/30 rounded-full flex items-center justify-center opacity-40">
+<span class="material-symbols-outlined text-forest-velvet">eco</span>
+</div>
+</div>
+</div>
+<!-- Summary -->
+<div class="space-y-stack-md pt-stack-md border-t border-marble-white/10 relative z-10">
+<div class="flex justify-between font-label-caps text-label-caps">
+<span class="opacity-70">Product</span>
+<span id="summary-type">Physical Gift Card</span>
+</div>
+<div class="flex justify-between font-label-caps text-label-caps">
+<span class="opacity-70">Amount</span>
+<span id="summary-amount">$50.00</span>
+</div>
+<div class="flex justify-between font-headline-md text-headline-md text-premium-gold pt-2">
+<span>Total</span>
+<span>$50.00</span>
+</div>
+</div>
+<button class="w-full gold-button font-label-caps text-label-caps py-stack-md rounded-lg relative z-10 font-bold tracking-wider">
+                        Add to Bag
+                    </button>
+<p class="text-[10px] font-label-caps opacity-50 text-center relative z-10">
+                        PHYSICAL CARDS SHIPPED WITHIN 24 HOURS • DIGITAL CODES SENT INSTANTLY
+                    </p>
+</div>
+<!-- Small Secondary Bento Card -->
+<div class="mt-gutter bg-white border border-vein-gray p-stack-md rounded-xl flex items-center gap-stack-md">
+<div class="w-12 h-12 bg-surface-container-high rounded-full flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-forest-velvet">info</span>
+</div>
+<div>
+<p class="font-label-caps text-label-caps text-forest-velvet">Need help?</p>
+<p class="text-[12px] text-on-surface-variant">Corporate gifting and bulk orders available. <a class="underline hover:text-premium-gold transition-colors" href="#">Contact us</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Additional Editorial Section -->
+<section class="mt-section-padding grid grid-cols-1 md:grid-cols-2 gap-section-padding items-center">
+<div class="rounded-xl overflow-hidden shadow-sm aspect-square md:aspect-video relative group">
+<img alt="Pony White Interior" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A high-end artisanal coffee shop interior with deep forest green marble counters, brushed gold lighting fixtures, and a bright minimalist aesthetic. The atmosphere is serene and expensive, reflecting a premium lifestyle brand. Soft natural light streams through large windows, illuminating a pristine porcelain cup of latte art." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBI9rpK0onRuJHIr2lRAnSD7idGzk96EmFRhifzjex99DbIK3iSdO-Jo3_o1LEAIFUEdpSwawHmVwg6r2eNfmRat8fWuD9JyLxGZHZg4HCt4fet9gql5-Jm6L9v9CL27qHBvrvUPRxH8N-NriC-dZYaeS18W7OZrqabkbnHYlj4p0VEdgAsdlSgPjTzmjy4nwTaRAZpQ3SeX0894B4bzR9j5Bin8Ha_1G-m8jetssgAwPMAYNjuXPrD8gMVVqfNIB7RbSdm584Gr4s"/>
+<div class="absolute inset-0 bg-forest-velvet/10 group-hover:bg-transparent transition-all duration-500"></div>
+</div>
+<div class="space-y-stack-md">
+<h3 class="font-display-lg text-headline-md text-forest-velvet">A Taste of Fitzroy</h3>
+<p class="font-body-md text-on-surface-variant leading-relaxed">
+                    Gift cards can be redeemed across our entire menu, from our signature 'Gold Leaf' espresso to our seasonal brunch offerings. Physical cards are presented in a premium charcoal envelope with gold foil embossing, making the unveiling as delightful as the experience itself.
+                </p>
+<div class="flex gap-stack-lg pt-4">
+<div class="text-center">
+<span class="material-symbols-outlined text-premium-gold block mb-2" style="font-variation-settings: 'FILL' 1;">eco</span>
+<span class="font-label-caps text-[10px] uppercase">Eco-Friendly Packaging</span>
+</div>
+<div class="text-center">
+<span class="material-symbols-outlined text-premium-gold block mb-2" style="font-variation-settings: 'FILL' 1;">schedule</span>
+<span class="font-label-caps text-[10px] uppercase">No Expiry Date</span>
+</div>
+<div class="text-center">
+<span class="material-symbols-outlined text-premium-gold block mb-2" style="font-variation-settings: 'FILL' 1;">restaurant</span>
+<span class="font-label-caps text-[10px] uppercase">All-Menu Access</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full bg-surface dark:bg-inverse-surface border-t border-vein-gray">
+<div class="flex flex-col md:flex-row justify-between items-center px-margin-desktop py-section-padding gap-gutter max-w-screen-2xl mx-auto">
+<div class="font-label-caps text-label-caps text-forest-velvet">Pony White</div>
+<div class="font-body-md text-body-md text-on-surface-variant text-center md:text-left">
+                © 2024 Pony White Cafe. 75 Gertrude St, Fitzroy VIC 3065
+            </div>
+<div class="flex gap-stack-md">
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-premium-gold transition-opacity duration-200" href="#">Instagram</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-premium-gold transition-opacity duration-200" href="#">Facebook</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-premium-gold transition-opacity duration-200" href="#">Privacy Policy</a>
+</div>
+</div>
+</footer>
+<script>
+        // Smooth scroll for nav transparency
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('top-nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('bg-white/90', 'backdrop-blur-md', 'shadow-sm');
+                nav.classList.remove('bg-transparent');
+            } else {
+                nav.classList.remove('bg-white/90', 'backdrop-blur-md', 'shadow-sm');
+                nav.classList.add('bg-transparent');
+            }
+        });
+
+        // Interaction Logic
+        function setAmount(amount, btn) {
+            // Update Preview
+            document.getElementById('preview-amount').innerText = '$' + amount;
+            document.getElementById('summary-amount').innerText = '$' + amount + '.00';
+            
+            // Update Buttons
+            document.querySelectorAll('.amount-btn').forEach(b => {
+                b.classList.remove('border-2', 'border-premium-gold', 'gold-button');
+                b.classList.add('border', 'border-vein-gray');
+            });
+            btn.classList.add('border-2', 'border-premium-gold', 'gold-button');
+            btn.classList.remove('border', 'border-vein-gray');
+        }
+
+        function setCardType(type) {
+            const btnPhysical = document.getElementById('btn-physical');
+            const btnDigital = document.getElementById('btn-digital');
+            const summaryType = document.getElementById('summary-type');
+            
+            if (type === 'physical') {
+                btnPhysical.classList.add('border-premium-gold', 'gold-button');
+                btnPhysical.classList.remove('border-transparent', 'bg-surface');
+                btnDigital.classList.remove('border-premium-gold', 'gold-button');
+                btnDigital.classList.add('border-transparent', 'bg-surface');
+                summaryType.innerText = 'Physical Gift Card';
+            } else {
+                btnDigital.classList.add('border-premium-gold', 'gold-button');
+                btnDigital.classList.remove('border-transparent', 'bg-surface');
+                btnPhysical.classList.remove('border-premium-gold', 'gold-button');
+                btnPhysical.classList.add('border-transparent', 'bg-surface');
+                summaryType.innerText = 'Digital E-Gift Card';
+            }
+        }
+
+        function toggleGiftDetails() {
+            const checkbox = document.getElementById('gift-toggle');
+            const fields = document.getElementById('gift-fields');
+            if (checkbox.checked) {
+                fields.classList.remove('max-h-0', 'opacity-0');
+                fields.classList.add('max-h-[500px]', 'opacity-100', 'pt-stack-md');
+            } else {
+                fields.classList.add('max-h-0', 'opacity-0');
+                fields.classList.remove('max-h-[500px]', 'opacity-100', 'pt-stack-md');
+            }
+        }
+    </script>
+</body></html>

@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ponywhite Cafe — Developer Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#00261b',
+                        secondary: '#735c00',
+                        gold: {
+                            50: '#fefce8',
+                            100: '#fef9c3',
+                            200: '#fef08a',
+                            300: '#fde047',
+                            400: '#facc15',
+                            500: '#eab308',
+                            600: '#ca8a04',
+                            700: '#a16207',
+                            800: '#854d0e',
+                            900: '#713f12',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        .glass-panel {
+            background: rgba(15, 23, 42, 0.65);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glass-card {
+            background: rgba(15, 23, 42, 0.45);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .glass-card:hover {
+            transform: translateY(-4px);
+            background: rgba(15, 23, 42, 0.65);
+            border-color: rgba(234, 179, 8, 0.25);
+            box-shadow: 0 20px 40px -15px rgba(115, 92, 0, 0.15);
+        }
+        .gold-shimmer {
+            background: linear-gradient(135deg, #735c00 0%, #ca8a04 50%, #735c00 100%);
+            background-size: 200% auto;
+            transition: all 0.3s ease;
+        }
+        .gold-shimmer:hover {
+            background-position: right center;
+            filter: brightness(1.1);
+        }
+        .gold-text {
+            background: linear-gradient(135deg, #fef08a 0%, #ca8a04 50%, #eab308 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    </style>
+</head>
+<body class="h-full bg-slate-950 text-slate-100 font-sans flex flex-col antialiased">
+
+    <!-- Ambient background light effects -->
+    <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
+        <div class="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] rounded-full bg-emerald-950/20 blur-[120px]"></div>
+        <div class="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full bg-amber-950/15 blur-[120px]"></div>
+    </div>
+
+    <!-- Main Container -->
+    <main class="flex-grow relative z-10 max-w-7xl w-full mx-auto px-6 py-12 md:py-16">
+        
+        <!-- Header -->
+        <header class="text-center mb-16 max-w-3xl mx-auto">
+            <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full glass-panel border-white/5 mb-6">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                <span class="text-xs font-semibold tracking-wider uppercase text-emerald-400">Development Environment</span>
+            </div>
+            
+            <h1 class="font-serif text-5xl md:text-6xl font-semibold tracking-tight text-white mb-4">
+                Ponywhite <span class="gold-text">Embed Workspace</span>
+            </h1>
+            
+            <p class="text-slate-400 text-lg leading-relaxed font-light">
+                Welcome to the developer preview dashboard. Here you can interactively preview all 8 mockup pages styled with premium typography, and instantly copy their single-line inlined codes ready to embed directly into Square Online.
+            </p>
+        </header>
+
+        <!-- Pages Directory Grid -->
+        <section class="mb-20">
+            <div class="flex items-center justify-between mb-8">
+                <h2 class="font-serif text-2xl font-semibold text-white">Pages Directory</h2>
+                <span class="text-sm text-slate-500 font-medium">8 Custom Embeds</span>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <!-- Home Card -->
+                <div class="glass-card rounded-2xl p-6 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center border border-amber-500/20">
+                                <svg class="w-5 h-5 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+                            </div>
+                            <h3 class="font-semibold text-lg text-white">Homepage</h3>
+                        </div>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                            The brand center. Features the premium hero card, chef-led culinary grid, daily patisserie showcase, drink sliders, beans collections, and physical location details.
+                        </p>
+                    </div>
+                    <div class="flex gap-3">
+                        <a href="/src/pages/home.html" target="_blank" class="flex-1 text-center py-2.5 px-4 rounded-xl bg-slate-900 border border-slate-800 text-xs font-semibold text-slate-300 hover:bg-slate-800 hover:text-white transition duration-200">
+                            Launch Preview
+                        </a>
+                        <button onclick="copyEmbedCode('home.html', this)" class="flex-1 py-2.5 px-4 rounded-xl gold-shimmer text-xs font-bold text-white shadow-lg shadow-yellow-950/20 flex items-center justify-center gap-1.5">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
+                            Copy Embed
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Loyalty Card -->
+                <div class="glass-card rounded-2xl p-6 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center border border-amber-500/20">
+                                <svg class="w-5 h-5 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            </div>
+                            <h3 class="font-semibold text-lg text-white">Loyalty &amp; Beans</h3>
+                        </div>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                            Ponywhite Beans Loyalty program page. Features dynamic points visual tracking, membership levels, custom reward cards, and detailed member benefits.
+                        </p>
+                    </div>
+                    <div class="flex gap-3">
+                        <a href="/src/pages/loyalty.html" target="_blank" class="flex-1 text-center py-2.5 px-4 rounded-xl bg-slate-900 border border-slate-800 text-xs font-semibold text-slate-300 hover:bg-slate-800 hover:text-white transition duration-200">
+                            Launch Preview
+                        </a>
+                        <button onclick="copyEmbedCode('loyalty.html', this)" class="flex-1 py-2.5 px-4 rounded-xl gold-shimmer text-xs font-bold text-white shadow-lg shadow-yellow-950/20 flex items-center justify-center gap-1.5">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
+                            Copy Embed
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Book Table Card -->
+                <div class="glass-card rounded-2xl p-6 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center border border-amber-500/20">
+                                <svg class="w-5 h-5 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                            </div>
+                            <h3 class="font-semibold text-lg text-white">Book a Table</h3>
+                        </div>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                            Table reservation request layout. Features a highly refined online form with fields for guests, timing, custom table selections, and special request items.
+                        </p>
+                    </div>
+                    <div class="flex gap-3">
+                        <a href="/src/pages/book-table.html" target="_blank" class="flex-1 text-center py-2.5 px-4 rounded-xl bg-slate-900 border border-slate-800 text-xs font-semibold text-slate-300 hover:bg-slate-800 hover:text-white transition duration-200">
+                            Launch Preview
+                        </a>
+                        <button onclick="copyEmbedCode('book-table.html', this)" class="flex-1 py-2.5 px-4 rounded-xl gold-shimmer text-xs font-bold text-white shadow-lg shadow-yellow-950/20 flex items-center justify-center gap-1.5">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
+                            Copy Embed
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Gift Cards Card -->
+                <div class="glass-card rounded-2xl p-6 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center border border-amber-500/20">
+                                <svg class="w-5 h-5 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
+                            </div>
+                            <h3 class="font-semibold text-lg text-white">Gift Cards</h3>
+                        </div>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                            Buy digital or physical gift cards. Incorporates custom premium card designs, amount tier selections, customizable message slots, and purchasing buttons.
+                        </p>
+                    </div>
+                    <div class="flex gap-3">
+                        <a href="/src/pages/gift-cards.html" target="_blank" class="flex-1 text-center py-2.5 px-4 rounded-xl bg-slate-900 border border-slate-800 text-xs font-semibold text-slate-300 hover:bg-slate-800 hover:text-white transition duration-200">
+                            Launch Preview
+                        </a>
+                        <button onclick="copyEmbedCode('gift-cards.html', this)" class="flex-1 py-2.5 px-4 rounded-xl gold-shimmer text-xs font-bold text-white shadow-lg shadow-yellow-950/20 flex items-center justify-center gap-1.5">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
+                            Copy Embed
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Retail Beans Card -->
+                <div class="glass-card rounded-2xl p-6 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center border border-amber-500/20">
+                                <svg class="w-5 h-5 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+                            </div>
+                            <h3 class="font-semibold text-lg text-white">Retail Coffee Beans</h3>
+                        </div>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                            Ponywhite beans inventory. Lists premium single-origin products, house blends, flavor profiles, roast indicators, weights, and customizable subscriptions.
+                        </p>
+                    </div>
+                    <div class="flex gap-3">
+                        <a href="/src/pages/retail.html" target="_blank" class="flex-1 text-center py-2.5 px-4 rounded-xl bg-slate-900 border border-slate-800 text-xs font-semibold text-slate-300 hover:bg-slate-800 hover:text-white transition duration-200">
+                            Launch Preview
+                        </a>
+                        <button onclick="copyEmbedCode('retail.html', this)" class="flex-1 py-2.5 px-4 rounded-xl gold-shimmer text-xs font-bold text-white shadow-lg shadow-yellow-950/20 flex items-center justify-center gap-1.5">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
+                            Copy Embed
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Careers Card -->
+                <div class="glass-card rounded-2xl p-6 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center border border-amber-500/20">
+                                <svg class="w-5 h-5 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                            </div>
+                            <h3 class="font-semibold text-lg text-white">Careers</h3>
+                        </div>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                            Join the kitchen and roasting team. Detail-rich layout explaining workplace culture, open opportunities (barista, chef), and dynamic application form fields.
+                        </p>
+                    </div>
+                    <div class="flex gap-3">
+                        <a href="/src/pages/careers.html" target="_blank" class="flex-1 text-center py-2.5 px-4 rounded-xl bg-slate-900 border border-slate-800 text-xs font-semibold text-slate-300 hover:bg-slate-800 hover:text-white transition duration-200">
+                            Launch Preview
+                        </a>
+                        <button onclick="copyEmbedCode('careers.html', this)" class="flex-1 py-2.5 px-4 rounded-xl gold-shimmer text-xs font-bold text-white shadow-lg shadow-yellow-950/20 flex items-center justify-center gap-1.5">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
+                            Copy Embed
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Contact Card -->
+                <div class="glass-card rounded-2xl p-6 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center border border-amber-500/20">
+                                <svg class="w-5 h-5 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/></svg>
+                            </div>
+                            <h3 class="font-semibold text-lg text-white">Contact &amp; Feedback</h3>
+                        </div>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                            Connect with customer service. Displays user query forms, location map pointers, physical opening hours, phone contacts, and quick mail shortcuts.
+                        </p>
+                    </div>
+                    <div class="flex gap-3">
+                        <a href="/src/pages/contact.html" target="_blank" class="flex-1 text-center py-2.5 px-4 rounded-xl bg-slate-900 border border-slate-800 text-xs font-semibold text-slate-300 hover:bg-slate-800 hover:text-white transition duration-200">
+                            Launch Preview
+                        </a>
+                        <button onclick="copyEmbedCode('contact.html', this)" class="flex-1 py-2.5 px-4 rounded-xl gold-shimmer text-xs font-bold text-white shadow-lg shadow-yellow-950/20 flex items-center justify-center gap-1.5">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
+                            Copy Embed
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Drinks Card -->
+                <div class="glass-card rounded-2xl p-6 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center border border-amber-500/20">
+                                <svg class="w-5 h-5 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m0-12.728l.707.707m12.728 12.728l.707-.707M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            </div>
+                            <h3 class="font-semibold text-lg text-white">Signature Drinks</h3>
+                        </div>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                            Liquid magic menu. Focuses on ceremonial organic matcha lattes, double-crema espresso pulls, cold brew craft coolers, and details about dairy/oat milk selections.
+                        </p>
+                    </div>
+                    <div class="flex gap-3">
+                        <a href="/src/pages/drinks.html" target="_blank" class="flex-1 text-center py-2.5 px-4 rounded-xl bg-slate-900 border border-slate-800 text-xs font-semibold text-slate-300 hover:bg-slate-800 hover:text-white transition duration-200">
+                            Launch Preview
+                        </a>
+                        <button onclick="copyEmbedCode('drinks.html', this)" class="flex-1 py-2.5 px-4 rounded-xl gold-shimmer text-xs font-bold text-white shadow-lg shadow-yellow-950/20 flex items-center justify-center gap-1.5">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
+                            Copy Embed
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Developer Help Section -->
+        <section class="glass-panel rounded-3xl p-8 md:p-10 border-white/5 shadow-2xl relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-64 h-64 bg-yellow-500/5 rounded-full blur-3xl"></div>
+            
+            <h2 class="font-serif text-3xl font-semibold text-white mb-6">Square Online Deployment Guide</h2>
+            
+            <div class="space-y-6 text-sm text-slate-300">
+                <div class="flex items-start gap-4">
+                    <div class="w-7 h-7 rounded-full bg-slate-900 flex items-center justify-center border border-white/10 flex-shrink-0 text-amber-400 font-bold text-xs">1</div>
+                    <div>
+                        <h4 class="font-semibold text-white mb-1.5">Select a Page and Copy Embed Code</h4>
+                        <p class="leading-relaxed text-slate-400">Click the <strong class="text-amber-400">"Copy Embed"</strong> button on any of the page cards above. The system automatically copies the pre-compiled, fully-inlined single-line HTML string directly to your clipboard.</p>
+                    </div>
+                </div>
+                
+                <div class="flex items-start gap-4">
+                    <div class="w-7 h-7 rounded-full bg-slate-900 flex items-center justify-center border border-white/10 flex-shrink-0 text-amber-400 font-bold text-xs">2</div>
+                    <div>
+                        <h4 class="font-semibold text-white mb-1.5">Paste into Square Online Custom HTML</h4>
+                        <p class="leading-relaxed text-slate-400">Open your Square Online website builder dashboard. Drag a <strong class="text-white">"Custom Embed Code"</strong> or <strong class="text-white">"HTML Section"</strong> block onto your desired page. Click in the code configuration input, and paste (<kbd class="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 text-xs font-mono">⌘V</kbd> or <kbd class="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 text-xs font-mono">Ctrl+V</kbd>) the single line of code.</p>
+                    </div>
+                </div>
+
+                <div class="flex items-start gap-4">
+                    <div class="w-7 h-7 rounded-full bg-slate-900 flex items-center justify-center border border-white/10 flex-shrink-0 text-amber-400 font-bold text-xs">3</div>
+                    <div>
+                        <h4 class="font-semibold text-white mb-1.5">How Image Asset Hosting Works</h4>
+                        <p class="leading-relaxed text-slate-400">During compilation, local image URLs are automatically mapped to reference the public <strong class="text-white">jsDelivr CDN</strong> (<code class="text-amber-400/90 font-mono text-xs">https://cdn.jsdelivr.net/gh/ignaciotoro/Ponywhite@main/assets/...</code>). Once you push your local repository changes to your GitHub branch, all images will instantly load perfectly on the live Square site!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/5 py-8 text-center text-xs text-slate-500 font-medium relative z-10">
+        <p>© 2026 Ponywhite Cafe. Crafted with meticulous coding care.</p>
+    </footer>
+
+    <!-- Copy Script -->
+    <script>
+        async function copyEmbedCode(pageName, buttonElement) {
+            try {
+                // Fetch the compiled, single-line file from /square_embeds/
+                const response = await fetch(`/square_embeds/${pageName}`);
+                if (!response.ok) throw new Error('File not found');
+                const code = await response.text();
+                
+                // Write to clipboard
+                await navigator.clipboard.writeText(code);
+                
+                // Visual success feedback
+                const originalHtml = buttonElement.innerHTML;
+                buttonElement.innerHTML = `
+                    <svg class="w-4 h-4 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    <span>Copied!</span>
+                `;
+                buttonElement.classList.remove('gold-shimmer');
+                buttonElement.classList.add('bg-emerald-600', 'hover:bg-emerald-600');
+                
+                setTimeout(() => {
+                    buttonElement.innerHTML = originalHtml;
+                    buttonElement.classList.remove('bg-emerald-600', 'hover:bg-emerald-600');
+                    buttonElement.classList.add('gold-shimmer');
+                }, 2000);
+            } catch (err) {
+                console.error(err);
+                alert('Could not copy embed code: ' + err.message + '\nMake sure the build command has run successfully.');
+            }
+        }
+    </script>
+</body>
+</html>

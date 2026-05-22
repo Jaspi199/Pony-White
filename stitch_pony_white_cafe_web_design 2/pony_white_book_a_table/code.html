@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary": "#ffffff",
+                    "inverse-on-surface": "#f1f1ef",
+                    "surface": "#faf9f7",
+                    "surface-container-low": "#f4f4f1",
+                    "vein-gray": "#E0E0E0",
+                    "surface-container-high": "#e8e8e6",
+                    "on-tertiary-container": "#909291",
+                    "surface-dim": "#dadad8",
+                    "on-primary-fixed-variant": "#2b4d43",
+                    "outline": "#717975",
+                    "secondary": "#775a19",
+                    "on-background": "#1a1c1b",
+                    "background": "#faf9f7",
+                    "on-surface": "#1a1c1b",
+                    "inverse-primary": "#a9cfc1",
+                    "surface-container": "#eeeeec",
+                    "premium-gold": "#B38B45", /* Deeper gold for accessibility */
+                    "premium-gold-light": "#D4AF37", /* Mid-tone gold highlight */
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary-fixed-variant": "#5d4201",
+                    "primary-fixed": "#c4ebdd",
+                    "marble-white": "#FFFFFF",
+                    "error-container": "#ffdad6",
+                    "latte-peach": "#FFCBAA",
+                    "surface-bright": "#faf9f7",
+                    "inverse-surface": "#2f3130",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary": "#ffffff",
+                    "primary-container": "#0b3027",
+                    "surface-variant": "#e2e2e0",
+                    "on-tertiary-fixed-variant": "#454747",
+                    "secondary-fixed": "#ffdea5",
+                    "primary-fixed-dim": "#a9cfc1",
+                    "primary": "#001a13",
+                    "tertiary-fixed": "#e1e3e2",
+                    "secondary-container": "#fed488",
+                    "error": "#ba1a1a",
+                    "tertiary": "#141716",
+                    "forest-velvet": "#0B3027",
+                    "surface-tint": "#42655a",
+                    "on-primary-container": "#75998d",
+                    "on-primary-fixed": "#002019",
+                    "outline-variant": "#c1c8c4",
+                    "secondary-fixed-dim": "#e9c176",
+                    "on-surface-variant": "#414845",
+                    "on-tertiary-fixed": "#191c1c",
+                    "on-error-container": "#93000a",
+                    "on-error": "#ffffff",
+                    "on-secondary-fixed": "#261900",
+                    "tertiary-fixed-dim": "#c5c7c6",
+                    "tertiary-container": "#282b2b",
+                    "surface-container-highest": "#e2e2e0",
+                    "on-secondary-container": "#785a1a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "stack-sm": "8px",
+                    "stack-lg": "32px",
+                    "margin-desktop": "64px",
+                    "stack-md": "16px",
+                    "section-padding": "80px",
+                    "margin-mobile": "20px"
+            },
+            "fontFamily": {
+                    "label-caps": ["Hanken Grotesk"],
+                    "headline-md": ["Hanken Grotesk"],
+                    "display-lg": ["Hanken Grotesk"],
+                    "body-lg": ["Hanken Grotesk"],
+                    "display-lg-mobile": ["Hanken Grotesk"],
+                    "body-md": ["Hanken Grotesk"]
+            },
+            "fontSize": {
+                    "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.15em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "display-lg-mobile": ["36px", {"lineHeight": "42px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .gold-line-pattern {
+            background-image: radial-gradient(circle at 2px 2px, #B38B45 1.5px, transparent 0);
+            background-size: 60px 60px; /* Spread out further */
+            opacity: 0.15;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(179, 139, 69, 0.3); /* Using deeper gold */
+        }
+        .premium-gold-gradient {
+            background: linear-gradient(135deg, #8A6D3B 0%, #B38B45 50%, #8A6D3B 100%);
+        }
+        .premium-gold-text-gradient {
+            background: linear-gradient(135deg, #8A6D3B 0%, #B38B45 50%, #8A6D3B 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md overflow-x-hidden">
+<!-- Top Navigation Bar -->
+<nav class="fixed top-0 w-full z-50 bg-transparent flex justify-between items-center px-margin-desktop py-gutter max-w-screen-2xl mx-auto">
+<div class="font-display-lg text-display-lg text-forest-velvet dark:text-marble-white tracking-tighter">Pony White</div>
+<div class="hidden md:flex gap-stack-lg">
+<a class="font-label-caps text-label-caps text-forest-velvet dark:text-marble-white opacity-90 hover:text-premium-gold transition-colors duration-300" href="#">Order</a>
+<a class="font-label-caps text-label-caps text-forest-velvet dark:text-marble-white opacity-90 hover:text-premium-gold transition-colors duration-300" href="#">Coffee</a>
+<a class="font-label-caps text-label-caps text-forest-velvet dark:text-marble-white opacity-90 hover:text-premium-gold transition-colors duration-300" href="#">Drinks</a>
+<a class="font-label-caps text-label-caps text-premium-gold border-b-2 border-premium-gold pb-1 transition-colors duration-300" href="#">Book</a>
+<a class="font-label-caps text-label-caps text-forest-velvet dark:text-marble-white opacity-90 hover:text-premium-gold transition-colors duration-300" href="#">Gifts</a>
+<a class="font-label-caps text-label-caps text-forest-velvet dark:text-marble-white opacity-90 hover:text-premium-gold transition-colors duration-300" href="#">More</a>
+</div>
+<div class="flex gap-stack-md">
+<button class="font-label-caps text-label-caps text-forest-velvet dark:text-marble-white hover:text-premium-gold transition-colors">Loyalty</button>
+<button class="font-label-caps text-label-caps text-forest-velvet dark:text-marble-white hover:text-premium-gold transition-colors">Login</button>
+</div>
+</nav>
+<!-- Hero / Booking Section -->
+<main class="min-h-screen relative bg-forest-velvet flex flex-col items-center justify-center pt-section-padding px-margin-mobile md:px-margin-desktop overflow-hidden">
+<!-- Background Accents -->
+<div class="absolute inset-0 gold-line-pattern"></div>
+<div class="absolute top-0 right-0 w-1/3 h-full border-l border-premium-gold opacity-20 pointer-events-none"></div>
+<div class="absolute bottom-0 left-0 w-1/2 h-1/4 border-t border-premium-gold opacity-20 pointer-events-none"></div>
+<div class="relative z-10 w-full max-w-5xl mx-auto py-section-padding">
+<header class="text-center mb-stack-lg">
+<span class="font-label-caps text-label-caps text-premium-gold uppercase tracking-widest block mb-stack-sm">Experience Fitzroy's Finest</span>
+<h1 class="font-display-lg text-display-lg md:text-[64px] text-marble-white leading-tight mb-stack-md">Reserve a Table</h1>
+<p class="font-body-lg text-body-lg text-marble-white opacity-90 max-w-2xl mx-auto">Step into an atmosphere of quiet luxury and botanical freshness. Secure your table at Pony White for an artisanal journey.</p>
+</header>
+<!-- Mock Wix Booking Widget -->
+<div class="glass-card rounded-lg p-stack-lg md:p-12 shadow-2xl">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter mb-stack-lg">
+<!-- Date Picker -->
+<div class="flex flex-col gap-stack-sm">
+<label class="font-label-caps text-label-caps text-premium-gold">Select Date</label>
+<div class="relative group">
+<input class="w-full bg-transparent border-b-2 border-premium-gold py-stack-sm text-marble-white focus:outline-none cursor-pointer" readonly="" type="text" value="Oct 24, 2024"/>
+<span class="material-symbols-outlined absolute right-0 top-1/2 -translate-y-1/2 text-premium-gold text-[20px]" data-icon="calendar_month">calendar_month</span>
+</div>
+<div class="mt-stack-sm grid grid-cols-7 gap-1 text-[10px] text-center text-marble-white opacity-50 font-label-caps">
+<span class="">M</span><span class="">T</span><span class="">W</span><span class="">T</span><span class="">F</span><span class="">S</span><span class="">S</span>
+<!-- Minimal calendar preview dots -->
+<div class="col-span-7 flex justify-between px-1">
+<div class="w-1.5 h-1.5 rounded-full bg-premium-gold"></div>
+<div class="w-1.5 h-1.5 rounded-full bg-premium-gold"></div>
+<div class="w-1.5 h-1.5 rounded-full bg-marble-white opacity-20"></div>
+<div class="w-1.5 h-1.5 rounded-full bg-premium-gold"></div>
+<div class="w-1.5 h-1.5 rounded-full bg-premium-gold"></div>
+</div>
+</div>
+</div>
+<!-- Guest Count -->
+<div class="flex flex-col gap-stack-sm">
+<label class="font-label-caps text-label-caps text-premium-gold">Guests</label>
+<div class="flex items-center justify-between border-b-2 border-premium-gold py-stack-sm">
+<button class="text-premium-gold hover:opacity-70 transition-opacity" id="dec-guest">
+<span class="material-symbols-outlined font-bold" data-icon="remove">remove</span>
+</button>
+<span class="font-headline-md text-headline-md text-marble-white" id="guest-count">2</span>
+<button class="text-premium-gold hover:opacity-70 transition-opacity" id="inc-guest">
+<span class="material-symbols-outlined font-bold" data-icon="add">add</span>
+</button>
+</div>
+</div>
+<!-- Time Picker -->
+<div class="flex flex-col gap-stack-sm">
+<label class="font-label-caps text-label-caps text-premium-gold">Available Times</label>
+<div class="grid grid-cols-2 gap-2">
+<button class="border-2 border-premium-gold py-2 text-label-caps font-label-caps text-marble-white hover:bg-premium-gold hover:text-forest-velvet transition-all">09:00 AM</button>
+<button class="border-2 border-premium-gold py-2 text-label-caps font-label-caps text-forest-velvet bg-premium-gold shadow-sm">10:30 AM</button>
+<button class="border-2 border-vein-gray/20 py-2 text-label-caps font-label-caps text-marble-white/30 cursor-not-allowed" disabled="">12:00 PM</button>
+<button class="border-2 border-premium-gold py-2 text-label-caps font-label-caps text-marble-white hover:bg-premium-gold hover:text-forest-velvet transition-all">01:30 PM</button>
+</div>
+</div>
+</div>
+<div class="flex flex-col md:flex-row items-center justify-between gap-gutter mt-stack-lg border-t-2 border-premium-gold/30 pt-stack-lg">
+<p class="font-body-md text-body-md text-marble-white opacity-80 italic text-center md:text-left">
+                        * Standard bookings are for 90 minutes. For longer stays, please contact us.
+                    </p>
+<button class="w-full md:w-auto premium-gold-gradient text-forest-velvet px-12 py-4 font-label-caps text-label-caps uppercase tracking-widest hover:brightness-110 active:scale-95 transition-all rounded-lg font-bold shadow-lg">
+                        Confirm Reservation
+                    </button>
+</div>
+</div>
+</div>
+</main>
+<!-- Large Groups & Events Section -->
+<section class="bg-surface py-section-padding px-margin-mobile md:px-margin-desktop">
+<div class="max-w-7xl mx-auto">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-section-padding items-center">
+<!-- Visual Element -->
+<div class="relative group h-[500px] rounded-lg overflow-hidden border border-vein-gray shadow-lg">
+<img alt="Private Events Space" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="An elegantly appointed private dining room within a modern minimalist cafe. The room features a long white marble table surrounded by velvet forest green chairs. Soft overhead lighting creates a warm, intimate atmosphere, while large windows reveal lush botanical greenery outside. The overall mood is sophisticated, quiet, and luxurious." src="https://lh3.googleusercontent.com/aida-public/AB6AXuALu8HvYgPTqVYnxwhuy03tQmfD-lbYcbMY3ES-gtTMyh3azC0kYRtgEslh-8VCvqUGVPBH7DcDZ1hVL6FhEUBXmkZwoSQWqPnIcEGzdT9o3s3RcuciQmADppLgLruCIgQAQ2EAvjpbvAqH11FJ7eTVF8xF_x-yxjSWNp3_LX9hjvQGBujJGXsZFtUxVWGYHDTQVzNu2YQV1hVgCQO-fXLHq7AMTlqKtk0OP5dgwcAf-jqsRjZYeRqug_5Jgi9cgWp8eMHsknqsxi4"/>
+<div class="absolute inset-0 bg-forest-velvet/20"></div>
+</div>
+<!-- Content -->
+<div class="flex flex-col gap-stack-md">
+<h2 class="font-headline-md text-headline-md text-forest-velvet">Large Groups &amp; Private Events</h2>
+<div class="w-20 h-1.5 premium-gold-gradient rounded-full"></div>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+                        Pony White offers a refined backdrop for your most cherished celebrations. Whether it's an intimate brunch for 10 or a full buy-out for a corporate cocktail evening, our Fitzroy sanctuary provides the perfect aesthetic.
+                    </p>
+<ul class="space-y-stack-sm mb-stack-md">
+<li class="flex items-center gap-stack-sm text-body-md text-on-surface">
+<span class="material-symbols-outlined text-premium-gold font-bold" data-icon="check_circle">check_circle</span>
+                            Dedicated event coordinator
+                        </li>
+<li class="flex items-center gap-stack-sm text-body-md text-on-surface">
+<span class="material-symbols-outlined text-premium-gold font-bold" data-icon="check_circle">check_circle</span>
+                            Bespoke artisanal menu curation
+                        </li>
+<li class="flex items-center gap-stack-sm text-body-md text-on-surface">
+<span class="material-symbols-outlined text-premium-gold font-bold" data-icon="check_circle">check_circle</span>
+                            Capacity for up to 45 seated guests
+                        </li>
+</ul>
+<div class="flex flex-wrap gap-stack-md">
+<button class="bg-forest-velvet text-marble-white px-8 py-3 font-label-caps text-label-caps rounded-lg hover:opacity-90 transition-opacity border-b-2 border-premium-gold">Download Event Kit</button>
+<button class="border-2 border-premium-gold text-premium-gold px-8 py-3 font-label-caps text-label-caps rounded-lg hover:bg-premium-gold hover:text-marble-white transition-all font-bold">Inquire Today</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Aesthetic Bento Grid of the Space -->
+<section class="bg-surface-container-low py-section-padding px-margin-mobile md:px-margin-desktop">
+<div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 grid-rows-2 gap-4 h-[600px]">
+<div class="md:col-span-2 md:row-span-2 rounded-lg overflow-hidden border border-vein-gray relative group">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A high-angle shot of a minimalist white marble counter at Pony White Cafe. An artisanal latte with intricate leaf latte art sits next to a fresh botanical sprig. The lighting is bright and airy, capturing a clean, upscale aesthetic with soft shadows and refined textures." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAaLc4o6EzosdkWjbULeh05btB-k72oPdRA6Gr6tOZgv0NOhwXo-mDOfC3tL3hLM4v4Dl9h4NFVG2Th_lSuf9X5lqQ_m5BthU7KH7ek98SU0dhDtDBS7CXuwApkc-MTFCyZaR8mjwXjQmZWOCuGVu7hlZ88u8XHS23WJ5Ffd8IzHQAeRU-YpRdYAxVprXYaS05QsUTxrBklZqwCdFLfwWxoZKbUU6Ui8mADS0frg17AEtEUgXr6ujjhf201mA9Fdq9I5l-YvYlI_QY"/>
+<div class="absolute bottom-4 left-4 bg-marble-white/90 backdrop-blur-md px-4 py-2 rounded-lg border-l-4 border-premium-gold">
+<p class="font-label-caps text-[10px] text-forest-velvet font-bold">The Marble Bar</p>
+</div>
+</div>
+<div class="md:col-span-1 md:row-span-1 rounded-lg overflow-hidden border border-vein-gray relative group">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Macro detail shot of lush green tropical plants inside a modern cafe. The leaves are vibrant and waxy, reflecting soft natural sunlight. The background is a blurred cream-colored wall, emphasizing the fresh, botanical-inspired interior design." src="https://lh3.googleusercontent.com/aida-public/AB6AXuADOOMA5H6aLuvsZEFcyWJGNBsmJy-dDxCZO7_oXzfrp95CWATmCUi4v189cjTS2hXRswBt5muMjqZpRfIPfvdXf-4NEB7LP_K-yAd5b6JUd4J4rrE4YtS3jJMnfNbgpS6OZjnc_5KZ9Zeh--9zarGYFzLnWDiJcnXHqpPGGqB8dNL7EMXxzEZf-vj2MUEvrUXiJ5Y0QV0-VDdZSYKfXA-hieIpM-bZSIdlbp2jKFE8rSDf-k8gBZWsRTbb1csJysNyaF9FTOTbDDA"/>
+</div>
+<div class="md:col-span-1 md:row-span-2 rounded-lg overflow-hidden border border-vein-gray relative group">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A stylish interior shot of Pony White's main dining area. Sleek, minimalist furniture is arranged under warm pendant lights. The atmosphere is serene and quiet, with high ceilings and a sophisticated palette of forest green and white marble." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZDpBT4xSsuhvN0YHfmbzAh4rP4AvdIHY9dQkTaGOFB3zwvNkk8ZUj3yaTBli0EX45kG7-sPL2jNe2x2s5X5-GgxLryB-D4azSIHKUxDqxZMIWitF1c95R0n8-ixBPfFDoUrmT5933NoXdX1JqkWkgQVifhH2-rjx0D7xgCfhKhlgHI0DA038B0_31-LFWXF3jxP1smuVM3Cas7n-yiKeeqblNy1twtJEEUFxCMSzL_2OcHQqSRvuDFpclKq9-kBzVJcW-zPB-UUU"/>
+</div>
+<div class="md:col-span-1 md:row-span-1 rounded-lg overflow-hidden border border-vein-gray relative group">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Close-up of high-end gold metallic hardware and clean lines on a cafe counter. The lighting is crisp, highlighting the premium finish and the minimalist architectural details of the space." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVCmxV-D-WS3DPAQty7iy0iugUUVqs-KDAvC2562zTsmGRF-NFrl69JIK04AreynaXSJ8ZO6V2ZwzlCANt-LQaTUuEHrWgdzK-W0lJhd7ZSBW0B3QsULjZMEOcLS780Ut39jFeBZErdF_rucpNftwL-2UxOuQWEDBDsLL6GvQja9TiTOsGsamhfXcx88zOqrbVLROVDBdg1FmZUh4ip5GdiZ-CE00fIgXf0iLm6a9p2n-BuYsv9sQyhmp6NFPfY-Y2Uv2T7Hrbh4Q"/>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-surface border-t-2 border-vein-gray py-section-padding px-margin-desktop">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-gutter">
+<div class="flex flex-col items-center md:items-start gap-stack-sm">
+<span class="font-label-caps text-label-caps text-premium-gold uppercase tracking-widest font-bold">Pony White</span>
+<p class="font-body-md text-body-md text-on-surface-variant text-center md:text-left">© 2024 Pony White Cafe. 75 Gertrude St, Fitzroy VIC 3065</p>
+</div>
+<div class="flex gap-stack-lg">
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-premium-gold transition-colors font-semibold" href="#">Instagram</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-premium-gold transition-colors font-semibold" href="#">Facebook</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-premium-gold transition-colors font-semibold" href="#">Privacy Policy</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-premium-gold transition-colors font-semibold" href="#">Terms of Service</a>
+</div>
+</div>
+</footer>
+<script>
+        // Micro-interactions for Guest Count
+        const guestCountEl = document.getElementById('guest-count');
+        const incBtn = document.getElementById('inc-guest');
+        const decBtn = document.getElementById('dec-guest');
+        let guests = 2;
+
+        incBtn.addEventListener('click', () => {
+            if (guests < 10) {
+                guests++;
+                guestCountEl.textContent = guests;
+                guestCountEl.classList.add('scale-110');
+                setTimeout(() => guestCountEl.classList.remove('scale-110'), 200);
+            }
+        });
+
+        decBtn.addEventListener('click', () => {
+            if (guests > 1) {
+                guests--;
+                guestCountEl.textContent = guests;
+                guestCountEl.classList.add('scale-90');
+                setTimeout(() => guestCountEl.classList.remove('scale-90'), 200);
+            }
+        });
+
+        // Simple scroll parallax for gold patterns
+        window.addEventListener('scroll', () => {
+            const pattern = document.querySelector('.gold-line-pattern');
+            const scrolled = window.pageYOffset;
+            pattern.style.backgroundPositionY = (scrolled * 0.05) + 'px';
+        });
+
+        // Time selector highlight logic
+        const timeBtns = document.querySelectorAll('.grid-cols-2 button:not([disabled])');
+        timeBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                timeBtns.forEach(b => {
+                    b.classList.remove('bg-premium-gold', 'text-forest-velvet', 'shadow-sm');
+                    b.classList.add('bg-transparent', 'text-marble-white');
+                });
+                btn.classList.remove('bg-transparent', 'text-marble-white');
+                btn.classList.add('bg-premium-gold', 'text-forest-velvet', 'shadow-sm');
+            });
+        });
+    </script>
+</body></html>

@@ -1,0 +1,5 @@
+# 1. Re-compile Tailwind CSS utilities from HTML source changes
+npm run compile-css
+
+# 2. Re-inline styles and generate single-line embeds
+npm run build

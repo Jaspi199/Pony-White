@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Pony White Loyalty | Membership</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .gold-shimmer {
+            background: linear-gradient(135deg, #A6803F 0%, #D4B475 25%, #C5A059 50%, #D4B475 75%, #A6803F 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shimmer 5s linear infinite;
+        }
+        @keyframes shimmer {
+          to {
+            background-position: 200% center;
+          }
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+        }
+        .marble-bg {
+            background-color: #faf9f7;
+            background-image: radial-gradient(circle at 2px 2px, rgba(224, 224, 224, 0.5) 1px, transparent 0);
+            background-size: 40px 40px;
+        }
+        .gold-btn {
+            background: linear-gradient(135deg, #C5A059 0%, #D4B475 50%, #C5A059 100%);
+            color: #0B3027 !important;
+            transition: all 0.3s ease;
+        }
+        .gold-btn:hover {
+            background: #0B3027;
+            color: #C5A059 !important;
+        }</style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-primary": "#ffffff",
+                      "inverse-on-surface": "#f1f1ef",
+                      "surface": "#faf9f7",
+                      "surface-container-low": "#f4f4f1",
+                      "vein-gray": "#E0E0E0",
+                      "surface-container-high": "#e8e8e6",
+                      "on-tertiary-container": "#909291",
+                      "surface-dim": "#dadad8",
+                      "on-primary-fixed-variant": "#2b4d43",
+                      "outline": "#717975",
+                      "secondary": "#775a19",
+                      "on-background": "#1a1c1b",
+                      "background": "#faf9f7",
+                      "on-surface": "#1a1c1b",
+                      "inverse-primary": "#a9cfc1",
+                      "surface-container": "#eeeeec",
+                      "premium-gold": "#C5A059",
+                      "surface-container-lowest": "#ffffff",
+                      "on-secondary-fixed-variant": "#5d4201",
+                      "primary-fixed": "#c4ebdd",
+                      "marble-white": "#FFFFFF",
+                      "error-container": "#ffdad6",
+                      "latte-peach": "#FFCBAA",
+                      "surface-bright": "#faf9f7",
+                      "inverse-surface": "#2f3130",
+                      "on-secondary": "#ffffff",
+                      "on-tertiary": "#ffffff",
+                      "primary-container": "#0b3027",
+                      "surface-variant": "#e2e2e0",
+                      "on-tertiary-fixed-variant": "#454747",
+                      "secondary-fixed": "#ffdea5",
+                      "primary-fixed-dim": "#a9cfc1",
+                      "primary": "#001a13",
+                      "tertiary-fixed": "#e1e3e2",
+                      "secondary-container": "#fed488",
+                      "error": "#ba1a1a",
+                      "tertiary": "#141716",
+                      "forest-velvet": "#0B3027",
+                      "surface-tint": "#42655a",
+                      "on-primary-container": "#75998d",
+                      "on-primary-fixed": "#002019",
+                      "outline-variant": "#c1c8c4",
+                      "secondary-fixed-dim": "#e9c176",
+                      "on-surface-variant": "#414845",
+                      "on-tertiary-fixed": "#191c1c",
+                      "on-error-container": "#93000a",
+                      "on-error": "#ffffff",
+                      "on-secondary-fixed": "#261900",
+                      "tertiary-fixed-dim": "#c5c7c6",
+                      "tertiary-container": "#282b2b",
+                      "surface-container-highest": "#e2e2e0",
+                      "on-secondary-container": "#785a1a"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "gutter": "24px",
+                      "stack-sm": "8px",
+                      "stack-lg": "32px",
+                      "margin-desktop": "64px",
+                      "stack-md": "16px",
+                      "section-padding": "80px",
+                      "margin-mobile": "20px"
+              },
+              "fontFamily": {
+                      "label-caps": ["Hanken Grotesk"],
+                      "headline-md": ["Hanken Grotesk"],
+                      "display-lg": ["Hanken Grotesk"],
+                      "body-lg": ["Hanken Grotesk"],
+                      "display-lg-mobile": ["Hanken Grotesk"],
+                      "body-md": ["Hanken Grotesk"]
+              },
+              "fontSize": {
+                      "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.15em", "fontWeight": "600"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "display-lg-mobile": ["36px", {"lineHeight": "42px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-surface text-forest-velvet marble-bg">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-transparent">
+<div class="flex justify-between items-center w-full px-margin-desktop py-gutter max-w-screen-2xl mx-auto">
+<span class="font-display-lg text-display-lg text-forest-velvet dark:text-marble-white tracking-tighter gold-shimmer">Pony White</span>
+<div class="hidden md:flex gap-stack-lg">
+<a class="font-label-caps text-label-caps text-forest-velvet dark:text-marble-white opacity-90 hover:text-premium-gold transition-colors duration-300" href="#">Order</a>
+<a class="font-label-caps text-label-caps text-forest-velvet dark:text-marble-white opacity-90 hover:text-premium-gold transition-colors duration-300" href="#">Coffee</a>
+<a class="font-label-caps text-label-caps text-forest-velvet dark:text-marble-white opacity-90 hover:text-premium-gold transition-colors duration-300" href="#">Drinks</a>
+<a class="font-label-caps text-label-caps text-forest-velvet dark:text-marble-white opacity-90 hover:text-premium-gold transition-colors duration-300" href="#">Book</a>
+<a class="font-label-caps text-label-caps text-forest-velvet dark:text-marble-white opacity-90 hover:text-premium-gold transition-colors duration-300" href="#">Gifts</a>
+<a class="font-label-caps text-label-caps text-premium-gold border-b border-premium-gold pb-1 transition-colors duration-300" href="#" style="color: #A6803F;">Loyalty</a>
+</div>
+<div class="flex items-center gap-stack-md">
+<button class="font-label-caps text-label-caps text-forest-velvet hover:text-premium-gold transition-colors duration-300">Login</button>
+</div>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="pt-[120px]">
+<!-- Hero & Points Header -->
+<section class="px-margin-desktop mb-section-padding">
+<div class="max-w-screen-2xl mx-auto flex flex-col md:flex-row justify-between items-end gap-stack-lg">
+<div class="max-w-2xl transition-all duration-1000 opacity-100 translate-y-0">
+<h1 class="font-display-lg text-display-lg text-forest-velvet mb-stack-sm gold-shimmer">Pony White Loyalty</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-lg">Earn 10 Beans for every coffee ordered and redeem 50 Beans for any coffee of your choice. An exclusive ritual for connoisseurs of fine coffee.</p>
+<div class="flex gap-stack-md mt-stack-lg"><button class="text-forest-velvet px-stack-lg py-3 font-label-caps text-label-caps hover:bg-white transition-colors duration-300 gold-btn">JOIN NOW</button><button class="border border-forest-velvet text-forest-velvet px-stack-lg py-3 font-label-caps text-label-caps hover:bg-forest-velvet hover:text-white transition-colors duration-300 gold-btn">CHECK BALANCE</button></div></div>
+<div class="w-full md:w-auto transition-all duration-1000 opacity-100 translate-y-0">
+<div class="bg-forest-velvet p-stack-lg text-marble-white rounded shadow-2xl relative overflow-hidden group">
+<div class="absolute -right-10 -top-10 opacity-10 group-hover:rotate-12 transition-transform duration-700">
+<span class="material-symbols-outlined text-[120px]">stars</span>
+</div>
+<div class="flex flex-col relative z-10">
+<span class="font-label-caps text-label-caps opacity-70 mb-2">CURRENT BALANCE</span>
+<div class="flex items-baseline gap-2">
+<span class="font-display-lg text-display-lg gold-shimmer">2,450</span>
+<span class="font-label-caps text-label-caps">BEANS</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Tier Grid -->
+<section class="px-margin-desktop py-section-padding bg-surface-container-low">
+</section>
+<!-- Earn Points Bento -->
+<section class="px-margin-desktop py-section-padding">
+<div class="max-w-screen-2xl mx-auto">
+<div class="flex justify-between items-center mb-stack-lg transition-all duration-1000 opacity-100 translate-y-0">
+<h2 class="font-display-lg text-display-lg">Earn Beans</h2>
+<button class="font-label-caps text-label-caps text-premium-gold flex items-center gap-1 group" style="color: #A6803F;">
+                        VIEW HISTORY <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter h-[600px] transition-all duration-1000 opacity-100 translate-y-0">
+<!-- Bento item 1 -->
+<div class="md:col-span-2 bg-marble-white border border-vein-gray p-stack-lg flex flex-col justify-between hover:border-premium-gold transition-colors duration-500 cursor-pointer group">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-forest-velvet text-4xl" data-weight="fill">qr_code_2</span>
+<span class="bg-surface-container-low text-forest-velvet font-label-caps text-[10px] px-2 py-1">POPULAR</span>
+</div>
+<div>
+<h4 class="font-headline-md text-headline-md mb-stack-sm">Order via QR</h4>
+<p class="font-body-md text-body-md opacity-70">Earn 10 Beans for every coffee ordered at the counter or via our app.</p>
+</div>
+</div>
+<!-- Bento item 2 -->
+<div class="bg-forest-velvet p-stack-lg flex flex-col justify-between text-marble-white relative overflow-hidden group">
+<img class="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:scale-105 transition-transform duration-1000" data-alt="Artistic close-up of roasted premium coffee beans being poured into a minimalist ceramic container. The lighting is dramatic and overhead, creating sharp highlights on the glossy dark surface of the beans and deep shadows. The color palette is rich browns, deep forest greens, and metallic gold accents on the container's rim." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAm0Gmmy4vX2lAxOnxrdkecVPSk7QZhIzTCycA8xBMgBtM2v-Pyh8qXRsWjn5DuBcb8eQ8b6eEvkJlUinA-qBg8fONl_jnLVl6-FSu-PQph6eQwyhcNb1N7OMMT5vaHkIKS2QI1aopXRCTrFr0HRy2LZImgpWilleH1BhyPDWS12GO0VIDkru92PRNju-VqppwPcstZloH_5Sm5Xfe_Zp-25R7JcvQDFhX9tD34a0i64-i9DJxwqsThlzH-SCCTHkswOl5_pt9Q5B0"/>
+<div class="relative z-10">
+<span class="font-label-caps text-label-caps">DAILY RITUAL</span>
+</div>
+<div class="relative z-10">
+<h4 class="font-headline-md text-headline-md mb-stack-sm">Buy Beans</h4>
+<p class="font-body-md text-body-md opacity-80">Earn double points on all artisanal bean subscriptions.</p>
+</div>
+</div>
+<!-- Bento item 3 -->
+<div class="bg-marble-white border border-vein-gray p-stack-lg flex flex-col justify-between hover:border-premium-gold transition-colors duration-500 cursor-pointer group">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-forest-velvet text-4xl">group_add</span>
+</div>
+<div>
+<h4 class="font-headline-md text-headline-md mb-stack-sm">Refer a Friend</h4>
+<p class="font-body-md text-body-md opacity-70">Share the ritual. 200 points for you and a free brew for them.</p>
+</div>
+</div>
+<!-- Bento item 4 -->
+<div class="md:col-span-2 bg-surface-container-low border border-vein-gray p-stack-lg flex items-center gap-gutter group cursor-pointer">
+<div class="flex-1">
+<h4 class="font-headline-md text-headline-md mb-stack-sm">The Sustainable Sip</h4>
+<p class="font-body-md text-body-md opacity-70">Bring your own cup and earn 20 bonus points every time you help reduce our footprint.</p>
+</div>
+<div class="w-32 h-32 bg-marble-white rounded-full flex items-center justify-center border border-vein-gray group-hover:border-premium-gold transition-colors duration-500">
+<span class="material-symbols-outlined text-4xl">eco</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Current Rewards Horizontal -->
+<section class="px-margin-desktop py-section-padding bg-forest-velvet text-marble-white">
+<div class="max-w-screen-2xl mx-auto">
+<div class="mb-stack-lg transition-all duration-1000 opacity-100 translate-y-0">
+<span class="font-label-caps text-label-caps">AVAILABLE REWARDS</span>
+<h2 class="font-display-lg text-display-lg mt-stack-sm">Spend Your Beans</h2>
+</div>
+<div class="flex overflow-x-auto gap-gutter pb-stack-lg no-scrollbar transition-all duration-1000 opacity-100 translate-y-0"><div class="min-w-[300px] bg-on-primary-container/20 p-stack-lg border border-on-primary-container/30 hover:border-premium-gold transition-all cursor-pointer"><div class="mb-stack-lg aspect-[4/3] bg-on-primary-container/40 overflow-hidden relative"><img class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" data-alt="A perfectly poured latte in a high-end, matte forest green ceramic cup resting on a white marble coaster." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYFVG2JgnN2u6pBMwCNXl9eJpQ38cvwxsC2ctI2ELxTA5Xkmh9MIB7t76lUkvCeb3DXQ86bVqT6Oog9jNK8y4SwUX9NKGTUutfNELx309PAMcIt4htVsUBP9cUg5JjWe6Jq_IW0JIJY3L3S0C5OL00YlRlyIXZubC-mCWK_fp7RaFDnp4TJYZzTUARXaFnkTd4ojEoqjmr44-2VjFpHYRCH8t9k2ZWXupmoxhBcz2Oo5buSC-Hak7b64K_YLP28qlVPRnRFkINVFM"/><div class="absolute bottom-2 right-2 bg-premium-gold text-forest-velvet px-2 py-1 font-label-caps text-[10px]">50 BEANS</div></div><h5 class="font-headline-md text-headline-md mb-1">Free Coffee</h5><p class="font-body-md text-body-md opacity-60">Any barista-made beverage</p></div></div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full border-t border-vein-gray bg-surface dark:bg-inverse-surface">
+<div class="flex flex-col md:flex-row justify-between items-center px-margin-desktop py-section-padding gap-gutter max-w-screen-2xl mx-auto">
+<span class="font-label-caps text-label-caps text-forest-velvet">PONY WHITE</span>
+<p class="font-body-md text-body-md text-on-surface-variant flex-1 text-center md:text-left md:ml-gutter">
+                © 2024 Pony White Cafe. 75 Gertrude St, Fitzroy VIC 3065
+            </p>
+<div class="flex gap-stack-md">
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-premium-gold transition-opacity duration-200" href="#">Instagram</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-premium-gold transition-opacity duration-200" href="#">Facebook</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-premium-gold transition-opacity duration-200" href="#">Privacy Policy</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-premium-gold transition-opacity duration-200" href="#">Terms of Service</a>
+</div>
+</div>
+</footer>
+<script>
+        // Smooth scroll and simple micro-interactions
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Atmospheric parallax on scroll
+        window.addEventListener('scroll', () => {
+            const scroll = window.pageYOffset;
+            const hero = document.querySelector('h1');
+            if(hero) hero.style.transform = `translateY(${scroll * 0.1}px)`;
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-10');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section > div > div').forEach(el => {
+            el.classList.add('transition-all', 'duration-1000', 'opacity-0', 'translate-y-10');
+            observer.observe(el);
+        });
+    </script>
+</body></html>

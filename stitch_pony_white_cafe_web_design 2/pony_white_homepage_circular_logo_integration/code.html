@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Pony White | Artisanal Flavours, Warmly Served</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-effect {
+            background: rgba(251, 249, 248, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .soft-well {
+            box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.05);
+        }
+        .ambient-float {
+            box-shadow: 0 20px 40px -15px rgba(57, 103, 86, 0.1);
+        }
+        /* Updated Premium Gold Gradient */
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #735c00 0%, #e9c349 25%, #735c00 50%, #ffe088 75%, #735c00 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .gold-gradient-bg {
+            background: linear-gradient(135deg, #735c00 0%, #e9c349 45%, #e9c349 55%, #735c00 100%);
+        }
+        .gold-border {
+            border-image: linear-gradient(135deg, #735c00, #e9c349, #735c00) 1;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed-variant": "#214f3f",
+                        "tertiary": "#21211d",
+                        "surface-container-highest": "#e4e2e2",
+                        "on-secondary-fixed": "#241a00",
+                        "on-error-container": "#93000a",
+                        "on-error": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "inverse-primary": "#a0d1bc",
+                        "surface-variant": "#e4e2e2",
+                        "inverse-on-surface": "#f2f0f0",
+                        "inverse-surface": "#303030",
+                        "on-tertiary-fixed": "#1c1c18",
+                        "on-secondary-container": "#745c00",
+                        "surface-bright": "#fbf9f8",
+                        "secondary-container": "#fed65b",
+                        "background": "#fbf9f8",
+                        "on-tertiary-fixed-variant": "#474743",
+                        "surface-container": "#efeded",
+                        "on-background": "#1b1c1c",
+                        "surface-tint": "#396756",
+                        "on-surface-variant": "#414944",
+                        "secondary": "#735c00",
+                        "surface-container-lowest": "#ffffff",
+                        "primary": "#00261b",
+                        "on-primary-container": "#79a894",
+                        "error": "#ba1a1a",
+                        "primary-container": "#0b3d2e",
+                        "surface-container-low": "#f5f3f3",
+                        "on-primary-fixed": "#002116",
+                        "secondary-fixed": "#ffe088",
+                        "on-tertiary-container": "#a09f99",
+                        "primary-fixed-dim": "#a0d1bc",
+                        "surface-dim": "#dbd9d9",
+                        "secondary-fixed-dim": "#e9c349",
+                        "on-secondary": "#ffffff",
+                        "surface": "#fbf9f8",
+                        "outline-variant": "#c0c8c3",
+                        "outline": "#717974",
+                        "primary-fixed": "#bcedd7",
+                        "tertiary-fixed": "#e5e2dc",
+                        "tertiary-container": "#363632",
+                        "tertiary-fixed-dim": "#c9c6c1",
+                        "surface-container-high": "#eae8e7",
+                        "on-secondary-fixed-variant": "#574500",
+                        "error-container": "#ffdad6",
+                        "on-surface": "#1b1c1c",
+                        "on-tertiary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "container-max": "1200px",
+                        "margin-desktop": "64px",
+                        "unit": "8px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-xl-mobile": ["Hanken Grotesk"],
+                        "headline-xl": ["Hanken Grotesk"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "body-md": ["Hanken Grotesk"],
+                        "label-md": ["Hanken Grotesk"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "label-sm": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "headline-xl-mobile": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "headline-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "500"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "500"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.03em", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md overflow-x-hidden">
+<!-- Top Navigation Bar -->
+<nav class="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md shadow-sm docked full-width">
+<div class="flex justify-between items-center w-full px-gutter py-4 max-w-container-max mx-auto">
+<div class="font-headline-lg text-headline-lg font-black text-primary tracking-tight">
+                Pony White
+            </div>
+<div class="hidden md:flex items-center gap-8">
+<a class="font-headline-md text-headline-md text-primary border-b-2 border-secondary font-bold pb-1" href="#">Order</a>
+<a class="font-headline-md text-headline-md text-on-surface-variant hover:text-primary transition-colors" href="#">Coffee</a>
+<a class="font-headline-md text-headline-md text-on-surface-variant hover:text-primary transition-colors" href="#">Drinks</a>
+<a class="font-headline-md text-headline-md text-on-surface-variant hover:text-primary transition-colors" href="#">Book</a>
+<a class="font-headline-md text-headline-md text-on-surface-variant hover:text-primary transition-colors" href="#">Gifts</a>
+<a class="font-headline-md text-headline-md text-on-surface-variant hover:text-primary transition-colors" href="#">Loyalty</a>
+</div>
+<button class="bg-primary text-on-primary px-6 py-2 rounded-full font-label-md scale-95 active:scale-90 transition-transform hover:bg-primary-container transition-all duration-300">
+                Order Now
+            </button>
+</div>
+</nav>
+<!-- Hero Section -->
+<section class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+<div class="absolute inset-0 z-0">
+<img alt="Pony White Hero" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuArbmJM8Hxd7iIyDWX3B5oiya9AsKTKz07DoV30DrY-ROVXA4Q31SwzCy2d_TJBRxn-RT7zKTFCcpblxzICwUMj4fLDVNbcohgRYKaoWSrLI0eX_Ed030LWEB3R_rJn30d_N-SwPgUyviUUECu8Cmpr7RIZOJnGHYkt9w8EhqG-lrqvifvHJqjdFhwgpzmk9YQ_3IynZ_oivvaj2MSe2-wQQHEtfkUXr9L54xd-Gyb1Uj9CZqJr5eByNajF5So-6MqNgFWyNCC7R0o"/>
+<div class="absolute inset-0 bg-gradient-to-b from-primary/20 via-transparent to-background"></div>
+</div>
+<div class="relative z-10 max-w-container-max mx-auto px-gutter text-center">
+<div class="glass-effect p-8 md:p-12 rounded-xl ambient-float max-w-2xl mx-auto border border-white/20">
+<div class="w-24 h-24 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-8 shadow-lg border border-white/40">
+<img alt="Pony White Logo" class="w-full h-full object-cover rounded-full" src="../../assets/logo.png"/>
+</div>
+<h1 class="font-headline-xl text-headline-xl mb-6 text-primary">Artisanal Flavours, Warmly Served</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-10">A neighborhood sanctuary where gourmet breakfast meets meticulous roasting. Join us at the heart of Fitzroy.</p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center">
+<button class="bg-primary text-on-primary px-8 py-4 rounded-full font-label-md hover:bg-primary-container transition-all duration-300 transform active:scale-95">
+                        Order for Pickup
+                    </button>
+<button class="bg-transparent text-primary border-2 border-secondary-fixed-dim px-8 py-4 rounded-full font-label-md hover:bg-secondary-fixed/10 transition-all duration-300 transform active:scale-95">
+                        Explore Menu
+                    </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Kitchen Meals Section (Bento Grid) -->
+<section class="py-24 bg-surface-container-low">
+<div class="max-w-container-max mx-auto px-gutter">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-stretch">
+<div class="md:col-span-7 rounded-xl overflow-hidden ambient-float group">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A masterfully plated gourmet duck breast dish with roasted root vegetables and vibrant puree, captured in a high-end commercial food photography style. The lighting is warm and directional, highlighting the succulent texture of the meat and the glossy pomegranate glaze. The background is a professional stainless steel kitchen, blurred into a soft bokeh to maintain focus on the culinary artistry. The color palette is rich with deep greens, earthy oranges, and deep reds." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdJAdZ8Yb6_itwylq-6hBfr3Vyw8r2_EAK1U8lU2zcMDKbixEe5sxhP00bMixoNsVqqfvD1TqXpE4gmDdglSVIXq3fcpo3V2gIbdkQzPl97j-gKmGcFfwz2HXewd0Beq07tAM1yFsJpxdxcLtJozTy1XBh1H3ZdlHpvHbLzaYqjrj6panuy4pI2necamW5g4yIg3ic0i2_SqIdEGG6TO_pgBuQYkcd1IFujQBPpA4uffXe3CFpfgTLSqh3W3IsGt6U2oyeag9T5V8"/>
+</div>
+<div class="md:col-span-5 flex flex-col justify-center bg-white p-12 rounded-xl ambient-float">
+<span class="font-label-sm uppercase tracking-widest mb-4 gold-gradient-text font-bold">From the Kitchen</span>
+<h2 class="font-headline-lg text-headline-lg text-primary mb-6">Culinary Craftsmanship</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-8 leading-relaxed">
+                        Our seasonal menu is a love letter to local produce. Each dish is meticulously curated by our chefs to bring a sophisticated twist to classic brunch favourites.
+                    </p>
+<ul class="space-y-4 mb-10">
+<li class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                            Locally sourced organic ingredients
+                        </li>
+<li class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                            Chef-led seasonal rotations
+                        </li>
+</ul>
+<button class="bg-primary text-on-primary px-8 py-4 rounded-full font-label-md self-start hover:bg-primary-container transition-all duration-300">
+                        Book a Table
+                    </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Designer Pastries Section (Asymmetric) -->
+<section class="py-24 overflow-hidden">
+<div class="max-w-container-max mx-auto px-gutter">
+<div class="flex flex-col md:flex-row gap-16 items-center">
+<div class="w-full md:w-1/2 order-2 md:order-1">
+<h2 class="font-headline-xl text-headline-xl text-primary mb-6">Fresh Pastries</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-8">
+                        Delivered fresh from premium local bakers, our selection features daily delights that are the perfect companion to your morning coffee. From buttery croissants to sweet tarts, find your daily treat.
+                    </p>
+<div class="grid grid-cols-2 gap-4 mb-10">
+<div class="bg-surface-container p-6 rounded-lg soft-well border-t-2 border-secondary/20">
+<h4 class="font-headline-md text-headline-md text-primary mb-2">Delivered Fresh</h4>
+<p class="text-label-md">Every morning</p>
+</div>
+<div class="bg-surface-container p-6 rounded-lg soft-well border-t-2 border-secondary/20">
+<h4 class="font-headline-md text-headline-md text-primary mb-2">Local Artisans</h4>
+<p class="text-label-md">Meticulously sourced</p>
+</div>
+</div>
+</div>
+<div class="w-full md:w-1/2 order-1 md:order-2 relative">
+<div class="absolute -inset-4 gold-gradient-bg opacity-10 rounded-full blur-3xl -z-10"></div>
+<div class="rounded-xl overflow-hidden ambient-float shadow-2xl rotate-2">
+<img class="w-full h-auto" data-alt="An exquisite arrangement of gourmet French pastries including a flaky almond croissant, a fruit tart with vibrant berries, and a glossy chocolate éclair topped with meringue. The scene is set on a pristine white marble countertop with delicate red flower petals scattered around, creating a high-fashion food aesthetic. The lighting is soft and natural, emphasizing the textures of the dough and the shine of the glazes. The overall mood is luxurious, artisanal, and inviting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDpiGbS13xKIovPcd--ymAJU9tM_Ea3fenccq-1n-lRGTdIz0Oc3dC5lz-oXe1NYnMS7eg1iw_O6xKKKAyYRsG_Sr00eEfRTP8K67-LmYjHvAqmyfB_wrIIJbVSG-vmc5Yc2iKYUg1aKOwP_SCidX-G5K7oN_RwGfocdstd8xkfzuFgVizhqa_TPeU2R0Z2ABwNC5ge-TgTdno1xyX-3pEePTvjaGCURIumk5tW8W3K255KSEBUTEhPBUUIv7g0gpDhfGCiCZ4OoAE"/>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Signature Drinks Preview -->
+<section class="py-24 bg-primary text-on-primary">
+<div class="max-w-container-max mx-auto px-gutter text-center mb-16">
+<h2 class="font-headline-xl text-headline-xl mb-4 gold-gradient-text font-bold">Signature Drinks Showcase</h2>
+<p class="font-body-lg text-body-lg opacity-80 max-w-xl mx-auto">From our signature matcha to velvet espresso, we take our liquids seriously.</p>
+</div>
+<div class="max-w-container-max mx-auto px-gutter">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Drink Card 1 -->
+<div class="group cursor-pointer">
+<div class="relative overflow-hidden rounded-xl mb-6 h-80">
+<div class="absolute inset-0 bg-primary-container/40 group-hover:bg-transparent transition-colors duration-500 z-10"></div>
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A close up shot of a vibrant pink and green iced strawberries and cream matcha latte, showing the layered color aesthetic of rich red strawberry purée, creamy organic milk, and green ceremonial matcha." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7dLdztbzFBARA3WrcZIa4C7KplR3kCfOETmCMpRZ8ElBwe9iXiPCcPZp0zN818tRX7PrRNaoBVkoTdoEfw2jqFVKC5sAQcj18W4XmoMmRANir3RMA_J0VxBoAd-0V8aW0ErftCt1--nyP94nHcJ9wNCzWveIJTPvg_U6qkpJ6rSctqQ_VtHquWCEKFeKC3uyJxudb5kuLAgKptXJd_vQ-Jgop1QdnZ0BReiqTkG0EwnwqcVpBRDR-SzJtinSjnjk0EsMIu2pSoKY"/>
+</div>
+<h3 class="font-headline-md text-headline-md mb-2">Strawberries &amp; Cream Iced Matcha</h3>
+<p class="text-on-primary/60 font-body-md">Ceremonial matcha layered over sweet strawberries and fresh cream.</p>
+</div>
+<!-- Drink Card 2 -->
+<div class="group cursor-pointer">
+<div class="relative overflow-hidden rounded-xl mb-6 h-80">
+<div class="absolute inset-0 bg-primary-container/40 group-hover:bg-transparent transition-colors duration-500 z-10"></div>
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="An iced pistachio crème brûlée latte topped with rich cream foam and caramelized brown sugar crunch in a designer glassware, set in a cozy modern patisserie." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKIy7vObQVSuzDaqKnICM8xNylSEkWBgFNGlTpGxVE-HGmbJ5hII0_52-5KoAx8u766PVhbtkGoMkBuGCP4B9HBDnn_YLbX1dH9OUxWL48JsBiHkvsZjzOJhZLh5P9GetpYFvHTlCxQ9lgAhaG6JnRjIZSh9K-CRPzYWyhzPu2qsxbXqWDiPv1k7EJ-gJnohHYDO1rjoBxJTutaohDD4-oUyKttTjX8nMbQm2uvCO3U51taUS1zt2wMTDBTQu6cYB8ixbwUWGnb6k"/>
+<div class="absolute bottom-6 left-6 z-20">
+<span class="gold-gradient-bg text-on-secondary-fixed px-3 py-1 rounded-full text-label-sm font-bold shadow-lg">Best Seller</span>
+</div>
+</div>
+<h3 class="font-headline-md text-headline-md mb-2">Iced Pistachio Crème Brûlée Latte</h3>
+<p class="text-on-primary/60 font-body-md">Espresso meets velvety pistachio cream and caramelized brown sugar.</p>
+</div>
+<!-- Drink Card 3 -->
+<div class="group cursor-pointer">
+<div class="relative overflow-hidden rounded-xl mb-6 h-80">
+<div class="absolute inset-0 bg-primary-container/40 group-hover:bg-transparent transition-colors duration-500 z-10"></div>
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A tall glass of iced peach cold brew coffee with a slice of fresh peach, condensation on the glassware, captured in a bright and refreshing summer mood." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB13RYUQ9DKopUxtsx7Bq4Q8VRxLKkqv7K5uZOnVZwuzCcqus_y_c9WoD6rwwtUAr2UR5kpK0tIUDFVpK6r9Nyp0bZiVg3zmn-BNuefu57NhcQo7Ni4QQGw2rUutzSn-233Bdxqx9f3HZPGos7kJsfl7KGVexXHzRPSH8NEDZiyoWjHHxBzgDnDVZDSYRR4XjN_CwJzFGM0j7jBClBpARYJMHehtbOU8b7E5_HsD5SpsrVR9FSRr4fKN6PmGQqandKNak-Fc2eK7wI"/>
+</div>
+<h3 class="font-headline-md text-headline-md mb-2">Peach Cold Brew</h3>
+<p class="text-on-primary/60 font-body-md">Slow-steeped cold brew coffee infused with sweet organic peach nectar.</p>
+</div>
+</div>
+<div class="mt-16 text-center">
+<a class="inline-flex items-center gap-3 bg-on-primary text-primary px-10 py-5 rounded-full font-label-md hover:bg-primary-fixed transition-all duration-300 group" href="#">
+                    Explore the Showcase 
+                    <span class="material-symbols-outlined text-secondary group-hover:scale-110 transition-transform">restaurant_menu</span>
+</a>
+</div>
+</div>
+</section>
+<!-- Retail Section -->
+<section class="py-24 bg-surface">
+<div class="max-w-container-max mx-auto px-gutter">
+<div class="flex flex-col md:flex-row items-center gap-12 bg-white rounded-xl p-8 md:p-16 ambient-float">
+<div class="w-full md:w-1/2">
+<div class="grid grid-cols-2 gap-4">
+<div class="space-y-4">
+<!-- San Pedro Logo / Branding Card -->
+<div class="aspect-square bg-primary rounded-full flex flex-col items-center justify-center p-4 border-2 border-secondary group relative overflow-hidden transition-all duration-500 shadow-md text-center">
+<span class="text-secondary text-[8px] md:text-[10px] tracking-[0.3em] font-bold mb-1 uppercase">Roasters</span>
+<span class="font-headline-md text-base md:text-xl text-marble-white font-bold gold-gradient-text">SAN PEDRO</span>
+<span class="text-marble-white/60 text-[8px] md:text-[9px] tracking-wider mt-1 uppercase">Melbourne</span>
+<div class="absolute inset-0 border border-secondary/20 rounded-full scale-[0.92] pointer-events-none"></div>
+</div>
+<!-- San Pedro Coffee bag image -->
+<div class="aspect-square bg-surface-container-high rounded-full overflow-hidden relative border-2 border-transparent hover:border-secondary transition-all duration-500 shadow-md">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAy5CVYNvgrlF1SM5ViyIoDGGNhIKL3_C9Kkb2Lu8c-K0m-QhWQcZPt7BC_5h0dxAGhON9DVgWR2c3bDbaqBwmUqVVBqK6qwnd_dt01SXrrjL2ruD6XB6ghzo2xdMfHgCpJA7YJC9j3PR_hYepuzZ74rplEbD7fl4uyI1PlAzBqZJ7rN115VGtwpYJAGTaMlhLZ23NyoUdHP0_C_AFoO7lS94WaL_2QDO18fhI7BVwWENNd8IxOG48OA5oqe7vIGIu8T7sw0SOVhTs" alt="San Pedro Coffee Beans bag">
+</div>
+</div>
+<div class="space-y-4 pt-8">
+<!-- Specialty Powders Tin image -->
+<div class="aspect-square bg-surface-container-high rounded-full overflow-hidden relative border-2 border-transparent hover:border-secondary transition-all duration-500 shadow-md">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCq5RDFznBOM4qGjUJGydZJYNB7jDHzGE8nQLseuaPRahg5HkXL3BYF5RH5BevWoSR3idgMJUXeEvAWQtRgviK5TFpaS9eAKGQH8irnlp59JpnQEJOdEvWD5Xh0SuLRIRxC8JzPdw3rjgUIJ_l9NggZc7TtjEK49Xjw_FeFQA1uTc4vn8xLdrw-VnoB7F8VCi_0FG5iHEA-ysn6Uili-E1YUS7yvYZQ7ypfdVw1sVraeJ5dkCe616Numg5QocXsVZjcYuED7F3S488" alt="Specialty Chocolate Powders">
+</div>
+<!-- Custom Cup Icon Circle for Chai -->
+<div class="aspect-square bg-surface-container-high rounded-full flex flex-col items-center justify-center p-6 group overflow-hidden relative border-2 border-transparent hover:border-secondary transition-all duration-500 shadow-md">
+<span class="material-symbols-outlined text-5xl text-primary/20 group-hover:text-secondary transition-colors z-10">local_cafe</span>
+<span class="text-[9px] text-primary/40 group-hover:text-secondary font-bold tracking-widest uppercase z-10 mt-1">Specialty Chai</span>
+</div>
+</div>
+</div>
+</div>
+<div class="w-full md:w-1/2">
+<span class="font-label-sm uppercase tracking-widest mb-4 block gold-gradient-text font-bold">Pony White at Home</span>
+<h2 class="font-headline-xl text-headline-xl text-primary mb-6">Take the Experience Home</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-10">If you've fallen in love with our signature coffee served in-cafe, you can now purchase our roasted beans to enjoy every morning. We are incredibly proud of our signature <strong class="text-primary font-bold">San Pedro</strong> beans, roasted with meticulous care to highlight their rich notes of dark chocolate, toasted almond, and velvety caramel. Beyond coffee, we also offer our curated specialty chocolate powders and premium chais, so you can craft your favorite house beverages in the comfort of your own home.</p>
+<a href="https://pony-white-cafe.square.site/s/shop" target="_blank" class="gold-gradient-bg text-on-secondary-fixed px-8 py-4 rounded-full font-label-md hover:brightness-110 transition-all font-bold shadow-md inline-block text-center no-underline">
+                        Shop the Collection
+                    </a>
+</div>
+</div>
+</div>
+</section>
+<!-- Review Section -->
+<section class="py-24 bg-secondary-fixed/30 relative">
+<div class="absolute inset-0 gold-gradient-bg opacity-5 pointer-events-none"></div>
+<div class="max-w-container-max mx-auto px-gutter text-center relative z-10">
+<div class="mb-10 inline-flex items-center gap-1 text-secondary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<h2 class="font-headline-xl text-headline-xl text-primary mb-6 gold-gradient-text font-bold">Loved by the Local Community</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-12 max-w-2xl mx-auto italic leading-relaxed">"Pony White is more than a cafe; it's our daily ritual. The sourdough is unbeatable and the staff always greet you with a genuine smile."</p>
+<button class="bg-white text-primary border-2 border-secondary-fixed-dim px-8 py-4 rounded-full font-label-md hover:bg-primary hover:text-white transition-all duration-300 shadow-sm">
+                Leave us a Review
+            </button>
+</div>
+</section>
+<!-- Location & Hours Section -->
+<section class="py-24">
+<div class="max-w-container-max mx-auto px-gutter">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+<div class="bg-surface-container rounded-xl overflow-hidden h-[450px] ambient-float border border-outline-variant/30 relative">
+<iframe 
+  class="w-full h-full border-0 absolute inset-0 z-10" 
+  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3152.361517441865!2d144.9734992768565!3d-37.80496813353597!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642db7402bd21%3A0xc07a8286a512af9a!2s75%20Gertrude%20St%2C%20Fitzroy%20VIC%203065!5e0!3m2!1sen!2sau!4v1700000000000!5m2!1sen!2sau" 
+  allowfullscreen="" 
+  loading="lazy" 
+  referrerpolicy="no-referrer-when-downgrade">
+</iframe>
+</div>
+<div class="p-8 md:p-0">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-8 border-l-4 border-secondary-fixed-dim pl-6">Visit Us</h2>
+<div class="space-y-8">
+<a href="https://www.google.com/maps/dir/?api=1&destination=75+Gertrude+St,+Fitzroy+VIC+3065+Australia" target="_blank" class="flex items-start gap-4 group no-underline hover:opacity-95 transition-opacity block">
+<span class="material-symbols-outlined text-secondary mt-1 group-hover:scale-110 transition-transform">location_on</span>
+<div>
+<h4 class="font-headline-md text-headline-md mb-1 flex items-center gap-1.5 text-primary group-hover:text-secondary transition-colors">
+  Our Home
+  <span class="material-symbols-outlined text-xs opacity-0 group-hover:opacity-100 transition-opacity">open_in_new</span>
+</h4>
+<p class="text-body-lg text-on-surface-variant underline decoration-secondary/20 group-hover:decoration-secondary transition-all">75 Gertrude St, Fitzroy,<br/>VIC 3065, Australia</p>
+</div>
+</a>
+<div class="flex items-start gap-4 group">
+<span class="material-symbols-outlined text-secondary mt-1 group-hover:scale-110 transition-transform">schedule</span>
+<div>
+<h4 class="font-headline-md text-headline-md mb-1">Opening Hours</h4>
+<p class="text-body-lg text-on-surface-variant">Daily: 7am — 4pm</p>
+<p class="text-label-sm gold-gradient-text font-bold mt-2">Kitchen closes at 3:30pm</p>
+</div>
+</div>
+<div class="flex items-start gap-4 group">
+<span class="material-symbols-outlined text-secondary mt-1 group-hover:scale-110 transition-transform">call</span>
+<div>
+<h4 class="font-headline-md text-headline-md mb-1">Say Hello</h4>
+<p class="text-body-lg text-on-surface-variant">hello@ponywhite.com.au</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-surface-container border-t border-outline-variant full-width rounded-t-lg relative">
+<div class="flex flex-col md:flex-row justify-between items-center w-full px-gutter py-12 max-w-container-max mx-auto gap-8">
+<div class="flex flex-col items-center md:items-start">
+<div class="font-headline-md text-headline-md font-bold text-primary mb-4">Pony White</div>
+<p class="font-body-md text-body-md text-on-surface-variant text-center md:text-left">
+                    © 2024 Pony White. 75 Gertrude St, Fitzroy. <br/>
+                    Open 7am—4pm Daily.
+                </p>
+</div>
+<div class="flex gap-8">
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors opacity-80 hover:opacity-100" href="#">Instagram</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors opacity-80 hover:opacity-100" href="#">Facebook</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors opacity-80 hover:opacity-100" href="#">Contact</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors opacity-80 hover:opacity-100" href="#">Privacy</a>
+</div>
+</div>
+</footer>
+<script>
+        // Simple scroll interaction for navbar
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('shadow-lg', 'py-2');
+                nav.classList.remove('py-4');
+            } else {
+                nav.classList.remove('shadow-lg', 'py-2');
+                nav.classList.add('py-4');
+            }
+        });
+
+        // Hover effect for drink cards
+        document.querySelectorAll('.group').forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                const img = item.querySelector('img');
+                if (img) img.style.transform = 'scale(1.1)';
+            });
+            item.addEventListener('mouseleave', () => {
+                const img = item.querySelector('img');
+                if (img) img.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body></html>

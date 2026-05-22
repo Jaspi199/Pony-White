@@ -1,0 +1,247 @@
+<!-- Compiled custom embed section for drinks.html -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../styles/drinks.css">
+
+<div class="signature-drinks-showcase relative w-full h-screen flex">
+<!-- Side Panel Menu -->
+<aside class="w-80 h-full border-r border-white/5 bg-[#071F1A]/90 backdrop-blur-md z-30 flex flex-col p-12 shrink-0">
+<div class="mb-16">
+<h2 class="text-marble-white/40 uppercase tracking-[0.3em] text-xs font-bold mb-2">Collection</h2>
+<div class="h-px w-12 bg-white/10"></div>
+</div>
+<nav class="flex flex-col gap-6 overflow-y-auto pr-4 scrollbar-hide">
+<!-- Matcha Category -->
+<div class="category-group" id="cat-matcha">
+<button class="w-full flex items-center justify-between text-marble-white/50 hover:text-marble-white transition-colors py-2 uppercase tracking-[0.2em] text-xs font-bold" onclick="toggleCategory('cat-matcha')">
+<span class="">Matcha</span>
+<span class="material-symbols-outlined text-sm transition-transform category-chevron">expand_more</span>
+</button>
+<div class="category-content flex flex-col gap-4 pl-2 border-l border-white/5">
+<button class="drink-nav-item group flex items-center gap-4 text-left transition-custom" onclick="showDrink('strawberries-cream-matcha', this)">
+<span class="nav-line active-nav-line h-px transition-all duration-500"></span>
+<span class="text-marble-white text-base tracking-wide font-semibold">Strawberries &amp; Cream Matcha</span>
+</button>
+</div>
+</div>
+<!-- Espresso Category -->
+<div class="category-group" id="cat-espresso">
+<button class="w-full flex items-center justify-between text-marble-white/50 hover:text-marble-white transition-colors py-2 uppercase tracking-[0.2em] text-xs font-bold" onclick="toggleCategory('cat-espresso')">
+<span class="">Espresso</span>
+<span class="material-symbols-outlined text-sm transition-transform category-chevron">expand_more</span>
+</button>
+<div class="category-content flex flex-col gap-4 pl-2 border-l border-white/5">
+<button class="drink-nav-item group flex items-center gap-4 text-left transition-custom opacity-50 hover:opacity-100" onclick="showDrink('pistachio-creme-brulee', this)">
+<span class="nav-line inactive-nav-line h-px transition-all duration-500 group-hover:w-10"></span>
+<span class="text-marble-white text-base tracking-wide font-light transition-colors">Iced Pistachio Crème Brûlée Latte</span>
+</button>
+<button class="drink-nav-item group flex items-center gap-4 text-left transition-custom opacity-50 hover:opacity-100" onclick="showDrink('salted-caramel-tiramisu-affogato', this)">
+<span class="nav-line inactive-nav-line h-px transition-all duration-500 group-hover:w-10"></span>
+<span class="text-marble-white text-base tracking-wide font-light transition-colors">Salted Caramel Tiramisu Affogato</span>
+</button>
+</div>
+</div>
+<!-- Cold Brew Category -->
+<div class="category-group" id="cat-coldbrew">
+<button class="w-full flex items-center justify-between text-marble-white/50 hover:text-marble-white transition-colors py-2 uppercase tracking-[0.2em] text-xs font-bold" onclick="toggleCategory('cat-coldbrew')">
+<span class="">Cold Brew</span>
+<span class="material-symbols-outlined text-sm transition-transform category-chevron">expand_more</span>
+</button>
+<div class="category-content flex flex-col gap-4 pl-2 border-l border-white/5">
+<button class="drink-nav-item group flex items-center gap-4 text-left transition-custom opacity-50 hover:opacity-100" onclick="showDrink('peach-cold-brew', this)">
+<span class="nav-line inactive-nav-line h-px transition-all duration-500 group-hover:w-10"></span>
+<span class="text-marble-white text-base tracking-wide font-light transition-colors">Peach Cold Brew</span>
+</button>
+</div>
+</div>
+</nav>
+<div class="mt-auto pt-8">
+<p class="text-marble-white/20 text-[10px] uppercase tracking-widest leading-loose">
+        Handcrafted Daily<br/>
+        Limited Availability
+      </p>
+</div>
+</aside>
+<!-- Immersive Main Showcase Area -->
+<main class="relative flex-1 flex items-center justify-end overflow-hidden drink-reveal-trigger" onclick="revealPanel()">
+<!-- Full Screen Drink Background -->
+<div class="absolute inset-0 z-0 overflow-hidden flex justify-center items-center">
+<img alt="Signature Drink" class="w-full h-full object-cover scale-105" id="drink-image" src="https://lh3.googleusercontent.com/aida/ADBb0ui6T5as5L5RLO7JhE085u4tmVtYOSzo5-HAxMTxhGdCtXYBN7KnDbC3aGzmoRP35ftWBuZTEyAnEZHpgQ4vB8Qr_NevYUrikz47w-HumjSSo-1-e0ojc02IEIDSEmuuQ07EHsieidXpTMJ3sI2fvFi9IMYz7MDmbPenHjTYiNNrMaS5mbzATGtwjj2bWVrgQR5fnXrffwecKCl05Rnrdc8zjnNl7XGqnDaWd6YVsXwJ4PdHnQTBUafcsg"/>
+<video id="drink-video" class="hidden absolute inset-0 w-full h-full object-cover scale-105 z-0" autoplay loop muted playsinline>
+  <source src="../../assets/b_d_e_b_a_a_a_f_e_video_mp_.mp4" type="video/mp4">
+</video>
+<!-- Ambient Overlays -->
+<div class="absolute inset-0 ambient-overlay bg-gradient-to-r from-forest-velvet via-transparent to-transparent opacity-90 z-10" id="ambient-grad" style="background: linear-gradient(to right, #2D1B22 0%, transparent 100%);"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent z-10"></div>
+</div>
+<!-- Description Panel -->
+<div class="relative mr-20 w-[480px] p-16 rounded-[2.5rem] z-20 transition-all duration-700 flex flex-col" id="drink-description" onclick="event.stopPropagation()">
+  <div class="absolute inset-0 glass-panel rounded-[2.5rem] z-0 pointer-events-none"></div>
+  <div class="relative z-10 flex flex-col h-full w-full">
+    <button class="absolute top-8 right-8 text-marble-white/60 hover:text-marble-white transition-colors p-2" id="panel-close-btn" onclick="hidePanel()">
+      <span class="material-symbols-outlined text-2xl">close</span>
+    </button>
+    <span class="text-marble-white/40 text-[10px] uppercase tracking-[0.3em] font-semibold block mb-4">Signature Selection</span>
+    <h1 class="font-serif text-4xl md:text-5xl font-semibold mb-6 text-marble-white tracking-tight leading-tight" id="drink-title">Strawberries &amp; Cream Matcha</h1>
+    <div class="w-12 h-px bg-white/10 mb-6"></div>
+    <p class="text-marble-white/70 text-base md:text-lg leading-relaxed font-light mb-8" id="drink-text">A stunning tri-layer of fresh strawberry reduction, premium matcha, and velvety milk. Perfectly balanced sweetness and depth.</p>
+    <div class="flex items-center gap-8">
+      <button class="bg-marble-white text-primary px-8 py-4 rounded-full font-bold text-xs tracking-widest uppercase shadow-lg shadow-black/10 hover:bg-[#eae0d5] hover:scale-105 active:scale-95 transition-all duration-300">Order Now</button>
+      <span class="text-marble-white/90 text-xl font-semibold" id="drink-price">$14.00</span>
+    </div>
+  </div>
+</div>
+<!-- Visual Accents -->
+<div class="fixed top-0 right-0 p-12 z-40">
+<div class="text-marble-white/30 flex flex-col items-end gap-1">
+<span class="text-xs tracking-[0.5em] uppercase">Est. 2024</span>
+<span class="text-[10px] tracking-[0.2em] uppercase">Luminous Veridian</span>
+</div>
+</div>
+</main>
+</div>
+<!-- Brand Mark -->
+<div class="fixed bottom-8 right-8 z-50 pointer-events-none opacity-90 flex items-center justify-center bg-slate-950/60 backdrop-blur-md rounded-full p-1.5 border border-white/10 shadow-xl transition-all duration-300">
+  <img alt="Pony White Cafe Brand Mark" class="w-11 h-11 rounded-full object-cover" src="../../assets/logo.png"/>
+</div>
+<script>
+    const drinks = {
+      'strawberries-cream-matcha': {
+        title: 'Strawberries & Cream Matcha',
+        text: 'A stunning tri-layer of fresh strawberry reduction, premium matcha, and velvety milk. Perfectly balanced sweetness and depth.',
+        img: 'https://lh3.googleusercontent.com/aida/ADBb0ui6T5as5L5RLO7JhE085u4tmVtYOSzo5-HAxMTxhGdCtXYBN7KnDbC3aGzmoRP35ftWBuZTEyAnEZHpgQ4vB8Qr_NevYUrikz47w-HumjSSo-1-e0ojc02IEIDSEmuuQ07EHsieidXpTMJ3sI2fvFi9IMYz7MDmbPenHjTYiNNrMaS5mbzATGtwjj2bWVrgQR5fnXrffwecKCl05Rnrdc8zjnNl7XGqnDaWd6YVsXwJ4PdHnQTBUafcsg',
+        price: '$14.00',
+        ambient: '#2D1B22'
+      },
+      'pistachio-creme-brulee': {
+        title: 'Iced Pistachio Crème Brûlée Latte',
+        text: 'Artisanal espresso paired with Sicilian pistachio cream and a hand-torched caramelized sugar crust. Pure decadence.',
+        img: 'https://lh3.googleusercontent.com/aida/ADBb0ujBTIy5GBZuw046M4zR-JU4qLrkOWdtdg8tf9gKSrS0KgqiprAd8wTxFiwzlYaM9VWaQoYD5mYn4j4dCNxTeikEf7Tzr3LKQHNb4GiV2Hq4pYV0SHWVic_EKhep0YjgDQOp3jBoFvWYUzqr3GVpzaNs6iAbOhQ8u2VRMtynHNNjrSMKFtcwn99I-6Hyi5bHlEbsLOEImfk0uaGbZyH21Za3D3hwvdO2mQX29frp9VRWeFkC8z1IWAEmWA',
+        price: '$15.00',
+        ambient: '#242b1a'
+      },
+      'salted-caramel-tiramisu-affogato': {
+        title: 'Salted Caramel Tiramisu Affogato',
+        text: 'A luxurious fusion of double-espresso, rich mascarpone cream, salted caramel drizzle, and a ladyfinger crust over house vanilla bean gelato.',
+        img: '',
+        video: true,
+        price: '$16.50',
+        ambient: '#3A231A'
+      },
+      'peach-cold-brew': {
+        title: 'Peach Cold Brew',
+        text: '72-hour slow-steeped cold brew layered with a warm amber peach reduction and fresh peach slices. Refreshing and refined.',
+        img: 'https://lh3.googleusercontent.com/aida/ADBb0ugeML5dXYeYurdKv-yJT2rm5gxu2S-ipn2XcBRl_rIj3I3kwfIYQETLXgNxvHiyWzmxE9xK5ffUAD1xfkmzvC5ExzgiXa4ut5Z9opMvKjNB8XCKZCJL6OGGSseK0ifaoxAmiI4DZyMfJ2OI0hoC4c1iJkFx1jpUdzZQAPwUCVlwPKsVsU56uGIts-Og_JNvFtdOPsd7iMyGXNsd0cBqlU7qeFA6nuqnXhpUc7ctuEnAZ4vcJRD6yIeo3w',
+        price: '$13.50',
+        ambient: '#3a2118'
+      }
+    };
+
+    function toggleCategory(id) {
+      const el = document.getElementById(id);
+      const isOpening = !el.classList.contains('category-open');
+      
+      document.querySelectorAll('.category-group').forEach(group => {
+        group.classList.remove('category-open');
+      });
+
+      if (isOpening) {
+        el.classList.add('category-open');
+      }
+    }
+
+    function showDrink(key, element) {
+      const drink = drinks[key];
+      const img = document.getElementById('drink-image');
+      const video = document.getElementById('drink-video');
+      const desc = document.getElementById('drink-description');
+      const body = document.getElementById('body-bg') || document.querySelector('.signature-drinks-showcase');
+      const ambient = document.getElementById('ambient-grad');
+      
+      // Update Sidebar Visuals
+      document.querySelectorAll('.drink-nav-item').forEach(btn => {
+        btn.classList.add('opacity-50');
+        btn.querySelector('.nav-line').classList.remove('active-nav-line');
+        btn.querySelector('.nav-line').classList.add('inactive-nav-line');
+        const textSpan = btn.querySelector('span:last-child');
+        textSpan.classList.remove('font-semibold');
+        textSpan.classList.add('font-light');
+      });
+      
+      element.classList.remove('opacity-50');
+      element.querySelector('.nav-line').classList.remove('inactive-nav-line');
+      element.querySelector('.nav-line').classList.add('active-nav-line');
+      const activeTextSpan = element.querySelector('span:last-child');
+      activeTextSpan.classList.remove('font-light');
+      activeTextSpan.classList.add('font-semibold');
+
+      // Animate Transition Out
+      desc.style.opacity = '0';
+      desc.style.transform = 'translateY(30px)';
+      img.style.opacity = '0';
+      img.style.transform = 'scale(1.1)';
+      video.style.opacity = '0';
+      video.style.transform = 'scale(1.1)';
+      
+      setTimeout(() => {
+        // Update Content
+        document.getElementById('drink-title').innerText = drink.title;
+        document.getElementById('drink-text').innerText = drink.text;
+        document.getElementById('drink-price').innerText = drink.price;
+        
+        // Update Ambient Colors
+        const body = document.getElementById('body-bg') || document.querySelector('.signature-drinks-showcase') || document.documentElement;
+        if (body) {
+          body.style.backgroundColor = drink.ambient;
+        }
+        ambient.style.background = `linear-gradient(to right, ${drink.ambient} 0%, transparent 100%)`;
+        
+        if (drink.video) {
+          // Hide Image, Show Video
+          img.classList.add('hidden');
+          video.classList.remove('hidden');
+          
+          // Animate Video In
+          video.style.opacity = '1';
+          video.style.transform = 'scale(1.05)';
+          video.play().catch(e => console.log('Autoplay blocked or video not ready:', e));
+        } else {
+          // Hide Video, Show Image
+          video.classList.add('hidden');
+          video.pause();
+          img.classList.remove('hidden');
+          img.src = drink.img;
+          
+          // Animate Image In
+          img.style.opacity = '1';
+          img.style.transform = 'scale(1.05)';
+        }
+        
+        // Reveal panel when selecting new drink
+        desc.classList.remove('panel-hidden');
+        desc.style.opacity = '1';
+        desc.style.transform = 'translateY(0)';
+      }, 400);
+    }
+
+    function hidePanel() {
+      const panel = document.getElementById('drink-description');
+      panel.classList.add('panel-hidden');
+    }
+
+    function revealPanel() {
+      const panel = document.getElementById('drink-description');
+      if (panel.classList.contains('panel-hidden')) {
+        panel.classList.remove('panel-hidden');
+        panel.style.opacity = '1';
+        panel.style.transform = 'translateY(0)';
+      }
+    }
+
+    // Initialize
+    window.onload = () => {
+      toggleCategory('cat-matcha');
+    }
+  </script>
