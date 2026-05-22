@@ -64,8 +64,25 @@ function processAssetPaths(html, useCDN) {
     let filename = parts[1];
     filename = filename.replace(/['"\)]+$/, '').trim();
 
-    const targetBase = useCDN ? CDN_BASE_URL : `/${LOCAL_ASSETS_PATH}`;
-    return `${prefix}${targetBase}${filename}${suffix}`;
+    // Check if the asset is a video file
+    const isVideo = /\.(mp4|webm|ogg|mov|m4v)$/i.test(filename);
+    
+    let targetBase;
+    if (useCDN) {
+      if (isVideo) {
+        // Use GitHub Raw URL for videos because jsDelivr does not support HTTP Range Requests (needed for Safari / iOS HTML5 video)
+        targetBase = `https://raw.githubusercontent.com/${CONFIG.githubUsername}/${CONFIG.githubRepo}/${CONFIG.githubBranch}/assets/`;
+      } else {
+        targetBase = CDN_BASE_URL;
+      }
+    } else {
+      targetBase = `/${LOCAL_ASSETS_PATH}`;
+    }
+    
+    // URL-encode spaces in filename (e.g. "strawberrys and cream.mp4" -> "strawberrys%20and%20cream.mp4")
+    const encodedFilename = filename.replace(/\s/g, '%20');
+    
+    return `${prefix}${targetBase}${encodedFilename}${suffix}`;
   });
 }
 
@@ -152,7 +169,8 @@ function compilePage(filePath) {
     console.log(`  - Inlining combined CSS styles...`);
     inlinedHtml = juice.inlineContent(html, combinedCss, {
       removeStyleTags: true,
-      preserveMediaQueries: true
+      preserveMediaQueries: true,
+      removeLinkTags: false
     });
   } else {
     console.log(`  - No external stylesheets found to inline.`);

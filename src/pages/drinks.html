@@ -107,7 +107,7 @@
     }
 
     /* Premium Cinematic Mobile View overrides */
-    @media (max-width: 1023px) {
+    @media (max-width: 767px) {
       /* Mobile Menu Drawer Toggle Button */
       #mobile-menu-toggle {
         display: flex !important;
@@ -261,6 +261,30 @@
       .absolute.bottom-8.right-8 img {
         width: 2.5rem !important;
         height: 2.5rem !important;
+      }
+    }
+
+    /* Tablet / Medium View adjustments (768px to 1023px) to prevent sidebar and card collisions */
+    @media (min-width: 768px) and (max-width: 1023px) {
+      #drink-description {
+        width: 400px !important;
+        margin-right: 2rem !important;
+        padding: 2.5rem !important;
+        border-radius: 2rem !important;
+      }
+      #drink-title {
+        font-size: 2rem !important;
+        line-height: 2.25rem !important;
+        margin-bottom: 0.75rem !important;
+      }
+      #drink-text {
+        font-size: 0.9rem !important;
+        line-height: 1.4rem !important;
+        margin-bottom: 1.5rem !important;
+      }
+      aside.sidebar-slide {
+        transform: translateX(0) !important;
+        opacity: 1 !important;
       }
     }
   </style>
@@ -812,7 +836,7 @@
       }, 400);
       
       // Close sidebar drawer automatically on mobile when a drink is selected
-      if (window.innerWidth < 1024) {
+      if (window.innerWidth < 768) {
         document.body.classList.remove('sidebar-open');
       }
     }
