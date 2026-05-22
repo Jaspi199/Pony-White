@@ -5,6 +5,88 @@
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="../styles/drinks.css">
 
+<style>
+    .gold-gradient-text {
+      background: linear-gradient(135deg, #C5A059 20%, #D4AF37 50%, #C5A059 80%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .active-nav-line {
+      width: 40px;
+      background-color: #ffffff;
+    }
+    .inactive-nav-line {
+      width: 20px;
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+    .transition-custom {
+      transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+    .glass-panel {
+      background: rgba(10, 15, 12, 0.6); /* Premium dark obsidian forest tint */
+      backdrop-filter: blur(32px);
+      -webkit-backdrop-filter: blur(32px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+      transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow: visible !important;
+    }
+    .category-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.6s cubic-bezier(0.25, 1, 0.5, 1), margin 0.6s ease;
+    }
+    .category-open .category-content {
+      margin-top: 1rem;
+    }
+    .category-open .category-chevron {
+      transform: rotate(180deg);
+    }
+    
+    .sidebar-slide {
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 20rem; /* w-80 (320px) */
+      z-index: 30;
+      transform: translateX(-40px);
+      opacity: 0.85;
+      transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+    .sidebar-slide:hover {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    
+    #drink-description.panel-hidden {
+      opacity: 0;
+      transform: translateX(120%) scale(0.95);
+      pointer-events: none;
+    }
+
+    .ambient-overlay {
+      transition: background 1.5s ease;
+    }
+    
+    .scrollbar-hide::-webkit-scrollbar {
+      display: none;
+    }
+    .scrollbar-hide {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    #drink-image, #drink-video {
+      transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.8s ease;
+      object-position: center;
+    }
+    
+    .drink-reveal-trigger {
+      cursor: pointer;
+    }
+  </style>
+
 <div class="signature-drinks-showcase relative w-full h-screen flex">
 <!-- Full Screen Drink Background -->
 <div class="absolute inset-0 overflow-hidden flex justify-center items-center z-0">

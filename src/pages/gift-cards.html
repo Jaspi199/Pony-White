@@ -5,6 +5,53 @@
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="../styles/gift-cards.css">
 
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .gold-reflection {
+            /* Refined gold gradient: spread further, deeper highlights (less white) */
+            background: linear-gradient(135deg, #B8860B 0%, #D4AF37 30%, #F1D38E 50%, #D4AF37 70%, #B8860B 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .gold-reflection::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            /* Deeper gold highlight instead of white for better legibility against light backgrounds */
+            background: linear-gradient(45deg, transparent 45%, rgba(212, 175, 55, 0.3) 50%, transparent 55%);
+            animation: shine 6s infinite linear;
+        }
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%); }
+            100% { transform: translateX(100%) translateY(100%); }
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #0B3027;
+        }
+        .gold-button {
+            background: linear-gradient(to bottom, #D4AF37, #B8860B);
+            color: #001a13;
+            text-shadow: 0 0.5px 0 rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+        }
+        .gold-button:hover {
+            background: linear-gradient(to bottom, #E5C158, #D4AF37);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(184, 134, 11, 0.2);
+        }
+    </style>
+
 <!-- Top Navigation Bar -->
 
 <!-- Main Content -->

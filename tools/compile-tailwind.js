@@ -82,6 +82,15 @@ function extractBodyContent(rawHtml, pageName) {
 }
 
 /**
+ * Extracts all <style> tags and their contents
+ */
+function extractStyleContent(rawHtml) {
+  const styleMatch = rawHtml.match(/<style[^>]*>[^]*?<\/style>/gi);
+  if (!styleMatch) return '';
+  return styleMatch.join('\n');
+}
+
+/**
  * Extracts and prepares the tailwind config module
  */
 function extractTailwindConfig(rawHtml, pageName) {
@@ -169,6 +178,7 @@ function processPage(mapping) {
   
   // 1. Extract body content (discard navbar/footer)
   const bodyContent = extractBodyContent(rawHtml, fileName);
+  const styleContent = extractStyleContent(rawHtml);
   
   // 2. Pre-pend the stylesheet reference so compiler.js inlines it
   const pageCssName = `${pageName}.css`;
@@ -178,7 +188,7 @@ function processPage(mapping) {
     `<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">\n` +
     `<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>\n` +
     `<link rel="stylesheet" href="../styles/${pageCssName}">\n\n`;
-  const finalSourceHtml = headerSection + bodyContent;
+  const finalSourceHtml = headerSection + styleContent + '\n\n' + bodyContent;
   
   const targetHtmlPath = path.join(PAGES_DIR, fileName);
   fs.writeFileSync(targetHtmlPath, finalSourceHtml, 'utf8');
