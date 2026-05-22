@@ -80,6 +80,32 @@
       cursor: pointer;
     }
 
+    /* Lock the showcase height rigidly across all viewport sizes to prevent iframe-resizer feedback loops */
+    .signature-drinks-showcase {
+      height: 580px !important;
+      overflow: hidden !important;
+    }
+    @media (min-width: 640px) {
+      .signature-drinks-showcase {
+        height: 650px !important;
+      }
+    }
+    @media (min-width: 768px) {
+      .signature-drinks-showcase {
+        height: 700px !important;
+      }
+    }
+    @media (min-width: 1024px) {
+      .signature-drinks-showcase {
+        height: 750px !important;
+      }
+    }
+    @media (min-width: 1280px) {
+      .signature-drinks-showcase {
+        height: 820px !important;
+      }
+    }
+
     /* Premium Cinematic Mobile View overrides */
     @media (max-width: 1023px) {
       /* Mobile Menu Drawer Toggle Button */
@@ -91,26 +117,6 @@
       /* Mobile Sidebar Drawer Close Button */
       #mobile-menu-close {
         display: flex !important;
-      }
-
-      /* Allow natural scrolling when embedded */
-      body {
-        overflow: auto !important;
-      }
-      
-      .signature-drinks-showcase {
-        height: 580px !important;
-        overflow: hidden !important;
-      }
-      @media (min-width: 640px) {
-        .signature-drinks-showcase {
-          height: 650px !important;
-        }
-      }
-      @media (min-width: 768px) {
-        .signature-drinks-showcase {
-          height: 700px !important;
-        }
       }
       
       /* Make Sidebar a Slide-out Drawer */
