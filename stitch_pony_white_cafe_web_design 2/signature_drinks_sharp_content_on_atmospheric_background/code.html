@@ -573,9 +573,20 @@
     </div>
     <div class="w-12 h-px bg-white/10 mb-6"></div>
     <p class="text-marble-white/85 text-base md:text-lg leading-relaxed font-light mb-8" id="drink-text">Housemade strawberry puree &amp; strawberry cream.</p>
-    <div class="flex items-center gap-8">
-      <button class="bg-marble-white text-primary px-8 py-4 rounded-full font-bold text-xs tracking-widest uppercase shadow-lg shadow-black/10 hover:bg-[#eae0d5] hover:scale-105 active:scale-95 transition-all duration-300">Order Now</button>
-      <span class="text-marble-white/90 text-xl font-semibold" id="drink-price">$9.50</span>
+    <div class="flex items-center justify-between gap-4 mt-auto pt-6 border-t border-white/5">
+      <div class="flex items-center gap-4 md:gap-8">
+        <button class="bg-marble-white text-primary px-6 md:px-8 py-3.5 md:py-4 rounded-full font-bold text-xs tracking-widest uppercase shadow-lg shadow-black/10 hover:bg-[#eae0d5] hover:scale-105 active:scale-95 transition-all duration-300">Order Now</button>
+        <span class="text-marble-white/90 text-lg md:text-xl font-semibold" id="drink-price">$9.50</span>
+      </div>
+      <!-- Tiny Frosted Nav Arrows -->
+      <div class="flex items-center gap-2">
+        <button onclick="navigateDrink(-1)" class="w-8 h-8 rounded-full flex items-center justify-center border border-white/10 bg-white/[0.05] hover:bg-white/[0.12] hover:border-white/30 active:scale-95 transition-all text-marble-white/70 hover:text-marble-white" title="Previous Drink" style="cursor: pointer;">
+          <span class="material-symbols-outlined text-sm pointer-events-none" style="font-size: 14px !important;">arrow_back_ios_new</span>
+        </button>
+        <button onclick="navigateDrink(1)" class="w-8 h-8 rounded-full flex items-center justify-center border border-white/10 bg-white/[0.05] hover:bg-white/[0.12] hover:border-white/30 active:scale-95 transition-all text-marble-white/70 hover:text-marble-white" title="Next Drink" style="cursor: pointer;">
+          <span class="material-symbols-outlined text-sm pointer-events-none" style="font-size: 14px !important;">arrow_forward_ios</span>
+        </button>
+      </div>
     </div>
   </div>
 </div>
@@ -1029,6 +1040,50 @@
       }
       
       revealPanel();
+    }
+
+    function navigateDrink(direction) {
+      const drinkKeys = Object.keys(drinks);
+      const currentIndex = drinkKeys.indexOf(currentDrinkKey);
+      if (currentIndex === -1) return;
+      
+      let nextIndex = currentIndex + direction;
+      if (nextIndex >= drinkKeys.length) {
+        nextIndex = 0;
+      } else if (nextIndex < 0) {
+        nextIndex = drinkKeys.length - 1;
+      }
+      
+      const nextKey = drinkKeys[nextIndex];
+      
+      // Find the corresponding navigation button
+      const nextButton = Array.from(document.querySelectorAll('.drink-nav-item')).find(btn => {
+        const clickAttr = btn.getAttribute('onclick');
+        return clickAttr && clickAttr.includes(nextKey);
+      });
+      
+      if (nextButton) {
+        // Automatically make sure the next drink's category is expanded
+        const categoryGroup = nextButton.closest('.category-group');
+        if (categoryGroup && !categoryGroup.classList.contains('category-open')) {
+          // Close all other categories to keep sidebar clean on narrow viewports
+          document.querySelectorAll('.category-group').forEach(group => {
+            if (group !== categoryGroup && group.classList.contains('category-open')) {
+              group.classList.remove('category-open');
+              const content = group.querySelector('.category-content');
+              if (content) content.style.maxHeight = '0px';
+            }
+          });
+          // Open target category
+          categoryGroup.classList.add('category-open');
+          const content = categoryGroup.querySelector('.category-content');
+          if (content) {
+            content.style.maxHeight = content.scrollHeight + 'px';
+          }
+        }
+        
+        showDrink(nextKey, nextButton);
+      }
     }
 
 
