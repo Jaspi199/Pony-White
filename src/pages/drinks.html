@@ -13,7 +13,6 @@
     }
     .signature-drinks-showcase .font-serif, 
     .signature-drinks-showcase h1, 
-    .signature-drinks-showcase h2,
     .signature-drinks-showcase .material-symbols-outlined,
     .signature-drinks-showcase .material-symbols-outlined * {
       font-family: inherit !important;
@@ -22,8 +21,7 @@
       font-family: 'Material Symbols Outlined' !important;
     }
     .signature-drinks-showcase .font-serif, 
-    .signature-drinks-showcase h1, 
-    .signature-drinks-showcase h2 {
+    .signature-drinks-showcase h1 {
       font-family: 'Playfair Display', ui-serif, Georgia, Cambria, serif !important;
     }
 
@@ -319,7 +317,7 @@
 <!-- Full Screen Drink Background -->
 <div class="absolute inset-0 overflow-hidden flex justify-center items-center z-0">
 <img alt="Signature Drink" class="hidden w-full h-full object-cover scale-105" id="drink-image" src="../../assets/matcha-strawberry.jpg"/>
-<video id="drink-video" class="absolute inset-0 w-full h-full object-cover scale-105 z-0" src="../../assets/strawberrys and cream.mp4" autoplay loop muted playsinline crossorigin="anonymous"></video>
+<video id="drink-video" class="absolute inset-0 w-full h-full object-cover scale-105 z-0" src="../../assets/strawberrys and cream.mp4" autoplay loop muted playsinline></video>
 <!-- Ambient Overlays -->
 <div class="absolute inset-0 ambient-overlay bg-gradient-to-r from-forest-velvet via-transparent to-transparent opacity-90 z-10" id="ambient-grad" style="background: linear-gradient(to right, #2D1B22 0%, transparent 100%);"></div>
 <div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent z-10"></div>
@@ -718,16 +716,18 @@
     function updateMedia(config, img, video) {
       if (config.video) {
         // Hide Image, Show Video
+        img.style.display = 'none';
         img.classList.add('hidden');
+        video.style.display = 'block';
         video.classList.remove('hidden');
         
-        // Force critical properties to bypass Safari and sandboxed iframe CORS/autoplay limits
+        // Force critical properties to bypass Safari and sandboxed iframe autoplay limits
         video.muted = true;
         video.playsInline = true;
-        video.crossOrigin = "anonymous";
+        video.removeAttribute('crossorigin');
+        video.crossOrigin = null;
         video.setAttribute('muted', '');
         video.setAttribute('playsinline', '');
-        video.setAttribute('crossorigin', 'anonymous');
         
         // Resolve absolute URL to check if the source has actually changed, preventing reloads
         const newSrc = new URL(config.video, window.location.href).href;
@@ -763,8 +763,10 @@
         }
       } else {
         // Hide Video, Show Image
+        video.style.display = 'none';
         video.classList.add('hidden');
         video.pause();
+        img.style.display = 'block';
         img.classList.remove('hidden');
         img.src = config.img;
         
@@ -856,10 +858,12 @@
           currentDrinkTemp = 'hot'; // default to hot when selecting a new drink
           config = drink[currentDrinkTemp];
           
+          tempSwitch.style.display = 'flex';
           tempSwitch.classList.remove('hidden');
           tempSwitch.classList.add('flex');
           updateTempSwitchUI(currentDrinkTemp);
         } else {
+          tempSwitch.style.display = 'none';
           tempSwitch.classList.remove('flex');
           tempSwitch.classList.add('hidden');
         }
@@ -880,6 +884,7 @@
         updateMedia(config, img, video);
         
         // Reveal panel when selecting new drink
+        desc.style.display = 'flex';
         desc.classList.remove('panel-hidden');
         desc.style.opacity = '1';
         desc.style.transform = 'translateY(0)';
@@ -893,6 +898,7 @@
 
     function hidePanel() {
       const panel = document.getElementById('drink-description');
+      panel.style.display = 'none';
       panel.classList.add('panel-hidden');
       panel.style.opacity = '';
       panel.style.transform = '';
@@ -902,7 +908,8 @@
     function revealPanel() {
       if (panelManuallyClosed) return; // Stay hidden if the close button was explicitly clicked
       const panel = document.getElementById('drink-description');
-      if (panel.classList.contains('panel-hidden')) {
+      if (panel.classList.contains('panel-hidden') || panel.style.display === 'none') {
+        panel.style.display = 'flex';
         panel.classList.remove('panel-hidden');
         panel.style.opacity = '1';
         panel.style.transform = 'translateY(0)';

@@ -177,7 +177,7 @@ function compilePage(filePath) {
                               `  .material-symbols-outlined * {\n` +
                               `    font-family: 'Material Symbols Outlined' !important;\n` +
                               `  }\n` +
-                              `  .font-serif, h1, h2, .font-headline-xl, .font-headline-md, .font-headline-lg, .font-headline-xl-mobile {\n` +
+                              `  .font-serif, h1, .font-headline-xl, .font-headline-md, .font-headline-lg, .font-headline-xl-mobile {\n` +
                               `    font-family: 'Playfair Display', ui-serif, Georgia, Cambria, serif !important;\n` +
                               `  }\n` +
                               `</style>\n`;
