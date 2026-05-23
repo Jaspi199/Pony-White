@@ -110,6 +110,13 @@
       color: #000000 !important;
       box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
     }
+    .temp-btn-inactive {
+      color: rgba(255, 255, 255, 0.6) !important;
+      background-color: transparent !important;
+    }
+    .temp-btn-inactive:hover {
+      color: #ffffff !important;
+    }
     .transition-custom {
       transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
     }
@@ -779,14 +786,14 @@
       
       if (temp === 'hot') {
         btnHot.classList.add('temp-btn-active');
-        btnHot.classList.remove('text-marble-white/60');
+        btnHot.classList.remove('temp-btn-inactive');
         btnIced.classList.remove('temp-btn-active');
-        btnIced.classList.add('text-marble-white/60');
+        btnIced.classList.add('temp-btn-inactive');
       } else {
         btnHot.classList.remove('temp-btn-active');
-        btnHot.classList.add('text-marble-white/60');
+        btnHot.classList.add('temp-btn-inactive');
         btnIced.classList.add('temp-btn-active');
-        btnIced.classList.remove('text-marble-white/60');
+        btnIced.classList.remove('temp-btn-inactive');
       }
     }
 
