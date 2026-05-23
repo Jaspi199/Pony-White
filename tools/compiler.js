@@ -64,11 +64,7 @@ function processAssetPaths(html, useCDN) {
     let filename = parts[1];
     filename = filename.replace(/['"\)]+$/, '').trim();
 
-    let targetBase = useCDN ? CDN_BASE_URL : `/${LOCAL_ASSETS_PATH}`;
-    if (useCDN && filename.toLowerCase().endsWith('.mp4')) {
-      // Use GitHub Pages for video assets to support range requests & CORS on Safari/iOS
-      targetBase = `https://${CONFIG.githubUsername}.github.io/${CONFIG.githubRepo}/assets/`;
-    }
+    const targetBase = useCDN ? CDN_BASE_URL : `/${LOCAL_ASSETS_PATH}`;
     
     // URL-encode spaces in filename (e.g. "strawberrys and cream.mp4" -> "strawberrys%20and%20cream.mp4")
     const encodedFilename = filename.replace(/\s/g, '%20');
