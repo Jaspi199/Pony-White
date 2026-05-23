@@ -39,6 +39,10 @@ const PAGE_MAPPINGS = [
   {
     dirName: 'signature_drinks_sharp_content_on_atmospheric_background',
     fileName: 'drinks.html'
+  },
+  {
+    dirName: 'pony_white_smoothies_juices',
+    fileName: 'smoothies-juices.html'
   }
 ];
 
