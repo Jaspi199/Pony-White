@@ -36,6 +36,15 @@
             border-image: linear-gradient(135deg, #735c00, #e9c349, #735c00) 1;
         }
 
+        /* Force body and html to expand edge-to-edge and strip default browser iframe margins */
+        body, html {
+            margin: 0 !important;
+            padding: 0 !important;
+            width: 100% !important;
+            background-color: #001710 !important;
+            overflow-x: hidden !important;
+        }
+
         /* Rigidly lock the showcase height across all viewport sizes to prevent iframe-resizer feedback loops and force dark background */
         .smoothies-juices-showcase {
             background-color: #001710 !important;
@@ -46,6 +55,9 @@
             display: flex !important;
             flex-direction: column !important;
             justify-content: space-between !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            margin: 0 !important;
         }
         @media (min-width: 640px) {
             .smoothies-juices-showcase {
