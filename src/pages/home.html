@@ -46,6 +46,36 @@
         .gold-border {
             border-image: linear-gradient(135deg, #735c00, #e9c349, #735c00) 1;
         }
+        .gold-reflection {
+            background: linear-gradient(135deg, #B8860B 0%, #D4AF37 30%, #F1D38E 50%, #D4AF37 70%, #B8860B 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .gold-reflection::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent 45%, rgba(212, 175, 55, 0.3) 50%, transparent 55%);
+            animation: shine 6s infinite linear;
+        }
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%); }
+            100% { transform: translateX(100%) translateY(100%); }
+        }
+        .gold-button {
+            background: linear-gradient(to bottom, #D4AF37, #B8860B);
+            color: #001a13;
+            text-shadow: 0 0.5px 0 rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+        }
+        .gold-button:hover {
+            background: linear-gradient(to bottom, #E5C158, #D4AF37);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(184, 134, 11, 0.2);
+        }
     </style>
 
 <!-- Top Navigation Bar -->
@@ -306,6 +336,81 @@
     </a>
   </div>
 </section>
+
+<!-- E-Gift Cards Section -->
+<section class="py-24 bg-primary text-on-primary overflow-hidden relative border-t border-outline-variant/10">
+  <div class="max-w-container-max mx-auto px-gutter">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <!-- Left text content -->
+      <div class="lg:col-span-7">
+        <span class="font-label-sm uppercase tracking-widest mb-4 block gold-gradient-text font-bold">Pony White E-Gift Cards</span>
+        <h2 class="font-headline-xl text-headline-xl text-white mb-6 font-bold">Give the Gift of Exceptional Taste</h2>
+        <p class="font-body-lg text-body-lg text-on-primary/80 mb-8 leading-relaxed max-w-xl">
+          Delight your friends, family, or colleagues with the premium neighborhood sanctuary experience of Pony White. Perfect for instant gifting, customizable, and redeemable both online for digital pickup orders and in-store at our Gertrude St counter.
+        </p>
+        
+        <!-- Features List -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-10">
+          <div class="flex items-start gap-3">
+            <span class="material-symbols-outlined text-secondary text-2xl flex-shrink-0">check_circle</span>
+            <div>
+              <h4 class="font-headline-md text-lg text-white font-bold mb-1">Instant Digital Delivery</h4>
+              <p class="text-sm text-on-primary/60">Delivered directly via email or SMS on your scheduled date.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="material-symbols-outlined text-secondary text-2xl flex-shrink-0">check_circle</span>
+            <div>
+              <h4 class="font-headline-md text-lg text-white font-bold mb-1">Flexible Value</h4>
+              <p class="text-sm text-on-primary/60">Choose any amount starting from $10 up to $500.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-4 items-center justify-start">
+          <a href="https://pony-white-cafe.square.site/s/gift-cards" target="_blank" class="gold-gradient-bg text-on-secondary-fixed px-8 py-4 rounded-full font-label-md hover:brightness-110 transition-all font-bold shadow-md inline-block text-center no-underline flex-1 sm:flex-none">
+            Purchase E-Gift Card
+          </a>
+          <a href="gift-cards.html" class="bg-transparent text-white border-2 border-secondary-fixed-dim px-8 py-4 rounded-full font-label-md hover:bg-secondary-fixed/10 transition-all duration-300 text-center no-underline flex-1 sm:flex-none">
+            Learn How It Works
+          </a>
+        </div>
+      </div>
+
+      <!-- Right interactive card graphic -->
+      <div class="lg:col-span-5 flex justify-center lg:justify-end relative">
+        <!-- Ambient backing glow -->
+        <div class="absolute w-72 h-72 rounded-full bg-secondary/10 blur-3xl -z-10"></div>
+        
+        <!-- Premium E-Gift Card Mockup -->
+        <div class="aspect-[1.586/1] w-full max-w-sm rounded-xl gold-reflection shadow-2xl p-6 flex flex-col justify-between relative z-10 group cursor-default transition-all duration-500 hover:scale-[1.03] border border-white/10 hover:border-white/20">
+          <div class="flex justify-between items-start">
+            <div class="flex flex-col">
+              <span class="text-[10px] font-label-sm uppercase tracking-widest text-[#00261b]/60 font-semibold">Pony White</span>
+              <span class="text-xs font-bold font-body-md text-[#00261b]/40">E-GIFT CARD</span>
+            </div>
+            <!-- Small brand mark -->
+            <div class="w-8 h-8 rounded-full bg-[#00261b]/10 backdrop-blur-sm border border-[#00261b]/20 flex items-center justify-center">
+              <span class="material-symbols-outlined text-xs text-[#00261b]">restaurant_menu</span>
+            </div>
+          </div>
+          
+          <div class="flex justify-between items-end mt-12">
+            <div>
+              <p class="text-[8px] font-label-sm opacity-55 text-[#00261b] uppercase tracking-wider">Redeemable Online &amp; In-Store</p>
+              <p class="text-sm font-semibold tracking-wider font-label-sm text-[#00261b] mt-1">Gertrude St, Fitzroy</p>
+            </div>
+            <div class="text-right">
+              <p class="text-[8px] font-label-sm opacity-40 text-[#00261b] uppercase">Amount</p>
+              <p class="text-2xl font-bold font-headline-xl text-[#00261b]">$100</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- Location & Hours Section -->
 <section class="py-24">
 <div class="max-w-container-max mx-auto px-gutter">
