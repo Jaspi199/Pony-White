@@ -38,6 +38,11 @@
       width: 20px;
       background-color: rgba(255, 255, 255, 0.2);
     }
+    .temp-btn-active {
+      background-color: #ffffff !important;
+      color: #000000 !important;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
+    }
     .transition-custom {
       transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
     }
@@ -324,8 +329,10 @@
 </div>
 <!-- Side Panel Menu -->
 <aside class="sidebar-slide absolute left-0 top-0 h-full w-80 z-30 flex flex-col shrink-0">
-  <!-- Gradient Frosted Glass Backdrop -->
-  <div class="absolute inset-0 z-0 pointer-events-none" style="background: rgba(0, 0, 0, 0.15); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); -webkit-mask-image: linear-gradient(to right, black 50%, transparent 100%); mask-image: linear-gradient(to right, black 50%, transparent 100%);"></div>
+  <!-- Gradient Frosted Glass Backdrop (Separate mask from blur to fix Chrome rendering bug) -->
+  <div class="absolute inset-0 z-0 pointer-events-none overflow-hidden" style="-webkit-mask-image: linear-gradient(to right, black 40%, transparent 100%); mask-image: linear-gradient(to right, black 40%, transparent 100%);">
+    <div class="absolute inset-0" style="background: rgba(0, 0, 0, 0.15); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);"></div>
+  </div>
   
   <!-- Sidebar Content -->
   <div class="relative z-10 flex flex-col h-full p-12">
@@ -704,11 +711,15 @@
       const btnIced = document.getElementById('btn-temp-iced');
       
       if (temp === 'hot') {
-        btnHot.className = "px-5 py-1.5 rounded-full text-xs uppercase tracking-widest font-semibold transition-all duration-300 bg-white text-black shadow-md shadow-black/10";
-        btnIced.className = "px-5 py-1.5 rounded-full text-xs uppercase tracking-widest font-semibold transition-all duration-300 text-marble-white/60 hover:text-marble-white";
+        btnHot.classList.add('temp-btn-active');
+        btnHot.classList.remove('text-marble-white/60');
+        btnIced.classList.remove('temp-btn-active');
+        btnIced.classList.add('text-marble-white/60');
       } else {
-        btnHot.className = "px-5 py-1.5 rounded-full text-xs uppercase tracking-widest font-semibold transition-all duration-300 text-marble-white/60 hover:text-marble-white";
-        btnIced.className = "px-5 py-1.5 rounded-full text-xs uppercase tracking-widest font-semibold transition-all duration-300 bg-white text-black shadow-md shadow-black/10";
+        btnHot.classList.remove('temp-btn-active');
+        btnHot.classList.add('text-marble-white/60');
+        btnIced.classList.add('temp-btn-active');
+        btnIced.classList.remove('text-marble-white/60');
       }
     }
 
