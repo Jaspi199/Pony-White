@@ -350,8 +350,8 @@
     <script>
         async function copyEmbedCode(pageName, buttonElement) {
             try {
-                // Fetch the compiled, single-line file from /square_embeds/
-                const response = await fetch(`/square_embeds/${pageName}`);
+                // Fetch the compiled, single-line file from /square_embeds/ with a cache-buster
+                const response = await fetch(`/square_embeds/${pageName}?t=${Date.now()}`);
                 if (!response.ok) throw new Error('File not found');
                 const code = await response.text();
                 
