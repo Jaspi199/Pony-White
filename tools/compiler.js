@@ -64,7 +64,11 @@ function processAssetPaths(html, useCDN) {
     let filename = parts[1];
     filename = filename.replace(/['"\)]+$/, '').trim();
 
-    const targetBase = useCDN ? CDN_BASE_URL : `/${LOCAL_ASSETS_PATH}`;
+    let targetBase = useCDN ? CDN_BASE_URL : `/${LOCAL_ASSETS_PATH}`;
+    if (useCDN && filename.toLowerCase().endsWith('.mp4')) {
+      // Use GitHub Pages for video assets to support range requests & CORS on Safari/iOS
+      targetBase = `https://${CONFIG.githubUsername}.github.io/${CONFIG.githubRepo}/assets/`;
+    }
     
     // URL-encode spaces in filename (e.g. "strawberrys and cream.mp4" -> "strawberrys%20and%20cream.mp4")
     const encodedFilename = filename.replace(/\s/g, '%20');
@@ -159,21 +163,48 @@ function compilePage(filePath) {
       preserveMediaQueries: true,
       removeLinkTags: false
     });
-    
-    // Prepend robust font @imports at the beginning of the first <style> tag to guarantee rendering inside sandboxes
-    const fontImports = `\n  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');\n` +
-                        `  @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');\n`;
-    
-    inlinedHtml = inlinedHtml.replace(/<style[^>]*>/i, (match) => {
-      return `${match}${fontImports}`;
-    });
-  } else {
-    console.log(`  - No external stylesheets found to inline.`);
   }
+  
+  // Prepend robust font @imports and global typography resets inside a clean style block at the top of the content
+  const globalFontOverrides = `<style>\n` +
+                              `  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');\n` +
+                              `  @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');\n\n` +
+                              `  /* Global Typography resets to bypass sandboxed iframe font blocks */\n` +
+                              `  body, html, * {\n` +
+                              `    font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui, -apple-system, sans-serif !important;\n` +
+                              `  }\n` +
+                              `  .material-symbols-outlined,\n` +
+                              `  .material-symbols-outlined * {\n` +
+                              `    font-family: 'Material Symbols Outlined' !important;\n` +
+                              `  }\n` +
+                              `  .font-serif, h1, h2, .font-headline-xl, .font-headline-md, .font-headline-lg, .font-headline-xl-mobile {\n` +
+                              `    font-family: 'Playfair Display', ui-serif, Georgia, Cambria, serif !important;\n` +
+                              `  }\n` +
+                              `</style>\n`;
+                              
+  inlinedHtml = globalFontOverrides + inlinedHtml;
 
   // 2. Process image/asset paths
   console.log(`  - Processing asset paths (CDN: ${CONFIG.useCDN ? 'ENABLED' : 'DISABLED'})...`);
   let processedHtml = processAssetPaths(inlinedHtml, CONFIG.useCDN);
+  
+  // Inject dynamic script fonts loading to guarantee bypass of iframe sandboxing limits
+  const dynamicFontScript = `\n    // Dynamic Font Injection to bypass iframe sandboxing font blocks\n` +
+                            `    (function() {\n` +
+                            `      function injectFont(url) {\n` +
+                            `        if (document.querySelector('link[href="' + url + '"]')) return;\n` +
+                            `        const link = document.createElement('link');\n` +
+                            `        link.rel = 'stylesheet';\n` +
+                            `        link.href = url;\n` +
+                            `        document.head.appendChild(link);\n` +
+                            `      }\n` +
+                            `      injectFont('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');\n` +
+                            `      injectFont('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');\n` +
+                            `    })();\n`;
+                            
+  processedHtml = processedHtml.replace(/<script[^>]*>/i, (match) => {
+    return `${match}${dynamicFontScript}`;
+  });
   
   // 3. Minify HTML
   console.log(`  - Minifying output...`);

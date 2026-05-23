@@ -6,6 +6,27 @@
 <link rel="stylesheet" href="../styles/drinks.css">
 
 <style>
+    /* Global Typography overrides to force brand fonts inside sandboxes */
+    .signature-drinks-showcase, 
+    .signature-drinks-showcase * {
+      font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui, -apple-system, sans-serif !important;
+    }
+    .signature-drinks-showcase .font-serif, 
+    .signature-drinks-showcase h1, 
+    .signature-drinks-showcase h2,
+    .signature-drinks-showcase .material-symbols-outlined,
+    .signature-drinks-showcase .material-symbols-outlined * {
+      font-family: inherit !important;
+    }
+    .signature-drinks-showcase .material-symbols-outlined {
+      font-family: 'Material Symbols Outlined' !important;
+    }
+    .signature-drinks-showcase .font-serif, 
+    .signature-drinks-showcase h1, 
+    .signature-drinks-showcase h2 {
+      font-family: 'Playfair Display', ui-serif, Georgia, Cambria, serif !important;
+    }
+
     .gold-gradient-text {
       background: linear-gradient(135deg, #C5A059 20%, #D4AF37 50%, #C5A059 80%);
       -webkit-background-clip: text;
@@ -297,8 +318,8 @@
 </button>
 <!-- Full Screen Drink Background -->
 <div class="absolute inset-0 overflow-hidden flex justify-center items-center z-0">
-<img alt="Signature Drink" class="w-full h-full object-cover scale-105" id="drink-image" src="../../assets/matcha-strawberry.jpg"/>
-<video id="drink-video" class="hidden absolute inset-0 w-full h-full object-cover scale-105 z-0" autoplay loop muted playsinline></video>
+<img alt="Signature Drink" class="hidden w-full h-full object-cover scale-105" id="drink-image" src="../../assets/matcha-strawberry.jpg"/>
+<video id="drink-video" class="absolute inset-0 w-full h-full object-cover scale-105 z-0" src="../../assets/strawberrys and cream.mp4" autoplay loop muted playsinline crossorigin="anonymous"></video>
 <!-- Ambient Overlays -->
 <div class="absolute inset-0 ambient-overlay bg-gradient-to-r from-forest-velvet via-transparent to-transparent opacity-90 z-10" id="ambient-grad" style="background: linear-gradient(to right, #2D1B22 0%, transparent 100%);"></div>
 <div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent z-10"></div>
@@ -700,6 +721,14 @@
         img.classList.add('hidden');
         video.classList.remove('hidden');
         
+        // Force critical properties to bypass Safari and sandboxed iframe CORS/autoplay limits
+        video.muted = true;
+        video.playsInline = true;
+        video.crossOrigin = "anonymous";
+        video.setAttribute('muted', '');
+        video.setAttribute('playsinline', '');
+        video.setAttribute('crossorigin', 'anonymous');
+        
         // Resolve absolute URL to check if the source has actually changed, preventing reloads
         const newSrc = new URL(config.video, window.location.href).href;
         if (video.src !== newSrc) {
@@ -710,7 +739,28 @@
         // Animate Video In
         video.style.opacity = '1';
         video.style.transform = 'scale(1.05)';
-        video.play().catch(e => console.log('Autoplay blocked or video not ready:', e));
+        
+        // Robust canplay listener to play dynamically when enough content is buffered
+        const startPlayback = () => {
+          video.play().catch(e => {
+            console.log('Autoplay play() blocked, adding gesture listener fallback:', e);
+            // Dynamic click gesture playback fallback
+            const forcePlay = () => {
+              video.play().catch(err => console.log('Gesture play failed:', err));
+              document.removeEventListener('click', forcePlay);
+            };
+            document.addEventListener('click', forcePlay);
+          });
+        };
+        
+        if (video.readyState >= 2) {
+          startPlayback();
+        } else {
+          video.oncanplay = () => {
+            startPlayback();
+            video.oncanplay = null; // Clean up immediately
+          };
+        }
       } else {
         // Hide Video, Show Image
         video.classList.add('hidden');
@@ -876,8 +926,8 @@
       revealPanel();
     }
 
-    // Initialize
-    window.onload = () => {
+    // Initialize with robust SPA-ready mount handlers
+    function initDrinksShowcase() {
       toggleCategory('cat-matcha');
       
       // Initialize the default drink show state and play video smoothly on load
@@ -885,5 +935,11 @@
       if (firstItem) {
         showDrink('strawberries-cream-matcha', firstItem);
       }
+    }
+
+    if (document.readyState === 'complete' || document.readyState === 'interactive') {
+      initDrinksShowcase();
+    } else {
+      document.addEventListener('DOMContentLoaded', initDrinksShowcase);
     }
   </script>
