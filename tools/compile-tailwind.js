@@ -110,14 +110,14 @@ function extractTailwindConfig(rawHtml, pageName) {
   
   // Inject premium design typography pairing: Playfair Display + Plus Jakarta Sans
   configJs = configJs.replace(/"fontFamily"\s*:\s*\{[^}]*\}/g, `"fontFamily": {
-    "headline-xl-mobile": ["Playfair Display", "serif"],
-    "headline-xl": ["Playfair Display", "serif"],
-    "headline-md": ["Playfair Display", "serif"],
-    "headline-lg": ["Playfair Display", "serif"],
-    "body-md": ["Plus Jakarta Sans", "sans-serif"],
-    "body-lg": ["Plus Jakarta Sans", "sans-serif"],
-    "label-md": ["Plus Jakarta Sans", "sans-serif"],
-    "label-sm": ["Plus Jakarta Sans", "sans-serif"]
+    "headline-xl-mobile": ["'Playfair Display'", "serif"],
+    "headline-xl": ["'Playfair Display'", "serif"],
+    "headline-md": ["'Playfair Display'", "serif"],
+    "headline-lg": ["'Playfair Display'", "serif"],
+    "body-md": ["'Plus Jakarta Sans'", "sans-serif"],
+    "body-lg": ["'Plus Jakarta Sans'", "sans-serif"],
+    "label-md": ["'Plus Jakarta Sans'", "sans-serif"],
+    "label-sm": ["'Plus Jakarta Sans'", "sans-serif"]
   }`);
   
   return configJs;
@@ -186,7 +186,7 @@ function processPage(mapping) {
     `<link rel="preconnect" href="https://fonts.googleapis.com">\n` +
     `<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n` +
     `<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">\n` +
-    `<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>\n` +
+    `<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>\n` +
     `<link rel="stylesheet" href="../styles/${pageCssName}">\n\n`;
   const finalSourceHtml = headerSection + styleContent + '\n\n' + bodyContent;
   

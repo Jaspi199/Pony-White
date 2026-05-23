@@ -159,6 +159,14 @@ function compilePage(filePath) {
       preserveMediaQueries: true,
       removeLinkTags: false
     });
+    
+    // Prepend robust font @imports at the beginning of the first <style> tag to guarantee rendering inside sandboxes
+    const fontImports = `\n  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');\n` +
+                        `  @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');\n`;
+    
+    inlinedHtml = inlinedHtml.replace(/<style[^>]*>/i, (match) => {
+      return `${match}${fontImports}`;
+    });
   } else {
     console.log(`  - No external stylesheets found to inline.`);
   }
