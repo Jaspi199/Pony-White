@@ -144,6 +144,11 @@
       #mobile-menu-toggle {
         display: flex !important;
         position: absolute !important;
+        background: rgba(10, 15, 12, 0.3) !important;
+        backdrop-filter: blur(32px) !important;
+        -webkit-backdrop-filter: blur(32px) !important;
+        border: 1px solid rgba(255, 255, 255, 0.12) !important;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2) !important;
       }
       
       /* Mobile Sidebar Drawer Close Button */
@@ -172,9 +177,10 @@
       
       /* Solid dark glass backdrop for maximum sidebar legibility on small screens */
       aside.sidebar-slide > div.pointer-events-none {
-        background: rgba(10, 15, 12, 0.94) !important;
-        backdrop-filter: blur(40px) !important;
-        -webkit-backdrop-filter: blur(40px) !important;
+        background: rgba(10, 15, 12, 0.3) !important;
+        backdrop-filter: blur(32px) !important;
+        -webkit-backdrop-filter: blur(32px) !important;
+        border-right: 1px solid rgba(255, 255, 255, 0.12) !important;
         mask-image: none !important;
         -webkit-mask-image: none !important;
       }
@@ -325,7 +331,7 @@
 <!-- Mobile Collections Drawer Toggle Button -->
 <button id="mobile-menu-toggle" onclick="toggleMobileMenu(event)" class="hidden fixed top-6 left-6 z-40 items-center gap-2 px-4 py-2.5 rounded-full bg-black/40 backdrop-blur-md border border-white/10 hover:bg-black/60 active:scale-95 transition-all duration-300">
   <span class="material-symbols-outlined text-white text-lg">menu</span>
-  <span class="text-white text-xs uppercase tracking-widest font-bold">Collections</span>
+  <span class="text-white text-xs uppercase tracking-widest font-bold">Signature Drinks</span>
 </button>
 <!-- Full Screen Drink Background -->
 <div class="absolute inset-0 overflow-hidden flex justify-center items-center z-0">
@@ -941,7 +947,10 @@
     // Toggles the mobile collection menu drawer
     function toggleMobileMenu(event) {
       if (event) event.stopPropagation();
-      document.body.classList.toggle('sidebar-open');
+      const isOpen = document.body.classList.toggle('sidebar-open');
+      if (isOpen && window.innerWidth < 768) {
+        hidePanel();
+      }
     }
 
     // Handles clicks on the immersive background
