@@ -22,7 +22,11 @@ const PAGE_MAPPINGS = [
   },
   {
     dirName: 'pony_white_retail_coffee_beans',
-    fileName: 'retail.html'
+    fileName: 'retail-top.html'
+  },
+  {
+    dirName: 'pony_white_retail_coffee_beans',
+    fileName: 'retail-bottom.html'
   },
   {
     dirName: 'careers_circular_logo_integration',
@@ -60,6 +64,18 @@ function extractBodyContent(rawHtml, pageName) {
   }
   
   let content = bodyMatch[1];
+  
+  // Custom splitting logic for split retail pages
+  if (pageName === 'retail-top.html') {
+    const parts = content.split(/<!--\s*Bottom\s+Code\s+Split\s*-->/i);
+    content = parts[0];
+    console.log(`  - Extracted TOP half of retail page`);
+  } else if (pageName === 'retail-bottom.html') {
+    const parts = content.split(/<!--\s*Bottom\s+Code\s+Split\s*-->/i);
+    content = parts[1] || '';
+    console.log(`  - Extracted BOTTOM half of retail page`);
+  }
+
   // 2. Strip navbar tag
   if (pageName !== 'drinks.html') {
     const navMatch = content.match(/<nav[^>]*>[^]*?<\/nav>/gi);
