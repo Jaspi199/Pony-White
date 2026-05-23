@@ -715,13 +715,15 @@
     // Unified media display helper to cleanly switch between video & image backgrounds
     function updateMedia(config, img, video) {
       if (config.video) {
-        // Hide Image, Show Video
-        img.style.display = 'none';
-        img.classList.add('hidden');
+        // Show both image (as fallback/underlay) and video
+        img.style.display = 'block';
+        img.classList.remove('hidden');
+        img.src = config.img;
+        
         video.style.display = 'block';
         video.classList.remove('hidden');
         
-        // Force critical properties to bypass Safari and sandboxed iframe autoplay limits
+        // Mute and playsinline to comply with autoplay rules
         video.muted = true;
         video.playsInline = true;
         video.removeAttribute('crossorigin');
@@ -729,48 +731,48 @@
         video.setAttribute('muted', '');
         video.setAttribute('playsinline', '');
         
-        // Resolve absolute URL to check if the source has actually changed, preventing reloads
+        // Force load the new video source
         const newSrc = new URL(config.video, window.location.href).href;
         if (video.src !== newSrc) {
           video.src = config.video;
           video.load();
         }
         
-        // Animate Video In
-        video.style.opacity = '1';
+        // Keep video opacity 0 until it actually starts playing, showing the image fallback underneath
+        video.style.opacity = '0';
         video.style.transform = 'scale(1.05)';
         
-        // Robust canplay listener to play dynamically when enough content is buffered
-        const startPlayback = () => {
-          video.play().catch(e => {
-            console.log('Autoplay play() blocked, adding gesture listener fallback:', e);
-            // Dynamic click gesture playback fallback
+        // Attempt immediate playback to trigger active streaming and detect blocks
+        const playPromise = video.play();
+        if (playPromise !== undefined) {
+          playPromise.then(() => {
+            // Success! Fade in the video beautifully
+            video.style.opacity = '1';
+          }).catch(error => {
+            console.log('Autoplay blocked by Chrome/sandboxing:', error);
+            // Autoplay is blocked. Keep video at opacity 0 (showing high-res image fallback).
+            // Register a click gesture fallback on the entire document to play the video.
             const forcePlay = () => {
-              video.play().catch(err => console.log('Gesture play failed:', err));
+              video.play().then(() => {
+                video.style.opacity = '1';
+              }).catch(err => console.log('Gesture play failed:', err));
               document.removeEventListener('click', forcePlay);
+              document.removeEventListener('touchend', forcePlay);
             };
             document.addEventListener('click', forcePlay);
+            document.addEventListener('touchend', forcePlay);
           });
-        };
-        
-        if (video.readyState >= 2) {
-          startPlayback();
-        } else {
-          video.oncanplay = () => {
-            startPlayback();
-            video.oncanplay = null; // Clean up immediately
-          };
         }
       } else {
         // Hide Video, Show Image
         video.style.display = 'none';
         video.classList.add('hidden');
+        video.style.opacity = '0';
         video.pause();
+        
         img.style.display = 'block';
         img.classList.remove('hidden');
         img.src = config.img;
-        
-        // Animate Image In
         img.style.opacity = '1';
         img.style.transform = 'scale(1.05)';
       }
