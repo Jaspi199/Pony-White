@@ -487,10 +487,9 @@
       
       const nextKey = drinkKeys[nextIndex];
       
-      // Find the corresponding navigation button
+      // Find the corresponding navigation button using stored data attribute
       const nextButton = Array.from(document.querySelectorAll('.drink-nav-item')).find(btn => {
-        const clickAttr = btn.getAttribute('onclick');
-        return clickAttr && clickAttr.includes(nextKey);
+        return btn.getAttribute('data-drink-key') === nextKey;
       });
       
       if (nextButton) {
@@ -518,8 +517,116 @@
     }
 
 
-    // Initialize with robust SPA-ready mount handlers
+    // Initialize with robust SPA-ready mount handlers and bind dynamic event listeners to bypass strict Content Security Policies (CSP)
     function initDrinksShowcase() {
+      // 1. Dynamic event binding for drink navigation items
+      document.querySelectorAll('.drink-nav-item').forEach(btn => {
+        const onclickAttr = btn.getAttribute('onclick');
+        if (onclickAttr) {
+          const match = onclickAttr.match(/showDrink\('([^']+)'/);
+          if (match) {
+            const key = match[1];
+            btn.setAttribute('data-drink-key', key);
+            btn.addEventListener('click', (e) => {
+              e.preventDefault();
+              showDrink(key, btn);
+            });
+          }
+          btn.removeAttribute('onclick');
+        }
+      });
+
+      // 2. Dynamic event binding for category toggles
+      document.querySelectorAll('.category-group').forEach(group => {
+        const groupId = group.id;
+        const headerButton = group.querySelector('button');
+        if (headerButton) {
+          headerButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            toggleCategory(groupId);
+          });
+          headerButton.removeAttribute('onclick');
+        }
+        group.addEventListener('mouseenter', () => {
+          hoverCategory(groupId);
+        });
+        group.removeAttribute('onmouseenter');
+      });
+
+      // 3. Mobile menu toggle and drawer close buttons
+      const mobileToggle = document.getElementById('mobile-menu-toggle');
+      if (mobileToggle) {
+        mobileToggle.addEventListener('click', (e) => {
+          toggleMobileMenu(e);
+        });
+        mobileToggle.removeAttribute('onclick');
+      }
+      const mobileClose = document.getElementById('mobile-menu-close');
+      if (mobileClose) {
+        mobileClose.addEventListener('click', (e) => {
+          toggleMobileMenu(e);
+        });
+        mobileClose.removeAttribute('onclick');
+      }
+
+      // 4. Panel close button
+      const panelClose = document.getElementById('panel-close-btn');
+      if (panelClose) {
+        panelClose.addEventListener('click', (e) => {
+          e.preventDefault();
+          hidePanel();
+        });
+        panelClose.removeAttribute('onclick');
+      }
+
+      // 5. Navigate drinks (previous / next)
+      const prevBtn = document.querySelector('button[onclick*="navigateDrink(-1)"]');
+      if (prevBtn) {
+        prevBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          navigateDrink(-1);
+        });
+        prevBtn.removeAttribute('onclick');
+      }
+      const nextBtn = document.querySelector('button[onclick*="navigateDrink(1)"]');
+      if (nextBtn) {
+        nextBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          navigateDrink(1);
+        });
+        nextBtn.removeAttribute('onclick');
+      }
+
+      // 6. Temperature switch buttons
+      const btnTempHot = document.getElementById('btn-temp-hot');
+      if (btnTempHot) {
+        btnTempHot.addEventListener('click', (e) => {
+          e.preventDefault();
+          setDrinkTemp('hot');
+        });
+        btnTempHot.removeAttribute('onclick');
+      }
+      const btnTempIced = document.getElementById('btn-temp-iced');
+      if (btnTempIced) {
+        btnTempIced.addEventListener('click', (e) => {
+          e.preventDefault();
+          setDrinkTemp('iced');
+        });
+        btnTempIced.removeAttribute('onclick');
+      }
+
+      // 7. Immersive background click
+      const mainShowcase = document.querySelector('.drink-reveal-trigger');
+      if (mainShowcase) {
+        mainShowcase.addEventListener('click', (e) => {
+          handleBackgroundClick(e);
+        });
+        mainShowcase.removeAttribute('onclick');
+      }
+
+      // Open default category on load
       toggleCategory('cat-matcha');
       
       // Initialize the default drink show state and play video smoothly on load
