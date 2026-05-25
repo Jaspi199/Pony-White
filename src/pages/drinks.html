@@ -374,10 +374,6 @@
             <span class="nav-line inactive-nav-line h-px transition-custom group-hover:w-10"></span>
             <span class="text-marble-white text-base tracking-wide font-light transition-custom">Banoffee Matcha</span>
           </button>
-          <button class="drink-nav-item group flex items-center gap-4 text-left transition-custom opacity-50 hover:opacity-100" onclick="showDrink('wild-berry-matcha', this)">
-            <span class="nav-line inactive-nav-line h-px transition-custom group-hover:w-10"></span>
-            <span class="text-marble-white text-base tracking-wide font-light transition-custom">Wild Berry Matcha</span>
-          </button>
           <button class="drink-nav-item group flex items-center gap-4 text-left transition-custom opacity-50 hover:opacity-100" onclick="showDrink('iced-rose-matcha', this)">
             <span class="nav-line inactive-nav-line h-px transition-custom group-hover:w-10"></span>
             <span class="text-marble-white text-base tracking-wide font-light transition-custom">Iced Rose Matcha</span>
@@ -402,10 +398,6 @@
           <button class="drink-nav-item group flex items-center gap-4 text-left transition-custom opacity-50 hover:opacity-100" onclick="showDrink('banoffee-coffee', this)">
             <span class="nav-line inactive-nav-line h-px transition-custom group-hover:w-10"></span>
             <span class="text-marble-white text-base tracking-wide font-light transition-custom">Banoffee Coffee</span>
-          </button>
-          <button class="drink-nav-item group flex items-center gap-4 text-left transition-custom opacity-50 hover:opacity-100" onclick="showDrink('wild-berry-coffee', this)">
-            <span class="nav-line inactive-nav-line h-px transition-custom group-hover:w-10"></span>
-            <span class="text-marble-white text-base tracking-wide font-light transition-custom">Wild Berry Coffee</span>
           </button>
           <button class="drink-nav-item group flex items-center gap-4 text-left transition-custom opacity-50 hover:opacity-100" onclick="showDrink('iced-rose-coffee', this)">
             <span class="nav-line inactive-nav-line h-px transition-custom group-hover:w-10"></span>
@@ -517,10 +509,10 @@
       </div>
       <!-- Tiny Frosted Nav Arrows -->
       <div class="flex items-center gap-2">
-        <button onclick="navigateDrink(-1)" class="w-8 h-8 rounded-full flex items-center justify-center border border-white/10 bg-white/[0.05] hover:bg-white/[0.12] hover:border-white/30 active:scale-95 transition-all text-marble-white/70 hover:text-marble-white" title="Previous Drink" style="cursor: pointer;">
+        <button id="btn-prev-drink" onclick="navigateDrink(-1)" class="w-8 h-8 rounded-full flex items-center justify-center border border-white/10 bg-white/[0.05] hover:bg-white/[0.12] hover:border-white/30 active:scale-95 transition-all text-marble-white/70 hover:text-marble-white" title="Previous Drink" style="cursor: pointer;">
           <span class="material-symbols-outlined text-sm pointer-events-none" style="font-size: 14px !important;">arrow_back_ios_new</span>
         </button>
-        <button onclick="navigateDrink(1)" class="w-8 h-8 rounded-full flex items-center justify-center border border-white/10 bg-white/[0.05] hover:bg-white/[0.12] hover:border-white/30 active:scale-95 transition-all text-marble-white/70 hover:text-marble-white" title="Next Drink" style="cursor: pointer;">
+        <button id="btn-next-drink" onclick="navigateDrink(1)" class="w-8 h-8 rounded-full flex items-center justify-center border border-white/10 bg-white/[0.05] hover:bg-white/[0.12] hover:border-white/30 active:scale-95 transition-all text-marble-white/70 hover:text-marble-white" title="Next Drink" style="cursor: pointer;">
           <span class="material-symbols-outlined text-sm pointer-events-none" style="font-size: 14px !important;">arrow_forward_ios</span>
         </button>
       </div>
@@ -551,13 +543,6 @@
         video: '../../assets/bannoffee matcha.mp4',
         price: '$10.00',
         ambient: '#2C2B1B'
-      },
-      'wild-berry-matcha': {
-        title: 'Wild Berry Matcha',
-        text: 'Mixed berry jam with wild forest berry ice cream and premium ceremonial matcha.',
-        img: '../../assets/layered-smoothie.jpg',
-        price: '$9.50',
-        ambient: '#2A1F26'
       },
       'iced-rose-matcha': {
         title: 'Iced Rose Matcha',
@@ -590,13 +575,6 @@
         video: '../../assets/banoffee_coffeemp_.mp4',
         price: '$10.00',
         ambient: '#3A2E1D'
-      },
-      'wild-berry-coffee': {
-        title: 'Wild Berry Coffee',
-        text: 'Mixed berry jam with wild forest berry ice cream and a rich double shot of espresso.',
-        img: '../../assets/layered-smoothie.jpg',
-        price: '$9.50',
-        ambient: '#331C22'
       },
       'iced-rose-coffee': {
         title: 'Iced Rose Coffee',
@@ -644,6 +622,7 @@
           title: 'Hazelnut Hot Chocolate',
           text: 'Our signature rich chocolate infused with sweet roasted hazelnut syrup. Warm, velvety, and deeply comforting.',
           img: '../../assets/coconut-iced-latte.jpg',
+          video: '../../assets/hazelnut hot chocolate.mp4',
           price: '$6.00',
           ambient: '#301F18'
         },
@@ -1103,7 +1082,7 @@
       }
 
       // 5. Navigate drinks (previous / next)
-      const prevBtn = document.querySelector('button[onclick*="navigateDrink(-1)"]');
+      const prevBtn = document.getElementById('btn-prev-drink');
       if (prevBtn) {
         prevBtn.addEventListener('click', (e) => {
           e.preventDefault();
@@ -1112,7 +1091,7 @@
         });
         prevBtn.removeAttribute('onclick');
       }
-      const nextBtn = document.querySelector('button[onclick*="navigateDrink(1)"]');
+      const nextBtn = document.getElementById('btn-next-drink');
       if (nextBtn) {
         nextBtn.addEventListener('click', (e) => {
           e.preventDefault();
