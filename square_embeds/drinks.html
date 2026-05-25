@@ -237,10 +237,11 @@
     // Unified media display helper to cleanly switch between video & image backgrounds
     function updateMedia(config, img, video) {
       if (config.video) {
-        // Show both image (as fallback/underlay) and video
-        img.style.display = 'block';
-        img.classList.remove('hidden');
-        img.src = config.img;
+        // Hide image by default when a video is present to avoid flashing underlay
+        img.style.display = 'none';
+        img.classList.add('hidden');
+        img.style.opacity = '0';
+        img.src = '';
         
         video.style.display = 'block';
         video.classList.remove('hidden');
@@ -260,7 +261,7 @@
           video.load();
         }
         
-        // Keep video opacity 0 until it actually starts playing, showing the image fallback underneath
+        // Keep video opacity 0 until it actually starts playing
         video.style.opacity = '0';
         video.style.transform = 'scale(1.05)';
         
@@ -272,11 +273,23 @@
             video.style.opacity = '1';
           }).catch(error => {
             console.log('Autoplay blocked by Chrome/sandboxing:', error);
-            // Autoplay is blocked. Keep video at opacity 0 (showing high-res image fallback).
+            // Autoplay is blocked. Reveal the high-res image fallback.
+            img.src = config.img;
+            img.style.display = 'block';
+            img.classList.remove('hidden');
+            img.style.opacity = '1';
+            img.style.transform = 'scale(1.05)';
+            
             // Register a click gesture fallback on the entire document to play the video.
             const forcePlay = () => {
               video.play().then(() => {
                 video.style.opacity = '1';
+                // Hide image fallback once video starts playing
+                img.style.opacity = '0';
+                setTimeout(() => {
+                  img.style.display = 'none';
+                  img.classList.add('hidden');
+                }, 500);
               }).catch(err => console.log('Gesture play failed:', err));
               document.removeEventListener('click', forcePlay);
               document.removeEventListener('touchend', forcePlay);
@@ -319,8 +332,13 @@
       // Coordinated slide/fade transitions for details
       desc.style.opacity = '0';
       desc.style.transform = 'translateY(15px)'; // smaller slide offset for quick transition
-      img.style.opacity = '0.5'; // partial fade for seamless image change
-      video.style.opacity = '0.5';
+      if (config.video) {
+        img.style.opacity = '0';
+        video.style.opacity = '0.5';
+      } else {
+        img.style.opacity = '0.5';
+        video.style.opacity = '0';
+      }
       
       setTimeout(() => {
         // Update text & price
