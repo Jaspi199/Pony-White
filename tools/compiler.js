@@ -150,35 +150,29 @@ function compilePage(filePath) {
     html = html.replace(tag, '');
   });
   
-  // Inline the compiled styles using Juice
-  let inlinedHtml = html;
-  if (combinedCss.trim().length > 0) {
-    console.log(`  - Inlining combined CSS styles...`);
-    inlinedHtml = juice.inlineContent(html, combinedCss, {
-      removeStyleTags: true,
-      preserveMediaQueries: true,
-      removeLinkTags: false
-    });
-  }
-  
-  // Prepend robust font @imports and global typography resets inside a clean style block at the top of the content
-  const globalFontOverrides = `<style>\n` +
-                              `  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');\n` +
-                              `  @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');\n\n` +
-                              `  /* Global Typography resets to bypass sandboxed iframe font blocks */\n` +
-                              `  body, html, * {\n` +
-                              `    font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui, -apple-system, sans-serif !important;\n` +
-                              `  }\n` +
-                              `  .material-symbols-outlined,\n` +
-                              `  .material-symbols-outlined * {\n` +
-                              `    font-family: 'Material Symbols Outlined' !important;\n` +
-                              `  }\n` +
-                              `  .font-serif, h1, .font-headline-xl, .font-headline-md, .font-headline-lg, .font-headline-xl-mobile {\n` +
-                              `    font-family: 'Playfair Display', ui-serif, Georgia, Cambria, serif !important;\n` +
-                              `  }\n` +
-                              `</style>\n`;
+  // Prepend robust font @imports, global typography resets, and compiled styles inside a clean style block at the top of the content.
+  // Placing combinedCss directly inside this block retains 100% of responsive design layouts (media queries),
+  // hover states, and animations natively, eliminating layout conflicts in sandboxed iframes.
+  const globalStyles = `<style>\n` +
+                       `  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');\n` +
+                       `  @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');\n\n` +
+                       `  /* Global Typography resets to bypass sandboxed iframe font blocks */\n` +
+                       `  body, html, * {\n` +
+                       `    font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui, -apple-system, sans-serif !important;\n` +
+                       `  }\n` +
+                       `  .material-symbols-outlined,\n` +
+                       `  .material-symbols-outlined * {\n` +
+                       `    font-family: 'Material Symbols Outlined' !important;\n` +
+                       `  }\n` +
+                       `  .font-serif, h1, .font-headline-xl, .font-headline-md, .font-headline-lg, .font-headline-xl-mobile {\n` +
+                       `    font-family: 'Playfair Display', ui-serif, Georgia, Cambria, serif !important;\n` +
+                       `  }\n\n` +
+                       `  /* Compiled Page Styles */\n` +
+                       `  ${combinedCss}\n` +
+                       `</style>\n`;
                               
-  inlinedHtml = globalFontOverrides + inlinedHtml;
+  const viewportMeta = `<meta name="viewport" content="width=device-width, initial-scale=1.0">\n`;
+  const inlinedHtml = viewportMeta + globalStyles + html;
 
   // 2. Process image/asset paths
   console.log(`  - Processing asset paths (CDN: ${CONFIG.useCDN ? 'ENABLED' : 'DISABLED'})...`);
