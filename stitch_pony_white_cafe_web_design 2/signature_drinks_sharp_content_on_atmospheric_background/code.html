@@ -499,6 +499,10 @@
             <span class="nav-line inactive-nav-line h-px transition-custom group-hover:w-10"></span>
             <span class="text-marble-white text-base tracking-wide font-light transition-custom">Peach Cold Brew</span>
           </button>
+          <button class="drink-nav-item group flex items-center gap-4 text-left transition-custom opacity-50 hover:opacity-100" onclick="showDrink('mont-blanc', this)">
+            <span class="nav-line inactive-nav-line h-px transition-custom group-hover:w-10"></span>
+            <span class="text-marble-white text-base tracking-wide font-light transition-custom">Mont Blanc</span>
+          </button>
         </div>
       </div>
       <!-- Chocolate Category -->
@@ -718,12 +722,21 @@
           ambient: '#261812'
         }
       },
+      'mont-blanc': {
+        title: 'Mont Blanc',
+        text: 'Rich, smooth cold brew topped with our house-made velvety sweet cream, mimicking the snow-capped peak of Mont Blanc.',
+        img: '../../assets/layered-smoothie.jpg',
+        video: '../../assets/mont blanc.mp4',
+        price: '$9.50',
+        ambient: '#1E2530'
+      },
       'rose-latte': {
         hasTempToggle: true,
         hot: {
           title: 'Hot Rose Latte',
           text: 'Fragrant rose latte topped with delicate rose petals. A soothing, caffeine-free signature blend with no coffee or matcha added.',
           img: '../../assets/matcha-strawberry.jpg',
+          video: '../../assets/hot rose latte.mp4',
           price: '$6.00',
           ambient: '#3A1E27'
         },
@@ -761,6 +774,7 @@
           title: 'Hot Taro Latte',
           text: 'A velvety, smooth purple latte with a delicious, sweet and nutty taro root flavor. Comforting, cozy, and caffeine-free.',
           img: '../../assets/layered-smoothie.jpg',
+          video: '../../assets/hot taro.mp4',
           price: '$6.00',
           ambient: '#291B33'
         },
@@ -768,6 +782,7 @@
           title: 'Iced Taro Latte',
           text: 'Creamy and nutty taro latte poured over ice, finished with a premium scoop of vanilla ice cream. The perfect sweet, caffeine-free escape.',
           img: '../../assets/layered-smoothie.jpg',
+          video: '../../assets/iced taro.mp4',
           price: '$8.50',
           ambient: '#22162B'
         }
