@@ -24,6 +24,22 @@
         .text-shadow-subtle {
             text-shadow: 0 1px 2px rgba(0,0,0,0.1);
         }
+        .full-width-breakout {
+            width: 100vw !important;
+            left: 50% !important;
+            transform: translateX(-50%) !important;
+        }
+        #hero-video {
+            will-change: transform;
+            transform: translate3d(0, 0, 0);
+            backface-visibility: hidden;
+        }
+        /* Custom glass effect override for retail top theme */
+        .glass-effect {
+            background: rgba(250, 249, 247, 0.8) !important;
+            backdrop-filter: blur(12px) !important;
+            -webkit-backdrop-filter: blur(12px) !important;
+        }
     </style>
 
 <!-- Filters Section -->
@@ -189,5 +205,13 @@
                 delete this.dataset.loading;
             }, 2000);
         });
+    });
+
+    // Slow motion video playback speed adjustment (55% speed for seamless cinematic feel)
+    window.addEventListener('DOMContentLoaded', () => {
+        const video = document.getElementById('hero-video');
+        if (video) {
+            video.playbackRate = 0.55;
+        }
     });
 </script>

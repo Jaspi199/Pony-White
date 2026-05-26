@@ -90,8 +90,8 @@
 <!-- Top Navigation Bar -->
 
 <!-- Hero Section -->
-<section class="relative flex items-center justify-center py-24 md:py-36 overflow-hidden">
-<div class="absolute inset-y-0 z-0 full-width-breakout">
+<section class="relative flex items-center justify-center py-24 md:py-36 overflow-hidden full-width-breakout bg-primary">
+<div class="absolute inset-0 z-0">
 <img alt="Pony White Hero" class="w-full h-full object-cover" src="../../assets/hero-table.jpg"/>
 <div class="absolute inset-0 bg-gradient-to-b from-primary/20 via-transparent to-background"></div>
 </div>
@@ -508,60 +508,62 @@
 </section>
 
 <!-- Location & Hours Section -->
-<section class="py-24">
-  <div class="max-w-container-max mx-auto px-gutter">
-    <div class="relative flex flex-col md:block md:h-[600px] rounded-[2.5rem_6rem_2.5rem_6rem] overflow-hidden border border-secondary/15 ambient-float shadow-2xl bg-white">
-      <!-- Interactive Full-Container Map -->
-      <div class="w-full h-[350px] md:h-full md:absolute md:inset-0 md:z-0 bg-surface-container">
-        <iframe 
-          class="w-full h-full border-0 absolute inset-0 z-0" 
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3152.361517441865!2d144.9734992768565!3d-37.80496813353597!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642db7402bd21%3A0xc07a8286a512af9a!2s75%20Gertrude%20St%2C%20Fitzroy%20VIC%203065!5e0!3m2!1sen!2sau!4v1700000000000!5m2!1sen!2sau" 
-          allowfullscreen="" 
-          loading="lazy" 
-          referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
+<section class="py-24 overflow-hidden bg-surface">
+  <div class="max-w-container-max mx-auto px-gutter mb-16">
+    <div class="mb-12 text-center md:text-left">
+      <span class="font-label-sm uppercase tracking-widest block gold-gradient-text font-bold mb-2">Visit Us</span>
+      <h2 class="font-headline-xl text-headline-xl text-primary font-bold">Our Fitzroy Home</h2>
+    </div>
+    
+    <!-- 3-Column Information Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 border-t border-secondary/10 pt-8">
+      <!-- Our Home -->
+      <a href="https://www.google.com/maps/dir/?api=1&destination=75+Gertrude+St,+Fitzroy+VIC+3065+Australia" target="_blank" class="flex items-start gap-4 group no-underline hover:opacity-95 transition-opacity block">
+        <span class="material-symbols-outlined text-secondary mt-1 group-hover:scale-110 transition-transform">location_on</span>
+        <div>
+          <h4 class="font-headline-md text-headline-md mb-2 flex items-center gap-1.5 text-primary group-hover:text-secondary transition-colors">
+            Our Home
+            <span class="material-symbols-outlined text-xs opacity-0 group-hover:opacity-100 transition-opacity">open_in_new</span>
+          </h4>
+          <p class="text-body-lg text-on-surface-variant underline decoration-secondary/20 group-hover:decoration-secondary transition-all">75 Gertrude St, Fitzroy,<br/>VIC 3065, Australia</p>
+        </div>
+      </a>
+      
+      <!-- Opening Hours -->
+      <div class="flex items-start gap-4 group">
+        <span class="material-symbols-outlined text-secondary mt-1 group-hover:scale-110 transition-transform">schedule</span>
+        <div>
+          <h4 class="font-headline-md text-headline-md mb-2">Opening Hours</h4>
+          <p class="text-body-lg text-on-surface-variant font-body-md">
+            Weekdays: 7am — 3pm<br/>
+            Sat: 7:30am — 3:30pm<br/>
+            Sun: 8am — 3:30pm
+          </p>
+          <p class="text-label-sm gold-gradient-text font-bold mt-2">Kitchen closes at 2:30pm</p>
+        </div>
       </div>
       
-      <!-- Floating Details Card -->
-      <div class="w-full p-8 bg-white md:bg-transparent md:absolute md:top-8 md:left-8 md:bottom-8 md:z-10 md:w-[420px] md:glass-effect md:p-8 md:rounded-xl md:shadow-xl md:border md:border-white/20 flex flex-col justify-between overflow-y-auto max-h-[calc(100%-4rem)] md:max-h-none">
+      <!-- Say Hello -->
+      <div class="flex items-start gap-4 group">
+        <span class="material-symbols-outlined text-secondary mt-1 group-hover:scale-110 transition-transform">call</span>
         <div>
-          <h2 class="font-headline-lg text-headline-lg text-primary mb-8 border-l-4 border-secondary-fixed-dim pl-6">Visit Us</h2>
-          <div class="space-y-8">
-            <a href="https://www.google.com/maps/dir/?api=1&destination=75+Gertrude+St,+Fitzroy+VIC+3065+Australia" target="_blank" class="flex items-start gap-4 group no-underline hover:opacity-95 transition-opacity block">
-              <span class="material-symbols-outlined text-secondary mt-1 group-hover:scale-110 transition-transform">location_on</span>
-              <div>
-                <h4 class="font-headline-md text-headline-md mb-1 flex items-center gap-1.5 text-primary group-hover:text-secondary transition-colors">
-                  Our Home
-                  <span class="material-symbols-outlined text-xs opacity-0 group-hover:opacity-100 transition-opacity">open_in_new</span>
-                </h4>
-                <p class="text-body-lg text-on-surface-variant underline decoration-secondary/20 group-hover:decoration-secondary transition-all">75 Gertrude St, Fitzroy,<br/>VIC 3065, Australia</p>
-              </div>
-            </a>
-            
-            <div class="flex items-start gap-4 group">
-              <span class="material-symbols-outlined text-secondary mt-1 group-hover:scale-110 transition-transform">schedule</span>
-              <div>
-                <h4 class="font-headline-md text-headline-md mb-1">Opening Hours</h4>
-                <p class="text-body-lg text-on-surface-variant font-body-md">
-                  Weekdays: 7am — 3pm<br/>
-                  Sat: 7:30am — 3:30pm<br/>
-                  Sun: 8am — 3:30pm
-                </p>
-                <p class="text-label-sm gold-gradient-text font-bold mt-2">Kitchen closes at 2:30pm</p>
-              </div>
-            </div>
-            
-            <div class="flex items-start gap-4 group">
-              <span class="material-symbols-outlined text-secondary mt-1 group-hover:scale-110 transition-transform">call</span>
-              <div>
-                <h4 class="font-headline-md text-headline-md mb-1">Say Hello</h4>
-                <p class="text-body-lg text-on-surface-variant">hello@ponywhite.com.au</p>
-              </div>
-            </div>
-          </div>
+          <h4 class="font-headline-md text-headline-md mb-2">Say Hello</h4>
+          <p class="text-body-lg text-on-surface-variant mb-1">hello@ponywhite.com.au</p>
+          <p class="text-sm text-on-surface-variant/60 font-body-md">Feel free to drop us a line or call in-cafe for queries.</p>
         </div>
       </div>
     </div>
+  </div>
+
+  <!-- Full-Width Map Embed -->
+  <div class="w-full h-[350px] md:h-[450px] lg:h-[550px] bg-surface-container relative full-width-breakout border-t border-b border-outline-variant/10 shadow-md">
+    <iframe 
+      class="w-full h-full border-0 absolute inset-0 z-10" 
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3152.361517441865!2d144.9734992768565!3d-37.80496813353597!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642db7402bd21%3A0xc07a8286a512af9a!2s75%20Gertrude%20St%2C%20Fitzroy%20VIC%203065!5e0!3m2!1sen!2sau!4v1700000000000!5m2!1sen!2sau" 
+      allowfullscreen="" 
+      loading="lazy" 
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
   </div>
 </section>
 <!-- Footer -->
