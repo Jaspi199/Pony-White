@@ -78,16 +78,9 @@
             transform: translateY(-1px);
             box-shadow: 0 4px 12px rgba(184, 134, 11, 0.2);
         }
-        @media (min-width: 1024px) {
-            .hero-breakout {
-                width: 100vw !important;
-                position: relative !important;
-                left: 50% !important;
-                right: 50% !important;
-                margin-left: -50vw !important;
-                margin-right: -50vw !important;
-                max-width: 100vw !important;
-            }
+        .review-breakout {
+            box-shadow: 0 0 0 100vmax rgba(255, 224, 136, 0.3) !important;
+            clip-path: inset(0 -100vmax) !important;
         }
     </style>
 <script id="tailwind-config">
@@ -203,7 +196,7 @@
 </div>
 </nav>
 <!-- Hero Section -->
-<section class="relative flex items-center justify-center py-24 md:py-36 overflow-hidden hero-breakout">
+<section class="relative flex items-center justify-center py-24 md:py-36 overflow-hidden">
 <div class="absolute inset-0 z-0">
 <img alt="Pony White Hero" class="w-full h-full object-cover" src="../../assets/hero-table.jpg"/>
 <div class="absolute inset-0 bg-gradient-to-b from-primary/20 via-transparent to-background"></div>
@@ -459,7 +452,7 @@
 </div>
 </section>
 <!-- Review Section -->
-<section class="py-24 bg-secondary-fixed/30 relative">
+<section class="py-24 bg-secondary-fixed/30 relative review-breakout">
 <div class="absolute inset-0 gold-gradient-bg opacity-5 pointer-events-none"></div>
 <div class="max-w-container-max mx-auto px-gutter text-center relative z-10">
 <div class="mb-10 inline-flex items-center gap-1 text-secondary">
@@ -623,8 +616,8 @@
 <!-- Location & Hours Section -->
 <section class="py-24">
 <div class="max-w-container-max mx-auto px-gutter">
-<div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-<div class="bg-surface-container rounded-xl overflow-hidden h-[450px] ambient-float border border-outline-variant/30 relative">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+<div class="lg:col-span-7 bg-surface-container rounded-xl overflow-hidden h-[350px] md:h-[500px] lg:h-[550px] ambient-float border border-outline-variant/30 relative">
 <iframe 
   class="w-full h-full border-0 absolute inset-0 z-10" 
   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3152.361517441865!2d144.9734992768565!3d-37.80496813353597!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642db7402bd21%3A0xc07a8286a512af9a!2s75%20Gertrude%20St%2C%20Fitzroy%20VIC%203065!5e0!3m2!1sen!2sau!4v1700000000000!5m2!1sen!2sau" 
@@ -633,7 +626,7 @@
   referrerpolicy="no-referrer-when-downgrade">
 </iframe>
 </div>
-<div class="p-8 md:p-0">
+<div class="lg:col-span-5 p-8 lg:p-0">
 <h2 class="font-headline-lg text-headline-lg text-primary mb-8 border-l-4 border-secondary-fixed-dim pl-6">Visit Us</h2>
 <div class="space-y-8">
 <a href="https://www.google.com/maps/dir/?api=1&destination=75+Gertrude+St,+Fitzroy+VIC+3065+Australia" target="_blank" class="flex items-start gap-4 group no-underline hover:opacity-95 transition-opacity block">

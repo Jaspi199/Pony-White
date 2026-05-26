@@ -76,23 +76,16 @@
             transform: translateY(-1px);
             box-shadow: 0 4px 12px rgba(184, 134, 11, 0.2);
         }
-        @media (min-width: 1024px) {
-            .hero-breakout {
-                width: 100vw !important;
-                position: relative !important;
-                left: 50% !important;
-                right: 50% !important;
-                margin-left: -50vw !important;
-                margin-right: -50vw !important;
-                max-width: 100vw !important;
-            }
+        .review-breakout {
+            box-shadow: 0 0 0 100vmax rgba(255, 224, 136, 0.3) !important;
+            clip-path: inset(0 -100vmax) !important;
         }
     </style>
 
 <!-- Top Navigation Bar -->
 
 <!-- Hero Section -->
-<section class="relative flex items-center justify-center py-24 md:py-36 overflow-hidden hero-breakout">
+<section class="relative flex items-center justify-center py-24 md:py-36 overflow-hidden">
 <div class="absolute inset-0 z-0">
 <img alt="Pony White Hero" class="w-full h-full object-cover" src="../../assets/hero-table.jpg"/>
 <div class="absolute inset-0 bg-gradient-to-b from-primary/20 via-transparent to-background"></div>
@@ -348,7 +341,7 @@
 </div>
 </section>
 <!-- Review Section -->
-<section class="py-24 bg-secondary-fixed/30 relative">
+<section class="py-24 bg-secondary-fixed/30 relative review-breakout">
 <div class="absolute inset-0 gold-gradient-bg opacity-5 pointer-events-none"></div>
 <div class="max-w-container-max mx-auto px-gutter text-center relative z-10">
 <div class="mb-10 inline-flex items-center gap-1 text-secondary">
