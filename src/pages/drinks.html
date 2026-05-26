@@ -738,581 +738,469 @@
     let panelManuallyClosed = false;
 
     function hoverCategory(id) {
-      try {
-        const el = document.getElementById(id);
-        if (!el) return;
-        if (!el.classList.contains('category-open')) {
-          el.classList.add('category-open');
-          const content = el.querySelector('.category-content');
-          if (content) {
-            content.style.maxHeight = content.scrollHeight + 'px';
-          }
+      const el = document.getElementById(id);
+      if (!el.classList.contains('category-open')) {
+        el.classList.add('category-open');
+        const content = el.querySelector('.category-content');
+        if (content) {
+          content.style.maxHeight = content.scrollHeight + 'px';
         }
-      } catch (err) {
-        console.error('Error in hoverCategory:', err);
       }
     }
 
     function toggleCategory(id) {
-      try {
-        const el = document.getElementById(id);
-        if (!el) return;
-        const content = el.querySelector('.category-content');
-        if (el.classList.contains('category-open')) {
-          el.classList.remove('category-open');
-          if (content) {
-            content.style.maxHeight = '0px';
-          }
-        } else {
-          el.classList.add('category-open');
-          if (content) {
-            content.style.maxHeight = content.scrollHeight + 'px';
-          }
+      const el = document.getElementById(id);
+      const content = el.querySelector('.category-content');
+      if (el.classList.contains('category-open')) {
+        el.classList.remove('category-open');
+        if (content) {
+          content.style.maxHeight = '0px';
         }
-      } catch (err) {
-        console.error('Error in toggleCategory:', err);
+      } else {
+        el.classList.add('category-open');
+        if (content) {
+          content.style.maxHeight = content.scrollHeight + 'px';
+        }
       }
     }
 
     function updateTempSwitchUI(temp) {
-      try {
-        const btnHot = document.getElementById('btn-temp-hot');
-        const btnIced = document.getElementById('btn-temp-iced');
-        if (!btnHot || !btnIced) return;
-        
-        if (temp === 'hot') {
-          btnHot.classList.add('temp-btn-active');
-          btnHot.classList.remove('temp-btn-inactive');
-          btnIced.classList.remove('temp-btn-active');
-          btnIced.classList.add('temp-btn-inactive');
-        } else {
-          btnHot.classList.remove('temp-btn-active');
-          btnHot.classList.add('temp-btn-inactive');
-          btnIced.classList.add('temp-btn-active');
-          btnIced.classList.remove('temp-btn-inactive');
-        }
-      } catch (err) {
-        console.error('Error in updateTempSwitchUI:', err);
+      const btnHot = document.getElementById('btn-temp-hot');
+      const btnIced = document.getElementById('btn-temp-iced');
+      
+      if (temp === 'hot') {
+        btnHot.classList.add('temp-btn-active');
+        btnHot.classList.remove('temp-btn-inactive');
+        btnIced.classList.remove('temp-btn-active');
+        btnIced.classList.add('temp-btn-inactive');
+      } else {
+        btnHot.classList.remove('temp-btn-active');
+        btnHot.classList.add('temp-btn-inactive');
+        btnIced.classList.add('temp-btn-active');
+        btnIced.classList.remove('temp-btn-inactive');
       }
     }
 
     function updateMedia(config, img, video) {
-      try {
-        const logo = document.getElementById('brand-logo-container');
-        if (!img || !video) return;
-
-        if (config && config.video) {
-          if (logo) logo.classList.add('logo-loading');
-          // Hide image by default when a video is present to avoid flashing underlay
-          img.style.display = 'none';
-          img.classList.add('hidden');
-          img.style.opacity = '0';
-          img.src = '';
-          
-          video.style.display = 'block';
-          video.classList.remove('hidden');
-          
-          // Mute and playsinline to comply with autoplay rules
-          video.muted = true;
-          video.playsInline = true;
-          video.removeAttribute('crossorigin');
-          video.crossOrigin = null;
-          video.setAttribute('muted', '');
-          video.setAttribute('playsinline', '');
-          
-          // Force load the new video source with safe resolution comparison
-          let isDifferent = true;
-          try {
-            const newSrc = new URL(config.video, window.location.href).href;
-            if (video.src === newSrc) {
-              isDifferent = false;
-            }
-          } catch (e) {
-            // Fallback comparison if URL constructor throws (e.g. in about:blank / about:srcdoc sandboxes)
-            if (video.src.endsWith(config.video) || video.src.includes(config.video)) {
-              isDifferent = false;
-            }
-          }
-
-          if (isDifferent) {
-            video.src = config.video;
-            video.load();
-          }
-          
-          // Keep video opacity 0 until it actually starts playing
-          video.style.opacity = '0';
-          video.style.transform = 'scale(1.05)';
-          
-          // Attempt immediate playback to trigger active streaming and detect blocks
-          const playPromise = video.play();
-          if (playPromise !== undefined) {
-            playPromise.then(() => {
-              // Success! Fade in the video beautifully
-              video.style.opacity = '1';
-              if (logo) logo.classList.remove('logo-loading');
-            }).catch(error => {
-              console.log('Autoplay blocked by Chrome/sandboxing:', error);
-              // Autoplay is blocked. Reveal the high-res image fallback.
-              img.src = config.img;
-              img.style.display = 'block';
-              img.classList.remove('hidden');
-              img.style.opacity = '1';
-              img.style.transform = 'scale(1.05)';
-              
-              if (logo) logo.classList.remove('logo-loading');
-              
-              // Register a click gesture fallback on the entire document to play the video.
-              const forcePlay = () => {
-                video.play().then(() => {
-                  video.style.opacity = '1';
-                  // Hide image fallback once video starts playing
-                  img.style.opacity = '0';
-                  setTimeout(() => {
-                    img.style.display = 'none';
-                    img.classList.add('hidden');
-                  }, 500);
-                }).catch(err => console.log('Gesture play failed:', err));
-                document.removeEventListener('click', forcePlay);
-                document.removeEventListener('touchend', forcePlay);
-              };
-              document.addEventListener('click', forcePlay);
-              document.addEventListener('touchend', forcePlay);
-            });
-          }
-        } else if (config) {
-          // Hide Video, Show Image
-          video.style.display = 'none';
-          video.classList.add('hidden');
-          video.style.opacity = '0';
-          video.pause();
-          
-          img.style.display = 'block';
-          img.classList.remove('hidden');
-          img.src = config.img;
-          img.style.opacity = '1';
-          img.style.transform = 'scale(1.05)';
-          
-          if (logo) logo.classList.remove('logo-loading');
+      const logo = document.getElementById('brand-logo-container');
+      if (config.video) {
+        if (logo) logo.classList.add('logo-loading');
+        // Hide image by default when a video is present to avoid flashing underlay
+        img.style.display = 'none';
+        img.classList.add('hidden');
+        img.style.opacity = '0';
+        img.src = '';
+        
+        video.style.display = 'block';
+        video.classList.remove('hidden');
+        
+        // Mute and playsinline to comply with autoplay rules
+        video.muted = true;
+        video.playsInline = true;
+        video.removeAttribute('crossorigin');
+        video.crossOrigin = null;
+        video.setAttribute('muted', '');
+        video.setAttribute('playsinline', '');
+        
+        // Force load the new video source
+        const newSrc = new URL(config.video, window.location.href).href;
+        if (video.src !== newSrc) {
+          video.src = config.video;
+          video.load();
         }
-      } catch (err) {
-        console.error('Error in updateMedia:', err);
+        
+        // Keep video opacity 0 until it actually starts playing
+        video.style.opacity = '0';
+        video.style.transform = 'scale(1.05)';
+        
+        // Attempt immediate playback to trigger active streaming and detect blocks
+        const playPromise = video.play();
+        if (playPromise !== undefined) {
+          playPromise.then(() => {
+            // Success! Fade in the video beautifully
+            video.style.opacity = '1';
+            if (logo) logo.classList.remove('logo-loading');
+          }).catch(error => {
+            console.log('Autoplay blocked by Chrome/sandboxing:', error);
+            // Autoplay is blocked. Reveal the high-res image fallback.
+            img.src = config.img;
+            img.style.display = 'block';
+            img.classList.remove('hidden');
+            img.style.opacity = '1';
+            img.style.transform = 'scale(1.05)';
+            
+            if (logo) logo.classList.remove('logo-loading');
+            
+            // Register a click gesture fallback on the entire document to play the video.
+            const forcePlay = () => {
+              video.play().then(() => {
+                video.style.opacity = '1';
+                // Hide image fallback once video starts playing
+                img.style.opacity = '0';
+                setTimeout(() => {
+                  img.style.display = 'none';
+                  img.classList.add('hidden');
+                }, 500);
+              }).catch(err => console.log('Gesture play failed:', err));
+              document.removeEventListener('click', forcePlay);
+              document.removeEventListener('touchend', forcePlay);
+            };
+            document.addEventListener('click', forcePlay);
+            document.addEventListener('touchend', forcePlay);
+          });
+        }
+      } else {
+        // Hide Video, Show Image
+        video.style.display = 'none';
+        video.classList.add('hidden');
+        video.style.opacity = '0';
+        video.pause();
+        
+        img.style.display = 'block';
+        img.classList.remove('hidden');
+        img.src = config.img;
+        img.style.opacity = '1';
+        img.style.transform = 'scale(1.05)';
+        
+        if (logo) logo.classList.remove('logo-loading');
       }
     }
 
     function setDrinkTemp(temp) {
-      try {
-        if (currentDrinkTemp === temp) return;
-        currentDrinkTemp = temp;
-        
-        const drink = drinks[currentDrinkKey];
-        if (!drink || !drink.hasTempToggle) return;
-        
-        const config = drink[currentDrinkTemp];
-        if (!config) return;
-
-        const img = document.getElementById('drink-image');
-        const video = document.getElementById('drink-video');
-        const desc = document.getElementById('drink-description');
-        const ambient = document.getElementById('ambient-grad');
-        
-        // Update UI Switch buttons immediately
-        updateTempSwitchUI(temp);
-        
-        // Coordinated slide/fade transitions for details
-        if (desc) {
-          desc.style.opacity = '0';
-          desc.style.transform = 'translateY(15px)';
-        }
-        if (img && video) {
-          if (config.video) {
-            img.style.opacity = '0';
-            video.style.opacity = '0.5';
-          } else {
-            img.style.opacity = '0.5';
-            video.style.opacity = '0';
-          }
-        }
-        
-        setTimeout(() => {
-          try {
-            // Update text & price
-            const titleEl = document.getElementById('drink-title');
-            const textEl = document.getElementById('drink-text');
-            const priceEl = document.getElementById('drink-price');
-            if (titleEl) titleEl.innerText = config.title;
-            if (textEl) textEl.innerText = config.text;
-            if (priceEl) priceEl.innerText = config.price;
-            
-            // Update ambient colors
-            const body = document.getElementById('body-bg') || document.querySelector('.signature-drinks-showcase') || document.documentElement;
-            if (body) {
-              body.style.backgroundColor = config.ambient;
-            }
-            if (ambient) {
-              ambient.style.background = `linear-gradient(to right, ${config.ambient} 0%, transparent 100%)`;
-            }
-            
-            // Update media background
-            updateMedia(config, img, video);
-            
-            // Fade in details
-            if (desc) {
-              desc.style.opacity = '1';
-              desc.style.transform = 'translateY(0)';
-            }
-          } catch (innerErr) {
-            console.error('Error inside setDrinkTemp transition:', innerErr);
-          }
-        }, 250);
-      } catch (err) {
-        console.error('Error in setDrinkTemp:', err);
+      if (currentDrinkTemp === temp) return;
+      currentDrinkTemp = temp;
+      
+      const drink = drinks[currentDrinkKey];
+      if (!drink || !drink.hasTempToggle) return;
+      
+      const config = drink[currentDrinkTemp];
+      const img = document.getElementById('drink-image');
+      const video = document.getElementById('drink-video');
+      const desc = document.getElementById('drink-description');
+      const ambient = document.getElementById('ambient-grad');
+      
+      // Update UI Switch buttons immediately (feels highly responsive!)
+      updateTempSwitchUI(temp);
+      
+      // Coordinated slide/fade transitions for details
+      desc.style.opacity = '0';
+      desc.style.transform = 'translateY(15px)'; // smaller slide offset for quick transition
+      if (config.video) {
+        img.style.opacity = '0';
+        video.style.opacity = '0.5';
+      } else {
+        img.style.opacity = '0.5';
+        video.style.opacity = '0';
       }
+      
+      setTimeout(() => {
+        // Update text & price
+        document.getElementById('drink-title').innerText = config.title;
+        document.getElementById('drink-text').innerText = config.text;
+        document.getElementById('drink-price').innerText = config.price;
+        
+        // Update ambient colors
+        const body = document.getElementById('body-bg') || document.querySelector('.signature-drinks-showcase') || document.documentElement;
+        if (body) {
+          body.style.backgroundColor = config.ambient;
+        }
+        ambient.style.background = `linear-gradient(to right, ${config.ambient} 0%, transparent 100%)`;
+        
+        // Update media background
+        updateMedia(config, img, video);
+        
+        // Fade in details
+        desc.style.opacity = '1';
+        desc.style.transform = 'translateY(0)';
+      }, 250);
     }
 
     function showDrink(key, element) {
-      try {
-        currentDrinkKey = key;
-        panelManuallyClosed = false; // Reset close state since the selection has changed!
-        const drink = drinks[key];
-        if (!drink) return;
+      currentDrinkKey = key;
+      panelManuallyClosed = false; // Reset close state since the selection has changed!
+      const drink = drinks[key];
+      const img = document.getElementById('drink-image');
+      const video = document.getElementById('drink-video');
+      const desc = document.getElementById('drink-description');
+      const ambient = document.getElementById('ambient-grad');
+      const tempSwitch = document.getElementById('drink-temp-switch');
+      
+      // Update Sidebar Visuals
+      document.querySelectorAll('.drink-nav-item').forEach(btn => {
+        btn.classList.add('opacity-50');
+        btn.querySelector('.nav-line').classList.remove('active-nav-line');
+        btn.querySelector('.nav-line').classList.add('inactive-nav-line');
+      });
+      
+      if (element) {
+        element.classList.remove('opacity-50');
+        element.querySelector('.nav-line').classList.remove('inactive-nav-line');
+        element.querySelector('.nav-line').classList.add('active-nav-line');
+      }
 
-        const img = document.getElementById('drink-image');
-        const video = document.getElementById('drink-video');
-        const desc = document.getElementById('drink-description');
-        const ambient = document.getElementById('ambient-grad');
-        const tempSwitch = document.getElementById('drink-temp-switch');
-        
-        // Update Sidebar Visuals
-        document.querySelectorAll('.drink-nav-item').forEach(btn => {
-          btn.classList.add('opacity-50');
-          const line = btn.querySelector('.nav-line');
-          if (line) {
-            line.classList.remove('active-nav-line');
-            line.classList.add('inactive-nav-line');
-          }
-        });
-        
-        if (element) {
-          element.classList.remove('opacity-50');
-          const line = element.querySelector('.nav-line');
-          if (line) {
-            line.classList.remove('inactive-nav-line');
-            line.classList.add('active-nav-line');
-          }
+      // Animate Transition Out
+      desc.style.opacity = '0';
+      desc.style.transform = 'translateY(30px)';
+      img.style.opacity = '0';
+      img.style.transform = 'scale(1.1)';
+      video.style.opacity = '0';
+      video.style.transform = 'scale(1.1)';
+      
+      setTimeout(() => {
+        // Resolve target drink config based on temp toggle
+        let config = drink;
+        if (drink.hasTempToggle) {
+          currentDrinkTemp = 'hot'; // default to hot when selecting a new drink
+          config = drink[currentDrinkTemp];
+          
+          tempSwitch.style.display = 'flex';
+          tempSwitch.classList.remove('hidden');
+          tempSwitch.classList.add('flex');
+          updateTempSwitchUI(currentDrinkTemp);
+        } else {
+          tempSwitch.style.display = 'none';
+          tempSwitch.classList.remove('flex');
+          tempSwitch.classList.add('hidden');
         }
 
-        // Animate Transition Out
-        if (desc) {
-          desc.style.opacity = '0';
-          desc.style.transform = 'translateY(30px)';
-        }
-        if (img) {
-          img.style.opacity = '0';
-          img.style.transform = 'scale(1.1)';
-        }
-        if (video) {
-          video.style.opacity = '0';
-          video.style.transform = 'scale(1.1)';
-        }
+        // Update Content
+        document.getElementById('drink-title').innerText = config.title;
+        document.getElementById('drink-text').innerText = config.text;
+        document.getElementById('drink-price').innerText = config.price;
         
-        setTimeout(() => {
-          try {
-            // Resolve target drink config based on temp toggle
-            let config = drink;
-            if (drink.hasTempToggle) {
-              currentDrinkTemp = 'hot'; // default to hot when selecting a new drink
-              config = drink[currentDrinkTemp];
-              
-              if (tempSwitch) {
-                tempSwitch.style.display = 'flex';
-                tempSwitch.classList.remove('hidden');
-                tempSwitch.classList.add('flex');
-              }
-              updateTempSwitchUI(currentDrinkTemp);
-            } else {
-              if (tempSwitch) {
-                tempSwitch.style.display = 'none';
-                tempSwitch.classList.remove('flex');
-                tempSwitch.classList.add('hidden');
-              }
-            }
-
-            // Update Content
-            const titleEl = document.getElementById('drink-title');
-            const textEl = document.getElementById('drink-text');
-            const priceEl = document.getElementById('drink-price');
-            if (titleEl) titleEl.innerText = config.title;
-            if (textEl) textEl.innerText = config.text;
-            if (priceEl) priceEl.innerText = config.price;
-            
-            // Update Ambient Colors
-            const body = document.getElementById('body-bg') || document.querySelector('.signature-drinks-showcase') || document.documentElement;
-            if (body) {
-              body.style.backgroundColor = config.ambient;
-            }
-            if (ambient) {
-              ambient.style.background = `linear-gradient(to right, ${config.ambient} 0%, transparent 100%)`;
-            }
-            
-            // Update media background
-            updateMedia(config, img, video);
-            
-            // Reveal panel when selecting new drink
-            if (desc) {
-              desc.style.display = 'flex';
-              desc.classList.remove('panel-hidden');
-              desc.style.opacity = '1';
-              desc.style.transform = 'translateY(0)';
-            }
-          } catch (innerErr) {
-            console.error('Error inside showDrink transition:', innerErr);
-          }
-        }, 400);
-        
-        // Close sidebar drawer automatically on mobile when a drink is selected
-        if (window.innerWidth < 768) {
-          document.body.classList.remove('sidebar-open');
+        // Update Ambient Colors
+        const body = document.getElementById('body-bg') || document.querySelector('.signature-drinks-showcase') || document.documentElement;
+        if (body) {
+          body.style.backgroundColor = config.ambient;
         }
-      } catch (err) {
-        console.error('Error in showDrink:', err);
+        ambient.style.background = `linear-gradient(to right, ${config.ambient} 0%, transparent 100%)`;
+        
+        // Update media background
+        updateMedia(config, img, video);
+        
+        // Reveal panel when selecting new drink
+        desc.style.display = 'flex';
+        desc.classList.remove('panel-hidden');
+        desc.style.opacity = '1';
+        desc.style.transform = 'translateY(0)';
+      }, 400);
+      
+      // Close sidebar drawer automatically on mobile when a drink is selected
+      if (window.innerWidth < 768) {
+        document.body.classList.remove('sidebar-open');
       }
     }
 
     function hidePanel() {
-      try {
-        const panel = document.getElementById('drink-description');
-        if (panel) {
-          panel.style.display = 'none';
-          panel.classList.add('panel-hidden');
-          panel.style.opacity = '';
-          panel.style.transform = '';
-        }
-        panelManuallyClosed = true; // Lock in the closed state until selection changes
-      } catch (err) {
-        console.error('Error in hidePanel:', err);
-      }
+      const panel = document.getElementById('drink-description');
+      panel.style.display = 'none';
+      panel.classList.add('panel-hidden');
+      panel.style.opacity = '';
+      panel.style.transform = '';
+      panelManuallyClosed = true; // Lock in the closed state until selection changes
     }
 
     function revealPanel() {
-      try {
-        if (panelManuallyClosed) return; // Stay hidden if the close button was explicitly clicked
-        const panel = document.getElementById('drink-description');
-        if (panel && (panel.classList.contains('panel-hidden') || panel.style.display === 'none')) {
-          panel.style.display = 'flex';
-          panel.classList.remove('panel-hidden');
-          panel.style.opacity = '1';
-          panel.style.transform = 'translateY(0)';
-        }
-      } catch (err) {
-        console.error('Error in revealPanel:', err);
+      if (panelManuallyClosed) return; // Stay hidden if the close button was explicitly clicked
+      const panel = document.getElementById('drink-description');
+      if (panel.classList.contains('panel-hidden') || panel.style.display === 'none') {
+        panel.style.display = 'flex';
+        panel.classList.remove('panel-hidden');
+        panel.style.opacity = '1';
+        panel.style.transform = 'translateY(0)';
       }
     }
 
     // Toggles the mobile collection menu drawer
     function toggleMobileMenu(event) {
-      try {
-        if (event) event.stopPropagation();
-        const isOpen = document.body.classList.toggle('sidebar-open');
-        if (isOpen && window.innerWidth < 768) {
-          hidePanel();
-        }
-      } catch (err) {
-        console.error('Error in toggleMobileMenu:', err);
+      if (event) event.stopPropagation();
+      const isOpen = document.body.classList.toggle('sidebar-open');
+      if (isOpen && window.innerWidth < 768) {
+        hidePanel();
       }
     }
 
     // Handles clicks on the immersive background
     function handleBackgroundClick(event) {
-      try {
-        // Close sidebar if clicking outside on mobile
-        if (document.body.classList.contains('sidebar-open')) {
-          document.body.classList.remove('sidebar-open');
-          return;
-        }
-        
-        revealPanel();
-      } catch (err) {
-        console.error('Error in handleBackgroundClick:', err);
+      // Close sidebar if clicking outside on mobile
+      if (document.body.classList.contains('sidebar-open')) {
+        document.body.classList.remove('sidebar-open');
+        return;
       }
+      
+      revealPanel();
     }
 
     function navigateDrink(direction) {
-      try {
-        const drinkKeys = Object.keys(drinks);
-        const currentIndex = drinkKeys.indexOf(currentDrinkKey);
-        if (currentIndex === -1) return;
-        
-        let nextIndex = currentIndex + direction;
-        if (nextIndex >= drinkKeys.length) {
-          nextIndex = 0;
-        } else if (nextIndex < 0) {
-          nextIndex = drinkKeys.length - 1;
-        }
-        
-        const nextKey = drinkKeys[nextIndex];
-        
-        // Find the corresponding navigation button using stored data attribute
-        const nextButton = Array.from(document.querySelectorAll('.drink-nav-item')).find(btn => {
-          return btn.getAttribute('data-drink-key') === nextKey;
-        });
-        
-        if (nextButton) {
-          // Automatically make sure the next drink's category is expanded
-          const categoryGroup = nextButton.closest('.category-group');
-          if (categoryGroup && !categoryGroup.classList.contains('category-open')) {
-            // Close all other categories to keep sidebar clean on narrow viewports
-            document.querySelectorAll('.category-group').forEach(group => {
-              if (group !== categoryGroup && group.classList.contains('category-open')) {
-                group.classList.remove('category-open');
-                const content = group.querySelector('.category-content');
-                if (content) content.style.maxHeight = '0px';
-              }
-            });
-            // Open target category
-            categoryGroup.classList.add('category-open');
-            const content = categoryGroup.querySelector('.category-content');
-            if (content) {
-              content.style.maxHeight = content.scrollHeight + 'px';
+      const drinkKeys = Object.keys(drinks);
+      const currentIndex = drinkKeys.indexOf(currentDrinkKey);
+      if (currentIndex === -1) return;
+      
+      let nextIndex = currentIndex + direction;
+      if (nextIndex >= drinkKeys.length) {
+        nextIndex = 0;
+      } else if (nextIndex < 0) {
+        nextIndex = drinkKeys.length - 1;
+      }
+      
+      const nextKey = drinkKeys[nextIndex];
+      
+      // Find the corresponding navigation button using stored data attribute
+      const nextButton = Array.from(document.querySelectorAll('.drink-nav-item')).find(btn => {
+        return btn.getAttribute('data-drink-key') === nextKey;
+      });
+      
+      if (nextButton) {
+        // Automatically make sure the next drink's category is expanded
+        const categoryGroup = nextButton.closest('.category-group');
+        if (categoryGroup && !categoryGroup.classList.contains('category-open')) {
+          // Close all other categories to keep sidebar clean on narrow viewports
+          document.querySelectorAll('.category-group').forEach(group => {
+            if (group !== categoryGroup && group.classList.contains('category-open')) {
+              group.classList.remove('category-open');
+              const content = group.querySelector('.category-content');
+              if (content) content.style.maxHeight = '0px';
             }
+          });
+          // Open target category
+          categoryGroup.classList.add('category-open');
+          const content = categoryGroup.querySelector('.category-content');
+          if (content) {
+            content.style.maxHeight = content.scrollHeight + 'px';
           }
-          
-          showDrink(nextKey, nextButton);
         }
-      } catch (err) {
-        console.error('Error in navigateDrink:', err);
+        
+        showDrink(nextKey, nextButton);
       }
     }
 
+
     // Initialize with robust SPA-ready mount handlers and bind dynamic event listeners to bypass strict Content Security Policies (CSP)
     function initDrinksShowcase() {
-      try {
-        // 1. Dynamic event binding for drink navigation items
-        document.querySelectorAll('.drink-nav-item').forEach(btn => {
-          const key = btn.getAttribute('data-drink-key');
-          if (key) {
-            btn.addEventListener('click', (e) => {
-              e.preventDefault();
-              showDrink(key, btn);
-            });
-            btn.removeAttribute('onclick');
-          }
+      // 1. Dynamic event binding for drink navigation items
+      document.querySelectorAll('.drink-nav-item').forEach(btn => {
+        const key = btn.getAttribute('data-drink-key');
+        if (key) {
+          btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            showDrink(key, btn);
+          });
+          btn.removeAttribute('onclick');
+        }
+      });
+
+      // 2. Dynamic event binding for category toggles
+      document.querySelectorAll('.category-group').forEach(group => {
+        const groupId = group.id;
+        const headerButton = group.querySelector('button');
+        if (headerButton) {
+          headerButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            toggleCategory(groupId);
+          });
+          headerButton.removeAttribute('onclick');
+        }
+        group.addEventListener('mouseenter', () => {
+          hoverCategory(groupId);
         });
+        group.removeAttribute('onmouseenter');
+      });
 
-        // 2. Dynamic event binding for category toggles
-        document.querySelectorAll('.category-group').forEach(group => {
-          const groupId = group.id;
-          const headerButton = group.querySelector('button');
-          if (headerButton) {
-            headerButton.addEventListener('click', (e) => {
-              e.preventDefault();
-              toggleCategory(groupId);
-            });
-            headerButton.removeAttribute('onclick');
-          }
-          group.addEventListener('mouseenter', () => {
-            hoverCategory(groupId);
-          });
-          group.removeAttribute('onmouseenter');
+      // 3. Mobile menu toggle and drawer close buttons
+      const mobileToggle = document.getElementById('mobile-menu-toggle');
+      if (mobileToggle) {
+        mobileToggle.addEventListener('click', (e) => {
+          toggleMobileMenu(e);
         });
+        mobileToggle.removeAttribute('onclick');
+      }
+      const mobileClose = document.getElementById('mobile-menu-close');
+      if (mobileClose) {
+        mobileClose.addEventListener('click', (e) => {
+          toggleMobileMenu(e);
+        });
+        mobileClose.removeAttribute('onclick');
+      }
 
-        // 3. Mobile menu toggle and drawer close buttons
-        const mobileToggle = document.getElementById('mobile-menu-toggle');
-        if (mobileToggle) {
-          mobileToggle.addEventListener('click', (e) => {
-            toggleMobileMenu(e);
-          });
-          mobileToggle.removeAttribute('onclick');
-        }
-        const mobileClose = document.getElementById('mobile-menu-close');
-        if (mobileClose) {
-          mobileClose.addEventListener('click', (e) => {
-            toggleMobileMenu(e);
-          });
-          mobileClose.removeAttribute('onclick');
-        }
+      // 4. Panel close button
+      const panelClose = document.getElementById('panel-close-btn');
+      if (panelClose) {
+        panelClose.addEventListener('click', (e) => {
+          e.preventDefault();
+          hidePanel();
+        });
+        panelClose.removeAttribute('onclick');
+      }
 
-        // 4. Panel close button
-        const panelClose = document.getElementById('panel-close-btn');
-        if (panelClose) {
-          panelClose.addEventListener('click', (e) => {
-            e.preventDefault();
-            hidePanel();
-          });
-          panelClose.removeAttribute('onclick');
-        }
+      // 5. Navigate drinks (previous / next)
+      const prevBtn = document.getElementById('btn-prev-drink');
+      if (prevBtn) {
+        prevBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          navigateDrink(-1);
+        });
+        prevBtn.removeAttribute('onclick');
+      }
+      const nextBtn = document.getElementById('btn-next-drink');
+      if (nextBtn) {
+        nextBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          navigateDrink(1);
+        });
+        nextBtn.removeAttribute('onclick');
+      }
 
-        // 5. Navigate drinks (previous / next)
-        const prevBtn = document.getElementById('btn-prev-drink');
-        if (prevBtn) {
-          prevBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            navigateDrink(-1);
-          });
-          prevBtn.removeAttribute('onclick');
-        }
-        const nextBtn = document.getElementById('btn-next-drink');
-        if (nextBtn) {
-          nextBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            navigateDrink(1);
-          });
-          nextBtn.removeAttribute('onclick');
-        }
+      // 6. Temperature switch buttons
+      const btnTempHot = document.getElementById('btn-temp-hot');
+      if (btnTempHot) {
+        btnTempHot.addEventListener('click', (e) => {
+          e.preventDefault();
+          setDrinkTemp('hot');
+        });
+        btnTempHot.removeAttribute('onclick');
+      }
+      const btnTempIced = document.getElementById('btn-temp-iced');
+      if (btnTempIced) {
+        btnTempIced.addEventListener('click', (e) => {
+          e.preventDefault();
+          setDrinkTemp('iced');
+        });
+        btnTempIced.removeAttribute('onclick');
+      }
 
-        // 6. Temperature switch buttons
-        const btnTempHot = document.getElementById('btn-temp-hot');
-        if (btnTempHot) {
-          btnTempHot.addEventListener('click', (e) => {
-            e.preventDefault();
-            setDrinkTemp('hot');
-          });
-          btnTempHot.removeAttribute('onclick');
-        }
-        const btnTempIced = document.getElementById('btn-temp-iced');
-        if (btnTempIced) {
-          btnTempIced.addEventListener('click', (e) => {
-            e.preventDefault();
-            setDrinkTemp('iced');
-          });
-          btnTempIced.removeAttribute('onclick');
-        }
+      // 7. Immersive background click
+      const mainShowcase = document.querySelector('.drink-reveal-trigger');
+      if (mainShowcase) {
+        mainShowcase.addEventListener('click', (e) => {
+          handleBackgroundClick(e);
+        });
+        mainShowcase.removeAttribute('onclick');
+      }
 
-        // 7. Immersive background click
-        const mainShowcase = document.querySelector('.drink-reveal-trigger');
-        if (mainShowcase) {
-          mainShowcase.addEventListener('click', (e) => {
-            handleBackgroundClick(e);
-          });
-          mainShowcase.removeAttribute('onclick');
-        }
+      // 8. Video loading state events to pulse the brand logo during load times
+      const videoEl = document.getElementById('drink-video');
+      const logoEl = document.getElementById('brand-logo-container');
+      if (videoEl && logoEl) {
+        videoEl.addEventListener('loadstart', () => {
+          logoEl.classList.add('logo-loading');
+        });
+        videoEl.addEventListener('playing', () => {
+          logoEl.classList.remove('logo-loading');
+        });
+        videoEl.addEventListener('error', () => {
+          logoEl.classList.remove('logo-loading');
+        });
+      }
 
-        // 8. Video loading state events to pulse the brand logo during load times
-        const videoEl = document.getElementById('drink-video');
-        const logoEl = document.getElementById('brand-logo-container');
-        if (videoEl && logoEl) {
-          videoEl.addEventListener('loadstart', () => {
-            logoEl.classList.add('logo-loading');
-          });
-          videoEl.addEventListener('playing', () => {
-            logoEl.classList.remove('logo-loading');
-          });
-          videoEl.addEventListener('error', () => {
-            logoEl.classList.remove('logo-loading');
-          });
-        }
-
-        // Open default category on load
-        toggleCategory('cat-matcha');
-        
-        // Initialize the default drink show state and play video smoothly on load
-        const firstItem = document.querySelector('.drink-nav-item');
-        if (firstItem) {
-          showDrink('strawberries-cream-matcha', firstItem);
-        }
-      } catch (err) {
-        console.error('Error in initDrinksShowcase:', err);
+      // Open default category on load
+      toggleCategory('cat-matcha');
+      
+      // Initialize the default drink show state and play video smoothly on load
+      const firstItem = document.querySelector('.drink-nav-item');
+      if (firstItem) {
+        showDrink('strawberries-cream-matcha', firstItem);
       }
     }
 
