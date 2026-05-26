@@ -163,22 +163,21 @@
 </nav>
 <main class="pt-32">
 <!-- Hero Section -->
-<header class="relative py-24 md:py-36 overflow-hidden mb-stack-lg full-width-breakout min-h-[400px] md:min-h-[500px] lg:min-h-[550px] flex items-center justify-center bg-primary text-white">
-  <!-- Immersive Background Image -->
+<header class="relative pb-12 md:pb-16 overflow-hidden mb-stack-lg full-width-breakout min-h-[400px] md:min-h-[500px] lg:min-h-[550px] flex items-end justify-start bg-primary text-white">
+  <!-- Immersive Background Image (Undimmed focal point) -->
   <div class="absolute inset-0 z-0 overflow-hidden">
     <img 
       alt="Pony White Boutique Hero" 
-      class="w-full h-full object-cover opacity-60"
+      class="w-full h-full object-cover opacity-95"
       src="../../assets/art-by-son.jpeg"
-      style="filter: brightness(0.45) contrast(1.15);"
     />
-    <!-- Dark overlay to ensure maximum text readability -->
-    <div class="absolute inset-0 bg-[#00140f]/50"></div>
-    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-surface"></div>
+    <!-- Bottom-heavy gradient overlay for excellent text contrast while keeping central focal point bright -->
+    <div class="absolute inset-0 bg-gradient-to-t from-[#00140f]/95 via-[#00140f]/40 to-transparent"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-[#00140f]/30 via-transparent to-transparent"></div>
   </div>
 
-  <!-- Content Overlay (Clean, Minimal, No Card Container) -->
-  <div class="relative z-10 w-full max-w-4xl mx-auto px-margin-desktop text-center flex flex-col items-center justify-center gap-6">
+  <!-- Content Overlay (Clean, Minimal, No Card Container - Anchored to bottom left) -->
+  <div class="relative z-10 w-full max-w-4xl mx-auto px-margin-desktop text-left flex flex-col items-start gap-4">
     <span class="font-label-caps text-label-caps text-premium-gold tracking-[0.25em] uppercase text-shadow-subtle">Pony White</span>
     <h1 class="font-display-lg text-4xl md:text-5xl lg:text-6xl text-white text-shadow-subtle tracking-tight font-bold">The Boutique</h1>
     <p class="font-body-lg text-body-lg text-white/90 leading-relaxed max-w-2xl text-shadow-subtle font-medium">
@@ -186,8 +185,8 @@
     </p>
   </div>
 
-  <!-- Subtle Video Caption -->
-  <div class="absolute bottom-4 right-4 z-20 text-[10px] font-label-caps uppercase tracking-widest text-white/40 backdrop-blur-sm bg-black/20 px-3 py-1 rounded">
+  <!-- Subtle Video/Image Caption (Relocated to top right to clear the bottom description text) -->
+  <div class="absolute top-6 right-6 z-20 text-[10px] font-label-caps uppercase tracking-widest text-white/40 backdrop-blur-sm bg-black/20 px-3 py-1 rounded">
     Latte art by Son
   </div>
 </header>
