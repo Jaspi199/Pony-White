@@ -76,8 +76,8 @@
     }
     
     .sidebar-slide {
-      transform: translateX(-40px);
-      opacity: 0.85;
+      transform: translateX(0);
+      opacity: 0.95;
       transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1);
     }
     .sidebar-slide:hover {
@@ -101,6 +101,23 @@
     .scrollbar-hide {
       -ms-overflow-style: none;
       scrollbar-width: none;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 4px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 9999px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: rgba(255, 255, 255, 0.35);
+    }
+    .custom-scrollbar {
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255, 255, 255, 0.15) transparent;
     }
 
     #drink-image, #drink-video {
@@ -183,6 +200,7 @@
         border-right: 1px solid rgba(255, 255, 255, 0.12) !important;
         mask-image: none !important;
         -webkit-mask-image: none !important;
+        border-radius: 0 !important;
       }
       
       aside.sidebar-slide .relative.z-10 {
@@ -265,8 +283,6 @@
       }
       
       #drink-description #panel-close-btn {
-        top: 0.75rem !important;
-        right: 0.75rem !important;
         padding: 0.25rem !important;
       }
 
@@ -320,10 +336,30 @@
         line-height: 1.4rem !important;
         margin-bottom: 1.5rem !important;
       }
+    }
+
+    /* Desktop & Tablet Sidebar Layout: Strictly position and lock translation, disabling any hover translations */
+    @media (min-width: 768px) {
       aside.sidebar-slide {
-        transform: translateX(0) !important;
+        transform: none !important;
+        transition: none !important;
+        left: 1.5rem !important;
+        top: 1.5rem !important;
+        bottom: 1.5rem !important;
+        height: calc(100% - 3rem) !important;
         opacity: 1 !important;
       }
+      aside.sidebar-slide:hover {
+        transform: none !important;
+        opacity: 1 !important;
+      }
+    }
+    @keyframes logo-loading-pulse {
+      0%, 100% { opacity: 0.25; }
+      50% { opacity: 0.85; }
+    }
+    .logo-loading {
+      animation: logo-loading-pulse 1.2s infinite ease-in-out !important;
     }
   </style>
 
@@ -336,20 +372,18 @@
 <!-- Full Screen Drink Background -->
 <div class="absolute inset-0 overflow-hidden flex justify-center items-center z-0">
 <img alt="Signature Drink" class="hidden w-full h-full object-cover scale-105" id="drink-image" src="../../assets/matcha-strawberry.jpg"/>
-<video id="drink-video" class="absolute inset-0 w-full h-full object-cover scale-105 z-0" src="../../assets/strawberrys and cream.mp4" autoplay loop muted playsinline></video>
+<video id="drink-video" class="absolute inset-0 w-full h-full object-cover scale-105 z-0" src="../../assets/Strawberries & Cream Matcha.mp4" autoplay loop muted playsinline></video>
 <!-- Ambient Overlays -->
 <div class="absolute inset-0 ambient-overlay bg-gradient-to-r from-forest-velvet via-transparent to-transparent opacity-90 z-10" id="ambient-grad" style="background: linear-gradient(to right, #2D1B22 0%, transparent 100%);"></div>
 <div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent z-10"></div>
 </div>
 <!-- Side Panel Menu -->
-<aside class="sidebar-slide absolute left-0 top-0 h-full w-80 z-30 flex flex-col shrink-0">
-  <!-- Gradient Frosted Glass Backdrop (Separate mask from blur to fix Chrome rendering bug) -->
-  <div class="absolute inset-0 z-0 pointer-events-none overflow-hidden" style="-webkit-mask-image: linear-gradient(to right, black 40%, transparent 100%); mask-image: linear-gradient(to right, black 40%, transparent 100%);">
-    <div class="absolute inset-0" style="background: rgba(0, 0, 0, 0.15); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);"></div>
-  </div>
+<aside class="sidebar-slide absolute left-6 top-6 bottom-6 w-80 z-30 flex flex-col shrink-0">
+  <!-- Backdrop Card (Invisible on desktop, styled via overrides on mobile) -->
+  <div class="absolute inset-0 z-0 pointer-events-none overflow-hidden" style="background: transparent; backdrop-filter: none; -webkit-backdrop-filter: none; border: none;"></div>
   
   <!-- Sidebar Content -->
-  <div class="relative z-10 flex flex-col h-full pt-12 px-12 pb-0">
+  <div class="relative z-10 flex flex-col h-full pt-12 px-12 pb-0" style="max-height: 100%; overflow: hidden;">
     <div class="mb-16 relative">
       <h2 class="text-marble-white/40 uppercase tracking-[0.3em] text-[10px] font-bold mb-2">Signature Collections</h2>
       <div class="h-px w-12 bg-white/10"></div>
@@ -358,7 +392,7 @@
         <span class="material-symbols-outlined text-xl">close</span>
       </button>
     </div>
-    <nav class="flex-1 flex flex-col gap-6 overflow-y-auto pr-4 scrollbar-hide pb-12">
+    <nav class="flex-1 flex flex-col gap-6 overflow-y-auto pr-4 custom-scrollbar pb-12" style="max-height: calc(100% - 6rem); min-height: 0; pointer-events: auto;">
       <!-- Matcha Category -->
       <div class="category-group" id="cat-matcha" onmouseenter="hoverCategory('cat-matcha')">
         <button class="w-full flex items-center justify-between text-marble-white/50 hover:text-marble-white transition-custom py-2 uppercase tracking-[0.2em] text-xs font-bold" onclick="toggleCategory('cat-matcha')">
@@ -366,19 +400,19 @@
           <span class="material-symbols-outlined text-sm transition-custom category-chevron pointer-events-none">expand_more</span>
         </button>
         <div class="category-content flex flex-col gap-4 pl-2 border-l border-white/5">
-          <button class="drink-nav-item group flex items-center gap-4 text-left transition-custom" onclick="showDrink('strawberries-cream-matcha', this)">
+          <button class="drink-nav-item group flex items-center gap-4 text-left transition-custom" data-drink-key="strawberries-cream-matcha" onclick="showDrink('strawberries-cream-matcha', this)">
             <span class="nav-line active-nav-line h-px transition-custom"></span>
             <span class="text-marble-white text-base tracking-wide font-light transition-custom">Strawberries &amp; Cream Matcha</span>
           </button>
-          <button class="drink-nav-item group flex items-center gap-4 text-left transition-custom opacity-50 hover:opacity-100" onclick="showDrink('banoffee-matcha', this)">
+          <button class="drink-nav-item group flex items-center gap-4 text-left transition-custom opacity-50 hover:opacity-100" data-drink-key="banoffee-matcha" onclick="showDrink('banoffee-matcha', this)">
             <span class="nav-line inactive-nav-line h-px transition-custom group-hover:w-10"></span>
             <span class="text-marble-white text-base tracking-wide font-light transition-custom">Banoffee Matcha</span>
           </button>
-          <button class="drink-nav-item group flex items-center gap-4 text-left transition-custom opacity-50 hover:opacity-100" onclick="showDrink('iced-rose-matcha', this)">
+          <button class="drink-nav-item group flex items-center gap-4 text-left transition-custom opacity-50 hover:opacity-100" data-drink-key="iced-rose-matcha" onclick="showDrink('iced-rose-matcha', this)">
             <span class="nav-line inactive-nav-line h-px transition-custom group-hover:w-10"></span>
             <span class="text-marble-white text-base tracking-wide font-light transition-custom">Iced Rose Matcha</span>
           </button>
-          <button class="drink-nav-item group flex items-center gap-4 text-left transition-custom opacity-50 hover:opacity-100" onclick="showDrink('coconut-cloud-matcha', this)">
+          <button class="drink-nav-item group flex items-center gap-4 text-left transition-custom opacity-50 hover:opacity-100" data-drink-key="coconut-cloud-matcha" onclick="showDrink('coconut-cloud-matcha', this)">
             <span class="nav-line inactive-nav-line h-px transition-custom group-hover:w-10"></span>
             <span class="text-marble-white text-base tracking-wide font-light transition-custom">Coconut Cloud Matcha</span>
           </button>
@@ -391,23 +425,23 @@
           <span class="material-symbols-outlined text-sm transition-custom category-chevron pointer-events-none">expand_more</span>
         </button>
         <div class="category-content flex flex-col gap-4 pl-2 border-l border-white/5">
-          <button class="drink-nav-item group flex items-center gap-4 text-left transition-custom opacity-50 hover:opacity-100" onclick="showDrink('pistachio-creme-brulee', this)">
+          <button class="drink-nav-item group flex items-center gap-4 text-left transition-custom opacity-50 hover:opacity-100" data-drink-key="pistachio-creme-brulee" onclick="showDrink('pistachio-creme-brulee', this)">
             <span class="nav-line inactive-nav-line h-px transition-custom group-hover:w-10"></span>
             <span class="text-marble-white text-base tracking-wide font-light transition-custom">Pistachio Creme Brulee</span>
           </button>
-          <button class="drink-nav-item group flex items-center gap-4 text-left transition-custom opacity-50 hover:opacity-100" onclick="showDrink('banoffee-coffee', this)">
+          <button class="drink-nav-item group flex items-center gap-4 text-left transition-custom opacity-50 hover:opacity-100" data-drink-key="banoffee-coffee" onclick="showDrink('banoffee-coffee', this)">
             <span class="nav-line inactive-nav-line h-px transition-custom group-hover:w-10"></span>
             <span class="text-marble-white text-base tracking-wide font-light transition-custom">Banoffee Coffee</span>
           </button>
-          <button class="drink-nav-item group flex items-center gap-4 text-left transition-custom opacity-50 hover:opacity-100" onclick="showDrink('iced-rose-coffee', this)">
+          <button class="drink-nav-item group flex items-center gap-4 text-left transition-custom opacity-50 hover:opacity-100" data-drink-key="iced-rose-coffee" onclick="showDrink('iced-rose-coffee', this)">
             <span class="nav-line inactive-nav-line h-px transition-custom group-hover:w-10"></span>
             <span class="text-marble-white text-base tracking-wide font-light transition-custom">Iced Rose Coffee</span>
           </button>
-          <button class="drink-nav-item group flex items-center gap-4 text-left transition-custom opacity-50 hover:opacity-100" onclick="showDrink('coconut-cloud-coffee', this)">
+          <button class="drink-nav-item group flex items-center gap-4 text-left transition-custom opacity-50 hover:opacity-100" data-drink-key="coconut-cloud-coffee" onclick="showDrink('coconut-cloud-coffee', this)">
             <span class="nav-line inactive-nav-line h-px transition-custom group-hover:w-10"></span>
             <span class="text-marble-white text-base tracking-wide font-light transition-custom">Coconut Cloud Coffee</span>
           </button>
-          <button class="drink-nav-item group flex items-center gap-4 text-left transition-custom opacity-50 hover:opacity-100" onclick="showDrink('tiramisu-affogato', this)">
+          <button class="drink-nav-item group flex items-center gap-4 text-left transition-custom opacity-50 hover:opacity-100" data-drink-key="tiramisu-affogato" onclick="showDrink('tiramisu-affogato', this)">
             <span class="nav-line inactive-nav-line h-px transition-custom group-hover:w-10"></span>
             <span class="text-marble-white text-base tracking-wide font-light transition-custom">Tiramisu Affogato</span>
           </button>
@@ -420,11 +454,11 @@
           <span class="material-symbols-outlined text-sm transition-custom category-chevron pointer-events-none">expand_more</span>
         </button>
         <div class="category-content flex flex-col gap-4 pl-2 border-l border-white/5">
-          <button class="drink-nav-item group flex items-center gap-4 text-left transition-custom opacity-50 hover:opacity-100" onclick="showDrink('peach-cold-brew', this)">
+          <button class="drink-nav-item group flex items-center gap-4 text-left transition-custom opacity-50 hover:opacity-100" data-drink-key="peach-cold-brew" onclick="showDrink('peach-cold-brew', this)">
             <span class="nav-line inactive-nav-line h-px transition-custom group-hover:w-10"></span>
             <span class="text-marble-white text-base tracking-wide font-light transition-custom">Peach Cold Brew</span>
           </button>
-          <button class="drink-nav-item group flex items-center gap-4 text-left transition-custom opacity-50 hover:opacity-100" onclick="showDrink('mont-blanc', this)">
+          <button class="drink-nav-item group flex items-center gap-4 text-left transition-custom opacity-50 hover:opacity-100" data-drink-key="mont-blanc" onclick="showDrink('mont-blanc', this)">
             <span class="nav-line inactive-nav-line h-px transition-custom group-hover:w-10"></span>
             <span class="text-marble-white text-base tracking-wide font-light transition-custom">Mont Blanc</span>
           </button>
@@ -437,11 +471,11 @@
           <span class="material-symbols-outlined text-sm transition-custom category-chevron pointer-events-none">expand_more</span>
         </button>
         <div class="category-content flex flex-col gap-4 pl-2 border-l border-white/5">
-          <button class="drink-nav-item group flex items-center gap-4 text-left transition-custom opacity-50 hover:opacity-100" onclick="showDrink('coconut-cloud-chocolate', this)">
+          <button class="drink-nav-item group flex items-center gap-4 text-left transition-custom opacity-50 hover:opacity-100" data-drink-key="coconut-cloud-chocolate" onclick="showDrink('coconut-cloud-chocolate', this)">
             <span class="nav-line inactive-nav-line h-px transition-custom group-hover:w-10"></span>
             <span class="text-marble-white text-base tracking-wide font-light transition-custom">Coconut Cloud Chocolate</span>
           </button>
-          <button class="drink-nav-item group flex items-center gap-4 text-left transition-custom opacity-50 hover:opacity-100" onclick="showDrink('hazelnut-chocolate', this)">
+          <button class="drink-nav-item group flex items-center gap-4 text-left transition-custom opacity-50 hover:opacity-100" data-drink-key="hazelnut-chocolate" onclick="showDrink('hazelnut-chocolate', this)">
             <span class="nav-line inactive-nav-line h-px transition-custom group-hover:w-10"></span>
             <span class="text-marble-white text-base tracking-wide font-light transition-custom">Hazelnut Chocolate</span>
           </button>
@@ -454,15 +488,15 @@
           <span class="material-symbols-outlined text-sm transition-custom category-chevron pointer-events-none">expand_more</span>
         </button>
         <div class="category-content flex flex-col gap-4 pl-2 border-l border-white/5">
-          <button class="drink-nav-item group flex items-center gap-4 text-left transition-custom opacity-50 hover:opacity-100" onclick="showDrink('rose-latte', this)">
+          <button class="drink-nav-item group flex items-center gap-4 text-left transition-custom opacity-50 hover:opacity-100" data-drink-key="rose-latte" onclick="showDrink('rose-latte', this)">
             <span class="nav-line inactive-nav-line h-px transition-custom group-hover:w-10"></span>
             <span class="text-marble-white text-base tracking-wide font-light transition-custom">Rose Latte</span>
           </button>
-          <button class="drink-nav-item group flex items-center gap-4 text-left transition-custom opacity-50 hover:opacity-100" onclick="showDrink('blue-spirulina-latte', this)">
+          <button class="drink-nav-item group flex items-center gap-4 text-left transition-custom opacity-50 hover:opacity-100" data-drink-key="blue-spirulina-latte" onclick="showDrink('blue-spirulina-latte', this)">
             <span class="nav-line inactive-nav-line h-px transition-custom group-hover:w-10"></span>
             <span class="text-marble-white text-base tracking-wide font-light transition-custom">Blue Spirulina Latte</span>
           </button>
-          <button class="drink-nav-item group flex items-center gap-4 text-left transition-custom opacity-50 hover:opacity-100" onclick="showDrink('taro-latte', this)">
+          <button class="drink-nav-item group flex items-center gap-4 text-left transition-custom opacity-50 hover:opacity-100" data-drink-key="taro-latte" onclick="showDrink('taro-latte', this)">
             <span class="nav-line inactive-nav-line h-px transition-custom group-hover:w-10"></span>
             <span class="text-marble-white text-base tracking-wide font-light transition-custom">Taro Latte</span>
           </button>
@@ -486,10 +520,12 @@
   <!-- Description Panel -->
   <div class="relative mr-20 w-[480px] p-16 rounded-[2.5rem] z-20 transition-all duration-700 flex flex-col" id="drink-description" onclick="event.stopPropagation()">
   <div class="relative z-10 flex flex-col h-full w-full">
-    <button class="absolute top-8 right-8 text-marble-white/60 hover:text-marble-white transition-colors p-2" id="panel-close-btn" onclick="hidePanel()">
-      <span class="material-symbols-outlined text-2xl">close</span>
-    </button>
-    <span class="text-marble-white/65 text-[10px] uppercase tracking-[0.3em] font-semibold block mb-4">Signature Selection</span>
+    <div class="flex items-center justify-between mb-4 w-full">
+      <span class="text-marble-white/65 text-[10px] uppercase tracking-[0.3em] font-semibold block">Signature Selection</span>
+      <button class="text-marble-white/60 hover:text-marble-white transition-colors p-2 -mr-2 -mt-2 flex items-center justify-center" id="panel-close-btn" onclick="hidePanel()">
+        <span class="material-symbols-outlined text-2xl">close</span>
+      </button>
+    </div>
     <h1 class="font-serif text-4xl md:text-5xl font-semibold mb-6 text-marble-white tracking-tight leading-tight" id="drink-title">Strawberries &amp; Cream Matcha</h1>
     <div id="drink-temp-switch" class="hidden items-center gap-1 p-1 bg-black/40 border border-white/10 rounded-full w-fit mb-6 transition-all duration-300">
       <button onclick="setDrinkTemp('hot')" id="btn-temp-hot" class="px-5 py-1.5 rounded-full text-xs uppercase tracking-widest font-semibold transition-all duration-300">Hot</button>
@@ -516,7 +552,7 @@
 </div>
 
 <!-- Brand Mark (No shape container) -->
-<div class="absolute bottom-8 right-8 z-50 pointer-events-none opacity-85 transition-all duration-300">
+<div id="brand-logo-container" class="absolute bottom-8 right-8 z-50 pointer-events-none opacity-85 transition-all duration-300">
   <img alt="Pony White Cafe Brand Mark" class="w-20 h-20 rounded-full object-cover" src="../../assets/White Color Overlay Design.png"/>
 </div>
 </main>
@@ -527,7 +563,7 @@
         title: 'Strawberries & Cream Matcha',
         text: 'Housemade strawberry puree & strawberry cream.',
         img: '../../assets/matcha-strawberry.jpg',
-        video: '../../assets/strawberrys and cream.mp4',
+        video: '../../assets/Strawberries & Cream Matcha.mp4',
         price: '$9.50',
         ambient: '#1C2E1F'
       },
@@ -535,7 +571,7 @@
         title: 'Banoffee Matcha',
         text: 'Housemade caramel banana syrup & banana cream with premium ceremonial matcha.',
         img: '../../assets/layered-smoothie.jpg',
-        video: '../../assets/bannoffee matcha.mp4',
+        video: '../../assets/Banoffee Matcha.mp4',
         price: '$10.00',
         ambient: '#2C2B1B'
       },
@@ -543,7 +579,7 @@
         title: 'Iced Rose Matcha',
         text: 'Fragrant rose latte topped with rose petals and premium ceremonial matcha.',
         img: '../../assets/matcha-strawberry.jpg',
-        video: '../../assets/rose matcha.mp4',
+        video: '../../assets/Iced Rose Matcha.mp4',
         price: '$9.50',
         ambient: '#2E1A2C'
       },
@@ -551,7 +587,7 @@
         title: 'Coconut Cloud Matcha',
         text: 'Coconut water, coconut cold foam & toasted coconut with premium ceremonial matcha.',
         img: '../../assets/coconut-iced-latte.jpg',
-        video: '../../assets/coconut cloud matcha.mp4',
+        video: '../../assets/Coconut Cloud Matcha.mp4',
         price: '$9.50',
         ambient: '#1A2A2E'
       },
@@ -559,7 +595,7 @@
         title: 'Pistachio Creme Brulee',
         text: 'Iced latte with our house made pistachio cream, bruleed with crushed pistachios.',
         img: '../../assets/coconut-iced-latte.jpg',
-        video: '../../assets/pistacio.mp4',
+        video: '../../assets/Pistachio Creme Brulee.mp4',
         price: '$10.50',
         ambient: '#242D1C'
       },
@@ -567,7 +603,7 @@
         title: 'Banoffee Coffee',
         text: 'Housemade caramel banana syrup & banana cream with a rich double shot of espresso.',
         img: '../../assets/layered-smoothie.jpg',
-        video: '../../assets/banoffee_coffeemp_.mp4',
+        video: '../../assets/Banoffee Coffee.mp4',
         price: '$10.00',
         ambient: '#3A2E1D'
       },
@@ -575,7 +611,7 @@
         title: 'Iced Rose Coffee',
         text: 'Fragrant rose latte topped with rose petals and a rich double shot of espresso.',
         img: '../../assets/matcha-strawberry.jpg',
-        video: '../../assets/rose coffee.mp4',
+        video: '../../assets/Iced Rose Coffee.mp4',
         price: '$9.50',
         ambient: '#351F2A'
       },
@@ -583,7 +619,7 @@
         title: 'Coconut Cloud Coffee',
         text: 'Coconut water, coconut cold foam & toasted coconut with a rich double shot of espresso.',
         img: '../../assets/coconut-iced-latte.jpg',
-        video: '../../assets/coconut cloud coffee.mp4',
+        video: '../../assets/Coconut Cloud Coffee.mp4',
         price: '$9.50',
         ambient: '#212D3A'
       },
@@ -591,7 +627,7 @@
         title: 'Tiramisu Affogato',
         text: 'Sea salt caramel ice cream, lady finger biscuits, salted caramel sauce, chocolate & double espresso.',
         img: '../../assets/layered-smoothie.jpg',
-        video: '../../assets/afagato.mp4',
+        video: '../../assets/Tiramisu Affogato.mp4',
         price: '$10.00',
         ambient: '#2D1D17'
       },
@@ -599,7 +635,7 @@
         title: 'Peach Cold Brew',
         text: 'Cold brew, sweet peach cream topped with dried peach.',
         img: '../../assets/layered-smoothie.jpg',
-        video: '../../assets/peach cold brew.mp4',
+        video: '../../assets/Peach Cold Brew.mp4',
         price: '$9.50',
         ambient: '#352119'
       },
@@ -607,7 +643,7 @@
         title: 'Coconut Cloud Chocolate',
         text: 'Coconut water, coconut cold foam & toasted coconut with premium rich chocolate.',
         img: '../../assets/coconut-iced-latte.jpg',
-        video: '../../assets/iced coco cloud chocolate.mp4',
+        video: '../../assets/Coconut Cloud Chocolate.mp4',
         price: '$9.50',
         ambient: '#2D211A'
       },
@@ -617,7 +653,7 @@
           title: 'Hazelnut Hot Chocolate',
           text: 'Our signature rich chocolate infused with sweet roasted hazelnut syrup. Warm, velvety, and deeply comforting.',
           img: '../../assets/coconut-iced-latte.jpg',
-          video: '../../assets/hazelnut hot chocolate.mp4',
+          video: '../../assets/Hazelnut Hot Chocolate (Hot).mp4',
           price: '$6.00',
           ambient: '#301F18'
         },
@@ -625,7 +661,7 @@
           title: 'Iced Hazelnut Chocolate',
           text: 'Creamy premium chocolate infused with sweet roasted hazelnut syrup, served over ice and topped with a scoop of vanilla ice cream.',
           img: '../../assets/coconut-iced-latte.jpg',
-          video: '../../assets/iced_hazelnut_chocolate_glassmp_.mp4',
+          video: '../../assets/Iced Hazelnut Chocolate (Iced).mp4',
           price: '$8.50',
           ambient: '#261812'
         }
@@ -634,7 +670,7 @@
         title: 'Mont Blanc',
         text: 'Rich, smooth cold brew topped with our house-made velvety sweet cream, mimicking the snow-capped peak of Mont Blanc.',
         img: '../../assets/layered-smoothie.jpg',
-        video: '../../assets/mont blanc.mp4',
+        video: '../../assets/Mont Blanc.mp4',
         price: '$9.50',
         ambient: '#1E2530'
       },
@@ -644,7 +680,7 @@
           title: 'Hot Rose Latte',
           text: 'Fragrant rose latte topped with delicate rose petals. A soothing, caffeine-free signature blend with no coffee or matcha added.',
           img: '../../assets/matcha-strawberry.jpg',
-          video: '../../assets/hot rose latte.mp4',
+          video: '../../assets/Hot Rose Latte (Hot).mp4',
           price: '$6.00',
           ambient: '#3A1E27'
         },
@@ -652,7 +688,7 @@
           title: 'Iced Rose Latte',
           text: 'Chilled rose latte served over ice and topped with rose petals and a premium scoop of vanilla ice cream. 100% caffeine-free.',
           img: '../../assets/matcha-strawberry.jpg',
-          video: '../../assets/iced rose.mp4',
+          video: '../../assets/Iced Rose Latte (Iced).mp4',
           price: '$8.50',
           ambient: '#2E1A2C'
         }
@@ -663,7 +699,7 @@
           title: 'Hot Blue Spirulina Latte',
           text: 'A stunning, nutrient-dense caffeine-free latte made with premium organic blue spirulina, steamed milk, and a delicate touch of vanilla sweetness.',
           img: '../../assets/coconut-iced-latte.jpg',
-          video: '../../assets/blue spirulina.mp4',
+          video: '../../assets/Hot Blue Spirulina Latte (Hot).mp4',
           price: '$6.00',
           ambient: '#1A2C38'
         },
@@ -671,7 +707,7 @@
           title: 'Iced Blue Spirulina Latte',
           text: 'Nutrient-rich blue spirulina and chilled milk over ice, crowned with a premium scoop of vanilla ice cream. Pure, refreshing, caffeine-free wellness.',
           img: '../../assets/coconut-iced-latte.jpg',
-          video: '../../assets/iced spiralina.mp4',
+          video: '../../assets/Iced Blue Spirulina Latte (Iced).mp4',
           price: '$8.50',
           ambient: '#1B3240'
         }
@@ -682,7 +718,7 @@
           title: 'Hot Taro Latte',
           text: 'A velvety, smooth purple latte with a delicious, sweet and nutty taro root flavor. Comforting, cozy, and caffeine-free.',
           img: '../../assets/layered-smoothie.jpg',
-          video: '../../assets/hot taro.mp4',
+          video: '../../assets/Hot Taro Latte (Hot).mp4',
           price: '$6.00',
           ambient: '#291B33'
         },
@@ -690,7 +726,7 @@
           title: 'Iced Taro Latte',
           text: 'Creamy and nutty taro latte poured over ice, finished with a premium scoop of vanilla ice cream. The perfect sweet, caffeine-free escape.',
           img: '../../assets/layered-smoothie.jpg',
-          video: '../../assets/iced taro.mp4',
+          video: '../../assets/Iced Taro Latte (Iced).mp4',
           price: '$8.50',
           ambient: '#22162B'
         }
@@ -745,9 +781,10 @@
       }
     }
 
-    // Unified media display helper to cleanly switch between video & image backgrounds
     function updateMedia(config, img, video) {
+      const logo = document.getElementById('brand-logo-container');
       if (config.video) {
+        if (logo) logo.classList.add('logo-loading');
         // Hide image by default when a video is present to avoid flashing underlay
         img.style.display = 'none';
         img.classList.add('hidden');
@@ -782,6 +819,7 @@
           playPromise.then(() => {
             // Success! Fade in the video beautifully
             video.style.opacity = '1';
+            if (logo) logo.classList.remove('logo-loading');
           }).catch(error => {
             console.log('Autoplay blocked by Chrome/sandboxing:', error);
             // Autoplay is blocked. Reveal the high-res image fallback.
@@ -790,6 +828,8 @@
             img.classList.remove('hidden');
             img.style.opacity = '1';
             img.style.transform = 'scale(1.05)';
+            
+            if (logo) logo.classList.remove('logo-loading');
             
             // Register a click gesture fallback on the entire document to play the video.
             const forcePlay = () => {
@@ -821,6 +861,8 @@
         img.src = config.img;
         img.style.opacity = '1';
         img.style.transform = 'scale(1.05)';
+        
+        if (logo) logo.classList.remove('logo-loading');
       }
     }
 
@@ -1037,17 +1079,12 @@
     function initDrinksShowcase() {
       // 1. Dynamic event binding for drink navigation items
       document.querySelectorAll('.drink-nav-item').forEach(btn => {
-        const onclickAttr = btn.getAttribute('onclick');
-        if (onclickAttr) {
-          const match = onclickAttr.match(/showDrink\('([^']+)'/);
-          if (match) {
-            const key = match[1];
-            btn.setAttribute('data-drink-key', key);
-            btn.addEventListener('click', (e) => {
-              e.preventDefault();
-              showDrink(key, btn);
-            });
-          }
+        const key = btn.getAttribute('data-drink-key');
+        if (key) {
+          btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            showDrink(key, btn);
+          });
           btn.removeAttribute('onclick');
         }
       });
@@ -1140,6 +1177,21 @@
           handleBackgroundClick(e);
         });
         mainShowcase.removeAttribute('onclick');
+      }
+
+      // 8. Video loading state events to pulse the brand logo during load times
+      const videoEl = document.getElementById('drink-video');
+      const logoEl = document.getElementById('brand-logo-container');
+      if (videoEl && logoEl) {
+        videoEl.addEventListener('loadstart', () => {
+          logoEl.classList.add('logo-loading');
+        });
+        videoEl.addEventListener('playing', () => {
+          logoEl.classList.remove('logo-loading');
+        });
+        videoEl.addEventListener('error', () => {
+          logoEl.classList.remove('logo-loading');
+        });
       }
 
       // Open default category on load

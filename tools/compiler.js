@@ -170,9 +170,7 @@ function compilePage(filePath) {
                        `  /* Compiled Page Styles */\n` +
                        `  ${combinedCss}\n` +
                        `</style>\n`;
-                              
-  const viewportMeta = `<meta name="viewport" content="width=device-width, initial-scale=1.0">\n`;
-  const inlinedHtml = viewportMeta + globalStyles + html;
+  const inlinedHtml = globalStyles + html;
 
   // 2. Process image/asset paths
   console.log(`  - Processing asset paths (CDN: ${CONFIG.useCDN ? 'ENABLED' : 'DISABLED'})...`);
