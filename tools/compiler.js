@@ -31,7 +31,7 @@ const LOCAL_ASSETS_PATH = 'assets/';
  * Supports formats like: ../../assets/img.png, /assets/img.png, assets/img.png
  */
 function processAssetPaths(html, useCDN) {
-  const assetRegex = /(?:url\(["']?|src=["']|href=["']|["'])(?:\.\.\/|\.\/|\/)*assets\/([^"'\)]+)(?:["']?\)|\s*["'])/gi;
+  const assetRegex = /(?:url\(["']?|src=["']|href=["']|["'])(?:\.\.\/|\.\/|\/)*assets\/([^"']+)(?:["']?\)|\s*["'])/gi;
   
   return html.replace(assetRegex, (match) => {
     // Determine delimiter (src=", href=", url(', url(), or standard quote)
