@@ -2,11 +2,13 @@
     // Dynamic Font Injection to bypass iframe sandboxing font blocks
     (function() {
       function injectFont(url) {
-        if (document.querySelector('link[href="' + url + '"]')) return;
-        const link = document.createElement('link');
-        link.rel = 'stylesheet';
-        link.href = url;
-        document.head.appendChild(link);
+        try {
+          if (document.querySelector('link[href="' + url + '"]')) return;
+          const link = document.createElement('link');
+          link.rel = 'stylesheet';
+          link.href = url;
+          (document.head || document.documentElement).appendChild(link);
+        } catch (e) { console.error('Font injection failed:', e); }
       }
       injectFont('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
       injectFont('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');

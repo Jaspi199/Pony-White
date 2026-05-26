@@ -180,11 +180,13 @@ function compilePage(filePath) {
   const dynamicFontScript = `\n    // Dynamic Font Injection to bypass iframe sandboxing font blocks\n` +
                             `    (function() {\n` +
                             `      function injectFont(url) {\n` +
-                            `        if (document.querySelector('link[href="' + url + '"]')) return;\n` +
-                            `        const link = document.createElement('link');\n` +
-                            `        link.rel = 'stylesheet';\n` +
-                            `        link.href = url;\n` +
-                            `        document.head.appendChild(link);\n` +
+                            `        try {\n` +
+                            `          if (document.querySelector('link[href="' + url + '"]')) return;\n` +
+                            `          const link = document.createElement('link');\n` +
+                            `          link.rel = 'stylesheet';\n` +
+                            `          link.href = url;\n` +
+                            `          (document.head || document.documentElement).appendChild(link);\n` +
+                            `        } catch (e) { console.error('Font injection failed:', e); }\n` +
                             `      }\n` +
                             `      injectFont('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');\n` +
                             `      injectFont('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');\n` +
