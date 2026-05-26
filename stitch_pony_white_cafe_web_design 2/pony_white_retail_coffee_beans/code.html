@@ -3,7 +3,7 @@
 <html lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Artisanal Retail | Pony White</title>
+<title>The Boutique | Pony White</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
@@ -163,23 +163,27 @@
 </nav>
 <main class="pt-32">
 <!-- Hero Section -->
-<header class="relative py-24 md:py-36 overflow-hidden mb-stack-lg full-width-breakout min-h-[350px] md:min-h-[450px] lg:min-h-[500px] flex items-center justify-center bg-primary text-white">
+<header class="relative py-24 md:py-36 overflow-hidden mb-stack-lg full-width-breakout min-h-[400px] md:min-h-[500px] lg:min-h-[550px] flex items-center justify-center bg-primary text-white">
   <!-- Immersive Background Image -->
   <div class="absolute inset-0 z-0 overflow-hidden">
     <img 
       alt="Pony White Boutique Hero" 
-      class="w-full h-full object-cover opacity-70"
+      class="w-full h-full object-cover opacity-60"
       src="../../assets/art-by-son.jpeg"
-      style="filter: brightness(0.65) contrast(1.1);"
+      style="filter: brightness(0.45) contrast(1.15);"
     />
-    <!-- Soft overlay gradient -->
-    <div class="absolute inset-0 bg-gradient-to-b from-primary/30 via-primary/10 to-surface"></div>
+    <!-- Dark overlay to ensure maximum text readability -->
+    <div class="absolute inset-0 bg-[#00140f]/50"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-surface"></div>
   </div>
 
-  <!-- Content Overlay (Minimal Unblocked Typography) -->
-  <div class="relative z-10 text-center flex flex-col justify-center items-center h-full px-gutter">
-    <span class="font-label-caps text-label-caps text-premium-gold tracking-[0.25em] uppercase mb-4 text-shadow-subtle">Pony White Boutique</span>
-    <h1 class="font-display-lg text-4xl md:text-5xl lg:text-6xl text-white text-shadow-subtle tracking-tight font-bold">Artisanal Retail</h1>
+  <!-- Content Overlay (Clean, Minimal, No Card Container) -->
+  <div class="relative z-10 w-full max-w-4xl mx-auto px-margin-desktop text-center flex flex-col items-center justify-center gap-6">
+    <span class="font-label-caps text-label-caps text-premium-gold tracking-[0.25em] uppercase text-shadow-subtle">Pony White</span>
+    <h1 class="font-display-lg text-4xl md:text-5xl lg:text-6xl text-white text-shadow-subtle tracking-tight font-bold">The Boutique</h1>
+    <p class="font-body-lg text-body-lg text-white/90 leading-relaxed max-w-2xl text-shadow-subtle font-medium">
+      Curated essentials for the home barista. From our signature San Pedro beans to specialty blends and artisanal powders, elevate your morning ritual with the Pony White experience. Place your order below for fresh, immediate pickup at our Fitzroy bar.
+    </p>
   </div>
 
   <!-- Subtle Video Caption -->
@@ -187,16 +191,6 @@
     Latte art by Son
   </div>
 </header>
-
-<!-- Boutique Description Panel (Underneath Video Banner) -->
-<section class="py-16 bg-surface px-margin-desktop max-w-screen-2xl mx-auto">
-  <div class="glass-effect p-8 md:p-12 rounded-xl border border-secondary/10 max-w-3xl mx-auto shadow-lg text-center">
-    <span class="font-label-caps text-label-caps text-premium-gold tracking-widest block mb-4 uppercase">The Boutique</span>
-    <p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
-      Curated essentials for the home barista. From our signature San Pedro beans to specialty blends and artisanal powders, elevate your morning ritual with the Pony White experience. Place your order below for fresh, immediate pickup at our Fitzroy bar.
-    </p>
-  </div>
-</section>
 
 <section class="py-12 bg-white px-margin-desktop max-w-screen-2xl mx-auto border-t border-vein-gray/30 mt-6">
     <div class="max-w-3xl">
