@@ -253,7 +253,7 @@
       }
       
       aside.sidebar-slide .relative.z-10 {
-        padding: 2rem 1.25rem !important;
+        padding: 2rem 1.25rem 0 !important;
       }
       
       aside.sidebar-slide .mb-16 {
@@ -416,7 +416,7 @@
   </div>
   
   <!-- Sidebar Content -->
-  <div class="relative z-10 flex flex-col h-full p-12">
+  <div class="relative z-10 flex flex-col h-full pt-12 px-12 pb-0">
     <div class="mb-16 relative">
       <h2 class="text-marble-white/40 uppercase tracking-[0.3em] text-[10px] font-bold mb-2">Signature Collections</h2>
       <div class="h-px w-12 bg-white/10"></div>
@@ -425,7 +425,7 @@
         <span class="material-symbols-outlined text-xl">close</span>
       </button>
     </div>
-    <nav class="flex flex-col gap-6 overflow-y-auto pr-4 scrollbar-hide">
+    <nav class="flex-1 flex flex-col gap-6 overflow-y-auto pr-4 scrollbar-hide pb-12">
       <!-- Matcha Category -->
       <div class="category-group" id="cat-matcha" onmouseenter="hoverCategory('cat-matcha')">
         <button class="w-full flex items-center justify-between text-marble-white/50 hover:text-marble-white transition-custom py-2 uppercase tracking-[0.2em] text-xs font-bold" onclick="toggleCategory('cat-matcha')">
@@ -546,12 +546,7 @@
         </a>
       </div>
     </nav>
-    <div class="mt-auto pt-8">
-      <p class="text-marble-white/20 text-[10px] uppercase tracking-widest leading-loose">
-        Hand crafted just for you<br/>
-        using premium ingredients
-      </p>
-    </div>
+
   </div>
 </aside>
 <main class="relative flex-1 flex items-center justify-end overflow-hidden drink-reveal-trigger z-20" onclick="handleBackgroundClick(event)">
@@ -697,6 +692,7 @@
           title: 'Iced Hazelnut Chocolate',
           text: 'Creamy premium chocolate infused with sweet roasted hazelnut syrup, served over ice and topped with a scoop of vanilla ice cream.',
           img: '../../assets/coconut-iced-latte.jpg',
+          video: '../../assets/iced_hazelnut_chocolate_glassmp_.mp4',
           price: '$8.50',
           ambient: '#261812'
         }
