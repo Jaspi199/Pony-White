@@ -38,7 +38,7 @@ const PAGE_MAPPINGS = [
   },
   {
     dirName: 'signature_drinks_sharp_content_on_atmospheric_background',
-    fileName: 'drinks.html'
+    fileName: 'signature-drinks.html'
   },
   {
     dirName: 'pony_white_smoothies_juices',
@@ -81,7 +81,7 @@ function extractBodyContent(rawHtml, pageName) {
   }
 
   // 2. Strip navbar tag
-  if (pageName !== 'drinks.html') {
+  if (pageName !== 'signature-drinks.html') {
     const navMatch = content.match(/<nav[^>]*>[^]*?<\/nav>/gi);
     if (navMatch) {
       console.log(`  - Stripped top navigation bar (<nav>)`);
