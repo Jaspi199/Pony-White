@@ -101,28 +101,62 @@
             transform: scale(1.2) rotate(8deg);
         }
 
-        /* Option cards interaction overrides */
+        /* Option cards interaction overrides - Solid White Theme */
         .option-card {
-            border: 2px solid rgba(255, 255, 255, 0.1) !important;
-            background: rgba(255, 255, 255, 0.03) !important;
-            transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+            border: 2px solid rgba(11, 48, 39, 0.08) !important;
+            background: #FFFFFF !important; /* Solid White */
+            color: #0B3027 !important; /* Dark Green Text */
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05) !important;
+        }
+
+        .option-card h4 {
+            color: #0B3027 !important;
+        }
+        
+        .option-card p {
+            color: rgba(11, 48, 39, 0.6) !important;
         }
 
         .option-card:hover {
             border-color: #D4AF37 !important;
-            background: rgba(212, 175, 55, 0.05) !important;
-            transform: translateY(-4px);
+            background: #fbf9f8 !important; /* Very soft cream-white on hover */
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15) !important;
         }
 
         .option-card.active-card {
             border-color: #D4AF37 !important;
-            background-color: rgba(212, 175, 55, 0.08) !important;
-            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2) !important;
+            background-color: #FFFFFF !important;
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.2) !important;
         }
 
         .option-card.active-card .rounded-full {
             background-color: #D4AF37 !important;
-            color: #0B3027 !important;
+            color: #FFFFFF !important;
+        }
+
+        /* Pulsing Gold Glow Pop Entrance for Feedback Stars block */
+        .pop-star-block {
+            animation: bouncePop 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+            box-shadow: 0 0 60px rgba(212, 175, 55, 0.25) !important;
+            border-color: rgba(212, 175, 55, 0.4) !important;
+        }
+
+        @keyframes bouncePop {
+            0% {
+                transform: scale(0.92);
+                opacity: 0;
+                box-shadow: 0 0 0px rgba(212, 175, 55, 0);
+            }
+            50% {
+                transform: scale(1.03);
+                box-shadow: 0 0 80px rgba(212, 175, 55, 0.4);
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
         }
     </style>
 
@@ -360,8 +394,20 @@
 
         // Hide default view and show feedback view
         document.getElementById('selection-default-view').classList.add('hidden');
-        document.getElementById('selection-feedback-view').classList.remove('hidden');
+        const feedbackContainer = document.getElementById('selection-feedback-view');
+        feedbackContainer.classList.remove('hidden');
+        
+        // Trigger visual gold glow bounce pop animation
+        feedbackContainer.classList.remove('pop-star-block');
+        void feedbackContainer.offsetWidth; // Force CSS reflow
+        feedbackContainer.classList.add('pop-star-block');
+
         resetStarSystem();
+
+        // Smooth scroll centering so they never miss the rating stars
+        setTimeout(() => {
+            feedbackContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }, 150);
     }
 
     // Stars Rating Logic
