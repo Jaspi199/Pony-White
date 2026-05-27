@@ -157,57 +157,33 @@
     <!-- Header Section -->
     <div class="relative z-10 text-center px-6 mt-4">
         <span class="font-label-sm uppercase tracking-widest block gold-gradient-text font-bold mb-2">Liquid Vitality</span>
-        <h1 class="font-headline-xl text-3xl md:text-5xl text-white font-bold mb-3">Smoothies &amp; Cold-Pressed Juices</h1>
-        <p class="font-body-lg text-sm md:text-base text-on-surface-variant max-w-xl mx-auto mb-6">
-            Raw, 100% natural, freshly blended superfood smoothies and slow-pressed juices crafted daily to vitalize your ritual.
+        <h1 class="font-headline-xl text-3xl md:text-5xl text-white font-bold mb-3">Signature Smoothies</h1>
+        <p class="font-body-lg text-sm md:text-base text-on-surface-variant max-w-xl mx-auto mb-4">
+            Raw, 100% natural, freshly blended superfood smoothies crafted daily to vitalize your morning ritual.
         </p>
-
-        <!-- Category Tabs -->
-        <div class="inline-flex p-1 bg-primary-container/40 backdrop-blur-md rounded-full border border-white/5 mx-auto">
-            <button onclick="filterCategory('all')" id="tab-all" class="active-tab px-6 py-2 rounded-full font-label-md text-sm transition-all duration-300">All</button>
-            <button onclick="filterCategory('smoothie')" id="tab-smoothie" class="px-6 py-2 rounded-full font-label-md text-sm text-on-surface-variant hover:text-white transition-all duration-300">Smoothies</button>
-            <button onclick="filterCategory('juice')" id="tab-juice" class="px-6 py-2 rounded-full font-label-md text-sm text-on-surface-variant hover:text-white transition-all duration-300">Juices</button>
-        </div>
     </div>
 
     <!-- Floating Selection / Hover Details Card (Desktop view) -->
-    <div class="relative z-30 max-w-4xl mx-auto px-6 w-full flex justify-center mt-6 desktop-only-flex">
-        <div id="details-card" class="glass-panel w-full max-w-lg rounded-3xl p-6 md:p-8 flex flex-col justify-between min-h-[220px] transition-all duration-500 relative overflow-hidden group">
+    <div class="relative z-30 max-w-4xl mx-auto px-6 w-full flex justify-center mt-4 desktop-only-flex">
+        <div id="details-card" class="w-full max-w-2xl p-4 flex flex-col justify-between transition-all duration-500 relative overflow-hidden group text-center">
             
-            <!-- Card Background Pattern -->
-            <div class="absolute inset-0 bg-[#00261b]/10 opacity-30 pointer-events-none"></div>
-
             <!-- Close 'X' button (Only visible when a drink is locked/selected) -->
-            <button onclick="clearSelection(event)" id="close-btn" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/60 hover:text-white hover:bg-white/15 transition-all pointer-events-none opacity-0 z-20">
+            <button onclick="clearSelection(event)" id="close-btn" class="absolute top-2 right-2 w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/60 hover:text-white hover:bg-white/15 transition-all pointer-events-none opacity-0 z-20">
                 <span class="material-symbols-outlined text-lg">close</span>
             </button>
 
             <!-- Card Content -->
-            <div class="relative z-10 flex flex-col justify-between h-full">
-                <div>
-                    <div class="flex justify-between items-start mb-4">
-                        <div>
-                            <span id="drink-category" class="font-label-sm uppercase tracking-widest text-secondary-fixed-dim font-bold text-xs block mb-1">Smoothies</span>
-                            <h3 id="drink-title" class="font-headline-md text-2xl md:text-3xl text-white font-bold tracking-tight">Pitaya Pink Dragon</h3>
-                        </div>
-                        <span id="drink-price" class="font-headline-md text-xl md:text-2xl gold-gradient-text font-bold">$10.50</span>
-                    </div>
-                    <p id="drink-desc" class="font-body-md text-sm md:text-base text-on-surface-variant leading-relaxed mb-6 min-h-[48px]">
-                        A refreshing blend of antioxidant-rich pink dragonfruit (pitaya), fresh strawberries, chilled coconut milk, and organic chia seeds.
-                    </p>
-                </div>
-                
-                <div class="flex flex-col sm:flex-row gap-4 items-center justify-between border-t border-white/10 pt-4 mt-auto">
-                    <!-- Clean minimal ingredients/tags -->
-                    <div class="flex gap-2" id="drink-tags">
-                        <span class="bg-white/5 text-white/70 px-3 py-1 rounded-full text-xs font-semibold tracking-wider uppercase font-label-sm">100% Organic</span>
-                        <span class="bg-white/5 text-white/70 px-3 py-1 rounded-full text-xs font-semibold tracking-wider uppercase font-label-sm">Gluten-Free</span>
-                    </div>
-                    <a id="drink-order-btn" href="https://pony-white-cafe.square.site/s/order" class="gold-gradient-bg text-on-secondary-fixed px-6 py-2.5 rounded-full font-label-md text-sm hover:brightness-110 transition-all font-bold shadow-md inline-flex items-center gap-1.5 no-underline">
-                        Order Takeaway
-                        <span class="material-symbols-outlined text-sm">restaurant_menu</span>
-                    </a>
-                </div>
+            <div class="relative z-10 flex flex-col items-center justify-center h-full">
+                <span id="drink-category" class="font-label-sm uppercase tracking-widest text-secondary-fixed-dim font-bold text-xs block mb-2">Smoothies</span>
+                <h3 id="drink-title" class="font-serif text-3xl md:text-5xl text-white font-bold tracking-tight mb-2">Pitaya Pink Dragon</h3>
+                <span id="drink-price" class="font-headline-md text-lg md:text-xl gold-gradient-text font-bold mb-4">$10.50</span>
+                <p id="drink-desc" class="font-body-md text-sm md:text-base text-on-surface-variant leading-relaxed max-w-2xl mx-auto mb-6 min-h-[48px]">
+                    A vibrant tropical blend of antioxidant-rich pink dragonfruit, organic strawberries, chilled coconut milk, and organic chia seeds.
+                </p>
+                <a id="drink-order-btn" href="https://pony-white-cafe.square.site/s/order" class="gold-gradient-bg text-on-secondary-fixed px-8 py-3 rounded-full font-label-md text-sm hover:scale-105 active:scale-95 transition-all font-bold shadow-lg inline-flex items-center gap-2 no-underline">
+                    Order Takeaway
+                    <span class="material-symbols-outlined text-sm">restaurant_menu</span>
+                </a>
             </div>
         </div>
     </div>
@@ -254,6 +230,7 @@
 
 <script>
     // 10 Detailed Drinks Data (6 Smoothies, 4 Juices)
+    // 7 Detailed Smoothies Data
     const DRINKS_DATA = [
         {
             id: 0,
@@ -261,7 +238,7 @@
             category: "smoothie",
             categoryLabel: "Smoothie",
             price: "$10.50",
-            description: "A vibrant tropical blend of antioxidant-rich pink dragonfruit (pitaya), organic fresh strawberries, chilled pure coconut milk, and superfood chia seeds.",
+            description: "A vibrant tropical blend of antioxidant-rich pink dragonfruit, organic strawberries, chilled coconut milk, and organic chia seeds.",
             color: "#ff3b7e",
             imgSrc: "placeholder-smoothie.png", // Custom premium local asset
             tags: ["Vegan", "Antioxidant", "100% Raw"],
@@ -273,7 +250,7 @@
             category: "smoothie",
             categoryLabel: "Smoothie",
             price: "$11.00",
-            description: "High-protein recovery fuel blending pure blue spirulina, rich organic peanut butter, fresh banana, plant-based milk, and organic maca root powder.",
+            description: "High-protein recovery fuel blending pure blue spirulina, rich peanut butter, fresh banana, plant-based milk, and organic maca root.",
             color: "#00a8e8",
             imgSrc: "placeholder-smoothie.png",
             tags: ["Protein Boost", "Vegan", "Recovery"],
@@ -285,7 +262,7 @@
             category: "smoothie",
             categoryLabel: "Smoothie",
             price: "$10.00",
-            description: "Nutrient-dense clean green fusion of fresh baby spinach, organic kale, crisp green apple, zesty ginger root, fresh celery, and a squeeze of lime juice.",
+            description: "Nutrient-dense clean green fusion of baby spinach, organic kale, crisp green apple, zesty ginger root, and celery.",
             color: "#4caf50",
             imgSrc: "placeholder-smoothie.png",
             tags: ["Super Greens", "Cleanse", "Iron Rich"],
@@ -293,11 +270,11 @@
         },
         {
             id: 3,
-            title: "Berry Glow Smoothie",
+            title: "Berry Glow Probiotic",
             category: "smoothie",
             categoryLabel: "Smoothie",
             price: "$10.50",
-            description: "A gorgeous blend of vitamin-packed local mixed berries, fresh banana, organic wild honey, and thick, creamy probiotic Greek yogurt.",
+            description: "A gorgeous blend of vitamin-packed local mixed berries, fresh banana, organic wild honey, and thick, probiotic Greek yogurt.",
             color: "#9c27b0",
             imgSrc: "placeholder-smoothie.png",
             tags: ["Probiotic", "Immunity", "Glow"],
@@ -309,7 +286,7 @@
             category: "smoothie",
             categoryLabel: "Smoothie",
             price: "$10.50",
-            description: "Tropical skin glow cleanse packed with sweet ripe mango, tangy passionfruit pulp, organic coconut water, and a touch of anti-inflammatory turmeric.",
+            description: "Tropical skin glow cleanse packed with sweet ripe mango, tangy passionfruit pulp, coconut water, and a touch of turmeric.",
             color: "#ffc107",
             imgSrc: "placeholder-smoothie.png",
             tags: ["Hydrating", "Vitamin C", "Anti-Inflam"],
@@ -321,7 +298,7 @@
             category: "smoothie",
             categoryLabel: "Smoothie",
             price: "$11.50",
-            description: "Indulgent clean energy blend of organic vegan vanilla protein, rich Medjool dates, organic almond butter, sweet banana, and fine Himalayan pink salt.",
+            description: "Indulgent clean energy blend of organic vegan vanilla protein, Medjool dates, almond butter, and sweet banana with Himalayan pink salt.",
             color: "#a07855",
             imgSrc: "placeholder-smoothie.png",
             tags: ["20g Protein", "Pre-Workout", "No Sugar"],
@@ -329,50 +306,14 @@
         },
         {
             id: 6,
-            title: "Fitzroy Sunrise",
-            category: "juice",
-            categoryLabel: "Cold-Pressed Juice",
-            price: "$9.00",
-            description: "Zesty morning immunity juice slow cold-pressed from sweet local oranges, organic carrots, fresh ginger root, and organic raw turmeric.",
-            color: "#ff5722",
+            title: "Avo-Coco Rejuvenator",
+            category: "smoothie",
+            categoryLabel: "Smoothie",
+            price: "$11.00",
+            description: "Creamy wellness blend of fresh avocado, organic coconut milk, vegan protein, sweet Medjool dates, and premium raw cacao nibs.",
+            color: "#7cb342",
             imgSrc: "placeholder-smoothie.png",
-            tags: ["Cold-Pressed", "Immunity", "Anti-Inflam"],
-            orderUrl: "https://pony-white-cafe.square.site/s/order"
-        },
-        {
-            id: 7,
-            title: "Green Elixir",
-            category: "juice",
-            categoryLabel: "Cold-Pressed Juice",
-            price: "$9.50",
-            description: "Earthy, ultra-refreshing green juice combining slow-pressed celery stalks, crisp green cucumber, organic kale leaves, fresh mint, and sweet green apple.",
-            color: "#8bc34a",
-            imgSrc: "placeholder-smoothie.png",
-            tags: ["Cold-Pressed", "Hydrating", "Earthy"],
-            orderUrl: "https://pony-white-cafe.square.site/s/order"
-        },
-        {
-            id: 8,
-            title: "Watermelon Mint Refresh",
-            category: "juice",
-            categoryLabel: "Cold-Pressed Juice",
-            price: "$8.50",
-            description: "Ultimate summer hydrator cold-pressed from sweet seedless red watermelon, aromatic fresh field mint leaves, and a splash of tangy key lime.",
-            color: "#e91e63",
-            imgSrc: "placeholder-smoothie.png",
-            tags: ["Cold-Pressed", "Super Hydrating", "Low Cal"],
-            orderUrl: "https://pony-white-cafe.square.site/s/order"
-        },
-        {
-            id: 9,
-            title: "Beetroot Bloom",
-            category: "juice",
-            categoryLabel: "Cold-Pressed Juice",
-            price: "$9.00",
-            description: "Stunning wellness elixir slow cold-pressed from sweet earthy red beetroot, crisp local apples, zesty lemon, and a subtle warm touch of ginger.",
-            color: "#b71c1c",
-            imgSrc: "placeholder-smoothie.png",
-            tags: ["Cold-Pressed", "Nitrate Rich", "Stamina"],
+            tags: ["Healthy Fats", "Vegan", "Energizing"],
             orderUrl: "https://pony-white-cafe.square.site/s/order"
         }
     ];
@@ -393,34 +334,19 @@
     const drinkTitle = document.getElementById("drink-title");
     const drinkPrice = document.getElementById("drink-price");
     const drinkDesc = document.getElementById("drink-desc");
-    const drinkTags = document.getElementById("drink-tags");
     const drinkOrderBtn = document.getElementById("drink-order-btn");
     const mobileCardsContainer = document.getElementById("mobile-cards-container");
 
     // Circular Wheel Parameters
     const ITEM_COUNT = DRINKS_DATA.length;
-    const ANGLE_STEP = 360 / ITEM_COUNT; // 36 degrees per drink
+    const ANGLE_STEP = 26; // Spaced 26 degrees apart for a beautiful tight arc at the top!
 
     // Auto-spin Parameters
-    const AUTO_ROTATE_SPEED = 0.05; // Slow rotation speed per interval
     const AUTO_ROTATE_INTERVAL = 30; // 30ms ticking
 
     // Filter Category Handler
     function filterCategory(cat) {
         currentCategoryFilter = cat;
-        
-        // Update tab styling
-        document.querySelectorAll("button[id^='tab-']").forEach(btn => {
-            btn.classList.remove("active-tab");
-            btn.classList.add("text-on-surface-variant");
-        });
-        document.getElementById(`tab-${cat}`).classList.add("active-tab");
-        document.getElementById(`tab-${cat}`).classList.remove("text-on-surface-variant");
-
-        // Repopulate desktop items with opacity indicators
-        updateDesktopWheelOpacity();
-
-        // Repopulate mobile list based on filter
         populateMobileCards();
     }
 
@@ -429,14 +355,9 @@
         if (!mobileCardsContainer) return;
         mobileCardsContainer.innerHTML = '';
         
-        const filtered = DRINKS_DATA.filter(d => currentCategoryFilter === "all" || d.category === currentCategoryFilter);
-        
-        filtered.forEach(drink => {
+        DRINKS_DATA.forEach(drink => {
             const card = document.createElement("div");
             card.className = "snap-center flex-shrink-0 w-[290px] bg-[#001f16] border border-white/5 rounded-2xl p-5 flex flex-col justify-between shadow-xl";
-            
-            // Generate tags markup
-            const tagsMarkup = drink.tags.map(t => `<span class="bg-white/5 text-white/70 px-2 py-0.5 rounded text-[10px] uppercase font-semibold font-label-sm tracking-wider">${t}</span>`).join('');
             
             card.innerHTML = `
                 <div>
@@ -454,7 +375,6 @@
                     <p class="font-body-md text-xs text-on-surface-variant leading-relaxed mb-4 min-h-[48px]">${drink.description}</p>
                 </div>
                 <div>
-                    <div class="flex gap-1.5 mb-4">${tagsMarkup}</div>
                     <a href="${drink.orderUrl}" class="gold-gradient-bg text-on-secondary-fixed py-2 rounded-full font-label-md text-xs hover:brightness-110 transition-all font-bold shadow-md text-center no-underline flex items-center justify-center gap-1.5 w-full">
                         Order Takeaway
                         <span class="material-symbols-outlined text-xs">restaurant_menu</span>
@@ -469,10 +389,10 @@
         if (!wheel) return;
         wheel.innerHTML = '';
 
-        const radius = window.innerWidth >= 768 && window.innerWidth < 1024 ? 320 : 420; // Scale radius
+        const radius = window.innerWidth >= 768 && window.innerWidth < 1024 ? 300 : 400; // Perfectly tight arc radius
         const isLarge = window.innerWidth >= 1024;
-        const w = isLarge ? 80 : 64; // width of rectangle mockup
-        const h = isLarge ? 160 : 128; // height of rectangle mockup
+        const w = isLarge ? 200 : 150; // Much bigger width
+        const h = isLarge ? 300 : 225; // Much bigger height
 
         DRINKS_DATA.forEach((drink, idx) => {
             const angle = idx * ANGLE_STEP; // Position angle
@@ -486,34 +406,13 @@
             item.style.height = `${h}px`;
             item.style.left = `calc(50% - ${w / 2}px)`;
             item.style.top = `calc(50% - ${h / 2}px)`;
-            item.style.transform = `rotate(${angle}deg) translateY(-${radius}px) rotate(-${angle}deg)`;
+            item.style.transform = `rotate(${angle}deg) translateY(-${radius}px)`; // rotate items as they flow
             item.setAttribute("id", `wheel-item-${drink.id}`);
             
-            // HTML for premium glassmorphic standing drink glasses with colorful dynamic gradients and realistic paper straws!
+            // No background container, just the high-quality image itself
             item.innerHTML = `
-                <div class="relative w-full h-full rounded-2xl bg-white/5 border border-white/10 flex flex-col justify-end p-1 transition-custom hover:scale-110 active:scale-95 group shadow-xl overflow-visible" style="background: rgba(255,255,255,0.03); backdrop-filter: blur(12px);">
-                    <!-- Paper Straw -->
-                    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-1.5 h-6 bg-white/30 rounded-t -translate-y-4 rotate-[15deg] origin-bottom group-hover:translate-y-[-20px] transition-transform duration-500" style="background: repeating-linear-gradient(45deg, #fbf9f8, #fbf9f8 4px, #ffffff 4px, #ffffff 8px);"></div>
-                    
-                    <!-- Glass Container with Drink Image -->
-                    <div class="w-full rounded-2xl transition-all duration-700 relative overflow-hidden bg-[#001710]" style="height: 85%; border: 1px solid rgba(255,255,255,0.18); box-shadow: inset 0 0 12px rgba(255,255,255,0.25), 0 8px 16px rgba(0,0,0,0.4);">
-                        <img src="../../assets/${drink.imgSrc}" class="w-full h-full object-cover" alt="${drink.title}">
-                        <!-- Glass Glare Diagonal Reflection -->
-                        <div class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent opacity-80 rotate-[35deg] translate-y-[-50%] pointer-events-none"></div>
-                        <!-- Liquid Top Surface Shimmer -->
-                        <div class="absolute top-0 inset-x-0 h-1.5 rounded-t-2xl bg-white/45 blur-[0.5px]"></div>
-                        <!-- Bottom shadow inside can -->
-                        <div class="absolute bottom-0 inset-x-0 h-8 bg-gradient-to-t from-black/45 to-transparent pointer-events-none"></div>
-                    </div>
-                    
-                    <!-- Elegant center brand label -->
-                    <div class="absolute inset-x-2 top-1/2 -translate-y-1/2 bg-white/95 backdrop-blur-md rounded-lg py-1.5 px-0.5 text-center shadow-md border border-white/20 select-none z-20 group-hover:bg-white transition-colors duration-300">
-                        <span class="text-[9px] md:text-[10px] font-bold text-[#00261b] uppercase tracking-wider block truncate px-0.5">${drink.title.split(' ')[0]}</span>
-                        <span class="text-[7px] text-[#735c00] font-semibold tracking-widest block uppercase mt-0.5">${drink.category === 'smoothie' ? 'SMTH' : 'JUIC'}</span>
-                    </div>
-
-                    <!-- Active Glow Highlight -->
-                    <div class="absolute inset-0 border border-transparent rounded-2xl group-hover:border-secondary-fixed-dim/30 pointer-events-none transition-colors duration-500"></div>
+                <div class="relative w-full h-full flex items-center justify-center transition-all duration-500 group">
+                    <img src="../../assets/${drink.imgSrc}" class="w-full h-full object-contain filter drop-shadow-[0_12px_24px_rgba(0,0,0,0.55)] transition-all duration-500" alt="${drink.title}">
                 </div>
             `;
 
@@ -558,23 +457,14 @@
         }
 
         // Target rotation to align selected item centered at top (0 degrees)
-        // Selected angle is id * ANGLE_STEP
-        // We rotate wheel by -angle to place it at the center
         const targetRotation = -id * ANGLE_STEP;
-        
-        // Find shortest rotation path
-        let diff = (targetRotation - wheelRotation) % 360;
-        if (diff > 180) diff -= 360;
-        if (diff < -180) diff += 360;
-        
-        wheelRotation += diff;
+        wheelRotation = targetRotation;
         
         if (wheel) {
             wheel.style.transition = "transform 0.8s cubic-bezier(0.25, 1, 0.5, 1)";
             wheel.style.transform = `translate(-50%, 0px) rotate(${wheelRotation}deg)`;
         }
 
-        // Apply upright counter-rotations to all elements dynamically
         updateAllUprightCounterRotations(wheelRotation);
 
         activeIndex = id;
@@ -582,15 +472,15 @@
         highlightActiveItemOnWheel(id);
     }
 
-    // Dynamic Counter-Rotation algorithm to keep glasses completely upright
+    // Maintain absolute radial positioning without upright counter-rotation
     function updateAllUprightCounterRotations(currentWheelRotation) {
-        const radius = window.innerWidth >= 768 && window.innerWidth < 1024 ? 320 : 420;
+        const radius = window.innerWidth >= 768 && window.innerWidth < 1024 ? 300 : 400;
         DRINKS_DATA.forEach((drink) => {
             const item = document.getElementById(`wheel-item-${drink.id}`);
             if (item) {
                 const angle = drink.id * ANGLE_STEP;
-                // Add the wheel's rotation to initial position, and cancel total rotation in the inner child
-                item.style.transform = `rotate(${angle}deg) translateY(-${radius}px) rotate(${-angle - currentWheelRotation}deg)`;
+                // No counter rotation - let them rotate as they flow around the wheel
+                item.style.transform = `rotate(${angle}deg) translateY(-${radius}px)`;
             }
         });
     }
@@ -601,7 +491,7 @@
         if (!data) return;
 
         // Elegant fade-and-lift card animation on transition
-        const animElements = [drinkCategory, drinkTitle, drinkPrice, drinkDesc, drinkTags, drinkOrderBtn];
+        const animElements = [drinkCategory, drinkTitle, drinkPrice, drinkDesc, drinkOrderBtn];
         animElements.forEach(el => {
             if (el) {
                 el.style.opacity = "0";
@@ -616,17 +506,6 @@
             if (drinkPrice) drinkPrice.textContent = data.price;
             if (drinkDesc) drinkDesc.textContent = data.description;
             if (drinkOrderBtn) drinkOrderBtn.setAttribute("href", data.orderUrl);
-
-            // Populate tags
-            if (drinkTags) {
-                drinkTags.innerHTML = '';
-                data.tags.forEach(t => {
-                    const span = document.createElement("span");
-                    span.className = "bg-white/5 text-white/70 px-3 py-1 rounded-full text-xs font-semibold tracking-wider uppercase font-label-sm";
-                    span.textContent = t;
-                    drinkTags.appendChild(span);
-                });
-            }
 
             // Fade elements back in
             animElements.forEach(el => {
@@ -644,45 +523,34 @@
             const el = document.getElementById(`wheel-item-${d.id}`);
             if (el) {
                 const inner = el.querySelector("div");
+                const img = el.querySelector("img");
                 if (d.id === id) {
                     el.style.opacity = "1";
-                    el.style.filter = "grayscale(0%)";
-                    if (inner) {
-                        inner.style.transform = "scale(1.15)";
-                        inner.style.borderColor = "#e9c349";
-                        inner.style.boxShadow = `0 10px 30px ${d.color}25, 0 0 15px rgba(233,195,73,0.3)`;
+                    if (inner) inner.style.transform = "scale(1.25)";
+                    if (img) {
+                        img.style.filter = "drop-shadow(0 25px 45px rgba(233, 195, 73, 0.55)) grayscale(0%)";
                     }
                 } else {
-                    // Dim non-focused items slightly
-                    el.style.opacity = "0.6";
-                    el.style.filter = "grayscale(20%)";
-                    if (inner) {
-                        inner.style.transform = "scale(1.0)";
-                        inner.style.borderColor = "rgba(255, 255, 255, 0.1)";
-                        inner.style.boxShadow = "none";
+                    el.style.opacity = "0.5";
+                    if (inner) inner.style.transform = "scale(1.0)";
+                    if (img) {
+                        img.style.filter = "drop-shadow(0 12px 24px rgba(0,0,0,0.55)) grayscale(15%)";
                     }
                 }
             }
         });
     }
 
-    // Hide/Dim desktop wheel items based on active Category Filter tab
+    // Hide/Dim desktop wheel items
     function updateDesktopWheelOpacity() {
         DRINKS_DATA.forEach(d => {
             const el = document.getElementById(`wheel-item-${d.id}`);
             if (el) {
-                if (currentCategoryFilter === "all" || d.category === currentCategoryFilter) {
-                    el.style.pointerEvents = "auto";
-                    // If not locked and not active, keep dimmed state, otherwise full visibility
-                    if (selectedId !== null) {
-                        el.style.opacity = d.id === selectedId ? "1" : "0.3";
-                    } else {
-                        el.style.opacity = d.id === activeIndex ? "1" : "0.6";
-                    }
+                el.style.pointerEvents = "auto";
+                if (selectedId !== null) {
+                    el.style.opacity = d.id === selectedId ? "1" : "0.3";
                 } else {
-                    // Hide non-category items completely from sight and click interactions
-                    el.style.opacity = "0.05";
-                    el.style.pointerEvents = "none";
+                    el.style.opacity = d.id === activeIndex ? "1" : "0.5";
                 }
             }
         });
@@ -700,6 +568,11 @@
             closeBtn.classList.add("opacity-0", "pointer-events-none");
         }
 
+        // Reset the autoplay time to match current index so it resumes smoothly
+        const maxDeviation = (ITEM_COUNT - 1) * ANGLE_STEP / 2;
+        const targetSin = (-activeIndex * ANGLE_STEP) / maxDeviation;
+        autoplayTime = Math.asin(Math.min(1, Math.max(-1, targetSin)));
+
         showDrinkDetails(activeIndex);
         highlightActiveItemOnWheel(activeIndex);
         updateDesktopWheelOpacity();
@@ -707,62 +580,47 @@
 
     // Navigate to next drink via Arrow keys / buttons
     function nextDrink() {
-        // Filter out based on current category
-        const filtered = DRINKS_DATA.filter(d => currentCategoryFilter === "all" || d.category === currentCategoryFilter);
-        const currentIndex = filtered.findIndex(d => d.id === activeIndex);
-        
-        let nextIdx = 0;
-        if (currentIndex !== -1 && currentIndex < filtered.length - 1) {
-            nextIdx = filtered[currentIndex + 1].id;
-        } else if (filtered.length > 0) {
-            nextIdx = filtered[0].id;
+        let nextIdx = activeIndex + 1;
+        if (nextIdx >= ITEM_COUNT) {
+            nextIdx = 0;
         }
-        
         selectDrink(nextIdx);
     }
 
     // Navigate to previous drink via Arrow keys / buttons
     function prevDrink() {
-        const filtered = DRINKS_DATA.filter(d => currentCategoryFilter === "all" || d.category === currentCategoryFilter);
-        const currentIndex = filtered.findIndex(d => d.id === activeIndex);
-        
-        let prevIdx = 0;
-        if (currentIndex > 0) {
-            prevIdx = filtered[currentIndex - 1].id;
-        } else if (filtered.length > 0) {
-            prevIdx = filtered[filtered.length - 1].id;
+        let prevIdx = activeIndex - 1;
+        if (prevIdx < 0) {
+            prevIdx = ITEM_COUNT - 1;
         }
-        
         selectDrink(prevIdx);
     }
 
-    // Auto-spin logic loop
+    // Auto-spin logic loop using premium sine-wave oscillation (cradle sway)
+    let autoplayTime = 0;
     function startWheelAutoplay() {
         if (autoplayInterval) clearInterval(autoplayInterval);
         
         autoplayInterval = setInterval(() => {
             if (!isAutoplayPaused && selectedId === null) {
-                // Slowly decrement wheel rotation (continuous rotation)
-                wheelRotation -= AUTO_ROTATE_SPEED;
+                // Slowly oscillate wheel rotation back and forth
+                autoplayTime += 0.005;
+                const maxDeviation = (ITEM_COUNT - 1) * ANGLE_STEP / 2; // half of total arc
+                wheelRotation = Math.sin(autoplayTime) * maxDeviation;
                 
                 if (wheel) {
-                    wheel.style.transition = "none"; // Disable CSS easing transition for continuous pixel ticking
+                    wheel.style.transition = "none"; // Disable CSS transition for continuous pixel ticking
                     wheel.style.transform = `translate(-50%, 0px) rotate(${wheelRotation}deg)`;
                 }
 
-                // Update counter upright transforms on items instantly
+                // Maintain radial orientation
                 updateAllUprightCounterRotations(wheelRotation);
 
                 // Calculate which item is currently closest to vertical axis (0 degrees)
-                // Normalize rotation between 0 and 360
-                const normalizedRot = (-wheelRotation) % 360;
-                const closestIdx = Math.round(normalizedRot / ANGLE_STEP) % ITEM_COUNT;
+                const targetIdx = Math.min(ITEM_COUNT - 1, Math.max(0, Math.round(-wheelRotation / ANGLE_STEP)));
                 
                 // If the central item changes, update description details smoothly
-                const targetIdx = closestIdx >= 0 ? closestIdx : closestIdx + ITEM_COUNT;
-                
-                // Only update when category matches and target changes
-                if (targetIdx !== activeIndex && (currentCategoryFilter === "all" || DRINKS_DATA[targetIdx].category === currentCategoryFilter)) {
+                if (targetIdx !== activeIndex) {
                     activeIndex = targetIdx;
                     showDrinkDetails(activeIndex);
                     highlightActiveItemOnWheel(activeIndex);
