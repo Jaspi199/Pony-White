@@ -6,16 +6,26 @@
 <link rel="stylesheet" href="../styles/contact.css">
 
 <style>
+        /* Force brand fonts inside sandboxes */
+        body, html, * {
+            font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui, -apple-system, sans-serif !important;
+        }
         .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+            font-family: 'Material Symbols Outlined' !important;
+            font-variation-settings: 'FILL' 1, 'wght' 300, 'GRAD' 0, 'opsz' 24 !important; /* Filled by default */
         }
-        
-        .marble-bg {
-            background-color: #faf9f7;
-            background-image: radial-gradient(circle at 20% 30%, rgba(212, 175, 55, 0.03) 0%, transparent 50%),
-                              radial-gradient(circle at 80% 70%, rgba(11, 48, 39, 0.02) 0%, transparent 50%);
+        .font-serif, h1, h2, h3, h4, .font-headline-xl, .font-headline-md, .font-headline-lg {
+            font-family: 'Playfair Display', ui-serif, Georgia, Cambria, serif !important;
         }
-        
+
+        /* Absolute Forest Green Theme Background */
+        body, html {
+            background-color: #0B3027 !important; /* Brand Forest Green as main background color */
+            color: #faf9f7 !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
         .fade-in {
             animation: fadeIn 0.6s ease-out forwards;
         }
@@ -30,16 +40,25 @@
             background-size: 200% 200%;
         }
         .premium-gold-text {
-            background: linear-gradient(135deg, #8E6A2E 0%, #C5A059 50%, #8E6A2E 100%);
+            background: linear-gradient(135deg, #ffdea5 0%, #D4AF37 50%, #C5A059 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
 
-        /* Large Golden Metallic Moving Shine Stars */
+        /* Premium Glassmorphic Obsidian Bento Panels */
+        .glass-panel {
+            background: rgba(10, 24, 18, 0.65) !important;
+            backdrop-filter: blur(32px) !important;
+            -webkit-backdrop-filter: blur(32px) !important;
+            border: 1px solid rgba(255, 255, 255, 0.08) !important;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4) !important;
+        }
+
+        /* BIG FILLED METALLIC STARS */
         .gold-shine-stars-container {
             display: inline-flex;
-            gap: 16px;
+            gap: 20px;
             justify-content: center;
             width: 100%;
         }
@@ -50,26 +69,27 @@
             transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
+        /* Big, Filled stars by default */
         .star-btn span {
-            font-size: 54px !important;
+            font-size: 72px !important; /* Big Stars */
             transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-            background: #E0E0E0;
+            background: rgba(255, 255, 255, 0.15); /* Grey filled star default state */
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             display: inline-block;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
         }
 
         /* Moving Gold Metallic Shine Animation */
         .star-btn span.star-active {
-            background: linear-gradient(135deg, #a67c37 0%, #d4af37 25%, #fff1c7 50%, #d4af37 75%, #a67c37 100%);
-            background-size: 250% 100%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            background: linear-gradient(135deg, #a67c37 0%, #d4af37 25%, #fff1c7 50%, #d4af37 75%, #a67c37 100%) !important;
+            background-size: 250% 100% !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            background-clip: text !important;
             animation: goldMetallicShine 3s linear infinite;
-            filter: drop-shadow(0 4px 12px rgba(212, 175, 55, 0.55));
+            filter: drop-shadow(0 6px 20px rgba(212, 175, 55, 0.6));
         }
 
         @keyframes goldMetallicShine {
@@ -79,19 +99,30 @@
 
         .star-btn:hover span {
             transform: scale(1.2) rotate(8deg);
-            filter: drop-shadow(0 6px 14px rgba(212, 175, 55, 0.45));
         }
 
         /* Option cards interaction overrides */
+        .option-card {
+            border: 2px solid rgba(255, 255, 255, 0.1) !important;
+            background: rgba(255, 255, 255, 0.03) !important;
+            transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .option-card:hover {
+            border-color: #D4AF37 !important;
+            background: rgba(212, 175, 55, 0.05) !important;
+            transform: translateY(-4px);
+        }
+
         .option-card.active-card {
-            border-color: #B38B45 !important;
-            background-color: rgba(212, 175, 55, 0.03) !important;
-            box-shadow: 0 10px 25px -5px rgba(212, 175, 55, 0.15) !important;
+            border-color: #D4AF37 !important;
+            background-color: rgba(212, 175, 55, 0.08) !important;
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2) !important;
         }
 
         .option-card.active-card .rounded-full {
-            background-color: #B38B45 !important;
-            color: #FFFFFF !important;
+            background-color: #D4AF37 !important;
+            color: #0B3027 !important;
         }
     </style>
 
@@ -100,8 +131,8 @@
 <main class="pt-[120px]">
 <!-- Hero Title Section -->
 <section class="px-margin-desktop py-stack-lg text-center max-w-4xl mx-auto">
-<h1 class="font-display-lg text-display-lg md:text-display-lg text-forest-velvet mb-stack-sm">Get in Touch</h1>
-<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">Whether you're visiting our George St home or brewing from afar, we're here to help make your coffee experience extraordinary.</p>
+<h1 class="font-display-lg text-display-lg md:text-display-lg text-marble-white mb-stack-sm">Get in Touch</h1>
+<p class="font-body-lg text-body-lg text-marble-white/80 max-w-2xl mx-auto">Whether you're visiting our George St home or brewing from afar, we're here to help make your coffee experience extraordinary.</p>
 </section>
 
 <!-- Main Content Bento Grid -->
@@ -109,110 +140,102 @@
 <!-- Premium Interactive Choice Panel (Main Element) -->
 <div class="lg:col-span-12 mb-stack-lg text-center">
     <span class="font-label-caps text-label-caps text-premium-gold block mb-stack-sm tracking-[0.2em]">CHOOSE AN OPTION</span>
-    <h2 class="font-display-lg text-3xl md:text-4xl text-forest-velvet mb-stack-md">How can we assist you today?</h2>
+    <h2 class="font-display-lg text-3xl md:text-4xl text-marble-white mb-stack-md">How can we assist you today?</h2>
     
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter mt-stack-md max-w-5xl mx-auto">
         <!-- Option 1: Feedback -->
-        <button onclick="selectOption('feedback')" id="btn-feedback" class="option-card group bg-white border-2 border-vein-gray rounded-xl p-6 shadow-[0px_4px_20px_rgba(0,0,0,0.02)] hover:border-premium-gold hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col items-center text-center">
-            <div class="w-12 h-12 rounded-full bg-forest-velvet/5 text-premium-gold flex items-center justify-center mb-stack-sm group-hover:bg-premium-gold group-hover:text-white transition-colors duration-300">
+        <button onclick="selectOption('feedback')" id="btn-feedback" class="option-card group rounded-xl p-6 shadow-lg flex flex-col items-center text-center">
+            <div class="w-12 h-12 rounded-full bg-marble-white/5 text-premium-gold flex items-center justify-center mb-stack-sm group-hover:bg-premium-gold group-hover:text-forest-velvet transition-colors duration-300">
                 <span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">star</span>
             </div>
-            <h4 class="font-headline-md text-lg text-forest-velvet group-hover:text-premium-gold transition-colors duration-300">Feedback & Reviews</h4>
-            <p class="font-body-md text-xs text-on-surface-variant mt-2 leading-relaxed">Rate your dining experience with us.</p>
+            <h4 class="font-headline-md text-lg text-marble-white group-hover:text-premium-gold transition-colors duration-300">Feedback & Reviews</h4>
+            <p class="font-body-md text-xs text-marble-white/60 mt-2 leading-relaxed">Rate your dining experience with us.</p>
         </button>
 
         <!-- Option 2: Booking -->
-        <button onclick="selectOption('bookings')" id="btn-bookings" class="option-card group bg-white border-2 border-vein-gray rounded-xl p-6 shadow-[0px_4px_20px_rgba(0,0,0,0.02)] hover:border-premium-gold hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col items-center text-center">
-            <div class="w-12 h-12 rounded-full bg-forest-velvet/5 text-premium-gold flex items-center justify-center mb-stack-sm group-hover:bg-premium-gold group-hover:text-white transition-colors duration-300">
+        <button onclick="selectOption('bookings')" id="btn-bookings" class="option-card group rounded-xl p-6 shadow-lg flex flex-col items-center text-center">
+            <div class="w-12 h-12 rounded-full bg-marble-white/5 text-premium-gold flex items-center justify-center mb-stack-sm group-hover:bg-premium-gold group-hover:text-forest-velvet transition-colors duration-300">
                 <span class="material-symbols-outlined text-2xl">calendar_month</span>
             </div>
-            <h4 class="font-headline-md text-lg text-forest-velvet group-hover:text-premium-gold transition-colors duration-300">Table Booking</h4>
-            <p class="font-body-md text-xs text-on-surface-variant mt-2 leading-relaxed">Reserve a spot at our Fitzroy home.</p>
+            <h4 class="font-headline-md text-lg text-marble-white group-hover:text-premium-gold transition-colors duration-300">Table Booking</h4>
+            <p class="font-body-md text-xs text-marble-white/60 mt-2 leading-relaxed">Reserve a spot at our Fitzroy home.</p>
         </button>
 
         <!-- Option 3: General Inquiry -->
-        <button onclick="selectOption('general')" id="btn-general" class="option-card group bg-white border-2 border-vein-gray rounded-xl p-6 shadow-[0px_4px_20px_rgba(0,0,0,0.02)] hover:border-premium-gold hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col items-center text-center">
-            <div class="w-12 h-12 rounded-full bg-forest-velvet/5 text-premium-gold flex items-center justify-center mb-stack-sm group-hover:bg-premium-gold group-hover:text-white transition-colors duration-300">
+        <button onclick="selectOption('general')" id="btn-general" class="option-card group rounded-xl p-6 shadow-lg flex flex-col items-center text-center">
+            <div class="w-12 h-12 rounded-full bg-marble-white/5 text-premium-gold flex items-center justify-center mb-stack-sm group-hover:bg-premium-gold group-hover:text-forest-velvet transition-colors duration-300">
                 <span class="material-symbols-outlined text-2xl">chat_bubble</span>
             </div>
-            <h4 class="font-headline-md text-lg text-forest-velvet group-hover:text-premium-gold transition-colors duration-300">General Inquiry</h4>
-            <p class="font-body-md text-xs text-on-surface-variant mt-2 leading-relaxed">Ask us a question directly.</p>
+            <h4 class="font-headline-md text-lg text-marble-white group-hover:text-premium-gold transition-colors duration-300">General Inquiry</h4>
+            <p class="font-body-md text-xs text-marble-white/60 mt-2 leading-relaxed">Ask us a question directly.</p>
         </button>
 
         <!-- Option 4: Hiring -->
-        <button onclick="selectOption('hiring')" id="btn-hiring" class="option-card group bg-white border-2 border-vein-gray rounded-xl p-6 shadow-[0px_4px_20px_rgba(0,0,0,0.02)] hover:border-premium-gold hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col items-center text-center">
-            <div class="w-12 h-12 rounded-full bg-forest-velvet/5 text-premium-gold flex items-center justify-center mb-stack-sm group-hover:bg-premium-gold group-hover:text-white transition-colors duration-300">
+        <button onclick="selectOption('hiring')" id="btn-hiring" class="option-card group rounded-xl p-6 shadow-lg flex flex-col items-center text-center">
+            <div class="w-12 h-12 rounded-full bg-marble-white/5 text-premium-gold flex items-center justify-center mb-stack-sm group-hover:bg-premium-gold group-hover:text-forest-velvet transition-colors duration-300">
                 <span class="material-symbols-outlined text-2xl">work</span>
             </div>
-            <h4 class="font-headline-md text-lg text-forest-velvet group-hover:text-premium-gold transition-colors duration-300">We're Hiring</h4>
-            <p class="font-body-md text-xs text-on-surface-variant mt-2 leading-relaxed">Join our coffee-loving team.</p>
+            <h4 class="font-headline-md text-lg text-marble-white group-hover:text-premium-gold transition-colors duration-300">We're Hiring</h4>
+            <p class="font-body-md text-xs text-marble-white/60 mt-2 leading-relaxed">Join our coffee-loving team.</p>
         </button>
     </div>
 </div>
 
 <!-- Form & Interactive Section -->
-<section class="lg:col-span-8 bg-white border border-vein-gray rounded-xl p-stack-lg shadow-[0px_4px_20px_rgba(0,0,0,0.03)] flex flex-col justify-center min-h-[480px]">
+<section class="lg:col-span-8 glass-panel rounded-xl p-stack-lg flex flex-col justify-center min-h-[420px]">
     <!-- Default Unselected Panel -->
     <div id="selection-default-view" class="text-center py-stack-lg">
-        <span class="material-symbols-outlined text-[64px] text-outline/30 mb-stack-sm">touch_app</span>
-        <h3 class="font-headline-md text-xl text-forest-velvet mb-2">Ready to assist</h3>
-        <p class="font-body-md text-sm text-on-surface-variant max-w-sm mx-auto">Please select one of the cards above to proceed with your booking, review, or inquiry.</p>
+        <span class="material-symbols-outlined text-[64px] text-marble-white/20 mb-stack-sm">touch_app</span>
+        <h3 class="font-headline-md text-xl text-marble-white mb-2">Ready to assist</h3>
+        <p class="font-body-md text-sm text-marble-white/60 max-w-sm mx-auto">Please select one of the options above to proceed.</p>
     </div>
 
     <!-- 1. Feedback & Star System Container -->
     <div id="selection-feedback-view" class="hidden fade-in">
         <div class="mb-stack-lg text-center">
             <span class="font-label-caps text-label-caps text-premium-gold block mb-stack-sm tracking-[0.2em]">FEEDBACK & REVIEW</span>
-            <h2 class="font-headline-md text-headline-md text-forest-velvet">How was your experience?</h2>
-            <p class="font-body-md text-body-md text-on-surface-variant mt-2">Tap stars below to share your thoughts with us.</p>
+            <h2 class="font-headline-md text-headline-md text-marble-white">How was your experience?</h2>
+            <p class="font-body-md text-body-md text-marble-white/60 mt-2">Hover and click stars below to share your thoughts with us.</p>
         </div>
         
         <!-- Large Golden Metallic Moving Shine Stars -->
-        <div class="gold-shine-stars-container mb-stack-lg" id="rating-container">
-            <button class="star-btn" data-value="1" onclick="handleRatingClick(1)">
+        <div class="gold-shine-stars-container mb-stack-lg" id="rating-container" onmouseleave="handleStarsMouseLeave()">
+            <button class="star-btn" data-value="1" onmouseenter="handleStarsHover(1)" onclick="handleRatingClick(1)">
                 <span class="material-symbols-outlined">star</span>
             </button>
-            <button class="star-btn" data-value="2" onclick="handleRatingClick(2)">
+            <button class="star-btn" data-value="2" onmouseenter="handleStarsHover(2)" onclick="handleRatingClick(2)">
                 <span class="material-symbols-outlined">star</span>
             </button>
-            <button class="star-btn" data-value="3" onclick="handleRatingClick(3)">
+            <button class="star-btn" data-value="3" onmouseenter="handleStarsHover(3)" onclick="handleRatingClick(3)">
                 <span class="material-symbols-outlined">star</span>
             </button>
-            <button class="star-btn" data-value="4" onclick="handleRatingClick(4)">
+            <button class="star-btn" data-value="4" onmouseenter="handleStarsHover(4)" onclick="handleRatingClick(4)">
                 <span class="material-symbols-outlined">star</span>
             </button>
-            <button class="star-btn" data-value="5" onclick="handleRatingClick(5)">
+            <button class="star-btn" data-value="5" onmouseenter="handleStarsHover(5)" onclick="handleRatingClick(5)">
                 <span class="material-symbols-outlined">star</span>
             </button>
         </div>
 
-        <div class="border-t border-vein-gray pt-stack-lg" id="feedback-logic-content">
+        <div class="border-t border-white/10 pt-stack-lg" id="feedback-logic-content">
             <!-- Initial prompt -->
             <div id="stars-initial-prompt" class="text-center py-4">
-                <p class="font-body-md text-body-md text-outline italic text-sm">Select a star rating to load review actions.</p>
+                <p class="font-body-md text-body-md text-marble-white/40 italic text-sm">Select a star rating to load review actions.</p>
             </div>
 
-            <!-- Apology & Private email form (1-3 stars) -->
-            <div class="hidden fade-in" id="stars-apology-form">
-                <h3 class="font-headline-md text-headline-md mb-stack-md text-forest-velvet">Sincere Apologies</h3>
-                <p class="font-body-md text-sm text-on-surface-variant mb-gutter">We are deeply sorry we didn't meet your expectations today. We take our craft and hospitality very seriously. Please fill out your details below so our manager can personally contact you to make things right.</p>
-                <form class="space-y-gutter" onsubmit="event.preventDefault(); showFormConfirmation('apology');">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
-                        <div>
-                            <label class="font-label-caps text-label-caps text-forest-velvet block mb-2">Name</label>
-                            <input required class="w-full bg-surface-container-low border-b border-vein-gray focus:border-forest-velvet outline-none py-2 px-1 transition-all text-sm" placeholder="Enter your name" type="text"/>
-                        </div>
-                        <div>
-                            <label class="font-label-caps text-label-caps text-forest-velvet block mb-2">Email Address</label>
-                            <input required class="w-full bg-surface-container-low border-b border-vein-gray focus:border-forest-velvet outline-none py-2 px-1 transition-all text-sm" placeholder="hello@example.com" type="email"/>
-                        </div>
-                    </div>
-                    <div>
-                        <label class="font-label-caps text-label-caps text-forest-velvet block mb-2">Message</label>
-                        <textarea required class="w-full bg-surface-container-low border-b border-vein-gray focus:border-forest-velvet outline-none py-2 px-1 transition-all resize-none text-sm" placeholder="Share your experience..." rows="4"></textarea>
-                    </div>
-                    <button class="bg-forest-velvet text-white font-label-caps text-label-caps px-stack-lg py-4 rounded-lg hover:opacity-90 transition-opacity w-full sm:w-auto" type="submit">Send Private Message</button>
-                </form>
+            <!-- Apology & Redirection (1-3 stars) -->
+            <div class="hidden fade-in text-center py-4" id="stars-apology-form">
+                <div class="mb-gutter text-premium-gold">
+                    <span class="material-symbols-outlined text-[64px]" style="font-variation-settings: 'FILL' 1;">sentiment_dissatisfied</span>
+                </div>
+                <h3 class="font-headline-md text-2xl mb-stack-md text-marble-white">We are Sincerly Sorry</h3>
+                <p class="font-body-md text-sm text-marble-white/70 mb-stack-lg max-w-md mx-auto leading-relaxed">
+                    We are deeply sorry we didn't meet your expectations today. We take our craft and hospitality very seriously. We are redirecting you to our feedback portal so we can hear from you directly and make things right.
+                </p>
+                <a class="inline-flex items-center premium-gold-gradient text-forest-velvet font-label-caps text-label-caps px-8 py-4 rounded-lg hover:scale-[1.02] transition-all shadow-md font-bold" href="#" id="apology-redirect-btn">
+                    Go to Email Us Page
+                    <span class="material-symbols-outlined ml-2 text-sm">arrow_forward</span>
+                </a>
             </div>
 
             <!-- Thank You & Google Review Link (4-5 stars) -->
@@ -220,95 +243,43 @@
                 <div class="mb-gutter text-premium-gold animate-bounce">
                     <span class="material-symbols-outlined text-[64px]" style="font-variation-settings: 'FILL' 1;">favorite</span>
                 </div>
-                <h3 class="font-headline-md text-headline-md mb-stack-md text-forest-velvet">Heartfelt Thank You!</h3>
-                <p class="font-body-md text-sm text-on-surface-variant mb-stack-lg max-w-md mx-auto">We are absolutely thrilled you enjoyed your visit to Pony White! Your support means the world to our team. Could you take a moment to share your kind words on Google?</p>
-                <a class="inline-flex items-center premium-gold-gradient text-white font-label-caps text-label-caps px-8 py-4 rounded-lg hover:scale-[1.02] transition-all shadow-md font-bold" href="https://google.com/search?q=pony+white+cafe+fitzroy+reviews" target="_blank" onclick="showFormConfirmation('thanks');">
+                <h3 class="font-headline-md text-2xl mb-stack-md text-marble-white">Heartfelt Thank You!</h3>
+                <p class="font-body-md text-sm text-marble-white/70 mb-stack-lg max-w-md mx-auto leading-relaxed">
+                    We are absolutely thrilled you enjoyed your visit to Pony White! Your support means the world to our team. We are redirecting you to our Google Reviews page to share your kind words.
+                </p>
+                <a class="inline-flex items-center premium-gold-gradient text-forest-velvet font-label-caps text-label-caps px-8 py-4 rounded-lg hover:scale-[1.02] transition-all shadow-md font-bold" href="https://google.com/search?q=pony+white+cafe+fitzroy+reviews" target="_blank" id="thanks-redirect-btn">
                     Leave a Google Review
                     <span class="material-symbols-outlined ml-2 text-sm">open_in_new</span>
                 </a>
             </div>
-
-            <!-- Post-Action Confirmation (Thanks or Sorry Message element replacement) -->
-            <div class="hidden fade-in text-center py-stack-lg" id="feedback-final-confirm">
-                <div class="mb-gutter text-forest-velvet" id="confirm-icon-box">
-                    <span class="material-symbols-outlined text-[64px]">verified</span>
-                </div>
-                <h3 class="font-headline-md text-2xl mb-stack-md text-forest-velvet" id="confirm-title-box">Message Sent</h3>
-                <p class="font-body-md text-sm text-on-surface-variant max-w-md mx-auto" id="confirm-message-box">Thank you for helping us refine our craft.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- 2. General Inquiry Form Container -->
-    <div id="selection-general-view" class="hidden fade-in">
-        <div class="mb-stack-lg">
-            <span class="font-label-caps text-label-caps text-premium-gold block mb-stack-sm tracking-[0.2em]">GENERAL INQUIRY</span>
-            <h2 class="font-headline-md text-headline-md text-forest-velvet">Ask us anything</h2>
-            <p class="font-body-md text-body-md text-on-surface-variant mt-2">Have a question about our specialty beans, merchandise, or daily menu? Drop us a message.</p>
-        </div>
-        <form class="space-y-gutter" onsubmit="event.preventDefault(); showGeneralConfirmation();">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
-                <div>
-                    <label class="font-label-caps text-label-caps text-forest-velvet block mb-2">Name</label>
-                    <input required class="w-full bg-surface-container-low border-b border-vein-gray focus:border-forest-velvet outline-none py-2 px-1 transition-all text-sm" placeholder="Enter your name" type="text"/>
-                </div>
-                <div>
-                    <label class="font-label-caps text-label-caps text-forest-velvet block mb-2">Email Address</label>
-                    <input required class="w-full bg-surface-container-low border-b border-vein-gray focus:border-forest-velvet outline-none py-2 px-1 transition-all text-sm" placeholder="hello@example.com" type="email"/>
-                </div>
-            </div>
-            <div>
-                <label class="font-label-caps text-label-caps text-forest-velvet block mb-2">Subject</label>
-                <input required class="w-full bg-surface-container-low border-b border-vein-gray focus:border-forest-velvet outline-none py-2 px-1 transition-all text-sm" placeholder="How can we help?" type="text"/>
-            </div>
-            <div>
-                <label class="font-label-caps text-label-caps text-forest-velvet block mb-2">Message</label>
-                <textarea required class="w-full bg-surface-container-low border-b border-vein-gray focus:border-forest-velvet outline-none py-2 px-1 transition-all resize-none text-sm" placeholder="Write your inquiry here..." rows="4"></textarea>
-            </div>
-            <button class="premium-gold-gradient text-white font-label-caps text-label-caps px-stack-lg py-4 rounded-lg hover:scale-[1.01] transition-transform w-full sm:w-auto shadow-md font-bold" type="submit">Submit Inquiry</button>
-        </form>
-        <!-- General Confirmation message -->
-        <div class="hidden fade-in text-center py-stack-lg" id="general-final-confirm">
-            <div class="mb-gutter text-premium-gold">
-                <span class="material-symbols-outlined text-[64px]" style="font-variation-settings: 'FILL' 1;">mail</span>
-            </div>
-            <h3 class="font-headline-md text-2xl mb-stack-md text-forest-velvet">Inquiry Received</h3>
-            <p class="font-body-md text-sm text-on-surface-variant max-w-sm mx-auto">Thank you for reaching out! Our team will review your message and reply via email within 24 hours.</p>
         </div>
     </div>
 </section>
 
 <!-- General Inquiries Sidebar -->
 <aside class="lg:col-span-4 space-y-gutter">
-<!-- Contact Details -->
-<div class="bg-white border border-vein-gray rounded-xl p-stack-lg shadow-[0px_4px_20px_rgba(0,0,0,0.03)]">
-<h3 class="font-headline-md text-headline-md text-forest-velvet mb-stack-md">General Inquiries</h3>
+<!-- Contact Details (Email address hidden/removed per user instruction) -->
+<div class="glass-panel rounded-xl p-stack-lg shadow-lg">
+<h3 class="font-headline-md text-headline-md text-marble-white mb-stack-md">General Inquiries</h3>
 <div class="space-y-stack-lg">
 <div class="flex items-start gap-4">
 <span class="material-symbols-outlined text-premium-gold">call</span>
 <div>
-<p class="font-label-caps text-label-caps text-forest-velvet">Phone</p>
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-premium-gold transition-colors" href="tel:+61393147273">(03) 9314 7273</a>
-</div>
-</div>
-<div class="flex items-start gap-4">
-<span class="material-symbols-outlined text-premium-gold">mail</span>
-<div>
-<p class="font-label-caps text-label-caps text-forest-velvet">Email</p>
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-premium-gold transition-colors" href="mailto:hello@ponywhite.com.au">hello@ponywhite.com.au</a>
+<p class="font-label-caps text-label-caps text-premium-gold">Phone</p>
+<a class="font-body-md text-body-md text-marble-white/80 hover:text-premium-gold transition-colors" href="tel:+61393147273">(03) 9314 7273</a>
 </div>
 </div>
 <div class="flex items-start gap-4">
 <span class="material-symbols-outlined text-premium-gold">location_on</span>
 <div>
-<p class="font-label-caps text-label-caps text-forest-velvet">Address</p>
-<p class="font-body-md text-body-md text-on-surface-variant">379-381 George Street, Fitzroy VIC 3065, Australia</p>
+<p class="font-label-caps text-label-caps text-premium-gold">Address</p>
+<p class="font-body-md text-body-md text-marble-white/80">379-381 George Street, Fitzroy VIC 3065, Australia</p>
 </div>
 </div>
 </div>
-<div class="mt-stack-lg pt-stack-lg border-t border-vein-gray">
-<p class="font-label-caps text-label-caps text-forest-velvet mb-stack-md">Opening Hours</p>
-<ul class="font-body-md text-body-md text-on-surface-variant space-y-1.5 mb-3">
+<div class="mt-stack-lg pt-stack-lg border-t border-white/10">
+<p class="font-label-caps text-label-caps text-premium-gold mb-stack-md">Opening Hours</p>
+<ul class="font-body-md text-body-md text-marble-white/70 space-y-1.5 mb-3">
 <li class="flex justify-between"><span>Monday – Thursday</span> <span>7am — 3pm</span></li>
 <li class="flex justify-between"><span>Friday</span> <span>7am — 3:30pm</span></li>
 <li class="flex justify-between"><span>Saturday</span> <span>7:30am — 3:30pm</span></li>
@@ -318,7 +289,7 @@
 </div>
 </div>
 <!-- Location Map Embedded Live -->
-<div class="rounded-xl overflow-hidden border border-vein-gray h-64 relative group shadow-[0px_4px_20px_rgba(0,0,0,0.03)] bg-surface-container-low">
+<div class="rounded-xl overflow-hidden border border-white/10 h-64 relative group shadow-lg bg-surface-container-low">
 <iframe class="w-full h-full border-0 grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700" 
         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3152.4795328224523!2d144.97825227702816!3d-37.8022879719782!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642df5a3c0383%3A0xe541c4deee7574ea!2sPony%20White%20Cafe!5e0!3m2!1sen!2sau!4v1716300000000!5m2!1sen!2sau" 
         allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -355,6 +326,11 @@
       injectFont('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');
     })();
 
+    // Links for the Branch Redirections (can be changed easily later)
+    const GOOGLE_REVIEWS_URL = 'https://google.com/search?q=pony+white+cafe+fitzroy+reviews';
+    const EMAIL_US_PAGE_URL = 'mailto:hello@ponywhite.com.au'; // Or an email us page link
+    const GENERAL_INQUIRY_URL = 'mailto:hello@ponywhite.com.au'; // Or contact page link
+
     // State management for option cards
     function selectOption(category) {
         // Remove active styles from all cards
@@ -362,7 +338,7 @@
             card.classList.remove('active-card');
         });
 
-        // Redirect handlers
+        // Dynamic immediate redirects per user requirements
         if (category === 'bookings') {
             window.location.href = 'book-table.html';
             return;
@@ -371,73 +347,80 @@
             window.location.href = 'careers.html';
             return;
         }
+        if (category === 'general') {
+            window.location.href = GENERAL_INQUIRY_URL;
+            return;
+        }
 
-        // Add active styles to clicked card
+        // Add active styles to clicked card (Feedback)
         const clickedCard = document.getElementById(`btn-${category}`);
         if (clickedCard) {
             clickedCard.classList.add('active-card');
         }
 
-        // Hide default view and toggle appropriate panels
+        // Hide default view and show feedback view
         document.getElementById('selection-default-view').classList.add('hidden');
-        
-        const feedbackView = document.getElementById('selection-feedback-view');
-        const generalView = document.getElementById('selection-general-view');
-
-        if (category === 'feedback') {
-            feedbackView.classList.remove('hidden');
-            generalView.classList.add('hidden');
-            resetStarSystem();
-        } else if (category === 'general') {
-            generalView.classList.remove('hidden');
-            feedbackView.classList.add('hidden');
-            // Reset general form if it was sent
-            const form = generalView.querySelector('form');
-            const confirm = document.getElementById('general-final-confirm');
-            if (form) form.classList.remove('hidden');
-            if (confirm) confirm.classList.add('hidden');
-        }
+        document.getElementById('selection-feedback-view').classList.remove('hidden');
+        resetStarSystem();
     }
 
     // Stars Rating Logic
     let activeRating = 0;
-    function handleRatingClick(rating) {
-        activeRating = rating;
-        const stars = document.querySelectorAll('.star-btn span');
-        const initialPrompt = document.getElementById('stars-initial-prompt');
-        const apologyForm = document.getElementById('stars-apology-form');
-        const thankYou = document.getElementById('stars-thank-you');
-        const finalConfirm = document.getElementById('feedback-final-confirm');
 
-        // Apply visual metallic active state to clicked star range
+    // Handle hover styling dynamically: N stars colored up to the hovered star
+    function handleStarsHover(rating) {
+        const stars = document.querySelectorAll('.star-btn span');
         stars.forEach((star, index) => {
             if (index < rating) {
                 star.classList.add('star-active');
-                star.style.fontVariationSettings = "'FILL' 1";
             } else {
                 star.classList.remove('star-active');
-                star.style.fontVariationSettings = "'FILL' 0";
             }
         });
+    }
 
-        // Hide initial rating prompt and final confirm on rating update
+    // Handle mouse leaving the rating block: return to clicked active rating state
+    function handleStarsMouseLeave() {
+        const stars = document.querySelectorAll('.star-btn span');
+        stars.forEach((star, index) => {
+            if (index < activeRating) {
+                star.classList.add('star-active');
+            } else {
+                star.classList.remove('star-active');
+            }
+        });
+    }
+
+    function handleRatingClick(rating) {
+        activeRating = rating;
+        
+        const initialPrompt = document.getElementById('stars-initial-prompt');
+        const apologyForm = document.getElementById('stars-apology-form');
+        const thankYou = document.getElementById('stars-thank-you');
+        
+        const apologyBtn = document.getElementById('apology-redirect-btn');
+        if (apologyBtn) apologyBtn.setAttribute('href', EMAIL_US_PAGE_URL);
+
+        // Hide initial prompt on click
         initialPrompt.classList.add('hidden');
-        finalConfirm.classList.add('hidden');
 
-        // Branch logic: 4-5 stars yields Google Reviews, 1-3 yields apology & private form
+        // Branch logic: 4-5 stars thank you vs 1-3 stars apology
         if (rating >= 4) {
             apologyForm.classList.add('hidden');
             thankYou.classList.remove('hidden');
             
-            // Automatically open Google review link in new tab to make it seamless
+            // Seamless automatic redirect after 1.5 seconds per expectations
             setTimeout(() => {
-                window.open('https://google.com/search?q=pony+white+cafe+fitzroy+reviews', '_blank');
-            }, 800);
+                window.open(GOOGLE_REVIEWS_URL, '_blank');
+            }, 1500);
         } else {
             thankYou.classList.add('hidden');
             apologyForm.classList.remove('hidden');
-            // Auto scroll form cleanly into focus
-            apologyForm.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            
+            // Seamless automatic redirect after 1.5 seconds per expectations
+            setTimeout(() => {
+                window.location.href = EMAIL_US_PAGE_URL;
+            }, 1500);
         }
     }
 
@@ -445,67 +428,9 @@
         activeRating = 0;
         document.querySelectorAll('.star-btn span').forEach(s => {
             s.classList.remove('star-active');
-            s.style.fontVariationSettings = "'FILL' 0";
-            s.classList.remove('text-premium-gold');
         });
         document.getElementById('stars-initial-prompt').classList.remove('hidden');
         document.getElementById('stars-apology-form').classList.add('hidden');
         document.getElementById('stars-thank-you').classList.add('hidden');
-        document.getElementById('feedback-final-confirm').classList.add('hidden');
-    }
-
-    // Hover dynamic feedback stars
-    document.querySelectorAll('.star-btn').forEach((btn, idx) => {
-        btn.addEventListener('mouseenter', () => {
-            const stars = document.querySelectorAll('.star-btn span');
-            for (let i = 0; i <= idx; i++) {
-                stars[i].classList.add('text-premium-gold');
-            }
-        });
-        btn.addEventListener('mouseleave', () => {
-            const stars = document.querySelectorAll('.star-btn span');
-            stars.forEach(s => {
-                if (!s.classList.contains('star-active')) {
-                    s.classList.remove('text-premium-gold');
-                }
-            });
-        });
-    });
-
-    // Form submission confirmation elements
-    function showFormConfirmation(type) {
-        const apologyForm = document.getElementById('stars-apology-form');
-        const thankYou = document.getElementById('stars-thank-you');
-        const finalConfirm = document.getElementById('feedback-final-confirm');
-        const iconBox = document.getElementById('confirm-icon-box');
-        const titleBox = document.getElementById('confirm-title-box');
-        const messageBox = document.getElementById('confirm-message-box');
-
-        apologyForm.classList.add('hidden');
-        thankYou.classList.add('hidden');
-        finalConfirm.classList.remove('hidden');
-
-        if (type === 'apology') {
-            iconBox.innerHTML = '<span class="material-symbols-outlined text-[64px] text-premium-gold">contact_support</span>';
-            titleBox.textContent = "Apology Message Submitted";
-            messageBox.textContent = "Thank you. We have logged your feedback privately, and our manager will contact you shortly to address this.";
-        } else {
-            iconBox.innerHTML = '<span class="material-symbols-outlined text-[64px] text-premium-gold" style="font-variation-settings: \'FILL\' 1;">celebrate</span>';
-            titleBox.textContent = "Thank You!";
-            messageBox.textContent = "We truly appreciate you sharing your experience. We look forward to serving you again soon.";
-        }
-        
-        finalConfirm.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    }
-
-    function showGeneralConfirmation() {
-        const form = document.querySelector('#selection-general-view form');
-        const confirm = document.getElementById('general-final-confirm');
-        
-        if (form) form.classList.add('hidden');
-        if (confirm) {
-            confirm.classList.remove('hidden');
-            confirm.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        }
     }
 </script>
