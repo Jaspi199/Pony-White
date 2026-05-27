@@ -374,7 +374,7 @@
     ];
 
     // State Variables
-    let activeIndex = 0;
+    let activeIndex = 3; // Start on the middle index (symmetric center)
     let selectedId = null; // Remains null until a drink is explicitly clicked
     let wheelRotation = 0; // Current rotation of the wheel in degrees
     let isAutoplayPaused = false;
@@ -394,7 +394,7 @@
 
     // Circular Wheel Parameters
     const ITEM_COUNT = DRINKS_DATA.length;
-    const ANGLE_STEP = 26; // Spaced 26 degrees apart for a beautiful tight arc at the top!
+    const ANGLE_STEP = 42; // Spaced 42 degrees apart for a beautiful tight arc at the top!
 
     // Auto-spin Parameters
     const AUTO_ROTATE_INTERVAL = 30; // 30ms ticking
@@ -405,32 +405,29 @@
         populateMobileCards();
     }
 
-    // Populate Mobile Swiper Cards
+    // Populate Mobile Swiper Cards (Containerless & Centered)
     function populateMobileCards() {
         if (!mobileCardsContainer) return;
         mobileCardsContainer.innerHTML = '';
         
         DRINKS_DATA.forEach(drink => {
             const card = document.createElement("div");
-            card.className = "snap-center flex-shrink-0 w-[290px] bg-[#001f16] border border-white/5 rounded-2xl p-5 flex flex-col justify-between shadow-xl";
+            // No background, no borders, fully transparent card, centered content
+            card.className = "snap-center flex-shrink-0 w-[280px] p-4 flex flex-col items-center justify-between text-center";
             
             card.innerHTML = `
-                <div>
-                    <div class="relative overflow-hidden rounded-xl h-48 mb-4">
-                        <div class="absolute inset-0 z-10" style="background: radial-gradient(circle, ${drink.color}22 0%, transparent 80%)"></div>
-                        <img src="../../assets/${drink.imgSrc}" class="w-full h-full object-cover rounded-xl" alt="${drink.title}">
-                        <div class="absolute top-3 right-3 z-20">
-                            <span class="gold-gradient-bg text-on-secondary-fixed text-[9px] px-2 py-0.5 rounded-full font-bold shadow-md uppercase tracking-wider">${drink.categoryLabel}</span>
-                        </div>
+                <div class="w-full flex flex-col items-center">
+                    <!-- Uncropped Direct Image with Drop Shadow -->
+                    <div class="relative w-[180px] h-[270px] mb-4 flex items-center justify-center">
+                        <img src="../../assets/${drink.imgSrc}" class="w-full h-full object-contain filter drop-shadow-[0_12px_24px_rgba(0,0,0,0.55)]" alt="${drink.title}">
                     </div>
-                    <div class="flex justify-between items-start mb-2">
-                        <h4 class="font-headline-md text-lg text-white font-bold tracking-tight">${drink.title}</h4>
-                        <span class="font-headline-md text-base gold-gradient-text font-bold">${drink.price}</span>
-                    </div>
-                    <p class="font-body-md text-xs text-on-surface-variant leading-relaxed mb-4 min-h-[48px]">${drink.description}</p>
+                    <span class="font-label-sm uppercase tracking-widest text-secondary-fixed-dim font-bold text-[10px] block mb-1">Smoothie</span>
+                    <h4 class="font-serif text-2xl text-white font-bold tracking-tight mb-1">${drink.title}</h4>
+                    <span class="font-headline-md text-base gold-gradient-text font-bold mb-3">${drink.price}</span>
+                    <p class="font-body-md text-xs text-on-surface-variant leading-relaxed max-w-[240px] mb-4 min-h-[48px]">${drink.description}</p>
                 </div>
-                <div>
-                    <a href="${drink.orderUrl}" class="gold-gradient-bg text-on-secondary-fixed py-2 rounded-full font-label-md text-xs hover:brightness-110 transition-all font-bold shadow-md text-center no-underline flex items-center justify-center gap-1.5 w-full">
+                <div class="w-full px-4">
+                    <a href="${drink.orderUrl}" class="gold-gradient-bg text-on-secondary-fixed py-2.5 rounded-full font-label-md text-xs hover:scale-105 active:scale-95 transition-all font-bold shadow-md text-center no-underline flex items-center justify-center gap-1.5 w-full">
                         Order Takeaway
                         <span class="material-symbols-outlined text-xs">restaurant_menu</span>
                     </a>
@@ -444,13 +441,13 @@
         if (!wheel) return;
         wheel.innerHTML = '';
 
-        const radius = window.innerWidth >= 768 && window.innerWidth < 1024 ? 300 : 400; // Perfectly tight arc radius
+        const radius = window.innerWidth >= 768 && window.innerWidth < 1024 ? 180 : 240; // Smaller wheel radius
         const isLarge = window.innerWidth >= 1024;
         const w = isLarge ? 200 : 150; // Much bigger width
         const h = isLarge ? 300 : 225; // Much bigger height
 
         DRINKS_DATA.forEach((drink, idx) => {
-            const angle = idx * ANGLE_STEP; // Position angle
+            const angle = (idx - 3) * ANGLE_STEP; // Centered position angle around 0 degrees!
             
             // Create wheel item container
             const item = document.createElement("div");
@@ -500,20 +497,28 @@
         highlightActiveItemOnWheel(activeIndex);
     }
 
-    // Select Drink explicitly on click
-    function selectDrink(id) {
-        selectedId = id;
-        isAutoplayPaused = true;
-        
-        // Show close X button state
-        if (closeBtn) {
-            closeBtn.classList.remove("opacity-0", "pointer-events-none");
-            closeBtn.classList.add("opacity-100");
+    // Select/Snap to Drink
+    function snapToDrink(id, isUserClick = false) {
+        if (isUserClick) {
+            selectedId = id;
+            isAutoplayPaused = true;
+            if (closeBtn) {
+                closeBtn.classList.remove("opacity-0", "pointer-events-none");
+                closeBtn.classList.add("opacity-100");
+            }
         }
 
-        // Target rotation to align selected item centered at top (0 degrees)
-        const targetRotation = -id * ANGLE_STEP;
-        wheelRotation = targetRotation;
+        // Align the selected item centered at top (0 degrees)
+        // Position angle is (id - 3) * ANGLE_STEP
+        // We rotate wheel by -angle to place it at the center
+        const targetRotation = -(id - 3) * ANGLE_STEP;
+        
+        // Find shortest rotation path
+        let diff = (targetRotation - wheelRotation) % 360;
+        if (diff > 180) diff -= 360;
+        if (diff < -180) diff += 360;
+        
+        wheelRotation += diff;
         
         if (wheel) {
             wheel.style.transition = "transform 0.8s cubic-bezier(0.25, 1, 0.5, 1)";
@@ -527,13 +532,18 @@
         highlightActiveItemOnWheel(id);
     }
 
+    // Select Drink explicitly on click
+    function selectDrink(id) {
+        snapToDrink(id, true);
+    }
+
     // Maintain absolute radial positioning without upright counter-rotation
     function updateAllUprightCounterRotations(currentWheelRotation) {
-        const radius = window.innerWidth >= 768 && window.innerWidth < 1024 ? 300 : 400;
+        const radius = window.innerWidth >= 768 && window.innerWidth < 1024 ? 180 : 240;
         DRINKS_DATA.forEach((drink) => {
             const item = document.getElementById(`wheel-item-${drink.id}`);
             if (item) {
-                const angle = drink.id * ANGLE_STEP;
+                const angle = (drink.id - 3) * ANGLE_STEP;
                 // No counter rotation - let them rotate as they flow around the wheel
                 item.style.transform = `rotate(${angle}deg) translateY(-${radius}px)`;
             }
@@ -581,15 +591,15 @@
                 const img = el.querySelector("img");
                 if (d.id === id) {
                     el.style.opacity = "1";
-                    if (inner) inner.style.transform = "scale(1.25)";
+                    if (inner) inner.style.transform = "scale(1.5)"; // Selected drink is much bigger!
                     if (img) {
                         img.style.filter = "drop-shadow(0 25px 45px rgba(233, 195, 73, 0.55)) grayscale(0%)";
                     }
                 } else {
-                    el.style.opacity = "0.5";
-                    if (inner) inner.style.transform = "scale(1.0)";
+                    el.style.opacity = "0.4"; // non-focused items are dimmed more
+                    if (inner) inner.style.transform = "scale(0.8)"; // scaled down to emphasize active one
                     if (img) {
-                        img.style.filter = "drop-shadow(0 12px 24px rgba(0,0,0,0.55)) grayscale(15%)";
+                        img.style.filter = "drop-shadow(0 10px 18px rgba(0,0,0,0.55)) grayscale(15%)";
                     }
                 }
             }
@@ -623,13 +633,7 @@
             closeBtn.classList.add("opacity-0", "pointer-events-none");
         }
 
-        // Reset the autoplay time to match current index so it resumes smoothly
-        const maxDeviation = (ITEM_COUNT - 1) * ANGLE_STEP / 2;
-        const targetSin = (-activeIndex * ANGLE_STEP) / maxDeviation;
-        autoplayTime = Math.asin(Math.min(1, Math.max(-1, targetSin)));
-
-        showDrinkDetails(activeIndex);
-        highlightActiveItemOnWheel(activeIndex);
+        snapToDrink(activeIndex, false);
         updateDesktopWheelOpacity();
     }
 
@@ -651,37 +655,20 @@
         selectDrink(prevIdx);
     }
 
-    // Auto-spin logic loop using premium sine-wave oscillation (cradle sway)
-    let autoplayTime = 0;
+    // Auto-spin logic loop using premium snap-lock interval
     function startWheelAutoplay() {
         if (autoplayInterval) clearInterval(autoplayInterval);
         
         autoplayInterval = setInterval(() => {
             if (!isAutoplayPaused && selectedId === null) {
-                // Slowly oscillate wheel rotation back and forth
-                autoplayTime += 0.005;
-                const maxDeviation = (ITEM_COUNT - 1) * ANGLE_STEP / 2; // half of total arc
-                wheelRotation = Math.sin(autoplayTime) * maxDeviation;
-                
-                if (wheel) {
-                    wheel.style.transition = "none"; // Disable CSS transition for continuous pixel ticking
-                    wheel.style.transform = `translate(-50%, 0px) rotate(${wheelRotation}deg)`;
+                // Advance to next index
+                let nextIdx = activeIndex + 1;
+                if (nextIdx >= ITEM_COUNT) {
+                    nextIdx = 0; // Seamless repeat wrap-around!
                 }
-
-                // Maintain radial orientation
-                updateAllUprightCounterRotations(wheelRotation);
-
-                // Calculate which item is currently closest to vertical axis (0 degrees)
-                const targetIdx = Math.min(ITEM_COUNT - 1, Math.max(0, Math.round(-wheelRotation / ANGLE_STEP)));
-                
-                // If the central item changes, update description details smoothly
-                if (targetIdx !== activeIndex) {
-                    activeIndex = targetIdx;
-                    showDrinkDetails(activeIndex);
-                    highlightActiveItemOnWheel(activeIndex);
-                }
+                snapToDrink(nextIdx, false);
             }
-        }, AUTO_ROTATE_INTERVAL);
+        }, 4000); // Snap and lock at each drink for 4 seconds!
     }
 
     // Keyboard Arrow Controls
@@ -712,7 +699,7 @@
         populateMobileCards();
         
         // Show initial selection
-        showDrinkDetails(activeIndex);
+        snapToDrink(activeIndex, false);
         
         // Start auto rotating wheel
         startWheelAutoplay();
