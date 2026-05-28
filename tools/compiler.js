@@ -66,8 +66,10 @@ function processAssetPaths(html, useCDN) {
 
     const targetBase = useCDN ? CDN_BASE_URL : `/${LOCAL_ASSETS_PATH}`;
     
-    // URL-encode spaces in filename (e.g. "strawberrys and cream.mp4" -> "strawberrys%20and%20cream.mp4")
-    const encodedFilename = filename.replace(/\s/g, '%20');
+    // Safely URL-encode the filename to handle spaces, ampersands, parentheses, etc.
+    const encodedFilename = encodeURIComponent(filename)
+      .replace(/%2F/g, '/')
+      .replace(/%3A/g, ':');
     
     return `${prefix}${targetBase}${encodedFilename}${suffix}`;
   });

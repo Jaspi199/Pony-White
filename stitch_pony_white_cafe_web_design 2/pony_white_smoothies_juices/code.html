@@ -205,6 +205,12 @@
 <!-- Page Wrapper (Rigid height locked to prevent dynamic iframe loops) -->
 <div class="smoothies-juices-showcase pt-24">
     
+    <!-- Breathtaking Full-Screen Active Smoothie Background Image (Almost Full Screen, Atmospheric and Immersive) -->
+    <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none transition-all duration-1000">
+        <img id="smoothie-bg-image" src="../../assets/layered-smoothie.jpg" class="w-full h-full object-cover opacity-35 filter blur-[3px] scale-105 transition-all duration-[1000ms] ease-out" alt="Smoothie Background">
+        <div class="absolute inset-0 bg-gradient-to-b from-[#001710]/60 via-transparent to-[#001710] z-10"></div>
+    </div>
+    
     <!-- Background Ambient Glows -->
     <div class="absolute top-1/4 left-1/4 w-96 h-96 rounded-full ambient-glow blur-3xl pointer-events-none z-0"></div>
     <div class="absolute bottom-10 right-1/4 w-[500px] h-[500px] rounded-full ambient-glow blur-3xl pointer-events-none z-0"></div>
@@ -254,7 +260,7 @@
     </div>
 
     <!-- ROTATING CIRCULAR WHEEL (Desktop view, crops elegantly at bottom) -->
-    <div class="relative w-full h-[320px] md:h-[400px] mt-auto select-none pointer-events-none desktop-only-block">
+    <div class="relative w-full h-[320px] md:h-[400px] mt-auto select-none pointer-events-none desktop-only-block z-20">
         <!-- Circular Guideline Arc Glow -->
         <div class="absolute top-0 left-1/2 -translate-x-1/2 rounded-full border border-secondary/10 w-[700px] h-[700px] md:w-[900px] md:h-[900px] pointer-events-none z-10 bg-transparent shadow-[inset_0_4px_30px_rgba(233,195,73,0.02)]"></div>
         
@@ -565,12 +571,34 @@
             }
         });
 
+        const bgImage = document.getElementById('smoothie-bg-image');
+        if (bgImage) {
+            bgImage.style.opacity = '0';
+            bgImage.style.transform = 'scale(1.1)';
+            bgImage.style.transition = 'opacity 0.5s ease, transform 0.8s ease';
+        }
+
         setTimeout(() => {
             if (drinkCategory) drinkCategory.textContent = data.categoryLabel;
             if (drinkTitle) drinkTitle.textContent = data.title;
             if (drinkPrice) drinkPrice.textContent = data.price;
             if (drinkDesc) drinkDesc.textContent = data.description;
             if (drinkOrderBtn) drinkOrderBtn.setAttribute("href", data.orderUrl);
+
+            if (bgImage) {
+                let targetImg = "../../assets/layered-smoothie.jpg";
+                if (data.id === 0) targetImg = "../../assets/layered-smoothie.jpg";
+                else if (data.id === 1) targetImg = "../../assets/placeholder-smoothie.png";
+                else if (data.id === 2) targetImg = "../../assets/layered-smoothie.jpg";
+                else if (data.id === 3) targetImg = "../../assets/matcha-strawberry.jpg";
+                else if (data.id === 4) targetImg = "../../assets/layered-smoothie.jpg";
+                else if (data.id === 5) targetImg = "../../assets/placeholder-smoothie.png";
+                else if (data.id === 6) targetImg = "../../assets/coconut-iced-latte.jpg";
+
+                bgImage.src = targetImg;
+                bgImage.style.opacity = '0.35';
+                bgImage.style.transform = 'scale(1.05)';
+            }
 
             // Fade elements back in
             animElements.forEach(el => {

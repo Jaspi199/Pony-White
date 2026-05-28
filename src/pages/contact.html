@@ -105,58 +105,135 @@
         .option-card {
             border: 2px solid rgba(11, 48, 39, 0.08) !important;
             background: #FFFFFF !important; /* Solid White */
-            color: #0B3027 !important; /* Dark Green Text */
-            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05) !important;
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1) !important;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06) !important;
         }
 
         .option-card h4 {
             color: #0B3027 !important;
+            transition: all 0.3s ease !important;
         }
         
         .option-card p {
             color: rgba(11, 48, 39, 0.6) !important;
+            transition: all 0.3s ease !important;
         }
 
+        .option-card .icon-circle {
+            background-color: rgba(11, 48, 39, 0.05) !important;
+            color: #D4AF37 !important;
+            transition: all 0.3s ease !important;
+        }
+
+        /* Hover interactions */
         .option-card:hover {
             border-color: #D4AF37 !important;
             background: #fbf9f8 !important; /* Very soft cream-white on hover */
-            transform: translateY(-6px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15) !important;
+            transform: translateY(-6px) !important;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12) !important;
         }
 
-        .option-card.active-card {
-            border-color: #D4AF37 !important;
-            background-color: #FFFFFF !important;
-            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.2) !important;
+        .option-card:hover h4 {
+            color: #D4AF37 !important;
         }
 
-        .option-card.active-card .rounded-full {
+        .option-card:hover .icon-circle {
             background-color: #D4AF37 !important;
             color: #FFFFFF !important;
         }
 
-        /* Pulsing Gold Glow Pop Entrance for Feedback Stars block */
-        .pop-star-block {
-            animation: bouncePop 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-            box-shadow: 0 0 60px rgba(212, 175, 55, 0.25) !important;
-            border-color: rgba(212, 175, 55, 0.4) !important;
+        /* Active styles */
+        .option-card.active-card {
+            border-color: #D4AF37 !important;
+            background-color: #FFFFFF !important;
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.15) !important;
         }
 
-        @keyframes bouncePop {
-            0% {
-                transform: scale(0.92);
-                opacity: 0;
-                box-shadow: 0 0 0px rgba(212, 175, 55, 0);
-            }
-            50% {
-                transform: scale(1.03);
-                box-shadow: 0 0 80px rgba(212, 175, 55, 0.4);
-            }
-            100% {
-                transform: scale(1);
-                opacity: 1;
-            }
+        .option-card.active-card .icon-circle {
+            background-color: #D4AF37 !important;
+            color: #FFFFFF !important;
+        }
+
+        /* Feedback Modal Styles */
+        #pw-feedback-modal {
+            position: fixed !important;
+            inset: 0 !important;
+            z-index: 99999 !important;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+        }
+
+        #pw-feedback-modal.pw-modal-active {
+            display: flex !important;
+        }
+
+        .pw-modal-backdrop {
+            position: absolute;
+            inset: 0;
+            background: rgba(6, 24, 20, 0.85) !important;
+            backdrop-filter: blur(12px) !important;
+            -webkit-backdrop-filter: blur(12px) !important;
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+
+        .pw-modal-card {
+            position: relative;
+            width: 100%;
+            max-width: 480px;
+            background: #FFFFFF !important;
+            border-radius: 20px !important;
+            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.4), 0 0 50px rgba(212, 175, 55, 0.15) !important;
+            border: 2px solid rgba(212, 175, 55, 0.15) !important;
+            padding: 32px !important;
+            z-index: 10;
+            transform: scale(0.92);
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            color: #0B3027 !important;
+        }
+
+        #pw-feedback-modal.pw-modal-active .pw-modal-card {
+            transform: scale(1) !important;
+            opacity: 1 !important;
+        }
+
+        /* Modal Stars Styles (White background requires dark grey default stars and gold actives) */
+        .pw-modal-star-btn {
+            position: relative;
+            overflow: visible;
+            transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .pw-modal-star-btn span {
+            font-size: 60px !important; /* Slightly smaller for responsive modals */
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            background: rgba(11, 48, 39, 0.15); /* Soft dark grey default state */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: inline-block;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+        }
+
+        .pw-modal-star-btn span.star-active {
+            background: linear-gradient(135deg, #a67c37 0%, #d4af37 25%, #fff1c7 50%, #d4af37 75%, #a67c37 100%) !important;
+            background-size: 250% 100% !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            background-clip: text !important;
+            animation: goldMetallicShine 3s linear infinite;
+            filter: drop-shadow(0 4px 12px rgba(212, 175, 55, 0.5));
+        }
+
+        .pw-modal-star-btn:hover span {
+            transform: scale(1.18) rotate(6deg);
         }
     </style>
 
@@ -179,7 +256,7 @@
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter mt-stack-md max-w-5xl mx-auto">
         <!-- Option 1: Feedback -->
         <button onclick="selectOption('feedback')" id="btn-feedback" class="option-card group rounded-xl p-6 shadow-lg flex flex-col items-center text-center">
-            <div class="w-12 h-12 rounded-full bg-marble-white/5 text-premium-gold flex items-center justify-center mb-stack-sm group-hover:bg-premium-gold group-hover:text-forest-velvet transition-colors duration-300">
+            <div class="icon-circle w-12 h-12 rounded-full bg-marble-white/5 text-premium-gold flex items-center justify-center mb-stack-sm group-hover:bg-premium-gold group-hover:text-forest-velvet transition-colors duration-300">
                 <span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">star</span>
             </div>
             <h4 class="font-headline-md text-lg text-marble-white group-hover:text-premium-gold transition-colors duration-300">Feedback & Reviews</h4>
@@ -188,7 +265,7 @@
 
         <!-- Option 2: Booking -->
         <button onclick="selectOption('bookings')" id="btn-bookings" class="option-card group rounded-xl p-6 shadow-lg flex flex-col items-center text-center">
-            <div class="w-12 h-12 rounded-full bg-marble-white/5 text-premium-gold flex items-center justify-center mb-stack-sm group-hover:bg-premium-gold group-hover:text-forest-velvet transition-colors duration-300">
+            <div class="icon-circle w-12 h-12 rounded-full bg-marble-white/5 text-premium-gold flex items-center justify-center mb-stack-sm group-hover:bg-premium-gold group-hover:text-forest-velvet transition-colors duration-300">
                 <span class="material-symbols-outlined text-2xl">calendar_month</span>
             </div>
             <h4 class="font-headline-md text-lg text-marble-white group-hover:text-premium-gold transition-colors duration-300">Table Booking</h4>
@@ -197,7 +274,7 @@
 
         <!-- Option 3: General Inquiry -->
         <button onclick="selectOption('general')" id="btn-general" class="option-card group rounded-xl p-6 shadow-lg flex flex-col items-center text-center">
-            <div class="w-12 h-12 rounded-full bg-marble-white/5 text-premium-gold flex items-center justify-center mb-stack-sm group-hover:bg-premium-gold group-hover:text-forest-velvet transition-colors duration-300">
+            <div class="icon-circle w-12 h-12 rounded-full bg-marble-white/5 text-premium-gold flex items-center justify-center mb-stack-sm group-hover:bg-premium-gold group-hover:text-forest-velvet transition-colors duration-300">
                 <span class="material-symbols-outlined text-2xl">chat_bubble</span>
             </div>
             <h4 class="font-headline-md text-lg text-marble-white group-hover:text-premium-gold transition-colors duration-300">General Inquiry</h4>
@@ -206,7 +283,7 @@
 
         <!-- Option 4: Hiring -->
         <button onclick="selectOption('hiring')" id="btn-hiring" class="option-card group rounded-xl p-6 shadow-lg flex flex-col items-center text-center">
-            <div class="w-12 h-12 rounded-full bg-marble-white/5 text-premium-gold flex items-center justify-center mb-stack-sm group-hover:bg-premium-gold group-hover:text-forest-velvet transition-colors duration-300">
+            <div class="icon-circle w-12 h-12 rounded-full bg-marble-white/5 text-premium-gold flex items-center justify-center mb-stack-sm group-hover:bg-premium-gold group-hover:text-forest-velvet transition-colors duration-300">
                 <span class="material-symbols-outlined text-2xl">work</span>
             </div>
             <h4 class="font-headline-md text-lg text-marble-white group-hover:text-premium-gold transition-colors duration-300">We're Hiring</h4>
@@ -224,70 +301,6 @@
         <p class="font-body-md text-sm text-marble-white/60 max-w-sm mx-auto">Please select one of the options above to proceed.</p>
     </div>
 
-    <!-- 1. Feedback & Star System Container -->
-    <div id="selection-feedback-view" class="hidden fade-in">
-        <div class="mb-stack-lg text-center">
-            <span class="font-label-caps text-label-caps text-premium-gold block mb-stack-sm tracking-[0.2em]">FEEDBACK & REVIEW</span>
-            <h2 class="font-headline-md text-headline-md text-marble-white">How was your experience?</h2>
-            <p class="font-body-md text-body-md text-marble-white/60 mt-2">Hover and click stars below to share your thoughts with us.</p>
-        </div>
-        
-        <!-- Large Golden Metallic Moving Shine Stars -->
-        <div class="gold-shine-stars-container mb-stack-lg" id="rating-container" onmouseleave="handleStarsMouseLeave()">
-            <button class="star-btn" data-value="1" onmouseenter="handleStarsHover(1)" onclick="handleRatingClick(1)">
-                <span class="material-symbols-outlined">star</span>
-            </button>
-            <button class="star-btn" data-value="2" onmouseenter="handleStarsHover(2)" onclick="handleRatingClick(2)">
-                <span class="material-symbols-outlined">star</span>
-            </button>
-            <button class="star-btn" data-value="3" onmouseenter="handleStarsHover(3)" onclick="handleRatingClick(3)">
-                <span class="material-symbols-outlined">star</span>
-            </button>
-            <button class="star-btn" data-value="4" onmouseenter="handleStarsHover(4)" onclick="handleRatingClick(4)">
-                <span class="material-symbols-outlined">star</span>
-            </button>
-            <button class="star-btn" data-value="5" onmouseenter="handleStarsHover(5)" onclick="handleRatingClick(5)">
-                <span class="material-symbols-outlined">star</span>
-            </button>
-        </div>
-
-        <div class="border-t border-white/10 pt-stack-lg" id="feedback-logic-content">
-            <!-- Initial prompt -->
-            <div id="stars-initial-prompt" class="text-center py-4">
-                <p class="font-body-md text-body-md text-marble-white/40 italic text-sm">Select a star rating to load review actions.</p>
-            </div>
-
-            <!-- Apology & Redirection (1-3 stars) -->
-            <div class="hidden fade-in text-center py-4" id="stars-apology-form">
-                <div class="mb-gutter text-premium-gold">
-                    <span class="material-symbols-outlined text-[64px]" style="font-variation-settings: 'FILL' 1;">sentiment_dissatisfied</span>
-                </div>
-                <h3 class="font-headline-md text-2xl mb-stack-md text-marble-white">We are Sincerly Sorry</h3>
-                <p class="font-body-md text-sm text-marble-white/70 mb-stack-lg max-w-md mx-auto leading-relaxed">
-                    We are deeply sorry we didn't meet your expectations today. We take our craft and hospitality very seriously. We are redirecting you to our feedback portal so we can hear from you directly and make things right.
-                </p>
-                <a class="inline-flex items-center premium-gold-gradient text-forest-velvet font-label-caps text-label-caps px-8 py-4 rounded-lg hover:scale-[1.02] transition-all shadow-md font-bold" href="#" id="apology-redirect-btn">
-                    Go to Email Us Page
-                    <span class="material-symbols-outlined ml-2 text-sm">arrow_forward</span>
-                </a>
-            </div>
-
-            <!-- Thank You & Google Review Link (4-5 stars) -->
-            <div class="hidden fade-in text-center py-4" id="stars-thank-you">
-                <div class="mb-gutter text-premium-gold animate-bounce">
-                    <span class="material-symbols-outlined text-[64px]" style="font-variation-settings: 'FILL' 1;">favorite</span>
-                </div>
-                <h3 class="font-headline-md text-2xl mb-stack-md text-marble-white">Heartfelt Thank You!</h3>
-                <p class="font-body-md text-sm text-marble-white/70 mb-stack-lg max-w-md mx-auto leading-relaxed">
-                    We are absolutely thrilled you enjoyed your visit to Pony White! Your support means the world to our team. We are redirecting you to our Google Reviews page to share your kind words.
-                </p>
-                <a class="inline-flex items-center premium-gold-gradient text-forest-velvet font-label-caps text-label-caps px-8 py-4 rounded-lg hover:scale-[1.02] transition-all shadow-md font-bold" href="https://google.com/search?q=pony+white+cafe+fitzroy+reviews" target="_blank" id="thanks-redirect-btn">
-                    Leave a Google Review
-                    <span class="material-symbols-outlined ml-2 text-sm">open_in_new</span>
-                </a>
-            </div>
-        </div>
-    </div>
 </section>
 
 <!-- General Inquiries Sidebar -->
@@ -343,6 +356,80 @@
 </main>
 <!-- Footer -->
 
+<!-- Premium Feedback Modal Pop-up -->
+<div id="pw-feedback-modal" class="fixed inset-0 z-[9999] hidden flex items-center justify-center p-4">
+    <!-- Backdrop Blur with dark color overlay -->
+    <div onclick="closeFeedbackModal()" class="pw-modal-backdrop"></div>
+    
+    <!-- Modal Card (White, elegant theme matching option cards but extremely premium) -->
+    <div class="pw-modal-card flex flex-col items-center text-center" id="pw-feedback-modal-card">
+        <!-- Close Button -->
+        <button onclick="closeFeedbackModal()" class="absolute top-4 right-4 text-[#0B3027]/40 hover:text-[#0B3027] transition-colors w-8 h-8 flex items-center justify-center rounded-full hover:bg-[#0B3027]/5">
+            <span class="material-symbols-outlined text-xl">close</span>
+        </button>
+        
+        <span class="font-label-caps text-xs text-[#D4AF37] block mb-2 tracking-[0.2em] font-bold">FEEDBACK & REVIEW</span>
+        <h3 class="font-headline-md text-2xl text-[#0B3027] mb-2 font-bold">How was your experience?</h3>
+        <p class="font-body-md text-sm text-[#0B3027]/70 mb-6 max-w-sm">Hover and click stars below to share your thoughts with us.</p>
+        
+        <!-- Large Golden Metallic Moving Shine Stars -->
+        <div class="gold-shine-stars-container mb-8" id="pw-rating-container-modal" onmouseleave="handleStarsMouseLeaveModal()">
+            <button class="pw-modal-star-btn" data-value="1" onmouseenter="handleStarsHoverModal(1)" onclick="handleRatingClickModal(1)">
+                <span class="material-symbols-outlined">star</span>
+            </button>
+            <button class="pw-modal-star-btn" data-value="2" onmouseenter="handleStarsHoverModal(2)" onclick="handleRatingClickModal(2)">
+                <span class="material-symbols-outlined">star</span>
+            </button>
+            <button class="pw-modal-star-btn" data-value="3" onmouseenter="handleStarsHoverModal(3)" onclick="handleRatingClickModal(3)">
+                <span class="material-symbols-outlined">star</span>
+            </button>
+            <button class="pw-modal-star-btn" data-value="4" onmouseenter="handleStarsHoverModal(4)" onclick="handleRatingClickModal(4)">
+                <span class="material-symbols-outlined">star</span>
+            </button>
+            <button class="pw-modal-star-btn" data-value="5" onmouseenter="handleStarsHoverModal(5)" onclick="handleRatingClickModal(5)">
+                <span class="material-symbols-outlined">star</span>
+            </button>
+        </div>
+        
+        <!-- Feedback Logic Content inside Modal -->
+        <div class="w-full border-t border-[#0B3027]/10 pt-6" id="pw-feedback-logic-content-modal">
+            <!-- Initial prompt -->
+            <div id="pw-stars-initial-prompt-modal" class="py-2">
+                <p class="font-body-md text-[#0B3027]/40 italic text-sm">Select a star rating to load review actions.</p>
+            </div>
+
+            <!-- Apology & Redirection (1-3 stars) -->
+            <div class="hidden fade-in py-2" id="pw-stars-apology-form-modal">
+                <div class="mb-4 text-[#D4AF37]">
+                    <span class="material-symbols-outlined text-[56px]" style="font-variation-settings: 'FILL' 1;">sentiment_dissatisfied</span>
+                </div>
+                <h3 class="font-headline-md text-xl mb-3 text-[#0B3027] font-bold">We are Sincerely Sorry</h3>
+                <p class="font-body-md text-xs text-[#0B3027]/70 mb-6 max-w-sm mx-auto leading-relaxed">
+                    We are deeply sorry we didn't meet your expectations today. We take our craft and hospitality very seriously. We are redirecting you to our feedback portal so we can hear from you directly and make things right.
+                </p>
+                <a class="inline-flex items-center premium-gold-gradient text-white font-label-caps text-xs px-6 py-3 rounded-full hover:scale-[1.02] transition-all shadow-md font-bold" href="#" id="pw-apology-redirect-btn-modal">
+                    Go to Email Us Page
+                    <span class="material-symbols-outlined ml-1.5 text-xs">arrow_forward</span>
+                </a>
+            </div>
+
+            <!-- Thank You & Google Review Link (4-5 stars) -->
+            <div class="hidden fade-in py-2" id="pw-stars-thank-you-modal">
+                <div class="mb-4 text-[#D4AF37]">
+                    <span class="material-symbols-outlined text-[56px] animate-bounce" style="font-variation-settings: 'FILL' 1;">favorite</span>
+                </div>
+                <h3 class="font-headline-md text-xl mb-3 text-[#0B3027] font-bold">Heartfelt Thank You!</h3>
+                <p class="font-body-md text-xs text-[#0B3027]/70 mb-6 max-w-sm mx-auto leading-relaxed">
+                    We are absolutely thrilled you enjoyed your visit to Pony White! Your support means the world to our team. We are redirecting you to our Google Reviews page to share your kind words.
+                </p>
+                <a class="inline-flex items-center premium-gold-gradient text-white font-label-caps text-xs px-6 py-3 rounded-full hover:scale-[1.02] transition-all shadow-md font-bold" href="https://google.com/search?q=pony+white+cafe+fitzroy+reviews" target="_blank" id="pw-thanks-redirect-btn-modal">
+                    Leave a Google Review
+                    <span class="material-symbols-outlined ml-1.5 text-xs">open_in_new</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
 
 <script>
     // Dynamic Font Injection to bypass iframe sandboxing font blocks
@@ -392,30 +479,36 @@
             clickedCard.classList.add('active-card');
         }
 
-        // Hide default view and show feedback view
-        document.getElementById('selection-default-view').classList.add('hidden');
-        const feedbackContainer = document.getElementById('selection-feedback-view');
-        feedbackContainer.classList.remove('hidden');
-        
-        // Trigger visual gold glow bounce pop animation
-        feedbackContainer.classList.remove('pop-star-block');
-        void feedbackContainer.offsetWidth; // Force CSS reflow
-        feedbackContainer.classList.add('pop-star-block');
-
-        resetStarSystem();
-
-        // Smooth scroll centering so they never miss the rating stars
-        setTimeout(() => {
-            feedbackContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }, 150);
+        // Open feedback modal pop-up!
+        openFeedbackModal();
     }
 
-    // Stars Rating Logic
-    let activeRating = 0;
+    // Modal Control Logic
+    let activeRatingModal = 0;
 
-    // Handle hover styling dynamically: N stars colored up to the hovered star
-    function handleStarsHover(rating) {
-        const stars = document.querySelectorAll('.star-btn span');
+    function openFeedbackModal() {
+        const modal = document.getElementById('pw-feedback-modal');
+        if (modal) {
+            modal.classList.add('pw-modal-active');
+            resetStarSystemModal();
+        }
+    }
+
+    function closeFeedbackModal() {
+        const modal = document.getElementById('pw-feedback-modal');
+        if (modal) {
+            modal.classList.remove('pw-modal-active');
+            
+            // Remove active state from Feedback button
+            const feedbackCard = document.getElementById('btn-feedback');
+            if (feedbackCard) {
+                feedbackCard.classList.remove('active-card');
+            }
+        }
+    }
+
+    function handleStarsHoverModal(rating) {
+        const stars = document.querySelectorAll('.pw-modal-star-btn span');
         stars.forEach((star, index) => {
             if (index < rating) {
                 star.classList.add('star-active');
@@ -425,11 +518,10 @@
         });
     }
 
-    // Handle mouse leaving the rating block: return to clicked active rating state
-    function handleStarsMouseLeave() {
-        const stars = document.querySelectorAll('.star-btn span');
+    function handleStarsMouseLeaveModal() {
+        const stars = document.querySelectorAll('.pw-modal-star-btn span');
         stars.forEach((star, index) => {
-            if (index < activeRating) {
+            if (index < activeRatingModal) {
                 star.classList.add('star-active');
             } else {
                 star.classList.remove('star-active');
@@ -437,20 +529,18 @@
         });
     }
 
-    function handleRatingClick(rating) {
-        activeRating = rating;
+    function handleRatingClickModal(rating) {
+        activeRatingModal = rating;
         
-        const initialPrompt = document.getElementById('stars-initial-prompt');
-        const apologyForm = document.getElementById('stars-apology-form');
-        const thankYou = document.getElementById('stars-thank-you');
+        const initialPrompt = document.getElementById('pw-stars-initial-prompt-modal');
+        const apologyForm = document.getElementById('pw-stars-apology-form-modal');
+        const thankYou = document.getElementById('pw-stars-thank-you-modal');
         
-        const apologyBtn = document.getElementById('apology-redirect-btn');
+        const apologyBtn = document.getElementById('pw-apology-redirect-btn-modal');
         if (apologyBtn) apologyBtn.setAttribute('href', EMAIL_US_PAGE_URL);
 
-        // Hide initial prompt on click
         initialPrompt.classList.add('hidden');
 
-        // Branch logic: 4-5 stars thank you vs 1-3 stars apology
         if (rating >= 4) {
             apologyForm.classList.add('hidden');
             thankYou.classList.remove('hidden');
@@ -458,6 +548,7 @@
             // Seamless automatic redirect after 1.5 seconds per expectations
             setTimeout(() => {
                 window.open(GOOGLE_REVIEWS_URL, '_blank');
+                closeFeedbackModal();
             }, 1500);
         } else {
             thankYou.classList.add('hidden');
@@ -466,17 +557,19 @@
             // Seamless automatic redirect after 1.5 seconds per expectations
             setTimeout(() => {
                 window.location.href = EMAIL_US_PAGE_URL;
+                closeFeedbackModal();
             }, 1500);
         }
     }
 
-    function resetStarSystem() {
-        activeRating = 0;
-        document.querySelectorAll('.star-btn span').forEach(s => {
+    // Reset Modal Star rating system
+    function resetStarSystemModal() {
+        activeRatingModal = 0;
+        document.querySelectorAll('.pw-modal-star-btn span').forEach(s => {
             s.classList.remove('star-active');
         });
-        document.getElementById('stars-initial-prompt').classList.remove('hidden');
-        document.getElementById('stars-apology-form').classList.add('hidden');
-        document.getElementById('stars-thank-you').classList.add('hidden');
+        document.getElementById('pw-stars-initial-prompt-modal').classList.remove('hidden');
+        document.getElementById('pw-stars-apology-form-modal').classList.add('hidden');
+        document.getElementById('pw-stars-thank-you-modal').classList.add('hidden');
     }
 </script>

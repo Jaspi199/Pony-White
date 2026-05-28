@@ -574,7 +574,7 @@
       'banoffee-matcha': {
         title: 'Banoffee Matcha',
         text: 'Housemade caramel banana syrup & banana cream with premium ceremonial matcha.',
-        img: '../../assets/layered-smoothie.jpg',
+        img: '',
         video: '../../assets/Banoffee Matcha.mp4',
         price: '$10.00',
         ambient: '#2C2B1B'
@@ -591,7 +591,7 @@
         title: 'Coconut Cloud Matcha',
         text: 'Coconut water, coconut cold foam & toasted coconut with premium ceremonial matcha.',
         img: '../../assets/coconut-iced-latte.jpg',
-        video: '../../assets/Coconut Cloud Matcha.mp4',
+        video: '../../assets/coconut cloud matcha.mp4',
         price: '$9.50',
         ambient: '#1A2A2E'
       },
@@ -606,7 +606,7 @@
       'banoffee-coffee': {
         title: 'Banoffee Coffee',
         text: 'Housemade caramel banana syrup & banana cream with a rich double shot of espresso.',
-        img: '../../assets/layered-smoothie.jpg',
+        img: '',
         video: '../../assets/Banoffee Coffee.mp4',
         price: '$10.00',
         ambient: '#3A2E1D'
@@ -623,14 +623,14 @@
         title: 'Coconut Cloud Coffee',
         text: 'Coconut water, coconut cold foam & toasted coconut with a rich double shot of espresso.',
         img: '../../assets/coconut-iced-latte.jpg',
-        video: '../../assets/Coconut Cloud Coffee.mp4',
+        video: '../../assets/coconut cloud coffee.mp4',
         price: '$9.50',
         ambient: '#212D3A'
       },
       'tiramisu-affogato': {
         title: 'Tiramisu Affogato',
         text: 'Sea salt caramel ice cream, lady finger biscuits, salted caramel sauce, chocolate & double espresso.',
-        img: '../../assets/layered-smoothie.jpg',
+        img: '',
         video: '../../assets/Tiramisu Affogato.mp4',
         price: '$10.00',
         ambient: '#2D1D17'
@@ -638,8 +638,8 @@
       'peach-cold-brew': {
         title: 'Peach Cold Brew',
         text: 'Cold brew, sweet peach cream topped with dried peach.',
-        img: '../../assets/layered-smoothie.jpg',
-        video: '../../assets/Peach Cold Brew.mp4',
+        img: '',
+        video: '../../assets/peach cold brew.mp4',
         price: '$9.50',
         ambient: '#352119'
       },
@@ -673,7 +673,7 @@
       'iced-rose-turkish-delight': {
         title: 'Iced Rose Turkish Delight',
         text: 'An indulgent signature iced chocolate infused with fragrant rose water, served over ice and crowned with authentic Turkish delight pieces.',
-        img: '../../assets/placeholder-smoothie.png',
+        img: '',
         video: '../../assets/Iced Rose Turkish.mp4',
         price: '$10.00',
         ambient: '#2D1B22'
@@ -681,8 +681,8 @@
       'mont-blanc': {
         title: 'Mont Blanc',
         text: 'Rich, smooth cold brew topped with our house-made velvety sweet cream, mimicking the snow-capped peak of Mont Blanc.',
-        img: '../../assets/layered-smoothie.jpg',
-        video: '../../assets/Mont Blanc.mp4',
+        img: '',
+        video: '../../assets/mont blanc.mp4',
         price: '$9.50',
         ambient: '#1E2530'
       },
@@ -729,7 +729,7 @@
         hot: {
           title: 'Hot Taro Latte',
           text: 'A velvety, smooth purple latte with a delicious, sweet and nutty taro root flavor. Comforting, cozy, and caffeine-free.',
-          img: '../../assets/layered-smoothie.jpg',
+          img: '',
           video: '../../assets/Hot Taro Latte (Hot).mp4',
           price: '$6.00',
           ambient: '#291B33'
@@ -737,7 +737,7 @@
         iced: {
           title: 'Iced Taro Latte',
           text: 'Creamy and nutty taro latte poured over ice, finished with a premium scoop of vanilla ice cream. The perfect sweet, caffeine-free escape.',
-          img: '../../assets/layered-smoothie.jpg',
+          img: '',
           video: '../../assets/Iced Taro Latte (Iced).mp4',
           price: '$8.50',
           ambient: '#22162B'
@@ -834,12 +834,17 @@
             if (logo) logo.classList.remove('logo-loading');
           }).catch(error => {
             console.log('Autoplay blocked by Chrome/sandboxing:', error);
-            // Autoplay is blocked. Reveal the high-res image fallback.
-            img.src = config.img;
-            img.style.display = 'block';
-            img.classList.remove('hidden');
-            img.style.opacity = '1';
-            img.style.transform = 'scale(1.05)';
+            // Autoplay is blocked. Reveal the high-res image fallback if available.
+            if (config.img) {
+              img.src = config.img;
+              img.style.display = 'block';
+              img.classList.remove('hidden');
+              img.style.opacity = '1';
+              img.style.transform = 'scale(1.05)';
+            } else {
+              // No image fallback. Set video to a subtle backdrop opacity.
+              video.style.opacity = '0.2';
+            }
             
             if (logo) logo.classList.remove('logo-loading');
             
