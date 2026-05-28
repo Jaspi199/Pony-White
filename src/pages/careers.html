@@ -152,11 +152,11 @@
 
 <!-- Application Q&A Wizard Widget -->
 <section class="py-section-padding px-margin-desktop max-w-screen-2xl mx-auto" id="apply">
-  <div class="max-w-4xl mx-auto bg-forest-velvet border border-[#D4AF37]/20 p-8 md:p-12 rounded-2xl shadow-xl relative text-left">
+  <div class="max-w-4xl mx-auto bg-forest-velvet border border-premium-gold-light/20 p-8 md:p-12 rounded-2xl shadow-xl relative text-left">
     
     <!-- Progress Bar -->
-    <div id="pw-progress-container" class="relative w-full h-1 bg-[#D4AF37]/10 rounded-full mb-8 overflow-hidden">
-      <div id="pw-progress" class="absolute left-0 top-0 h-full bg-gradient-to-r from-[#735c00] to-[#e9c349] transition-all duration-500 rounded-full" style="width: 20%;"></div>
+    <div id="pw-progress-container" class="relative w-full h-1 bg-premium-gold-light/10 rounded-full mb-8 overflow-hidden">
+      <div id="pw-progress" class="absolute left-0 top-0 h-full bg-gradient-to-r from-premium-gold-dark to-premium-gold-light transition-all duration-500 rounded-full" style="width: 20%;"></div>
     </div>
     
     <!-- Steps Wrapper -->
@@ -165,47 +165,47 @@
       <!-- Step 1: Positions Multi-Select -->
       <div id="pw-step-1" class="pw-step space-y-6">
         <div>
-          <span class="font-label-caps text-xs text-[#e9c349] uppercase tracking-widest block font-semibold">Step 1 of 5</span>
+          <span class="font-label-caps text-xs text-premium-gold-light uppercase tracking-widest block font-semibold">Step 1 of 5</span>
           <h2 class="font-display-lg text-3xl md:text-4xl text-marble-white mt-1">Select Position(s)</h2>
           <p class="font-body-md text-marble-white/70 mt-2">Which roles are you applying for? You can select multiple positions to apply for at once.</p>
         </div>
         
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
           <!-- Role Button Cards -->
-          <button type="button" onclick="toggleRole('Barista')" class="pw-role-card border border-[#D4AF37]/20 bg-black/20 p-5 rounded-xl text-left flex flex-col justify-between hover:border-[#D4AF37]/50 transition-all duration-300 group cursor-pointer">
-            <span class="material-symbols-outlined text-[#e9c349] text-2xl group-hover:scale-110 transition-transform">local_cafe</span>
+          <button type="button" onclick="toggleRole('Barista')" class="pw-role-card border border-premium-gold-light/20 bg-black/20 p-5 rounded-xl text-left flex flex-col justify-between hover:border-premium-gold-light/50 transition-all duration-300 group cursor-pointer">
+            <span class="material-symbols-outlined text-premium-gold-light text-2xl group-hover:scale-110 transition-transform">local_cafe</span>
             <div class="mt-4">
               <h4 class="font-headline-md text-lg text-marble-white">Barista</h4>
               <span class="text-xs text-marble-white/50 block mt-1">Specialty Espresso & Craft</span>
             </div>
           </button>
           
-          <button type="button" onclick="toggleRole('FOH allrounder')" class="pw-role-card border border-[#D4AF37]/20 bg-black/20 p-5 rounded-xl text-left flex flex-col justify-between hover:border-[#D4AF37]/50 transition-all duration-300 group cursor-pointer">
-            <span class="material-symbols-outlined text-[#e9c349] text-2xl group-hover:scale-110 transition-transform">person_outline</span>
+          <button type="button" onclick="toggleRole('FOH allrounder')" class="pw-role-card border border-premium-gold-light/20 bg-black/20 p-5 rounded-xl text-left flex flex-col justify-between hover:border-premium-gold-light/50 transition-all duration-300 group cursor-pointer">
+            <span class="material-symbols-outlined text-premium-gold-light text-2xl group-hover:scale-110 transition-transform">person_outline</span>
             <div class="mt-4">
               <h4 class="font-headline-md text-lg text-marble-white">FOH allrounder</h4>
               <span class="text-xs text-marble-white/50 block mt-1">Floor, Register & Service</span>
             </div>
           </button>
-
-          <button type="button" onclick="toggleRole('customer service')" class="pw-role-card border border-[#D4AF37]/20 bg-black/20 p-5 rounded-xl text-left flex flex-col justify-between hover:border-[#D4AF37]/50 transition-all duration-300 group cursor-pointer">
-            <span class="material-symbols-outlined text-[#e9c349] text-2xl group-hover:scale-110 transition-transform">sentiment_very_satisfied</span>
+          
+          <button type="button" onclick="toggleRole('customer service')" class="pw-role-card border border-premium-gold-light/20 bg-black/20 p-5 rounded-xl text-left flex flex-col justify-between hover:border-premium-gold-light/50 transition-all duration-300 group cursor-pointer">
+            <span class="material-symbols-outlined text-premium-gold-light text-2xl group-hover:scale-110 transition-transform">sentiment_very_satisfied</span>
             <div class="mt-4">
               <h4 class="font-headline-md text-lg text-marble-white">Customer Service</h4>
               <span class="text-xs text-marble-white/50 block mt-1">Reception, Host & Bookings</span>
             </div>
           </button>
-
-          <button type="button" onclick="toggleRole('Kitchen hand')" class="pw-role-card border border-[#D4AF37]/20 bg-black/20 p-5 rounded-xl text-left flex flex-col justify-between hover:border-[#D4AF37]/50 transition-all duration-300 group cursor-pointer">
-            <span class="material-symbols-outlined text-[#e9c349] text-2xl group-hover:scale-110 transition-transform">flatware</span>
+          
+          <button type="button" onclick="toggleRole('Kitchen hand')" class="pw-role-card border border-premium-gold-light/20 bg-black/20 p-5 rounded-xl text-left flex flex-col justify-between hover:border-premium-gold-light/50 transition-all duration-300 group cursor-pointer">
+            <span class="material-symbols-outlined text-premium-gold-light text-2xl group-hover:scale-110 transition-transform">flatware</span>
             <div class="mt-4">
               <h4 class="font-headline-md text-lg text-marble-white">Kitchen hand</h4>
               <span class="text-xs text-marble-white/50 block mt-1">Culinary Prep & Plating Support</span>
             </div>
           </button>
-
-          <button type="button" onclick="toggleRole('dishwasher')" class="pw-role-card border border-[#D4AF37]/20 bg-black/20 p-5 rounded-xl text-left flex flex-col justify-between hover:border-[#D4AF37]/50 transition-all duration-300 group cursor-pointer">
-            <span class="material-symbols-outlined text-[#e9c349] text-2xl group-hover:scale-110 transition-transform">cleaning_services</span>
+          
+          <button type="button" onclick="toggleRole('dishwasher')" class="pw-role-card border border-premium-gold-light/20 bg-black/20 p-5 rounded-xl text-left flex flex-col justify-between hover:border-premium-gold-light/50 transition-all duration-300 group cursor-pointer">
+            <span class="material-symbols-outlined text-premium-gold-light text-2xl group-hover:scale-110 transition-transform">cleaning_services</span>
             <div class="mt-4">
               <h4 class="font-headline-md text-lg text-marble-white">Dishwasher</h4>
               <span class="text-xs text-marble-white/50 block mt-1">Dish Station Operations</span>
@@ -214,14 +214,14 @@
         </div>
         
         <div class="pt-4 flex justify-end">
-          <button type="button" onclick="nextStep(2)" class="px-8 py-3 bg-[#e9c349]/10 border border-[#e9c349]/40 text-marble-white hover:bg-gradient-to-r hover:from-[#735c00] hover:to-[#e9c349] hover:text-[#0B3027] transition-all rounded font-label-caps text-sm tracking-wider font-semibold cursor-pointer">Next Step</button>
+          <button type="button" onclick="nextStep(2)" class="px-8 py-3 bg-premium-gold-light/10 border border-premium-gold-light/40 text-marble-white hover:bg-gradient-to-r hover:from-premium-gold-dark hover:to-premium-gold-light hover:text-[#0B3027] transition-all rounded font-label-caps text-sm tracking-wider font-semibold cursor-pointer">Next Step</button>
         </div>
       </div>
       
       <!-- Step 2: Visa, Origin & Communication -->
       <div id="pw-step-2" class="pw-step space-y-6 hidden">
         <div>
-          <span class="font-label-caps text-xs text-[#e9c349] uppercase tracking-widest block font-semibold">Step 2 of 5</span>
+          <span class="font-label-caps text-xs text-premium-gold-light uppercase tracking-widest block font-semibold">Step 2 of 5</span>
           <h2 class="font-display-lg text-3xl md:text-4xl text-marble-white mt-1">Context & Visa Details</h2>
           <p class="font-body-md text-marble-white/70 mt-2">Let us know your work authorizations and background.</p>
         </div>
@@ -229,12 +229,12 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div class="space-y-2">
             <label class="block text-xs font-label-caps text-marble-white/80 tracking-wider font-semibold uppercase">Country of Origin</label>
-            <input type="text" id="pw-input-country" placeholder="e.g. Australia, Italy, Brazil" class="w-full bg-black/35 border border-[#D4AF37]/20 rounded p-3 text-marble-white focus:outline-none focus:border-[#D4AF37] transition-all">
+            <input type="text" id="pw-input-country" placeholder="e.g. Australia, Italy, Brazil" class="w-full bg-black/35 border border-premium-gold-light/20 rounded p-3 text-marble-white focus:outline-none focus:border-premium-gold-light transition-all">
           </div>
           
           <div class="space-y-2">
             <label class="block text-xs font-label-caps text-marble-white/80 tracking-wider font-semibold uppercase">Visa Status</label>
-            <select id="pw-select-visa" onchange="checkVisaExpiry()" class="w-full bg-black/35 border border-[#D4AF37]/20 rounded p-3 text-marble-white focus:outline-none focus:border-[#D4AF37] transition-all">
+            <select id="pw-select-visa" onchange="checkVisaExpiry()" class="w-full bg-black/35 border border-premium-gold-light/20 rounded p-3 text-marble-white focus:outline-none focus:border-premium-gold-light transition-all">
               <option value="Citizen or PR">Citizen / Permanent Resident (PR)</option>
               <option value="Working Holiday (417/462)">Working Holiday Visa (417 / 462)</option>
               <option value="Student (500)">Student Visa (500)</option>
@@ -245,15 +245,15 @@
           
           <div id="pw-group-visa-expiry" class="space-y-2 hidden col-span-1 md:col-span-2">
             <label class="block text-xs font-label-caps text-marble-white/80 tracking-wider font-semibold uppercase">Visa Expiry Date</label>
-            <input type="date" id="pw-input-visa-expiry" class="w-full bg-black/35 border border-[#D4AF37]/20 rounded p-3 text-marble-white focus:outline-none focus:border-[#D4AF37] transition-all">
+            <input type="date" id="pw-input-visa-expiry" class="w-full bg-black/35 border border-premium-gold-light/20 rounded p-3 text-marble-white focus:outline-none focus:border-premium-gold-light transition-all">
           </div>
-
+          
           <div class="space-y-3 col-span-1 md:col-span-2">
             <div class="flex justify-between items-center">
               <label class="block text-xs font-label-caps text-marble-white/80 tracking-wider font-semibold uppercase">English Level Self-Rating</label>
-              <span id="pw-rating-label" class="text-xs text-[#e9c349] font-bold">10 - Excellent English</span>
+              <span id="pw-rating-label" class="text-xs text-premium-gold-light font-bold">10 - Excellent English</span>
             </div>
-            <input type="range" id="pw-input-english" min="1" max="10" value="10" oninput="updateEnglishLabel(this.value)" class="w-full h-1 bg-black/35 rounded-lg appearance-none cursor-pointer accent-[#D4AF37]">
+            <input type="range" id="pw-input-english" min="1" max="10" value="10" oninput="updateEnglishLabel(this.value)" class="w-full h-1 bg-black/35 rounded-lg appearance-none cursor-pointer accent-premium-gold-light">
             <div class="flex justify-between text-[10px] text-marble-white/50">
               <span>1 - No English</span>
               <span>5 - Intermediate</span>
@@ -263,15 +263,15 @@
         </div>
         
         <div class="pt-4 flex justify-between">
-          <button type="button" onclick="nextStep(1)" class="px-8 py-3 bg-black/20 border border-[#D4AF37]/20 text-marble-white/80 hover:text-marble-white transition-all rounded font-label-caps text-sm tracking-wider cursor-pointer">Back</button>
-          <button type="button" onclick="nextStep(3)" class="px-8 py-3 bg-[#e9c349]/10 border border-[#e9c349]/40 text-marble-white hover:bg-gradient-to-r hover:from-[#735c00] hover:to-[#e9c349] hover:text-[#0B3027] transition-all rounded font-label-caps text-sm tracking-wider font-semibold cursor-pointer">Next Step</button>
+          <button type="button" onclick="nextStep(1)" class="px-8 py-3 bg-black/20 border border-premium-gold-light/20 text-marble-white/80 hover:text-marble-white transition-all rounded font-label-caps text-sm tracking-wider cursor-pointer">Back</button>
+          <button type="button" onclick="nextStep(3)" class="px-8 py-3 bg-premium-gold-light/10 border border-premium-gold-light/40 text-marble-white hover:bg-gradient-to-r hover:from-premium-gold-dark hover:to-premium-gold-light hover:text-[#0B3027] transition-all rounded font-label-caps text-sm tracking-wider font-semibold cursor-pointer">Next Step</button>
         </div>
       </div>
-
+      
       <!-- Step 3: Hours, Experience & Available Days -->
       <div id="pw-step-3" class="pw-step space-y-6 hidden">
         <div>
-          <span class="font-label-caps text-xs text-[#e9c349] uppercase tracking-widest block font-semibold">Step 3 of 5</span>
+          <span class="font-label-caps text-xs text-premium-gold-light uppercase tracking-widest block font-semibold">Step 3 of 5</span>
           <h2 class="font-display-lg text-3xl md:text-4xl text-marble-white mt-1">Hoping Hours & Availability</h2>
           <p class="font-body-md text-marble-white/70 mt-2">Detail your desired volume of hours and weekly schedule.</p>
         </div>
@@ -279,51 +279,51 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div class="space-y-2">
             <label class="block text-xs font-label-caps text-marble-white/80 tracking-wider font-semibold uppercase">Hours hoping for (per week)</label>
-            <input type="number" id="pw-input-hours" placeholder="e.g. 15, 20, 38" class="w-full bg-black/35 border border-[#D4AF37]/20 rounded p-3 text-marble-white focus:outline-none focus:border-[#D4AF37] transition-all">
+            <input type="number" id="pw-input-hours" placeholder="e.g. 15, 20, 38" class="w-full bg-black/35 border border-premium-gold-light/20 rounded p-3 text-marble-white focus:outline-none focus:border-premium-gold-light transition-all">
           </div>
-
+          
           <div class="space-y-2">
             <label class="block text-xs font-label-caps text-marble-white/80 tracking-wider font-semibold uppercase">Do you have experience?</label>
             <div class="grid grid-cols-2 gap-3">
-              <button type="button" id="pw-btn-exp-yes" onclick="setExperience(true)" class="py-3 rounded border border-[#D4AF37]/20 bg-black/20 text-center text-marble-white font-label-caps text-xs tracking-wider transition-all cursor-pointer">Yes</button>
-              <button type="button" id="pw-btn-exp-no" onclick="setExperience(false)" class="py-3 rounded border border-[#D4AF37]/20 bg-black/20 text-center text-marble-white font-label-caps text-xs tracking-wider transition-all cursor-pointer">No</button>
+              <button type="button" id="pw-btn-exp-yes" onclick="setExperience(true)" class="py-3 rounded border border-premium-gold-light/20 bg-black/20 text-center text-marble-white font-label-caps text-xs tracking-wider transition-all cursor-pointer">Yes</button>
+              <button type="button" id="pw-btn-exp-no" onclick="setExperience(false)" class="py-3 rounded border border-premium-gold-light/20 bg-black/20 text-center text-marble-white font-label-caps text-xs tracking-wider transition-all cursor-pointer">No</button>
             </div>
           </div>
-
+          
           <div id="pw-group-years-exp" class="space-y-2 col-span-1 md:col-span-2 hidden">
             <label class="block text-xs font-label-caps text-marble-white/80 tracking-wider font-semibold uppercase">Years of experience in the position</label>
-            <select id="pw-select-years" class="w-full bg-black/35 border border-[#D4AF37]/20 rounded p-3 text-marble-white focus:outline-none focus:border-[#D4AF37] transition-all">
+            <select id="pw-select-years" class="w-full bg-black/35 border border-premium-gold-light/20 rounded p-3 text-marble-white focus:outline-none focus:border-premium-gold-light transition-all">
               <option value="Less than 1 year">Less than 1 year</option>
               <option value="1-2 years">1-2 years</option>
               <option value="3-5 years">3-5 years</option>
               <option value="5+ years">5+ years</option>
             </select>
           </div>
-
+          
           <div class="space-y-3 col-span-1 md:col-span-2">
             <label class="block text-xs font-label-caps text-marble-white/80 tracking-wider font-semibold uppercase">What days of the week are you available?</label>
             <div class="flex flex-wrap gap-2">
-              <button type="button" onclick="toggleDay('Monday')" class="pw-day-btn px-4 py-2.5 border border-[#D4AF37]/20 rounded bg-black/20 text-xs text-marble-white/85 hover:border-[#D4AF37]/50 transition-all font-label-caps cursor-pointer">Monday</button>
-              <button type="button" onclick="toggleDay('Tuesday')" class="pw-day-btn px-4 py-2.5 border border-[#D4AF37]/20 rounded bg-black/20 text-xs text-marble-white/85 hover:border-[#D4AF37]/50 transition-all font-label-caps cursor-pointer">Tuesday</button>
-              <button type="button" onclick="toggleDay('Wednesday')" class="pw-day-btn px-4 py-2.5 border border-[#D4AF37]/20 rounded bg-black/20 text-xs text-marble-white/85 hover:border-[#D4AF37]/50 transition-all font-label-caps cursor-pointer">Wednesday</button>
-              <button type="button" onclick="toggleDay('Thursday')" class="pw-day-btn px-4 py-2.5 border border-[#D4AF37]/20 rounded bg-black/20 text-xs text-marble-white/85 hover:border-[#D4AF37]/50 transition-all font-label-caps cursor-pointer">Thursday</button>
-              <button type="button" onclick="toggleDay('Friday')" class="pw-day-btn px-4 py-2.5 border border-[#D4AF37]/20 rounded bg-black/20 text-xs text-marble-white/85 hover:border-[#D4AF37]/50 transition-all font-label-caps cursor-pointer">Friday</button>
-              <button type="button" onclick="toggleDay('Saturday')" class="pw-day-btn px-4 py-2.5 border border-[#D4AF37]/20 rounded bg-black/20 text-xs text-marble-white/85 hover:border-[#D4AF37]/50 transition-all font-label-caps font-semibold cursor-pointer">Saturday</button>
-              <button type="button" onclick="toggleDay('Sunday')" class="pw-day-btn px-4 py-2.5 border border-[#D4AF37]/20 rounded bg-black/20 text-xs text-marble-white/85 hover:border-[#D4AF37]/50 transition-all font-label-caps font-semibold cursor-pointer">Sunday</button>
+              <button type="button" onclick="toggleDay('Monday')" class="pw-day-btn px-4 py-2.5 border border-premium-gold-light/20 rounded bg-black/20 text-xs text-marble-white/85 hover:border-premium-gold-light/50 transition-all font-label-caps cursor-pointer">Monday</button>
+              <button type="button" onclick="toggleDay('Tuesday')" class="pw-day-btn px-4 py-2.5 border border-premium-gold-light/20 rounded bg-black/20 text-xs text-marble-white/85 hover:border-premium-gold-light/50 transition-all font-label-caps cursor-pointer">Tuesday</button>
+              <button type="button" onclick="toggleDay('Wednesday')" class="pw-day-btn px-4 py-2.5 border border-premium-gold-light/20 rounded bg-black/20 text-xs text-marble-white/85 hover:border-premium-gold-light/50 transition-all font-label-caps cursor-pointer">Wednesday</button>
+              <button type="button" onclick="toggleDay('Thursday')" class="pw-day-btn px-4 py-2.5 border border-premium-gold-light/20 rounded bg-black/20 text-xs text-marble-white/85 hover:border-premium-gold-light/50 transition-all font-label-caps cursor-pointer">Thursday</button>
+              <button type="button" onclick="toggleDay('Friday')" class="pw-day-btn px-4 py-2.5 border border-premium-gold-light/20 rounded bg-black/20 text-xs text-marble-white/85 hover:border-premium-gold-light/50 transition-all font-label-caps cursor-pointer">Friday</button>
+              <button type="button" onclick="toggleDay('Saturday')" class="pw-day-btn px-4 py-2.5 border border-premium-gold-light/20 rounded bg-black/20 text-xs text-marble-white/85 hover:border-premium-gold-light/50 transition-all font-label-caps font-semibold cursor-pointer">Saturday</button>
+              <button type="button" onclick="toggleDay('Sunday')" class="pw-day-btn px-4 py-2.5 border border-premium-gold-light/20 rounded bg-black/20 text-xs text-marble-white/85 hover:border-premium-gold-light/50 transition-all font-label-caps font-semibold cursor-pointer">Sunday</button>
             </div>
           </div>
         </div>
         
         <div class="pt-4 flex justify-between">
-          <button type="button" onclick="nextStep(2)" class="px-8 py-3 bg-black/20 border border-[#D4AF37]/20 text-marble-white/80 hover:text-marble-white transition-all rounded font-label-caps text-sm tracking-wider cursor-pointer">Back</button>
-          <button type="button" onclick="nextStep(4)" class="px-8 py-3 bg-[#e9c349]/10 border border-[#e9c349]/40 text-marble-white hover:bg-gradient-to-r hover:from-[#735c00] hover:to-[#e9c349] hover:text-[#0B3027] transition-all rounded font-label-caps text-sm tracking-wider font-semibold cursor-pointer">Next Step</button>
+          <button type="button" onclick="nextStep(2)" class="px-8 py-3 bg-black/20 border border-premium-gold-light/20 text-marble-white/80 hover:text-marble-white transition-all rounded font-label-caps text-sm tracking-wider cursor-pointer">Back</button>
+          <button type="button" onclick="nextStep(4)" class="px-8 py-3 bg-premium-gold-light/10 border border-premium-gold-light/40 text-marble-white hover:bg-gradient-to-r hover:from-premium-gold-dark hover:to-premium-gold-light hover:text-[#0B3027] transition-all rounded font-label-caps text-sm tracking-wider font-semibold cursor-pointer">Next Step</button>
         </div>
       </div>
-
+      
       <!-- Step 4: Text descriptions -->
       <div id="pw-step-4" class="pw-step space-y-6 hidden">
         <div>
-          <span class="font-label-caps text-xs text-[#e9c349] uppercase tracking-widest block font-semibold">Step 4 of 5</span>
+          <span class="font-label-caps text-xs text-premium-gold-light uppercase tracking-widest block font-semibold">Step 4 of 5</span>
           <h2 class="font-display-lg text-3xl md:text-4xl text-marble-white mt-1">A Little About You</h2>
           <p class="font-body-md text-marble-white/70 mt-2">Describe your profile, qualifications, and special skills.</p>
         </div>
@@ -331,75 +331,75 @@
         <div class="space-y-4">
           <div class="space-y-2">
             <label class="block text-xs font-label-caps text-marble-white/80 tracking-wider font-semibold uppercase">A Little About Yourself</label>
-            <textarea id="pw-input-about" rows="3" placeholder="Tell us who you are, what you enjoy doing, or why you want to join our team..." class="w-full bg-black/35 border border-[#D4AF37]/20 rounded p-3 text-marble-white focus:outline-none focus:border-[#D4AF37] transition-all"></textarea>
+            <textarea id="pw-input-about" rows="3" placeholder="Tell us who you are, what you enjoy doing, or why you want to join our team..." class="w-full bg-black/35 border border-premium-gold-light/20 rounded p-3 text-marble-white focus:outline-none focus:border-premium-gold-light transition-all"></textarea>
           </div>
-
+          
           <div class="space-y-2">
             <label class="block text-xs font-label-caps text-marble-white/80 tracking-wider font-semibold uppercase">Skills you would like to tell us about</label>
-            <textarea id="pw-input-skills" rows="3" placeholder="e.g. Latte art, fast POS register workflow, heavy kitchen prep, guest hosting..." class="w-full bg-black/35 border border-[#D4AF37]/20 rounded p-3 text-marble-white focus:outline-none focus:border-[#D4AF37] transition-all"></textarea>
+            <textarea id="pw-input-skills" rows="3" placeholder="e.g. Latte art, fast POS register workflow, heavy kitchen prep, guest hosting..." class="w-full bg-black/35 border border-premium-gold-light/20 rounded p-3 text-marble-white focus:outline-none focus:border-premium-gold-light transition-all"></textarea>
           </div>
-
+          
           <div class="space-y-2">
             <label class="block text-xs font-label-caps text-marble-white/80 tracking-wider font-semibold uppercase">Any qualifications you wish to add</label>
-            <textarea id="pw-input-quals" rows="2" placeholder="e.g. RSA certificate, food hygiene certificate, barista school degree..." class="w-full bg-black/35 border border-[#D4AF37]/20 rounded p-3 text-marble-white focus:outline-none focus:border-[#D4AF37] transition-all"></textarea>
+            <textarea id="pw-input-quals" rows="2" placeholder="e.g. RSA certificate, food hygiene certificate, barista school degree..." class="w-full bg-black/35 border border-premium-gold-light/20 rounded p-3 text-marble-white focus:outline-none focus:border-premium-gold-light transition-all"></textarea>
           </div>
         </div>
         
         <div class="pt-4 flex justify-between">
-          <button type="button" onclick="nextStep(3)" class="px-8 py-3 bg-black/20 border border-[#D4AF37]/20 text-marble-white/80 hover:text-marble-white transition-all rounded font-label-caps text-sm tracking-wider cursor-pointer">Back</button>
-          <button type="button" onclick="compileAndShowSummary()" class="px-8 py-3 bg-[#e9c349]/10 border border-[#e9c349]/40 text-marble-white hover:bg-gradient-to-r hover:from-[#735c00] hover:to-[#e9c349] hover:text-[#0B3027] transition-all rounded font-label-caps text-sm tracking-wider font-semibold cursor-pointer">Review Application</button>
+          <button type="button" onclick="nextStep(3)" class="px-8 py-3 bg-black/20 border border-premium-gold-light/20 text-marble-white/80 hover:text-marble-white transition-all rounded font-label-caps text-sm tracking-wider cursor-pointer">Back</button>
+          <button type="button" onclick="compileAndShowSummary()" class="px-8 py-3 bg-premium-gold-light/10 border border-premium-gold-light/40 text-marble-white hover:bg-gradient-to-r hover:from-premium-gold-dark hover:to-premium-gold-light hover:text-[#0B3027] transition-all rounded font-label-caps text-sm tracking-wider font-semibold cursor-pointer">Review Application</button>
         </div>
       </div>
-
+      
       <!-- Step 5: Review Summary & Mail Compilation -->
       <div id="pw-step-5" class="pw-step space-y-6 hidden">
         <div>
-          <span class="font-label-caps text-xs text-[#e9c349] uppercase tracking-widest block font-semibold">Step 5 of 5</span>
+          <span class="font-label-caps text-xs text-premium-gold-light uppercase tracking-widest block font-semibold">Step 5 of 5</span>
           <h2 class="font-display-lg text-3xl md:text-4xl text-marble-white mt-1">Review & Apply</h2>
           <p class="font-body-md text-marble-white/70 mt-2">Your application text is generated. Let's send it directly to your email.</p>
         </div>
         
         <!-- Summary Box Container -->
-        <div class="bg-black/30 border border-[#D4AF37]/15 p-5 rounded-xl space-y-4 text-sm max-h-[300px] overflow-y-auto pw-scrollbar text-marble-white/95">
+        <div class="bg-black/30 border border-premium-gold-light/15 p-5 rounded-xl space-y-4 text-sm max-h-[300px] overflow-y-auto pw-scrollbar text-marble-white/95">
           <div id="pw-summary-content" class="space-y-4">
             <!-- Programmatic Recap gets outputted here -->
           </div>
         </div>
-
-        <div class="bg-[#D4AF37]/10 border border-[#D4AF37]/35 p-4 rounded-xl flex items-start gap-3">
-          <span class="material-symbols-outlined text-[#e9c349] text-xl mt-0.5">info</span>
+        
+        <div class="bg-premium-gold-light/10 border border-premium-gold-light/35 p-4 rounded-xl flex items-start gap-3">
+          <span class="material-symbols-outlined text-premium-gold-light text-xl mt-0.5">info</span>
           <div class="text-xs leading-relaxed text-marble-white/90">
-            <strong>Application Note:</strong> Clicking the <strong>Continue to Email</strong> button will launch your device's native mail app and pre-populate your application details. <span class="text-[#e9c349] font-bold">Please remember to attach your Resume/CV</span> to the email before sending!
+            <strong>Application Note:</strong> Clicking the <strong>Continue to Email</strong> button will launch your device's native mail app and pre-populate your application details. <span class="text-premium-gold-light font-bold">Please remember to attach your Resume/CV</span> to the email before sending!
           </div>
         </div>
-
+        
         <div class="pt-4 flex flex-col gap-4">
           <div class="flex justify-between">
-            <button type="button" onclick="nextStep(4)" class="px-8 py-3 bg-black/20 border border-[#D4AF37]/20 text-marble-white/80 hover:text-marble-white transition-all rounded font-label-caps text-sm tracking-wider cursor-pointer">Back</button>
-            <button type="button" onclick="launchEmail()" class="px-8 py-3 bg-gradient-to-r from-[#735c00] to-[#e9c349] text-[#0B3027] hover:scale-105 transition-all rounded font-label-caps text-sm tracking-wider font-bold shadow-lg shadow-black/20 flex items-center gap-2 cursor-pointer">
+            <button type="button" onclick="nextStep(4)" class="px-8 py-3 bg-black/20 border border-premium-gold-light/20 text-marble-white/80 hover:text-marble-white transition-all rounded font-label-caps text-sm tracking-wider cursor-pointer">Back</button>
+            <button type="button" onclick="launchEmail()" class="px-8 py-3 bg-gradient-to-r from-premium-gold-dark to-premium-gold-light text-[#0B3027] hover:scale-105 transition-all rounded font-label-caps text-sm tracking-wider font-bold shadow-lg shadow-black/20 flex items-center gap-2 cursor-pointer">
               <span class="material-symbols-outlined text-[18px]">mail</span>
               Continue to Email
             </button>
           </div>
           
-          <div class="border-t border-[#D4AF37]/10 pt-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div class="border-t border-premium-gold-light/10 pt-4 flex flex-col sm:flex-row items-center justify-between gap-4">
             <div class="text-xs text-marble-white/50 text-center sm:text-left">
               If the mail button doesn't open your client, copy the Q&A checklist manually below:
             </div>
-            <button type="button" onclick="copyChecklist()" class="px-5 py-2.5 bg-black/35 border border-[#D4AF37]/20 hover:border-[#D4AF37]/50 text-xs text-[#e9c349] transition-all rounded font-label-caps flex items-center gap-2 cursor-pointer">
+            <button type="button" onclick="copyChecklist()" class="px-5 py-2.5 bg-black/35 border border-premium-gold-light/20 hover:border-premium-gold-light/50 text-xs text-premium-gold-light transition-all rounded font-label-caps flex items-center gap-2 cursor-pointer">
               <span class="material-symbols-outlined text-[16px]">content_copy</span>
               Copy Checklist & Email Address
             </button>
           </div>
         </div>
       </div>
-
+      
     </div>
-
+    
     <!-- Success Screen (State Transition) -->
     <div id="pw-success-screen" class="hidden py-8 text-center space-y-6">
-      <div class="w-16 h-16 bg-[#e9c349]/10 border border-[#D4AF37]/20 rounded-full flex items-center justify-center mx-auto scale-110">
-        <span class="material-symbols-outlined text-4xl text-[#e9c349] animate-pulse">done_all</span>
+      <div class="w-16 h-16 bg-premium-gold-light/10 border border-premium-gold-light/20 rounded-full flex items-center justify-center mx-auto scale-110">
+        <span class="material-symbols-outlined text-4xl text-premium-gold-light animate-pulse">done_all</span>
       </div>
       <div class="space-y-3">
         <h2 class="font-display-lg text-3xl md:text-4xl text-marble-white">Application Pre-compiled!</h2>
@@ -407,15 +407,16 @@
           Thanks for your application, we will get back to you if we think you're a great match for us at this time. and will contact you for a trial shift.
         </p>
       </div>
-      <div class="pt-4 max-w-md mx-auto bg-black/25 border border-[#D4AF37]/10 rounded-xl p-4 text-xs text-marble-white/60 leading-relaxed">
-        <strong>Next Steps:</strong> Check your device's email draft folder. If it launched, attach your Resume/CV and hit send. If not, paste the copied checklist text into a new email, attach your resume, and send directly to <strong class="text-[#e9c349]">info@ponywhite.com.au</strong>.
+      <div class="pt-4 max-w-md mx-auto bg-black/25 border border-premium-gold-light/10 rounded-xl p-4 text-xs text-marble-white/60 leading-relaxed">
+        <strong>Next Steps:</strong> Check your device's email draft folder. If it launched, attach your Resume/CV and hit send. If not, paste the copied checklist text into a new email, attach your resume, and send directly to <strong class="text-premium-gold-light">info@ponywhite.com.au</strong>.
       </div>
     </div>
-
+    
   </div>
 </section>
 
 <!-- Footer -->
+
 
 <script>
     // State Management for Questionnaire
@@ -458,14 +459,14 @@
       if (index === -1) {
         applicationState.positions.push(roleName);
         if (matchedCard) {
-          matchedCard.classList.add('border-[#D4AF37]', 'bg-[#D4AF37]/15', 'shadow-[0_0_15px_rgba(212,175,55,0.25)]');
-          matchedCard.classList.remove('border-[#D4AF37]/20', 'bg-black/20');
+          matchedCard.classList.add('border-premium-gold-light', 'bg-premium-gold-light/15', 'shadow-[0_0_15px_rgba(212,175,55,0.25)]');
+          matchedCard.classList.remove('border-premium-gold-light/20', 'bg-black/20');
         }
       } else {
         applicationState.positions.splice(index, 1);
         if (matchedCard) {
-          matchedCard.classList.remove('border-[#D4AF37]', 'bg-[#D4AF37]/15', 'shadow-[0_0_15px_rgba(212,175,55,0.25)]');
-          matchedCard.classList.add('border-[#D4AF37]/20', 'bg-black/20');
+          matchedCard.classList.remove('border-premium-gold-light', 'bg-premium-gold-light/15', 'shadow-[0_0_15px_rgba(212,175,55,0.25)]');
+          matchedCard.classList.add('border-premium-gold-light/20', 'bg-black/20');
         }
       }
     }
@@ -527,16 +528,16 @@
       const yearsGroup = document.getElementById('pw-group-years-exp');
 
       if (hasExp) {
-        btnYes.classList.add('border-[#D4AF37]', 'bg-[#D4AF37]/15', 'text-white');
-        btnYes.classList.remove('border-[#D4AF37]/20', 'bg-black/20');
-        btnNo.classList.remove('border-[#D4AF37]', 'bg-[#D4AF37]/15', 'text-white');
-        btnNo.classList.add('border-[#D4AF37]/20', 'bg-black/20');
+        btnYes.classList.add('border-premium-gold-light', 'bg-premium-gold-light/15', 'text-white');
+        btnYes.classList.remove('border-premium-gold-light/20', 'bg-black/20');
+        btnNo.classList.remove('border-premium-gold-light', 'bg-premium-gold-light/15', 'text-white');
+        btnNo.classList.add('border-premium-gold-light/20', 'bg-black/20');
         if (yearsGroup) yearsGroup.classList.remove('hidden');
       } else {
-        btnNo.classList.add('border-[#D4AF37]', 'bg-[#D4AF37]/15', 'text-white');
-        btnNo.classList.remove('border-[#D4AF37]/20', 'bg-black/20');
-        btnYes.classList.remove('border-[#D4AF37]', 'bg-[#D4AF37]/15', 'text-white');
-        btnYes.classList.add('border-[#D4AF37]/20', 'bg-black/20');
+        btnNo.classList.add('border-premium-gold-light', 'bg-premium-gold-light/15', 'text-white');
+        btnNo.classList.remove('border-premium-gold-light/20', 'bg-black/20');
+        btnYes.classList.remove('border-premium-gold-light', 'bg-premium-gold-light/15', 'text-white');
+        btnYes.classList.add('border-premium-gold-light/20', 'bg-black/20');
         if (yearsGroup) yearsGroup.classList.add('hidden');
       }
     }
@@ -555,14 +556,14 @@
       if (index === -1) {
         applicationState.availableDays.push(day);
         if (matchedBtn) {
-          matchedBtn.classList.add('border-[#D4AF37]', 'bg-[#D4AF37]/15', 'text-white');
-          matchedBtn.classList.remove('border-[#D4AF37]/20', 'bg-black/20');
+          matchedBtn.classList.add('border-premium-gold-light', 'bg-premium-gold-light/15', 'text-white');
+          matchedBtn.classList.remove('border-premium-gold-light/20', 'bg-black/20');
         }
       } else {
         applicationState.availableDays.splice(index, 1);
         if (matchedBtn) {
-          matchedBtn.classList.remove('border-[#D4AF37]', 'bg-[#D4AF37]/15', 'text-white');
-          matchedBtn.classList.add('border-[#D4AF37]/20', 'bg-black/20');
+          matchedBtn.classList.remove('border-premium-gold-light', 'bg-premium-gold-light/15', 'text-white');
+          matchedBtn.classList.add('border-premium-gold-light/20', 'bg-black/20');
         }
       }
     }
@@ -582,41 +583,41 @@
       if (recap) {
         recap.innerHTML = `
           <div>
-            <h4 class="text-[#e9c349] font-semibold text-xs uppercase tracking-wider mb-1">Selected Role(s)</h4>
+            <h4 class="text-premium-gold-light font-semibold text-xs uppercase tracking-wider mb-1">Selected Role(s)</h4>
             <p class="font-medium text-white">${applicationState.positions.join(', ')}</p>
           </div>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 border-t border-[#D4AF37]/10 pt-3">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 border-t border-premium-gold-light/10 pt-3">
             <div>
-              <h4 class="text-[#e9c349] font-semibold text-xs uppercase tracking-wider mb-1">Country of Origin</h4>
+              <h4 class="text-premium-gold-light font-semibold text-xs uppercase tracking-wider mb-1">Country of Origin</h4>
               <p>${applicationState.country}</p>
             </div>
             <div>
-              <h4 class="text-[#e9c349] font-semibold text-xs uppercase tracking-wider mb-1">Visa Type</h4>
+              <h4 class="text-premium-gold-light font-semibold text-xs uppercase tracking-wider mb-1">Visa Type</h4>
               <p>${applicationState.visaType} ${applicationState.visaType !== 'Citizen or PR' ? `(Expires: ${applicationState.visaExpiry})` : ''}</p>
             </div>
             <div>
-              <h4 class="text-[#e9c349] font-semibold text-xs uppercase tracking-wider mb-1">Weekly Hours Desired</h4>
+              <h4 class="text-premium-gold-light font-semibold text-xs uppercase tracking-wider mb-1">Weekly Hours Desired</h4>
               <p>${applicationState.hopingHours} hours</p>
             </div>
             <div>
-              <h4 class="text-[#e9c349] font-semibold text-xs uppercase tracking-wider mb-1">English Proficiency</h4>
+              <h4 class="text-premium-gold-light font-semibold text-xs uppercase tracking-wider mb-1">English Proficiency</h4>
               <p>${applicationState.englishProficiency} / 10</p>
             </div>
           </div>
-          <div class="border-t border-[#D4AF37]/10 pt-3">
-            <h4 class="text-[#e9c349] font-semibold text-xs uppercase tracking-wider mb-1">Experience Status</h4>
+          <div class="border-t border-premium-gold-light/10 pt-3">
+            <h4 class="text-premium-gold-light font-semibold text-xs uppercase tracking-wider mb-1">Experience Status</h4>
             <p>${applicationState.experience ? `Yes — ${applicationState.yearsExperience} of experience` : 'No direct experience'}</p>
           </div>
-          <div class="border-t border-[#D4AF37]/10 pt-3">
-            <h4 class="text-[#e9c349] font-semibold text-xs uppercase tracking-wider mb-1">Schedule Availability</h4>
+          <div class="border-t border-premium-gold-light/10 pt-3">
+            <h4 class="text-premium-gold-light font-semibold text-xs uppercase tracking-wider mb-1">Schedule Availability</h4>
             <p>${applicationState.availableDays.length > 0 ? applicationState.availableDays.join(', ') : 'Not specified'}</p>
           </div>
-          <div class="border-t border-[#D4AF37]/10 pt-3">
-            <h4 class="text-[#e9c349] font-semibold text-xs uppercase tracking-wider mb-1">About Me</h4>
+          <div class="border-t border-premium-gold-light/10 pt-3">
+            <h4 class="text-premium-gold-light font-semibold text-xs uppercase tracking-wider mb-1">About Me</h4>
             <p class="italic text-marble-white/80">"${applicationState.aboutMe}"</p>
           </div>
-          <div class="border-t border-[#D4AF37]/10 pt-3 space-y-2">
-            <h4 class="text-[#e9c349] font-semibold text-xs uppercase tracking-wider mb-1">Additional Information</h4>
+          <div class="border-t border-premium-gold-light/10 pt-3 space-y-2">
+            <h4 class="text-premium-gold-light font-semibold text-xs uppercase tracking-wider mb-1">Additional Information</h4>
             <p><strong class="text-marble-white">Skills:</strong> ${applicationState.skills}</p>
             <p><strong class="text-marble-white">Qualifications:</strong> ${applicationState.qualifications}</p>
           </div>
@@ -698,7 +699,7 @@ Q&A HIGHLIGHTS:
 
     function showToast() {
       const toast = document.createElement('div');
-      toast.className = 'fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50 bg-[#e9c349] text-[#0B3027] font-semibold px-6 py-3 rounded-full shadow-lg font-label-caps text-xs tracking-wider flex items-center gap-2 animate-bounce';
+      toast.className = 'fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50 bg-premium-gold-light text-[#0B3027] font-semibold px-6 py-3 rounded-full shadow-lg font-label-caps text-xs tracking-wider flex items-center gap-2 animate-bounce';
       toast.innerHTML = `
         <span class="material-symbols-outlined text-sm">content_copy</span>
         Q&A Checklist Copied! Send to info@ponywhite.com.au
