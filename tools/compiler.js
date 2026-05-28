@@ -159,6 +159,12 @@ function compilePage(filePath) {
                        `  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');\n` +
                        `  @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');\n\n` +
                        `  /* Global Typography resets to bypass sandboxed iframe font blocks */\n` +
+                       `  body, html {\n` +
+                       `    margin: 0 !important;\n` +
+                       `    padding: 0 !important;\n` +
+                       `    width: 100% !important;\n` +
+                       `    height: 100% !important;\n` +
+                       `  }\n` +
                        `  body, html, * {\n` +
                        `    font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui, -apple-system, sans-serif !important;\n` +
                        `  }\n` +
