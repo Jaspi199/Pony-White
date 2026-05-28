@@ -163,7 +163,7 @@ function compilePage(filePath) {
                        `    margin: 0 !important;\n` +
                        `    padding: 0 !important;\n` +
                        `    width: 100% !important;\n` +
-                       `    height: 100% !important;\n` +
+                       `    min-height: 100% !important;\n` +
                        `  }\n` +
                        `  body, html, * {\n` +
                        `    font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui, -apple-system, sans-serif !important;\n` +
