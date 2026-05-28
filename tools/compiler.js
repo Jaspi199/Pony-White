@@ -23,7 +23,7 @@ if (!fs.existsSync(OUTPUT_DIR)) {
 }
 
 // Generate CDN base URL
-const CDN_BASE_URL = `https://cdn.jsdelivr.net/gh/${CONFIG.githubUsername}/${CONFIG.githubRepo}@${CONFIG.githubBranch}/assets/`;
+const CDN_BASE_URL = `https://raw.githubusercontent.com/${CONFIG.githubUsername}/${CONFIG.githubRepo}/${CONFIG.githubBranch}/assets/`;
 const LOCAL_ASSETS_PATH = 'assets/';
 
 /**
