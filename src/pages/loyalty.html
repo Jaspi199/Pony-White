@@ -38,12 +38,27 @@
             background: #0B3027;
             color: #C5A059 !important;
         }
+        body, html {
+            background-color: #0B3027 !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            overflow-x: hidden !important;
+        }
+        main {
+            width: 100vw !important;
+            max-width: 100vw !important;
+            position: relative !important;
+            left: 50% !important;
+            transform: translateX(-50%) !important;
+            margin: 0 !important;
+            box-sizing: border-box !important;
+        }
 </style>
 
 <!-- TopNavBar -->
 
 <!-- Main Content -->
-<main class="min-h-screen bg-forest-velvet text-marble-white py-32 px-margin-desktop flex items-center justify-center">
+<main class="min-h-[70vh] bg-forest-velvet text-marble-white py-20 px-margin-desktop flex items-center justify-center">
     <div class="max-w-5xl w-full mx-auto text-center space-y-12">
         <!-- Golden Coffee Bean Icon -->
         <div class="relative inline-block transition-transform duration-700 hover:scale-110">
@@ -132,12 +147,5 @@
                 behavior: 'smooth'
             });
         });
-    });
-
-    // Subtly float header bean icon on scroll
-    window.addEventListener('scroll', () => {
-        const scroll = window.pageYOffset;
-        const bean = document.querySelector('svg.relative.z-10');
-        if(bean) bean.style.transform = `translateY(${scroll * 0.05}px) rotate(${scroll * 0.02}deg)`;
     });
 </script>
