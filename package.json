@@ -9,6 +9,7 @@
     "dev": "node tools/dev.js"
   },
   "dependencies": {
+    "cheerio": "^1.2.0",
     "juice": "^11.0.0"
   },
   "devDependencies": {

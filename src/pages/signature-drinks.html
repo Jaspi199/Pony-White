@@ -540,7 +540,7 @@
     <div class="flex items-center justify-between gap-4 mt-auto pt-6 border-t border-white/5">
       <div class="flex items-center gap-4 md:gap-8">
         <a href="https://www.ponywhite.com.au/s/order?location=LNF4JM03RA1T8#3K23JRETV57P75DKJUCVBMY3" target="_top" class="bg-marble-white text-primary px-6 md:px-8 py-3.5 md:py-4 rounded-full font-bold text-xs tracking-widest uppercase shadow-lg shadow-black/10 hover:bg-[#eae0d5] hover:scale-105 active:scale-95 transition-all duration-300 block text-center no-underline">Order Now</a>
-        <span class="text-marble-white/90 text-lg md:text-xl font-semibold" id="drink-price">$9.50</span>
+        <span class="text-marble-white/90 text-lg md:text-xl font-semibold opacity-0 hidden" id="drink-price"></span>
       </div>
       <!-- Tiny Frosted Nav Arrows -->
       <div class="flex items-center gap-2">
@@ -911,10 +911,9 @@
       }
       
       setTimeout(() => {
-        // Update text & price
+        // Update text
         document.getElementById('drink-title').innerText = config.title;
         document.getElementById('drink-text').innerText = config.text;
-        document.getElementById('drink-price').innerText = config.price;
         
         // Update ambient colors
         const body = document.getElementById('body-bg') || document.querySelector('.signature-drinks-showcase') || document.documentElement;
@@ -983,7 +982,6 @@
         // Update Content
         document.getElementById('drink-title').innerText = config.title;
         document.getElementById('drink-text').innerText = config.text;
-        document.getElementById('drink-price').innerText = config.price;
         
         // Update Ambient Colors
         const body = document.getElementById('body-bg') || document.querySelector('.signature-drinks-showcase') || document.documentElement;
