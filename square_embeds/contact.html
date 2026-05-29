@@ -30,9 +30,9 @@
     })();
 
     // Links for the Branch Redirections (can be changed easily later)
-    const GOOGLE_REVIEWS_URL = 'https://google.com/search?q=pony+white+cafe+fitzroy+reviews';
-    const EMAIL_US_PAGE_URL = 'mailto:hello@ponywhite.com.au'; // Or an email us page link
-    const GENERAL_INQUIRY_URL = 'mailto:hello@ponywhite.com.au'; // Or contact page link
+    const GOOGLE_REVIEWS_URL = 'https://g.page/r/CWiLgrU6S0esEBM/review';
+    const EMAIL_US_PAGE_URL = 'https://www.ponywhite.com.au/email-us';
+    const GENERAL_INQUIRY_URL = 'https://www.ponywhite.com.au/email-us';
 
     // State management for option cards
     function selectOption(category) {
@@ -43,11 +43,11 @@
 
         // Dynamic immediate redirects per user requirements
         if (category === 'bookings') {
-            window.location.href = 'book-table.html';
+            window.location.href = 'https://www.ponywhite.com.au/reservations';
             return;
         }
         if (category === 'hiring') {
-            window.location.href = 'careers.html';
+            window.location.href = 'https://www.ponywhite.com.au/hiring';
             return;
         }
         if (category === 'general') {
