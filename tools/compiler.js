@@ -228,7 +228,7 @@ function compilePage(filePath) {
  */
 function buildAll() {
   console.log('=============================================');
-  console.log('  PONYWHITE SQUARE EMBED COMPILER');
+  console.log('  PONY WHITE SQUARE EMBED COMPILER');
   console.log('=============================================');
   console.log(`Target Repo CDN: ${CDN_BASE_URL}`);
 
@@ -330,8 +330,8 @@ function createPlaceholderPage() {
 
 <section class="pw-section">
   <div class="pw-hero-card">
-    <img src="../../assets/logo.png" class="pw-image" alt="Ponywhite Logo">
-    <h1 class="pw-title">Ponywhite</h1>
+    <img src="../../assets/logo.png" class="pw-image" alt="Pony White Logo">
+    <h1 class="pw-title">Pony White</h1>
     <p class="pw-desc">A premium modern website shell compiled directly into custom inlined, single-line Square embeds.</p>
     <a href="https://square.link" class="pw-btn">Explore Menu</a>
   </div>

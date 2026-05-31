@@ -1,7 +1,7 @@
 {
   "name": "ponywhite-square-embeds",
   "version": "1.0.0",
-  "description": "Ponywhite Restaurant Website Custom Square Embeds Workspace",
+  "description": "Pony White Restaurant Website Custom Square Embeds Workspace",
   "main": "tools/compiler.js",
   "scripts": {
     "build": "node tools/compiler.js",

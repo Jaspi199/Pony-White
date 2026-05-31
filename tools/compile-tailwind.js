@@ -244,7 +244,7 @@ function processPage(mapping) {
  * Main execution
  */
 function run() {
-  console.log('Starting Ponywhite Page Extraction & Tailwind compilation...');
+  console.log('Starting Pony White Page Extraction & Tailwind compilation...');
   
   if (!fs.existsSync(STITCH_ROOT)) {
     console.error(`Stitch root directory does not exist at ${STITCH_ROOT}`);

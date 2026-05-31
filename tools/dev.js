@@ -7,7 +7,7 @@ const ROOT_DIR = path.resolve(__dirname, '..');
 const SRC_DIR = path.join(ROOT_DIR, 'src');
 
 console.log('=============================================');
-console.log('  PONYWHITE CAFE DEVELOPMENT WORKSPACE');
+console.log('  PONY WHITE CAFE DEVELOPMENT WORKSPACE');
 console.log('=============================================');
 
 // Debounce helper to prevent double compilations

@@ -1,6 +1,6 @@
-# Ponywhite Custom Square Online Embeds Workspace
+# Pony White Custom Square Online Embeds Workspace
 
-This workspace is set up to develop custom, highly-performant HTML components and pages for the Ponywhite website hosted on Square Online.
+This workspace is set up to develop custom, highly-performant HTML components and pages for the Pony White website hosted on Square Online.
 
 ## Folder Directory Structure
 
