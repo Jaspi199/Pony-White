@@ -329,8 +329,8 @@
 <ul class="font-body-md text-body-md text-marble-white/70 space-y-1.5 mb-3">
 <li class="flex justify-between"><span>Monday – Thursday</span> <span>7am — 3pm</span></li>
 <li class="flex justify-between"><span>Friday</span> <span>7am — 3:30pm</span></li>
-<li class="flex justify-between"><span>Saturday</span> <span>8am — 3pm</span></li>
-<li class="flex justify-between"><span>Sunday</span> <span>8am — 3pm</span></li>
+<li class="flex justify-between"><span>Saturday</span> <span>7:30am — 3:30pm</span></li>
+<li class="flex justify-between"><span>Sunday</span> <span>8am — 3:30pm</span></li>
 </ul>
 <p class="text-xs text-premium-gold font-bold">Kitchen closes at 2:30pm</p>
 </div>
@@ -422,7 +422,7 @@
                 <p class="font-body-md text-xs text-[#0B3027]/70 mb-6 max-w-sm mx-auto leading-relaxed">
                     We are absolutely thrilled you enjoyed your visit to Pony White! Your support means the world to our team. We are redirecting you to our Google Reviews page to share your kind words.
                 </p>
-                <a id="pw-thanks-redirect-btn-modal" class="inline-flex items-center premium-gold-gradient text-white font-label-caps text-xs px-6 py-3 rounded-full hover:scale-[1.02] transition-all shadow-md font-bold" href="https://g.page/r/CWiLgrU6S0esEBM/review" target="_blank">
+                <a class="inline-flex items-center premium-gold-gradient text-white font-label-caps text-xs px-6 py-3 rounded-full hover:scale-[1.02] transition-all shadow-md font-bold" href="https://google.com/search?q=pony+white+cafe+fitzroy+reviews" target="_blank" id="pw-thanks-redirect-btn-modal">
                     Leave a Google Review
                     <span class="material-symbols-outlined ml-1.5 text-xs">open_in_new</span>
                 </a>
@@ -448,9 +448,9 @@
     })();
 
     // Links for the Branch Redirections (can be changed easily later)
-    const GOOGLE_REVIEWS_URL = 'https://g.page/r/CWiLgrU6S0esEBM/review';
-    const EMAIL_US_PAGE_URL = 'https://www.ponywhite.com.au/email-us';
-    const GENERAL_INQUIRY_URL = 'https://www.ponywhite.com.au/email-us';
+    const GOOGLE_REVIEWS_URL = 'https://google.com/search?q=pony+white+cafe+fitzroy+reviews';
+    const EMAIL_US_PAGE_URL = 'mailto:hello@ponywhite.com.au'; // Or an email us page link
+    const GENERAL_INQUIRY_URL = 'mailto:hello@ponywhite.com.au'; // Or contact page link
 
     // State management for option cards
     function selectOption(category) {
@@ -461,11 +461,11 @@
 
         // Dynamic immediate redirects per user requirements
         if (category === 'bookings') {
-            window.location.href = 'https://www.ponywhite.com.au/reservations';
+            window.location.href = 'book-table.html';
             return;
         }
         if (category === 'hiring') {
-            window.location.href = 'https://www.ponywhite.com.au/hiring';
+            window.location.href = 'careers.html';
             return;
         }
         if (category === 'general') {
