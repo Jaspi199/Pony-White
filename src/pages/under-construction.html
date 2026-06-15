@@ -54,6 +54,19 @@
         </a>
       </div>
 
+      <!-- Opening Hours -->
+      <div class="uc-hours-container" style="margin-bottom: 32px;">
+        <h3 style="font-family: 'Playfair Display', serif; color: var(--color-gold); font-size: 20px; margin-bottom: 12px; margin-top: 0;">Opening Hours</h3>
+        <ul style="list-style: none; padding: 0; margin: 0; color: var(--color-marble-white); font-size: 14px; opacity: 0.8; line-height: 1.8;">
+          <li style="display: flex; justify-content: space-between; width: 100%; max-width: 250px; margin: 0 auto;"><span>Mon – Thu</span><span>7am — 3pm</span></li>
+          <li style="display: flex; justify-content: space-between; width: 100%; max-width: 250px; margin: 0 auto;"><span>Friday</span><span>7am — 3:30pm</span></li>
+          <li style="display: flex; justify-content: space-between; width: 100%; max-width: 250px; margin: 0 auto;"><span>Saturday</span><span>7:30am — 3:30pm</span></li>
+          <li style="display: flex; justify-content: space-between; width: 100%; max-width: 250px; margin: 0 auto;"><span>Sunday</span><span>8am — 3:30pm</span></li>
+        </ul>
+        <div class="store-state-indicator" style="margin-top: 16px; font-size: 13px; background: rgba(0,0,0,0.3); padding: 8px 16px; border-radius: 20px; display: inline-block; border: 1px solid var(--color-border-glass);"></div>
+        <p style="color: var(--color-gold); font-size: 12px; margin-top: 12px; opacity: 0.9; font-weight: bold;">Kitchen closes at 2:30pm</p>
+      </div>
+
       <!-- Embedded Map -->
       <div class="uc-map-container">
         <iframe class="uc-map" 
@@ -73,3 +86,67 @@
 
   </div>
 </div>
+
+<script>
+  function updateStoreStateUC() {
+      const now = new Date();
+      const formatter = new Intl.DateTimeFormat('en-AU', {
+          timeZone: 'Australia/Melbourne',
+          hour12: false,
+          weekday: 'short',
+          hour: 'numeric',
+          minute: 'numeric'
+      });
+      const parts = formatter.formatToParts(now);
+      let dayStr = '', hourStr = '', minuteStr = '';
+      for (let p of parts) {
+          if (p.type === 'weekday') dayStr = p.value;
+          if (p.type === 'hour') hourStr = p.value;
+          if (p.type === 'minute') minuteStr = p.value;
+      }
+      const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+      const day = days.indexOf(dayStr);
+      const h = parseInt(hourStr, 10);
+      const m = parseInt(minuteStr, 10);
+      const currentMins = h * 60 + m;
+      
+      const schedule = {
+          0: { open: 8*60, close: 15*60 + 30 },
+          1: { open: 7*60, close: 15*60 },
+          2: { open: 7*60, close: 15*60 },
+          3: { open: 7*60, close: 15*60 },
+          4: { open: 7*60, close: 15*60 },
+          5: { open: 7*60, close: 15*60 + 30 },
+          6: { open: 7*60 + 30, close: 15*60 + 30 }
+      };
+      const today = schedule[day];
+      const kitchenCloseMins = 14 * 60 + 30; // 2:30 PM
+      let stateHtml = '';
+      function formatTime(mins) {
+          let hr = Math.floor(mins / 60);
+          let mn = mins % 60;
+          let ampm = hr >= 12 ? 'pm' : 'am';
+          if (hr > 12) hr -= 12;
+          if (hr === 0) hr = 12;
+          return hr + (mn === 0 ? '' : ':' + mn.toString().padStart(2, '0')) + ampm;
+      }
+      if (currentMins < today.open) {
+          stateHtml = `<span style="color: #e9c349; font-weight: bold;">Closed</span> • Opens today at ${formatTime(today.open)}`;
+      } else if (currentMins >= today.close) {
+          let nextDay = (day + 1) % 7;
+          let nextOpen = schedule[nextDay].open;
+          stateHtml = `<span style="color: #ef4444; font-weight: bold;">Closed</span> • Opens tomorrow at ${formatTime(nextOpen)}`;
+      } else if (currentMins >= kitchenCloseMins) {
+          stateHtml = `<span style="color: #e9c349; font-weight: bold;">Kitchen Closed</span> • Drinks only until ${formatTime(today.close)}`;
+      } else if (currentMins >= kitchenCloseMins - 30) {
+          stateHtml = `<span style="color: #e9c349; font-weight: bold;">Closing Soon</span> • Kitchen closes at 2:30pm`;
+      } else {
+          stateHtml = `<span style="color: #22c55e; font-weight: bold;">Open</span> until ${formatTime(today.close)}`;
+      }
+      document.querySelectorAll('.store-state-indicator').forEach(el => {
+          el.innerHTML = stateHtml;
+      });
+  }
+  updateStoreStateUC();
+  setInterval(updateStoreStateUC, 60000);
+</script>

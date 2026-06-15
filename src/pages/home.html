@@ -544,10 +544,12 @@
         <div>
           <h4 class="font-headline-md text-headline-md mb-2">Opening Hours</h4>
           <p class="text-body-lg text-on-surface-variant font-body-md">
-            Weekdays: 7am — 3pm<br/>
+            Mon-Thu: 7am — 3pm<br/>
+            Fri: 7am — 3:30pm<br/>
             Sat: 7:30am — 3:30pm<br/>
             Sun: 8am — 3:30pm
           </p>
+          <div class="store-state-indicator mt-3 text-sm font-body-md bg-[#00261b]/5 text-[#00261b] px-3 py-1.5 rounded-lg inline-block border border-[#00261b]/10 shadow-sm"></div>
           <p class="text-label-sm gold-gradient-text font-bold mt-2">Kitchen closes at 2:30pm</p>
         </div>
       </div>
@@ -900,10 +902,75 @@
             });
         }
 
+        // ==========================================
+        // Store State Indicator Logic
+        // ==========================================
+        function updateStoreState() {
+            const now = new Date();
+            const formatter = new Intl.DateTimeFormat('en-AU', {
+                timeZone: 'Australia/Melbourne',
+                hour12: false,
+                weekday: 'short',
+                hour: 'numeric',
+                minute: 'numeric'
+            });
+            const parts = formatter.formatToParts(now);
+            let dayStr = '', hourStr = '', minuteStr = '';
+            for (let p of parts) {
+                if (p.type === 'weekday') dayStr = p.value;
+                if (p.type === 'hour') hourStr = p.value;
+                if (p.type === 'minute') minuteStr = p.value;
+            }
+            const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+            const day = days.indexOf(dayStr);
+            const h = parseInt(hourStr, 10);
+            const m = parseInt(minuteStr, 10);
+            const currentMins = h * 60 + m;
+            
+            const schedule = {
+                0: { open: 8*60, close: 15*60 + 30 },
+                1: { open: 7*60, close: 15*60 },
+                2: { open: 7*60, close: 15*60 },
+                3: { open: 7*60, close: 15*60 },
+                4: { open: 7*60, close: 15*60 },
+                5: { open: 7*60, close: 15*60 + 30 },
+                6: { open: 7*60 + 30, close: 15*60 + 30 }
+            };
+            const today = schedule[day];
+            const kitchenCloseMins = 14 * 60 + 30; // 2:30 PM
+            let stateHtml = '';
+            function formatTime(mins) {
+                let hr = Math.floor(mins / 60);
+                let mn = mins % 60;
+                let ampm = hr >= 12 ? 'pm' : 'am';
+                if (hr > 12) hr -= 12;
+                if (hr === 0) hr = 12;
+                return hr + (mn === 0 ? '' : ':' + mn.toString().padStart(2, '0')) + ampm;
+            }
+            if (currentMins < today.open) {
+                stateHtml = `<span class="text-[#b38b45] font-bold">Closed</span> • Opens today at ${formatTime(today.open)}`;
+            } else if (currentMins >= today.close) {
+                let nextDay = (day + 1) % 7;
+                let nextOpen = schedule[nextDay].open;
+                stateHtml = `<span class="text-red-800 font-bold">Closed</span> • Opens tomorrow at ${formatTime(nextOpen)}`;
+            } else if (currentMins >= kitchenCloseMins) {
+                stateHtml = `<span class="text-[#b38b45] font-bold">Kitchen Closed</span> • Drinks only until ${formatTime(today.close)}`;
+            } else if (currentMins >= kitchenCloseMins - 30) {
+                stateHtml = `<span class="text-[#b38b45] font-bold">Closing Soon</span> • Kitchen closes at 2:30pm`;
+            } else {
+                stateHtml = `<span class="text-green-700 font-bold">Open</span> until ${formatTime(today.close)}`;
+            }
+            document.querySelectorAll('.store-state-indicator').forEach(el => {
+                el.innerHTML = stateHtml;
+            });
+        }
+
         // Initialize on DOM load
         function init() {
             initSlideshow();
             initGiftCardSelector();
+            updateStoreState();
+            setInterval(updateStoreState, 60000);
         }
 
         if (document.readyState === 'complete' || document.readyState === 'interactive') {
