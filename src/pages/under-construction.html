@@ -24,8 +24,8 @@
       <span class="uc-tagline">Under Construction</span>
       <h1 class="uc-title">Big things are coming to Pony White Cafe Fitzroy.</h1>
       <p class="uc-desc">
-        We are currently undergoing digital enhancements as we transition our primary domain. 
-        During this short period, secure your reservations below or get in touch with our team.
+        We're cooking up a storm for you at Pony White, and the launch of our new online experience is coming shortly. 
+        In the meantime, you can easily reserve a table below or get in touch with our team.
       </p>
 
       <!-- Wix Booking Link -->
@@ -58,19 +58,16 @@
       <div class="uc-hours-container" style="margin-bottom: 32px;">
         <h3 style="font-family: 'Playfair Display', serif; color: var(--color-gold); font-size: 20px; margin-bottom: 12px; margin-top: 0;">Opening Hours</h3>
         <ul style="list-style: none; padding: 0; margin: 0; color: var(--color-marble-white); font-size: 14px; opacity: 0.8; line-height: 1.8;">
-          <li style="display: flex; justify-content: space-between; width: 100%; max-width: 250px; margin: 0 auto;"><span>Mon – Thu</span><span>7am — 3pm</span></li>
-          <li style="display: flex; justify-content: space-between; width: 100%; max-width: 250px; margin: 0 auto;"><span>Friday</span><span>7am — 3:30pm</span></li>
-          <li style="display: flex; justify-content: space-between; width: 100%; max-width: 250px; margin: 0 auto;"><span>Saturday</span><span>7:30am — 3:30pm</span></li>
-          <li style="display: flex; justify-content: space-between; width: 100%; max-width: 250px; margin: 0 auto;"><span>Sunday</span><span>8am — 3:30pm</span></li>
+          <li style="display: flex; justify-content: space-between; width: 100%; max-width: 250px; margin: 0 auto;"><span>Weekdays</span><span>7am — 3pm</span></li>
+          <li style="display: flex; justify-content: space-between; width: 100%; max-width: 250px; margin: 0 auto;"><span>Weekends</span><span>8am — 3pm</span></li>
         </ul>
-        <div class="store-state-indicator" style="margin-top: 16px; font-size: 13px; background: rgba(0,0,0,0.3); padding: 8px 16px; border-radius: 20px; display: inline-block; border: 1px solid var(--color-border-glass);"></div>
-        <p style="color: var(--color-gold); font-size: 12px; margin-top: 12px; opacity: 0.9; font-weight: bold;">Kitchen closes at 2:30pm</p>
+        <div class="store-state-indicator" style="margin-top: 24px; font-size: 14px; background: #ffffff; color: #00261b; padding: 16px 20px; border-radius: 12px; display: block; border: 1px solid rgba(179, 139, 69, 0.5); box-shadow: 0 10px 25px rgba(0,0,0,0.2); max-width: 320px; margin-left: auto; margin-right: auto; line-height: 1.6; text-align: center;"></div>
       </div>
 
       <!-- Embedded Map -->
       <div class="uc-map-container">
         <iframe class="uc-map" 
-                src="https://maps.google.com/maps?q=Pony%20White%20Cafe,%20Melbourne&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+                src="https://maps.google.com/maps?q=Pony%20White%20Cafe,%20379%20George%20St,%20Fitzroy&t=&z=15&ie=UTF8&iwloc=&output=embed" 
                 allowfullscreen="" 
                 loading="lazy" 
                 referrerpolicy="no-referrer-when-downgrade">
@@ -79,10 +76,7 @@
 
     </div>
 
-    <!-- Curated Footer -->
-    <footer class="uc-footer">
-      <p>© 2026 Pony White Cafe. Crafted with meticulous aesthetic care.</p>
-    </footer>
+
 
   </div>
 </div>
@@ -111,13 +105,13 @@
       const currentMins = h * 60 + m;
       
       const schedule = {
-          0: { open: 8*60, close: 15*60 + 30 },
+          0: { open: 8*60, close: 15*60 },
           1: { open: 7*60, close: 15*60 },
           2: { open: 7*60, close: 15*60 },
           3: { open: 7*60, close: 15*60 },
           4: { open: 7*60, close: 15*60 },
-          5: { open: 7*60, close: 15*60 + 30 },
-          6: { open: 7*60 + 30, close: 15*60 + 30 }
+          5: { open: 7*60, close: 15*60 },
+          6: { open: 8*60, close: 15*60 }
       };
       const today = schedule[day];
       const kitchenCloseMins = 14 * 60 + 30; // 2:30 PM
@@ -131,17 +125,17 @@
           return hr + (mn === 0 ? '' : ':' + mn.toString().padStart(2, '0')) + ampm;
       }
       if (currentMins < today.open) {
-          stateHtml = `<span style="color: #e9c349; font-weight: bold;">Closed</span> • Opens today at ${formatTime(today.open)}`;
+          stateHtml = `We are currently <span style="color: #b38b45; font-weight: bold;">CLOSED</span>. We look forward to welcoming you today at ${formatTime(today.open)}!`;
       } else if (currentMins >= today.close) {
           let nextDay = (day + 1) % 7;
           let nextOpen = schedule[nextDay].open;
-          stateHtml = `<span style="color: #ef4444; font-weight: bold;">Closed</span> • Opens tomorrow at ${formatTime(nextOpen)}`;
+          stateHtml = `We are now <span style="color: #b91c1c; font-weight: bold;">CLOSED</span> for the day. We'll see you tomorrow at ${formatTime(nextOpen)}!`;
       } else if (currentMins >= kitchenCloseMins) {
-          stateHtml = `<span style="color: #e9c349; font-weight: bold;">Kitchen Closed</span> • Drinks only until ${formatTime(today.close)}`;
+          stateHtml = `We are <span style="color: #b38b45; font-weight: bold;">OPEN</span> for drinks until ${formatTime(today.close)}, but please note our kitchen is now closed.`;
       } else if (currentMins >= kitchenCloseMins - 30) {
-          stateHtml = `<span style="color: #e9c349; font-weight: bold;">Closing Soon</span> • Kitchen closes at 2:30pm`;
+          stateHtml = `We are <span style="color: #b38b45; font-weight: bold;">OPEN</span>! Just a heads up, the kitchen closes soon at 2:30pm.`;
       } else {
-          stateHtml = `<span style="color: #22c55e; font-weight: bold;">Open</span> until ${formatTime(today.close)}`;
+          stateHtml = `We are <span style="color: #15803d; font-weight: bold;">OPEN</span>! Enjoy our kitchen menu until 2:30pm, and drinks until ${formatTime(today.close)}.`;
       }
       document.querySelectorAll('.store-state-indicator').forEach(el => {
           el.innerHTML = stateHtml;
