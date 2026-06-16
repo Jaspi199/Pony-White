@@ -184,7 +184,7 @@ function compilePage(filePath) {
   console.log(`  - Processing asset paths (CDN: ${CONFIG.useCDN ? 'ENABLED' : 'DISABLED'})...`);
   let processedHtml = processAssetPaths(inlinedHtml, CONFIG.useCDN);
   
-  // Inject dynamic script fonts loading to guarantee bypass of iframe sandboxing limits
+  // Inject dynamic script fonts loading and height detection to guarantee bypass of iframe sandboxing limits
   const dynamicFontScript = `\n    // Dynamic Font Injection to bypass iframe sandboxing font blocks\n` +
                             `    (function() {\n` +
                             `      function injectFont(url) {\n` +
@@ -198,6 +198,21 @@ function compilePage(filePath) {
                             `      }\n` +
                             `      injectFont('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');\n` +
                             `      injectFont('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');\n` +
+                            `    })();\n` +
+                            `    // Dynamic Iframe Height Detection for Cross-Origin Embeds\n` +
+                            `    (function() {\n` +
+                            `      function sendHeight() {\n` +
+                            `        const height = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight, document.body.offsetHeight, document.documentElement.offsetHeight, document.body.clientHeight, document.documentElement.clientHeight);\n` +
+                            `        window.parent.postMessage({ type: 'nucleus-embed-resize', height: height }, '*');\n` +
+                            `      }\n` +
+                            `      window.addEventListener('load', sendHeight);\n` +
+                            `      if (window.ResizeObserver) {\n` +
+                            `        new ResizeObserver(sendHeight).observe(document.body);\n` +
+                            `      } else {\n` +
+                            `        window.addEventListener('resize', sendHeight);\n` +
+                            `      }\n` +
+                            `      // Initial trigger in case load already fired\n` +
+                            `      setTimeout(sendHeight, 100);\n` +
                             `    })();\n`;
                             
   processedHtml = processedHtml.replace(/<script[^>]*>/i, (match) => {

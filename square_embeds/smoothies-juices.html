@@ -13,6 +13,21 @@
       injectFont('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
       injectFont('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');
     })();
+    // Dynamic Iframe Height Detection for Cross-Origin Embeds
+    (function() {
+      function sendHeight() {
+        const height = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight, document.body.offsetHeight, document.documentElement.offsetHeight, document.body.clientHeight, document.documentElement.clientHeight);
+        window.parent.postMessage({ type: 'nucleus-embed-resize', height: height }, '*');
+      }
+      window.addEventListener('load', sendHeight);
+      if (window.ResizeObserver) {
+        new ResizeObserver(sendHeight).observe(document.body);
+      } else {
+        window.addEventListener('resize', sendHeight);
+      }
+      // Initial trigger in case load already fired
+      setTimeout(sendHeight, 100);
+    })();
 
     // 10 Detailed Drinks Data (6 Smoothies, 4 Juices)
     // 7 Detailed Smoothies Data
